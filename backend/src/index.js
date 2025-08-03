@@ -4,6 +4,12 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const envPath = path.join(__dirname, '../.env');
 
 // Import routes
 import loginRoute from './routes/login.route.js';
@@ -14,7 +20,7 @@ import vacanciesRoute from './routes/vacancies.route.js';
 // Import Supabase config
 import { checkDatabaseTables, getDatabaseStats } from './config/supabase.js';
 
-dotenv.config();
+dotenv.config({ path: envPath });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -24,7 +30,7 @@ app.use(helmet());
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
