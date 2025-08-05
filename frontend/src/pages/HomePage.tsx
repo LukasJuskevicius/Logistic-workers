@@ -1,13 +1,9 @@
-
-import { useAuth } from '../hooks/useAuth';
-
+// Simple home page
 interface HomePageProps {
   onNavigate: (page: string) => void;
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
-  const { user } = useAuth();
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
       {/* Hero Section */}
@@ -23,29 +19,18 @@ export function HomePage({ onNavigate }: HomePageProps) {
               with transportation companies across Europe.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              {!user ? (
-                <>
-                  <button
-                    onClick={() => onNavigate('drivers')}
-                    className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500"
-                  >
-                    I'm a Driver
-                  </button>
-                  <button
-                    onClick={() => onNavigate('clients')}
-                    className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                  >
-                    I'm an Employer
-                  </button>
-                </>
-              ) : (
-                <button
-                  onClick={() => onNavigate(user.type === 'admin' ? 'admin' : user.type === 'driver' ? 'driver-dashboard' : 'client-dashboard')}
-                  className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500"
-                >
-                  Go to Dashboard
-                </button>
-              )}
+              <button
+                onClick={() => onNavigate('drivers')}
+                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500"
+              >
+                I'm a Driver
+              </button>
+              <button
+                onClick={() => onNavigate('clients')}
+                className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              >
+                I'm an Employer
+              </button>
             </div>
           </div>
         </div>
@@ -61,32 +46,32 @@ export function HomePage({ onNavigate }: HomePageProps) {
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+            <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
               <div className="flex flex-col">
-                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+                <h3 className="text-base font-semibold leading-7 text-gray-900">
                   For Drivers
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">Find verified employment opportunities across Europe. Upload your credentials and get matched with companies that need your skills.</p>
-                </dd>
+                </h3>
+                <p className="mt-4 text-base leading-7 text-gray-600">
+                  Find verified employment opportunities across Europe. Upload your credentials and get matched with companies that need your skills.
+                </p>
               </div>
               <div className="flex flex-col">
-                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+                <h3 className="text-base font-semibold leading-7 text-gray-900">
                   For Employers
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">Access a pool of qualified, verified drivers. Post jobs and get applications from experienced professionals ready to work.</p>
-                </dd>
+                </h3>
+                <p className="mt-4 text-base leading-7 text-gray-600">
+                  Access a pool of qualified, verified drivers. Post jobs and get applications from experienced professionals ready to work.
+                </p>
               </div>
               <div className="flex flex-col">
-                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+                <h3 className="text-base font-semibold leading-7 text-gray-900">
                   Verified Process
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">All drivers and companies go through our verification process to ensure quality and legitimacy for all parties.</p>
-                </dd>
+                </h3>
+                <p className="mt-4 text-base leading-7 text-gray-600">
+                  All drivers and companies go through our verification process to ensure quality and legitimacy for all parties.
+                </p>
               </div>
-            </dl>
+            </div>
           </div>
         </div>
       </section>
