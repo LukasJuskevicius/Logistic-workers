@@ -1,0 +1,22 @@
+{
+    "navigation": {
+      "home": "Home",
+      "vacancies": "Vacatures",
+      "forClients": "Voor Werkgevers",
+      "forDrivers": "Voor Chauffeurs",
+      "contact": "Contact"
+    },
+    "auth": {
+      "register": "Registreren",
+      "login": "Inloggen",
+      "signOut": "Uitloggen",
+      "hello": "Hallo"
+    },
+    "home": {
+      "welcomeTitle": "Welkom bij Logistic Workers",
+      "welcomeSubtitle": "Het toonaangevende platform dat ervaren chauffeurs verbindt met transportbedrijven in heel Europa.",
+      "imDriver": "Ik ben een Chauffeur",
+      "imEmployer": "Ik ben een Werkgever",
+      "viewVacancies": "Vacatures Bekijken"
+    }
+  }

@@ -1,0 +1,22 @@
+{
+    "navigation": {
+      "home": "Strona główna",
+      "vacancies": "Oferty pracy",
+      "forClients": "Dla pracodawców",
+      "forDrivers": "Dla kierowców",
+      "contact": "Kontakt"
+    },
+    "auth": {
+      "register": "Zarejestruj się",
+      "login": "Zaloguj się",
+      "signOut": "Wyloguj się",
+      "hello": "Cześć"
+    },
+    "home": {
+      "welcomeTitle": "Witamy w Logistic Workers",
+      "welcomeSubtitle": "Wiodąca platforma łącząca doświadczonych kierowców z firmami transportowymi w całej Europie.",
+      "imDriver": "Jestem kierowcą",
+      "imEmployer": "Jestem pracodawcą",
+      "viewVacancies": "Zobacz oferty"
+    }
+  }

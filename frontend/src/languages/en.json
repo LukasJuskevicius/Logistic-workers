@@ -1,0 +1,22 @@
+{
+    "navigation": {
+      "home": "Home",
+      "vacancies": "Vacancies",
+      "forClients": "For Clients",
+      "forDrivers": "For Drivers",
+      "contact": "Contact"
+    },
+    "auth": {
+      "register": "Register",
+      "login": "Login",
+      "signOut": "Sign Out",
+      "hello": "Hello"
+    },
+    "home": {
+      "welcomeTitle": "Welcome to Logistic Workers",
+      "welcomeSubtitle": "The premier platform connecting skilled drivers with transportation companies across Europe.",
+      "imDriver": "I'm a Driver",
+      "imEmployer": "I'm an Employer",
+      "viewVacancies": "View Vacancies"
+    }
+  }

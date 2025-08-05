@@ -1,0 +1,22 @@
+{
+    "navigation": {
+      "home": "Головна",
+      "vacancies": "Вакансії",
+      "forClients": "Для роботодавців",
+      "forDrivers": "Для водіїв",
+      "contact": "Контакти"
+    },
+    "auth": {
+      "register": "Реєстрація",
+      "login": "Вхід",
+      "signOut": "Вийти",
+      "hello": "Привіт"
+    },
+    "home": {
+      "welcomeTitle": "Ласкаво просимо до Logistic Workers",
+      "welcomeSubtitle": "Провідна платформа, що з'єднує досвідчених водіїв з транспортними компаніями по всій Європі.",
+      "imDriver": "Я водій",
+      "imEmployer": "Я роботодавець",
+      "viewVacancies": "Переглянути вакансії"
+    }
+  }

@@ -1,0 +1,22 @@
+{
+    "navigation": {
+      "home": "Pradžia",
+      "vacancies": "Darbo vietos",
+      "forClients": "Klientams",
+      "forDrivers": "Vairuotojams",
+      "contact": "Kontaktai"
+    },
+    "auth": {
+      "register": "Registruotis",
+      "login": "Prisijungti",
+      "signOut": "Atsijungti",
+      "hello": "Sveiki"
+    },
+    "home": {
+      "welcomeTitle": "Sveiki atvykę į Logistic Workers",
+      "welcomeSubtitle": "Geriausia platforma, jungianti kvalifikuotus vairuotojus su transporto įmonėmis visoje Europoje.",
+      "imDriver": "Aš esu vairuotojas",
+      "imEmployer": "Aš esu darbdavys",
+      "viewVacancies": "Peržiūrėti darbo vietas"
+    }
+  } 

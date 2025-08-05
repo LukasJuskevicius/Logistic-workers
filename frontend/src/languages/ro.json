@@ -1,0 +1,22 @@
+{
+    "navigation": {
+      "home": "Acasă",
+      "vacancies": "Locuri de muncă",
+      "forClients": "Pentru angajatori",
+      "forDrivers": "Pentru șoferi",
+      "contact": "Contact"
+    },
+    "auth": {
+      "register": "Înregistrare",
+      "login": "Autentificare",
+      "signOut": "Deconectare",
+      "hello": "Bună"
+    },
+    "home": {
+      "welcomeTitle": "Bun venit la Logistic Workers",
+      "welcomeSubtitle": "Platforma de top care conectează șoferii experimentați cu companiile de transport din toată Europa.",
+      "imDriver": "Sunt șofer",
+      "imEmployer": "Sunt angajator",
+      "viewVacancies": "Vezi locurile de muncă"
+    }
+  }

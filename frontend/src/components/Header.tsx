@@ -1,5 +1,7 @@
-// Simple navigation header with burger menu
+// Simple navigation header with burger menu and language switcher
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface HeaderProps {
   onNavigate: (page: string) => void;
@@ -9,10 +11,15 @@ interface HeaderProps {
 
 export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation();
 
   const handleNavigate = (page: string) => {
     onNavigate(page);
-    setIsMenuOpen(false); // Close menu when navigating
+    setIsMenuOpen(false);
+  };
+
+  const handleLanguageChange = (language: string) => {
+    i18n.changeLanguage(language);
   };
 
   return (
@@ -40,46 +47,52 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
               onClick={() => onNavigate('home')} 
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
-              Home
+              {t('navigation.home')}
             </button>
             <button 
               onClick={() => onNavigate('vacancies')} 
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
-              Vacancies
+              {t('navigation.vacancies')}
             </button>
             <button 
               onClick={() => onNavigate('clients')} 
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
-              For Clients
+              {t('navigation.forClients')}
             </button>
             <button 
               onClick={() => onNavigate('drivers')} 
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
-              For Drivers
+              {t('navigation.forDrivers')}
             </button>
             <button 
               onClick={() => onNavigate('contact')} 
               className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
-              Contact
+              {t('navigation.contact')}
             </button>
           </nav>
 
-          {/* Desktop Auth Buttons */}
+          {/* Desktop Auth Buttons and Language Switcher */}
           <div className="hidden md:flex items-center space-x-3">
+            {/* Language Switcher */}
+            <LanguageSwitcher 
+              currentLanguage={i18n.language} 
+              onLanguageChange={handleLanguageChange} 
+            />
+
             {user ? (
               <>
                 <span className="text-sm text-gray-700">
-                  Hello, {user.firstName || user.email}
+                  {t('auth.hello')}, {user.firstName || user.email}
                 </span>
                 <button
                   onClick={onSignOut}
                   className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700 transition-colors"
                 >
-                  Sign Out
+                  {t('auth.signOut')}
                 </button>
               </>
             ) : (
@@ -88,26 +101,31 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
                   onClick={() => onNavigate('register')}
                   className="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-md text-sm hover:bg-gray-50 transition-colors"
                 >
-                  Register
+                  {t('auth.register')}
                 </button>
                 <button
                   onClick={() => onNavigate('login')}
                   className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition-colors"
                 >
-                  Login
+                  {t('auth.login')}
                 </button>
               </>
             )}
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            {/* Mobile Language Switcher */}
+            <LanguageSwitcher 
+              currentLanguage={i18n.language} 
+              onLanguageChange={handleLanguageChange} 
+            />
+
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors"
               aria-label="Toggle menu"
             >
-              {/* Hamburger icon */}
               <div className="w-6 h-6 flex flex-col justify-center items-center">
                 <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
                 <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
@@ -127,31 +145,31 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
                   onClick={() => handleNavigate('home')} 
                   className="block w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors"
                 >
-                  Home
+                  {t('navigation.home')}
                 </button>
                 <button 
                   onClick={() => handleNavigate('vacancies')} 
                   className="block w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors"
                 >
-                  Vacancies
+                  {t('navigation.vacancies')}
                 </button>
                 <button 
                   onClick={() => handleNavigate('clients')} 
                   className="block w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors"
                 >
-                  For Clients
+                  {t('navigation.forClients')}
                 </button>
                 <button 
                   onClick={() => handleNavigate('drivers')} 
                   className="block w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors"
                 >
-                  For Drivers
+                  {t('navigation.forDrivers')}
                 </button>
                 <button 
                   onClick={() => handleNavigate('contact')} 
                   className="block w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors"
                 >
-                  Contact
+                  {t('navigation.contact')}
                 </button>
               </nav>
 
@@ -160,7 +178,7 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
                 {user ? (
                   <div className="space-y-3">
                     <div className="text-sm text-gray-700">
-                      Hello, {user.firstName || user.email}
+                      {t('auth.hello')}, {user.firstName || user.email}
                     </div>
                     <button
                       onClick={() => {
@@ -169,7 +187,7 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
                       }}
                       className="w-full bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700 transition-colors"
                     >
-                      Sign Out
+                      {t('auth.signOut')}
                     </button>
                   </div>
                 ) : (
@@ -178,13 +196,13 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
                       onClick={() => handleNavigate('register')}
                       className="w-full bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-md text-sm hover:bg-gray-50 transition-colors"
                     >
-                      Register
+                      {t('auth.register')}
                     </button>
                     <button
                       onClick={() => handleNavigate('login')}
                       className="w-full bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition-colors"
                     >
-                      Login
+                      {t('auth.login')}
                     </button>
                   </div>
                 )}
