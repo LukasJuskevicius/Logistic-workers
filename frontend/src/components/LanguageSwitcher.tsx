@@ -48,7 +48,8 @@ export function LanguageSwitcher({ currentLanguage, onLanguageChange }: Language
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-md text-sm hover:bg-gray-50 flex items-center space-x-1"
+        
+        className="bg-white text-gray-700 border border-gray-300 px-3 py-1.5 lg:px-4 lg:py-2 rounded-md text-xs lg:text-sm hover:bg-gray-50 transition-colors"
       >
         <span>{currentLang.code.toUpperCase()}</span>
         <svg

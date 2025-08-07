@@ -3,7 +3,14 @@ interface FooterProps {
   onNavigate: (page: string) => void;
 }
 
+// Function to get current year
+const getCurrentYear = (): number => {
+  return new Date().getFullYear();
+};
+
 export function Footer({ onNavigate }: FooterProps) {
+  const currentYear = getCurrentYear();
+
   return (
     <footer className="bg-gray-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -52,7 +59,7 @@ export function Footer({ onNavigate }: FooterProps) {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; 2024 Logistic Workers. All rights reserved.</p>
+          <p>&copy; {currentYear} Logistic Workers. All rights reserved.</p>
         </div>
       </div>
     </footer>

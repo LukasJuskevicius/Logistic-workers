@@ -1,80 +1,192 @@
-// Simple home page
+import backgroundImage from '../images/background-image.jpg';
+import { LatestOpportunitiesSection } from '../components/LatestOpportunitiesSection';
+
+// Homepage with comprehensive layout
 interface HomePageProps {
   onNavigate: (page: string) => void;
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
-      {/* Hero Section */}
-      <section className="relative px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Connect Drivers with 
-              <span className="text-blue-600"> Opportunities</span>
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              The premier platform connecting skilled drivers from Lithuania, Ukraine, and beyond 
-              with transportation companies across Europe.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <button
-                onClick={() => onNavigate('drivers')}
-                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500"
-              >
-                I'm a Driver
-              </button>
-              <button
-                onClick={() => onNavigate('clients')}
-                className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-              >
-                I'm an Employer
-              </button>
-            </div>
+    <div>
+      {/* Hero Section - The First Impression */}
+      {/* This section immediately establishes who we are and guides visitors to the right place */}
+      <div className="relative bg-cover bg-center bg-no-repeat min-h-[80vh] flex items-center" 
+           style={{ backgroundImage: `url(${backgroundImage})` }}>
+        
+        {/* Dark overlay to improve text readability over background image */}
+        {/* The /40 means 40% opacity - makes text more readable */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        
+        {/* Main content container - centered and responsive */}
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 text-center text-white">
+          
+          {/* Primary Headline - The Core Message */}
+          {/* This speaks to both audiences: clients (business) and drivers (career) */}
+          {/* Responsive text sizing: mobile=4xl, small=5xl, large=6xl */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            The Driving Force Behind Your Business. The Career Path for Your Future.
+          </h1>
+          
+          {/* Sub-headline - The Explanation */}
+          {/* Clear explanation of what we do and where we operate */}
+          {/* max-w-4xl prevents text from being too wide on large screens */}
+          <p className="text-lg sm:text-xl lg:text-2xl mb-12 text-gray-100 max-w-4xl mx-auto">
+            We are a specialist recruitment agency dedicated to matching professional lorry drivers 
+            with leading logistics companies across the Netherlands.
+          </p>
+          
+          {/* Dual Call-to-Action Buttons - The Sorting Hat */}
+          {/* Two equally important buttons that immediately solve visitor's first question */}
+          {/* flex-col on mobile (stacked), flex-row on small+ screens (side by side) */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            
+            {/* Primary Button - For Clients (Looking for Drivers) */}
+            {/* Blue background with white text - primary action color */}
+            <button
+              onClick={() => onNavigate('clients')}
+              className="bg-blue-600 text-white px-8 py-4 text-lg font-semibold rounded-md hover:bg-blue-700 transition-colors"
+            >
+              FIND RELIABLE DRIVERS
+            </button>
+            
+            {/* Secondary Button - For Drivers (Looking for Jobs) */}
+            {/* White background with dark text - secondary action color */}
+            <button
+              onClick={() => onNavigate('drivers')}
+              className="bg-white text-gray-900 px-8 py-4 text-lg font-semibold rounded-md hover:bg-gray-100 transition-colors"
+            >
+              FIND DRIVING JOBS
+            </button>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Features Section */}
-      <section className="py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base font-semibold leading-7 text-blue-600">Why Choose Us</h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Everything you need for logistics employment
-            </p>
+      {/* Why Choose Us Section */}
+      <div className="bg-gray-200 py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              The Partner You Can Rely On
+            </h2>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              <div className="flex flex-col">
-                <h3 className="text-base font-semibold leading-7 text-gray-900">
-                  For Drivers
-                </h3>
-                <p className="mt-4 text-base leading-7 text-gray-600">
-                  Find verified employment opportunities across Europe. Upload your credentials and get matched with companies that need your skills.
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="mb-6 flex justify-center">
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <h3 className="text-base font-semibold leading-7 text-gray-900">
-                  For Employers
-                </h3>
-                <p className="mt-4 text-base leading-7 text-gray-600">
-                  Access a pool of qualified, verified drivers. Post jobs and get applications from experienced professionals ready to work.
-                </p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Vetted Professionals</h3>
+              <p className="text-gray-600">
+                We rigorously screen every driver to ensure quality and reliability.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="mb-6 flex justify-center">
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <h3 className="text-base font-semibold leading-7 text-gray-900">
-                  Verified Process
-                </h3>
-                <p className="mt-4 text-base leading-7 text-gray-600">
-                  All drivers and companies go through our verification process to ensure quality and legitimacy for all parties.
-                </p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Fast & Efficient</h3>
+              <p className="text-gray-600">
+                We fill your vacancies quickly to keep your business moving.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="mb-6 flex justify-center">
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2M9 12l2 2 4-4" />
+                  </svg>
+                </div>
               </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Personal Support</h3>
+              <p className="text-gray-600">
+                Dedicated support for both our clients and our drivers.
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Latest Driving Opportunities Section - Now imported as a component */}
+      <LatestOpportunitiesSection onNavigate={onNavigate} />
+
+      {/* What Our Drivers Say */}
+      <div className="bg-gray-200 py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              What Our Drivers Say
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Business Owner</h4>
+                  <p className="text-gray-600">Logistics Inc.</p>
+                </div>
+              </div>
+              <p className="text-gray-600 italic">
+                "Finding a reliable driver was a nightmare until we found Logistic Workers. 
+                Professional service from start to finish."
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Professional Driver</h4>
+                  <p className="text-gray-600">5+ Years Experience</p>
+                </div>
+              </div>
+              <p className="text-gray-600 italic">
+                "I found my dream job through Logistic Workers. They really care about 
+                matching drivers with the right companies and working conditions."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Final Call to Action Section */}
+      <div className="bg-blue-600 py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-8">
+            Ready to Get Started?
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => onNavigate('clients')}
+              className="bg-white text-blue-600 px-8 py-4 text-lg font-semibold rounded-md hover:bg-gray-100 transition-colors"
+            >
+              I'M LOOKING FOR DRIVERS
+            </button>
+            <button
+              onClick={() => onNavigate('drivers')}
+              className="bg-transparent text-white border-2 border-white px-8 py-4 text-lg font-semibold rounded-md hover:bg-white hover:text-blue-600 transition-colors"
+            >
+              I'M LOOKING FOR A JOB
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
