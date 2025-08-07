@@ -1,5 +1,5 @@
 import backgroundImage from '../images/background-image.jpg';
-import { LatestOpportunitiesSection } from '../components/LatestOpportunitiesSection';
+import { VacancyCarousel } from '../components/VacancyCarousel';
 
 // Homepage with comprehensive layout
 interface HomePageProps {
@@ -114,8 +114,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </div>
 
-      {/* Latest Driving Opportunities Section - Now imported as a component */}
-      <LatestOpportunitiesSection onNavigate={onNavigate} />
+      {/* Latest Driving Opportunities Section - Now imported as VacancyCarousel */}
+      <VacancyCarousel onNavigate={onNavigate} />
 
       {/* What Our Drivers Say */}
       <div className="bg-gray-200 py-24">

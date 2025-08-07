@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { LogisticWorkersLogo } from './LogisticWorkersLogo';
 
 // Define the props interface for the Header component
 interface HeaderProps {
@@ -41,16 +42,10 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
             {/* Clickable logo button */}
             <button
               onClick={() => onNavigate('home')}
-              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+              className="flex items-center hover:opacity-80 transition-opacity"
             >
-              {/* Blue square logo with "LW" text */}
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-semibold text-sm">LW</span>
-              </div>
-              {/* Company name text */}
-              <span className="text-lg font-semibold text-gray-900">
-                Logistic Workers
-              </span>
+              {/* Custom SVG logo */}
+              <LogisticWorkersLogo size="small" />
             </button>
           </div>
 

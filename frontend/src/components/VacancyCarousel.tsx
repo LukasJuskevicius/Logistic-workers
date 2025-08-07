@@ -94,75 +94,97 @@ export function VacancyCarousel({ onNavigate }: VacancyCarouselProps) {
   };
 
   return (
-    <div className="relative">
-      {/* Main carousel container */}
-      <div className="relative overflow-hidden">
-        
-        {/* Cards container */}
-        <div className="flex transition-transform duration-300 ease-in-out"
-             style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-          
-          {/* Map through current cards to display */}
-          {getCurrentCards().map((vacancy) => (
-            <div key={vacancy.id} 
-                 className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
-              <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow bg-white h-full">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {vacancy.title}
-                </h3>
-                <p className="text-gray-600 mb-2">📍 {vacancy.location}</p>
-                <p className="text-gray-600 mb-4">
-                  {vacancy.description}
-                </p>
-                <button 
-                  onClick={() => onNavigate('vacancies')}
-                  className="text-blue-600 hover:text-blue-700 font-medium"
-                >
-                  View Details →
-                </button>
-              </div>
-            </div>
-          ))}
+    <div className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Section Title */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Latest Driving Opportunities
+          </h2>
         </div>
-      </div>
+        
+        {/* Carousel Container */}
+        <div className="relative">
+          {/* Main carousel container */}
+          <div className="relative overflow-hidden">
+            
+            {/* Cards container */}
+            <div className="flex transition-transform duration-300 ease-in-out"
+                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+              
+              {/* Map through current cards to display */}
+              {getCurrentCards().map((vacancy) => (
+                <div key={vacancy.id} 
+                     className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
+                  <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow bg-white h-full">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      {vacancy.title}
+                    </h3>
+                    <p className="text-gray-600 mb-2">📍 {vacancy.location}</p>
+                    <p className="text-gray-600 mb-4">
+                      {vacancy.description}
+                    </p>
+                    <button 
+                      onClick={() => onNavigate('vacancies')}
+                      className="text-blue-600 hover:text-blue-700 font-medium"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      {/* Navigation arrows - only show on smaller screens or when needed */}
-      <div className="hidden md:block lg:hidden">
-        {/* Previous arrow */}
-        <button
-          onClick={goToPrevious}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white border border-gray-300 rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors z-10"
-          aria-label="Previous vacancies"
-        >
-          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+          {/* Navigation arrows - only show on smaller screens or when needed */}
+          <div className="hidden md:block lg:hidden">
+            {/* Previous arrow */}
+            <button
+              onClick={goToPrevious}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white border border-gray-300 rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors z-10"
+              aria-label="Previous vacancies"
+            >
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-        {/* Next arrow */}
-        <button
-          onClick={goToNext}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white border border-gray-300 rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors z-10"
-          aria-label="Next vacancies"
-        >
-          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
+            {/* Next arrow */}
+            <button
+              onClick={goToNext}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white border border-gray-300 rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors z-10"
+              aria-label="Next vacancies"
+            >
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
 
-      {/* Dots indicator - show on smaller screens */}
-      <div className="flex justify-center mt-6 md:hidden">
-        {Array.from({ length: totalSlides }, (_, index) => (
+          {/* Dots indicator - show on smaller screens */}
+          <div className="flex justify-center mt-6 md:hidden">
+            {Array.from({ length: totalSlides }, (_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full mx-1 transition-colors ${
+                  index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+        
+        {/* View All Button */}
+        <div className="text-center mt-12">
           <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 rounded-full mx-1 transition-colors ${
-              index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+            onClick={() => onNavigate('vacancies')}
+            className="bg-blue-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-700 transition-colors"
+          >
+            View All Vacancies
+          </button>
+        </div>
       </div>
     </div>
   );
