@@ -10,48 +10,25 @@ export function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div>
       {/* Hero Section - The First Impression */}
-      {/* This section immediately establishes who we are and guides visitors to the right place */}
       <div className="relative bg-cover bg-center bg-no-repeat min-h-[80vh] flex items-center" 
            style={{ backgroundImage: `url(${backgroundImage})` }}>
-        
-        {/* Dark overlay to improve text readability over background image */}
-        {/* The /40 means 40% opacity - makes text more readable */}
         <div className="absolute inset-0 bg-black/40"></div>
-        
         {/* Main content container - centered and responsive */}
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 text-center text-white">
-          
-          {/* Primary Headline - The Core Message */}
-          {/* This speaks to both audiences: clients (business) and drivers (career) */}
-          {/* Responsive text sizing: mobile=4xl, small=5xl, large=6xl */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             The Driving Force Behind Your Business. The Career Path for Your Future.
           </h1>
-          
-          {/* Sub-headline - The Explanation */}
-          {/* Clear explanation of what we do and where we operate */}
-          {/* max-w-4xl prevents text from being too wide on large screens */}
           <p className="text-lg sm:text-xl lg:text-2xl mb-12 text-gray-100 max-w-4xl mx-auto">
             We are a specialist recruitment agency dedicated to matching professional lorry drivers 
             with leading logistics companies across the Netherlands.
           </p>
-          
-          {/* Dual Call-to-Action Buttons - The Sorting Hat */}
-          {/* Two equally important buttons that immediately solve visitor's first question */}
-          {/* flex-col on mobile (stacked), flex-row on small+ screens (side by side) */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            
-            {/* Primary Button - For Clients (Looking for Drivers) */}
-            {/* Blue background with white text - primary action color */}
             <button
               onClick={() => onNavigate('clients')}
               className="bg-blue-600 text-white px-8 py-4 text-lg font-semibold rounded-md hover:bg-blue-700 transition-colors"
             >
               FIND RELIABLE DRIVERS
             </button>
-            
-            {/* Secondary Button - For Drivers (Looking for Jobs) */}
-            {/* White background with dark text - secondary action color */}
             <button
               onClick={() => onNavigate('drivers')}
               className="bg-white text-gray-900 px-8 py-4 text-lg font-semibold rounded-md hover:bg-gray-100 transition-colors"
@@ -114,7 +91,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </div>
 
-      {/* Latest Driving Opportunities Section - Now imported as VacancyCarousel */}
+      {/* Latest Driving Opportunities Section */}
       <VacancyCarousel onNavigate={onNavigate} />
 
       {/* What Our Drivers Say */}
