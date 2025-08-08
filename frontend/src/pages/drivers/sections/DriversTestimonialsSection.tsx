@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { driverTestimonials } from '../data/drivers';
 
-export function DriversTestimonialsSection() {
+interface DriversTestimonialsSectionProps {
+  onNavigate: (page: string) => void;
+}
+
+export function DriversTestimonialsSection({ onNavigate }: DriversTestimonialsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Auto-advance carousel

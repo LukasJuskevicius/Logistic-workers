@@ -1,7 +1,11 @@
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { driverRequirements } from '../data/drivers';
 
-export function DriversRequirementsSection() {
+interface DriversRequirementsSectionProps {
+  onNavigate: (page: string) => void;
+}
+
+export function DriversRequirementsSection({ onNavigate }: DriversRequirementsSectionProps) {
   return (
     <BackgroundPattern 
       pattern="circles" 

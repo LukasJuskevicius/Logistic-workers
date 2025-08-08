@@ -2,7 +2,11 @@ import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { EnhancedCard } from '../../../components/ui/EnhancedCard';
 import { driverBenefits } from '../data/drivers';
 
-export function DriversBenefitsSection() {
+interface DriversBenefitsSectionProps {
+  onNavigate: (page: string) => void;
+}
+
+export function DriversBenefitsSection({ onNavigate }: DriversBenefitsSectionProps) {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'money':

@@ -1,7 +1,11 @@
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { driverProcess } from '../data/drivers';
 
-export function DriversProcessSection() {
+interface DriversProcessSectionProps {
+  onNavigate: (page: string) => void;
+}
+
+export function DriversProcessSection({ onNavigate }: DriversProcessSectionProps) {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'document':

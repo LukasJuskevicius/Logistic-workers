@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { driverPositions, driverJobCategories, driverLocations } from '../data/drivers';
 
-export function DriversPositionsSection() {
+interface DriversPositionsSectionProps {
+  onNavigate: (page: string) => void;
+}
+
+export function DriversPositionsSection({ onNavigate }: DriversPositionsSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedLocation, setSelectedLocation] = useState<string>('all');
 
