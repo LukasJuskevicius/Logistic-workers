@@ -8,7 +8,7 @@ import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { VacanciesPage } from './pages/vacancies/VacanciesPage';
 import { ContactPage } from './pages/ContactPage';
-import { DriversPage } from './pages/DriversPage';
+import { DriversPage } from './pages/drivers';
 import { ClientsPage } from './pages/clients/ClientsPage';
 
 // Import components
