@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import { useState } from 'react';
 
 // Import pages
-import { HomePage } from './pages/HomePage';
+import { HomePage } from './pages/home/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { VacanciesPage } from './pages/VacanciesPage';
