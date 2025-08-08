@@ -7,7 +7,7 @@ import { HomePage } from './pages/home/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { VacanciesPage } from './pages/vacancies/VacanciesPage';
-import { ContactPage } from './pages/ContactPage';
+import { ContactPage } from './pages/contact/ContactPage';
 import { DriversPage } from './pages/drivers';
 import { ClientsPage } from './pages/clients/ClientsPage';
 
