@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect, ReactNode, useRef } from 'react';
 
 // Generic carousel props interface
 interface CarouselProps {
@@ -23,6 +23,8 @@ export function Carousel({
 }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [maxCardHeight, setMaxCardHeight] = useState(0);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Handle responsive behavior
   useEffect(() => {
@@ -34,6 +36,24 @@ export function Carousel({
     window.addEventListener('resize', checkScreenSize);
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
+
+  // Calculate maximum card height for perfect alignment
+  useEffect(() => {
+    const calculateMaxHeight = () => {
+      const heights = cardRefs.current
+        .filter(ref => ref !== null)
+        .map(ref => ref?.offsetHeight || 0);
+      
+      const maxHeight = Math.max(...heights);
+      if (maxHeight > 0) {
+        setMaxCardHeight(maxHeight);
+      }
+    };
+
+    // Calculate after a short delay to ensure all cards are rendered
+    const timer = setTimeout(calculateMaxHeight, 100);
+    return () => clearTimeout(timer);
+  }, [items]);
 
   // Calculate max index based on screen size
   const maxIndex = items.length - 1;
@@ -108,7 +128,16 @@ export function Carousel({
                            ? 'w-[80%]' // Current card takes 80% on mobile
                            : 'w-[80%]'  // Current card takes 80% on desktop
                        }`}>
-                    {renderItem(item, index)}
+                    {/* Card container with calculated height for perfect alignment */}
+                    <div 
+                      ref={el => cardRefs.current[index] = el}
+                      className="h-full"
+                      style={{ 
+                        minHeight: maxCardHeight > 0 ? `${maxCardHeight}px` : 'auto'
+                      }}
+                    >
+                      {renderItem(item, index)}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -125,7 +154,7 @@ export function Carousel({
                   className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex 
                       ? 'bg-blue-600 scale-125' 
-                      : 'bg-gray-300 hover:bg-gray-400'
+                      : 'bg-gray-400 hover:bg-gray-500'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />

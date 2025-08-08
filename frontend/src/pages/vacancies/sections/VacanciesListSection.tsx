@@ -1,0 +1,207 @@
+import { useState } from 'react';
+import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
+import { VacancyCard } from '../../../components/sections/VacancyCard';
+import { vacanciesData, vacancyCategories, vacancyLocations } from '../data/vacancies';
+
+interface VacanciesListSectionProps {
+  onNavigate: (page: string) => void;
+}
+
+export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) {
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedLocation, setSelectedLocation] = useState<string>('all');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Filter vacancies based on selected filters
+  const filteredVacancies = vacanciesData.filter(vacancy => {
+    const matchesCategory = selectedCategory === 'all' || 
+      (selectedCategory === 'international' && vacancy.location.includes('International')) ||
+      (selectedCategory === 'local' && !vacancy.location.includes('International')) ||
+      (selectedCategory === 'specialized' && vacancy.title.includes('Specialized')) ||
+      (selectedCategory === 'express' && vacancy.title.includes('Express')) ||
+      (selectedCategory === 'heavy' && vacancy.title.includes('Heavy'));
+    
+    const matchesLocation = selectedLocation === 'all' || 
+      vacancy.location.toLowerCase().includes(selectedLocation);
+    
+    const matchesSearch = vacancy.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      vacancy.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      vacancy.location.toLowerCase().includes(searchTerm.toLowerCase());
+
+    return matchesCategory && matchesLocation && matchesSearch;
+  });
+
+  return (
+    <BackgroundPattern 
+      pattern="dots" 
+      opacity={0.03}
+      className="relative py-12 md:py-24 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 overflow-hidden"
+    >
+      {/* Floating decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
+        <div className="absolute top-20 left-10 w-24 h-24 opacity-10 animate-pulse">
+          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
+            <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" fill="none" />
+            <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="1" fill="none" />
+            <circle cx="50" cy="50" r="15" stroke="currentColor" strokeWidth="1" fill="none" />
+          </svg>
+        </div>
+        
+        <div className="absolute bottom-20 right-10 w-32 h-32 opacity-10 animate-bounce">
+          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
+            <path d="M20 80 L50 20 L80 80 Z" fill="currentColor" />
+            <circle cx="50" cy="60" r="8" fill="white" />
+          </svg>
+        </div>
+        
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 opacity-10 animate-spin">
+          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
+            <path d="M50 10 L90 50 L50 90 L10 50 Z" fill="currentColor" />
+            <circle cx="50" cy="50" r="20" fill="white" />
+          </svg>
+        </div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Enhanced header */}
+        <div className="text-center mb-8 md:mb-16">
+          <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/80 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
+            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-blue-500 rounded-full mr-1.5 md:mr-2"></div>
+            <span className="text-blue-700 font-medium">Filter & Search</span>
+          </div>
+          
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">
+            Find Your Perfect Position
+          </h2>
+          
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
+            Browse through our latest vacancies and find the opportunity that matches your skills and preferences
+          </p>
+        </div>
+
+        {/* Search and Filter Section */}
+        <div className="mb-8 md:mb-12">
+          {/* Search Bar */}
+          <div className="max-w-2xl mx-auto mb-6 md:mb-8">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search vacancies by title, description, or location..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full px-4 md:px-6 py-3 md:py-4 pl-12 md:pl-14 bg-white border border-gray-200 rounded-xl md:rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-sm md:text-base"
+              />
+              <svg className="absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 w-5 h-5 md:w-6 md:h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Filter Buttons */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-6 md:mb-8">
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
+                selectedCategory === 'all'
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'bg-white text-gray-600 hover:bg-blue-50 border border-gray-200'
+              }`}
+            >
+              All Categories ({vacanciesData.length})
+            </button>
+            {vacancyCategories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
+                  selectedCategory === category.id
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-blue-50 border border-gray-200'
+                }`}
+              >
+                {category.name} ({category.count})
+              </button>
+            ))}
+          </div>
+
+          {/* Location Filter */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+            <button
+              onClick={() => setSelectedLocation('all')}
+              className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
+                selectedLocation === 'all'
+                  ? 'bg-green-600 text-white shadow-lg'
+                  : 'bg-white text-gray-600 hover:bg-green-50 border border-gray-200'
+              }`}
+            >
+              All Locations
+            </button>
+            {vacancyLocations.slice(0, 6).map((location) => (
+              <button
+                key={location.id}
+                onClick={() => setSelectedLocation(location.id)}
+                className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
+                  selectedLocation === location.id
+                    ? 'bg-green-600 text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-green-50 border border-gray-200'
+                }`}
+              >
+                {location.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Results Count */}
+        <div className="text-center mb-6 md:mb-8">
+          <p className="text-sm md:text-base text-gray-600">
+            Showing <span className="font-semibold text-blue-600">{filteredVacancies.length}</span> of <span className="font-semibold">{vacanciesData.length}</span> vacancies
+          </p>
+        </div>
+
+        {/* Vacancies Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {filteredVacancies.length > 0 ? (
+            filteredVacancies.map((vacancy) => (
+              <VacancyCard key={vacancy.id} vacancy={vacancy} onNavigate={onNavigate} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12 md:py-16">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg">
+                <svg className="w-16 h-16 md:w-20 md:h-20 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">No vacancies found</h3>
+                <p className="text-gray-600 mb-4">Try adjusting your search criteria or check back later for new opportunities.</p>
+                <button
+                  onClick={() => {
+                    setSearchTerm('');
+                    setSelectedCategory('all');
+                    setSelectedLocation('all');
+                  }}
+                  className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                >
+                  Clear Filters
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Bottom decorative wave */}
+        <div className="mt-8 md:mt-16 relative hidden md:block">
+          <svg viewBox="0 0 1200 60" fill="none" className="w-full h-auto">
+            <path d="M0 60 L0 30 Q300 0 600 30 T1200 30 L1200 60 Z" fill="url(#vacancies-list-gradient)" />
+            <defs>
+              <linearGradient id="vacancies-list-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.1" />
+                <stop offset="50%" stopColor="#10B981" stopOpacity="0.2" />
+                <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.1" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </BackgroundPattern>
+  );
+}

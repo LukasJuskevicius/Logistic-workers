@@ -41,21 +41,10 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
       {/* Main content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Breadcrumb */}
-          <div className="mb-8">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm">
-              <span className="text-blue-200">Home</span>
-              <svg className="w-4 h-4 mx-2 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-              <span className="text-white">Logistic Workers</span>
-            </div>
-          </div>
-
           {/* Main heading with enhanced typography */}
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-indigo-200 bg-clip-text text-transparent">
-              Logistic Workers
+            Driving Your Business Forward
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
               Connecting professional drivers with leading logistics companies across Europe

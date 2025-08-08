@@ -14,10 +14,10 @@ interface VacancyCardProps {
   onNavigate: (page: string) => void;
 }
 
-// Specific vacancy card implementation
+// Specific vacancy card implementation with aligned buttons
 export function VacancyCard({ vacancy, onNavigate }: VacancyCardProps) {
   return (
-    <Card>
+    <Card className="flex flex-col h-full">
       {/* Card Header */}
       <div className="mb-4 md:mb-6">
         <div className="flex items-center justify-between mb-3 md:mb-4">
@@ -42,14 +42,14 @@ export function VacancyCard({ vacancy, onNavigate }: VacancyCardProps) {
         </div>
       </div>
 
-      {/* Card Content */}
-      <div className="mb-4 md:mb-6">
+      {/* Card Content - flex-grow to push button to bottom */}
+      <div className="flex-grow mb-4 md:mb-6">
         <p className="text-sm md:text-base text-gray-600 leading-relaxed">
           {vacancy.description}
         </p>
       </div>
 
-      {/* Card Footer */}
+      {/* Card Footer - always at bottom */}
       <div className="mt-auto">
         <button 
           onClick={() => onNavigate('vacancies')}

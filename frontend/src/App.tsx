@@ -6,10 +6,10 @@ import { useState } from 'react';
 import { HomePage } from './pages/home/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
-import { VacanciesPage } from './pages/VacanciesPage';
+import { VacanciesPage } from './pages/vacancies/VacanciesPage';
 import { ContactPage } from './pages/ContactPage';
 import { DriversPage } from './pages/DriversPage';
-import { ClientsPage } from './pages/ClientsPage';
+import { ClientsPage } from './pages/clients/ClientsPage';
 
 // Import components
 import { Header } from './components/layout/Header';
