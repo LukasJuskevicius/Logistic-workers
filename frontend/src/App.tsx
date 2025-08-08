@@ -12,8 +12,8 @@ import { DriversPage } from './pages/DriversPage';
 import { ClientsPage } from './pages/ClientsPage';
 
 // Import components
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
+import { Header } from './components/layout/Header';
+import { Footer } from './components/layout/Footer';
 
 function AppContent() {
   const navigate = useNavigate();

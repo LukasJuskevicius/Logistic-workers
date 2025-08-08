@@ -1,5 +1,5 @@
-// Centralized testimonials so content isn't hard-coded in the section
-export const testimonials = [
+// What Our Drivers Say data - testimonials from drivers and clients
+export const whatOurDriversSay = [
   { id: 1, name: 'Michael Schmidt', role: 'Professional Driver', company: '5+ Years Experience', avatar: 'MS', quote: 'I found my dream job through Logistic Workers. They really care about matching drivers with the right companies and working conditions. The support team is always there when you need them.', rating: 5, location: 'Germany' },
   { id: 2, name: 'Sarah Johnson', role: 'Business Owner', company: 'Logistics Inc.', avatar: 'SJ', quote: "Finding reliable drivers was a nightmare until we found Logistic Workers. Professional service from start to finish. They've helped us scale our operations significantly.", rating: 5, location: 'Netherlands' },
   { id: 3, name: 'Carlos Rodriguez', role: 'International Driver', company: '8+ Years Experience', avatar: 'CR', quote: 'Working with Logistic Workers has been amazing. They understand the industry and always find the best opportunities. Great pay and excellent working conditions.', rating: 5, location: 'Spain' },
@@ -7,5 +7,3 @@ export const testimonials = [
   { id: 5, name: 'David Thompson', role: 'Long-haul Driver', company: '10+ Years Experience', avatar: 'DT', quote: 'Logistic Workers made the job search process so smooth. They found me a position that perfectly matches my skills and preferences. Could not be happier!', rating: 5, location: 'UK' },
   { id: 6, name: 'Elena Popescu', role: 'HR Manager', company: 'European Logistics', avatar: 'EP', quote: "We've been working with Logistic Workers for over 2 years now. Their drivers are consistently professional and reliable. They've become our trusted recruitment partner.", rating: 5, location: 'Romania' },
 ];
-
-

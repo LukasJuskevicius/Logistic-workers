@@ -1,5 +1,5 @@
 // Simple register page
-import { RegisterForm } from '../components/RegisterForm';
+import { RegisterForm } from '../components/forms/RegisterForm';
 
 interface RegisterPageProps {
   onNavigate: (page: string) => void;

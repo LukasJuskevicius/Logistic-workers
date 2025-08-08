@@ -1,6 +1,6 @@
 // Simple register form component
 import { useState } from 'react';
-import { auth } from '../api/auth';
+import { auth } from '../../api/auth';
 
 interface RegisterFormProps {
   onNavigate: (page: string) => void;

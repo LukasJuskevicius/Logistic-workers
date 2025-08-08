@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from './LanguageSwitcher';
-import { LogisticWorkersLogo } from './LogisticWorkersLogo';
+import { LogisticWorkersLogo } from '../ui/Logo';
 
 // Define the props interface for the Header component
 interface HeaderProps {

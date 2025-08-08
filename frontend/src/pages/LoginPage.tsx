@@ -1,5 +1,5 @@
 // Simple login page
-import { LoginForm } from '../components/LoginForm';
+import { LoginForm } from '../components/forms/LoginForm';
 
 interface LoginPageProps {
   onNavigate: (page: string) => void;

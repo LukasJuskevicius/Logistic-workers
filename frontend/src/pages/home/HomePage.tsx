@@ -1,7 +1,7 @@
 import { HeroSection } from './sections/HeroSection';
 import { WhyChooseUsSection } from './sections/WhyChooseUsSection';
-import { VacanciesSection } from './sections/VacanciesSection';
-import { TestimonialsSection } from './sections/TestimonialsSection';
+import { LatestDrivingOpportunities } from './sections/LatestDrivingOpportunities';
+import { WhatOurDriversSay } from './sections/WhatOurDriversSay';
 import { CallToActionSection } from './sections/CallToActionSection';
 
 // Homepage orchestrates page sections and passes navigation handler
@@ -14,8 +14,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
     <div>
       <HeroSection onNavigate={onNavigate} />
       <WhyChooseUsSection />
-      <VacanciesSection onNavigate={onNavigate} />
-      <TestimonialsSection />
+      <LatestDrivingOpportunities onNavigate={onNavigate} />
+      <WhatOurDriversSay />
       <CallToActionSection onNavigate={onNavigate} />
     </div>
   );

@@ -1,6 +1,6 @@
 // Simple vacancies page
 import { useState, useEffect } from 'react';
-import { VacancyCard } from '../components/VacancyCard';
+import { VacancyCard } from '../components/sections/VacancyCard';
 import { vacancies } from '../api/vacancies';
 
 interface VacanciesPageProps {
@@ -44,7 +44,7 @@ export function VacanciesPage({ onNavigate }: VacanciesPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {vacancyList.length > 0 ? (
               vacancyList.map((vacancy: any) => (
-                <VacancyCard key={vacancy.id} vacancy={vacancy} />
+                <VacancyCard key={vacancy.id} vacancy={vacancy} onNavigate={onNavigate} />
               ))
             ) : (
               <div className="col-span-full text-center py-12">
