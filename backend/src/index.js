@@ -121,9 +121,9 @@ app.get('/database/status', async (req, res) => {
 });
 
 // Mount routes
-app.use('/api/login', loginRoute);
-app.use('/api/register', registerRoute);
-app.use('/api/logout', logoutRoute);
+app.use('/api/auth/login', loginRoute);
+app.use('/api/auth/register', registerRoute);
+app.use('/api/auth/logout', logoutRoute);
 app.use('/api/vacancies', vacanciesRoute);
 
 // 404 handler
