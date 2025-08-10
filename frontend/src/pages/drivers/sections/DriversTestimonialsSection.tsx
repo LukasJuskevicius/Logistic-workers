@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { driverTestimonials } from '../data/drivers';
 
 const DriversTestimonialsSection: React.FC = () => {
@@ -30,23 +31,49 @@ const DriversTestimonialsSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          {/* Badge */}
-          <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            {t('drivers.testimonials.badge')}
-          </div>
+    <BackgroundPattern 
+      pattern="waves" 
+      opacity={0.05}
+      className="relative py-12 md:py-24 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 overflow-hidden"
+    >
+      {/* Floating decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-28 h-28 opacity-10 animate-pulse">
+          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
+            <circle cx="50" cy="50" r="45" stroke="white" strokeWidth="2" fill="none" />
+            <circle cx="50" cy="50" r="30" stroke="white" strokeWidth="1" fill="none" />
+            <circle cx="50" cy="50" r="15" stroke="white" strokeWidth="1" fill="none" />
+          </svg>
+        </div>
+        
+        <div className="absolute bottom-20 right-10 w-32 h-32 opacity-10 animate-bounce">
+          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
+            <path d="M20 80 L50 20 L80 80 Z" stroke="white" strokeWidth="2" fill="none" />
+            <circle cx="50" cy="60" r="8" fill="white" />
+          </svg>
+        </div>
+        
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 opacity-10 animate-spin">
+          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
+            <path d="M50 10 L90 50 L50 90 L10 50 Z" stroke="white" strokeWidth="2" fill="none" />
+            <circle cx="50" cy="50" r="20" fill="white" />
+          </svg>
+        </div>
+      </div>
 
-          {/* Title */}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Enhanced header */}
+        <div className="text-center mb-8 md:mb-16">
+          <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
+            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-blue-400 rounded-full mr-1.5 md:mr-2 animate-pulse"></div>
+            <span className="text-white font-medium">{t('drivers.testimonials.badge')}</span>
+          </div>
+          
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 bg-gradient-to-r from-white via-blue-100 to-indigo-100 bg-clip-text text-transparent">
             {t('drivers.testimonials.title')}
           </h2>
-
-          {/* Subtitle */}
-          <p className="text-xl text-gray-600 leading-relaxed">
-            {t('drivers.testimonials.subtitle')}
-          </p>
+          
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 max-w-3xl mx-auto px-2">{t('drivers.testimonials.subtitle')}</p>
         </div>
 
         {/* Testimonials Carousel */}
@@ -121,7 +148,7 @@ const DriversTestimonialsSection: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </BackgroundPattern>
   );
 };
 

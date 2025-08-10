@@ -13,6 +13,7 @@ const languages: Language[] = [
   { code: 'uk', name: 'Ukrainian', flag: '🇺🇦' },
   { code: 'lt', name: 'Lithuanian', flag: '🇱🇹' },
   { code: 'pl', name: 'Polish', flag: '🇵🇱' },
+  { code: 'nl', name: 'Dutch', flag: '🇳🇱' },
 ];
 
 interface LanguageSwitcherProps {
