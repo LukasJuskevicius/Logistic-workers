@@ -375,22 +375,32 @@
       "subtitle": "Echte testimonials van bedrijven die hun operaties hebben getransformeerd met onze diensten",
       "items": {
         "1": {
-          "comment": "Logistic Workers hielp ons gekwalificeerde chauffeurs te vinden in slechts 3 weken. Hun screeningproces is grondig en betrouwbaar.",
-          "results": "Wervingstijd met 60% verminderd",
-          "position": "Vlootmanager",
-          "company": "European Logistics Ltd"
+          "name": "Maria Schmidt",
+          "position": "HR-directeur",
+          "company": "German Logistics GmbH",
+          "comment": "Logistic Workers leverde 15 gekwalificeerde chauffeurs binnen 3 weken. Hun screeningproces is grondig en hun chauffeurs zijn betrouwbaar. We hebben onze wervingstijd met 60% verkort.",
+          "results": "15 chauffeurs in 3 weken, 60% snellere werving"
         },
         "2": {
-          "comment": "Uitstekende service en ondersteuning. Ze begrijpen onze specifieke vereisten en leveren altijd hoogwaardige kandidaten.",
-          "results": "Chauffeursretentie met 40% verbeterd",
-          "position": "Operationeel directeur",
-          "company": "Transport Solutions"
+          "name": "Jan Kowalski",
+          "position": "Operationeel manager",
+          "company": "Polish Transport Solutions",
+          "comment": "De kwaliteit van de chauffeurs die we ontvingen overtrof onze verwachtingen. Hun compliancebeheer zorgt ervoor dat we nooit problemen hebben met autoriteiten. Zeer aanbevolen!",
+          "results": "Nul complianceproblemen, 100% chauffeurtevredenheid"
         },
         "3": {
-          "comment": "Professioneel team dat verder gaat dan wat er wordt gevraagd. Ze zijn onze vertrouwde partner geworden voor alle chauffeurswervingsbehoeften.",
-          "results": "Operationele efficiëntie met 35% verhoogd",
-          "position": "HR-manager",
-          "company": "International Freight Co"
+          "name": "Anna van der Berg",
+          "position": "Vlootmanager",
+          "company": "Dutch Distribution Co",
+          "comment": "We werken al 2 jaar samen met Logistic Workers. Hun voortdurende ondersteuning en snelle vervangingsdiensten zijn van onschatbare waarde geweest voor onze operaties.",
+          "results": "2 jaar partnerschap, 95% retentiepercentage"
+        },
+        "4": {
+          "name": "Pierre Dubois",
+          "position": "CEO",
+          "company": "French Freight Forwarders",
+          "comment": "Hun internationale netwerk hielp ons uit te breiden naar nieuwe markten. De chauffeurs zijn professioneel en goed opgeleid. Uitstekende servicekwaliteit.",
+          "results": "Uitgebreid naar 3 nieuwe landen, 40% groei"
         }
       }
     }
@@ -401,7 +411,9 @@
     "hero": {
       "supportBadge": "24/7 Ondersteuning Beschikbaar",
       "title": "Neem Contact Op",
-      "subtitle": "Klaar om uw reis te beginnen? Neem contact op met ons team voor persoonlijke assistentie en deskundige begeleiding."
+      "subtitle": "Klaar om uw reis te beginnen? Neem contact op met ons team voor persoonlijke assistentie en deskundige begeleiding.",
+      "sendMessage": "Bericht Versturen",
+      "backToHome": "Terug naar Home"
     },
     "form": {
       "send": "Bericht Versturen",
@@ -414,27 +426,43 @@
       "inquiryType": "Type Vraag",
       "message": "Bericht",
       "messagePlaceholder": "Vertel ons over uw behoeften, vereisten of vragen...",
-      "sending": "Bericht Versturen..."
+      "sending": "Bericht Versturen...",
+      "successMessage": "Bericht succesvol verzonden! We nemen binnen 24 uur contact met u op.",
+      "errorMessage": "Bericht verzenden mislukt. Probeer het opnieuw.",
+      "inquiryTypes": {
+        "general": "Algemene vraag",
+        "driver": "Op zoek naar chauffeurs",
+        "job": "Op zoek naar werk",
+        "partnership": "Partnerschap mogelijkheid",
+        "support": "Technische ondersteuning"
+      }
     },
     "info": {
-      "title": "Contactinformatie",
-      "subtitle": "Meerdere Manieren om Contact te Leggen",
-      "description": "Kies de methode die het beste voor u werkt. We zijn 24/7 beschikbaar om te helpen.",
-      "businessInfo": "Bedrijfsinformatie",
-      "availabilityTitle": "Wanneer We Beschikbaar Zijn",
-      "availabilityDescription": "Ons team staat klaar om u te assisteren tijdens deze uren.",
-      "businessHours": "Kantooruren",
-      "additionalInfo": "Aanvullende Informatie",
-      "responseTime": "We reageren op alle vragen binnen 24 uur, ook in het weekend.",
-      "confidentiality": "Alle communicatie is vertrouwelijk en veilig.",
-      "coverage": "We dienen klanten in 8 Europese landen.",
-      "immediateAssistance": "Directe Hulp Nodig?",
-      "urgentMatters": "Voor urgente zaken, bel ons direct of stuur een e-mail voor de snelste reactie.",
-      "callNow": "Nu Bellen",
-      "sendEmail": "E-mail Versturen"
+      "badge": "Contactinformatie",
+      "title": "Meerdere Manieren om Contact te Leggen",
+      "subtitle": "Kies de methode die het beste voor u werkt. We zijn 24/7 beschikbaar om te helpen."
     },
-    "success": "Bericht succesvol verzonden! We nemen binnen 24 uur contact met u op.",
-    "error": "Bericht verzenden mislukt. Probeer het opnieuw."
+    "methods": {
+      "email": { "title": "E-mail ons", "description": "Krijg binnen 24 uur antwoord", "action": "E-mail versturen" },
+      "phone": { "title": "Bel ons", "description": "Spreek direct met ons team", "action": "Nu bellen" },
+      "location": { "title": "Bezoek ons", "description": "Ons kantoor in Vilnius", "action": "Routebeschrijving" }
+    },
+    "hours": {
+      "badge": "Bedrijfsinformatie", "title": "Wanneer We Beschikbaar Zijn", "subtitle": "Ons team staat klaar om u te assisteren tijdens deze uren.",
+      "businessHours": "Kantooruren", "mondayFriday": "Maandag - Vrijdag", "saturday": "Zaterdag", "sunday": "Zondag",
+      "weekdayHours": "9:00 - 18:00", "saturdayHours": "10:00 - 16:00", "sundayHours": "Gesloten"
+    },
+    "additional": {
+      "title": "Aanvullende Informatie", "responseTime": "We reageren op alle vragen binnen 24 uur, ook in het weekend.",
+      "confidential": "Alle communicatie is vertrouwelijk en veilig.", "countries": "We dienen klanten in 8 Europese landen."
+    },
+    "urgent": {
+      "title": "Directe Hulp Nodig?", "subtitle": "Voor urgente zaken, bel ons direct of stuur een e-mail voor de snelste reactie.",
+      "callNow": "Nu Bellen", "sendEmail": "E-mail Versturen"
+    },
+    "stats": {
+      "responseTime": "Reactietijd", "satisfaction": "Tevredenheidspercentage", "countries": "Europese landen"
+    }
   },
   "register": {
     "title": "Registreren",

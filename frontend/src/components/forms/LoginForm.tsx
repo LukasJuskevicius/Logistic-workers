@@ -1,5 +1,6 @@
 // Modern login form component
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { auth } from '../../api/auth';
 
 interface LoginFormProps {
@@ -8,6 +9,7 @@ interface LoginFormProps {
 }
 
 export function LoginForm({ onNavigate, onLoginSuccess }: LoginFormProps) {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -35,10 +37,10 @@ export function LoginForm({ onNavigate, onLoginSuccess }: LoginFormProps) {
       <div className="text-center mb-6">
         <div className="inline-flex items-center px-3 py-1.5 bg-indigo-100 text-indigo-700 rounded-full text-xs md:text-sm mb-4">
           <div className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></div>
-          <span className="font-medium">Welcome Back</span>
+          <span className="font-medium">{t('login.title')}</span>
         </div>
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Login to your account</h2>
-        <p className="text-gray-600 text-sm md:text-base mt-2">Access your dashboard and continue your journey</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{t('login.title')}</h2>
+        <p className="text-gray-600 text-sm md:text-base mt-2">{t('login.subtitle')}</p>
       </div>
       
       {error && (
@@ -50,7 +52,7 @@ export function LoginForm({ onNavigate, onLoginSuccess }: LoginFormProps) {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-            Email
+            {t('login.form.email')}
           </label>
           <input
             type="email"
@@ -64,7 +66,7 @@ export function LoginForm({ onNavigate, onLoginSuccess }: LoginFormProps) {
 
         <div>
           <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-            Password
+            {t('login.form.password')}
           </label>
           <input
             type="password"
@@ -79,10 +81,10 @@ export function LoginForm({ onNavigate, onLoginSuccess }: LoginFormProps) {
         <div className="flex items-center justify-between text-sm">
           <label className="flex items-center gap-2 text-gray-600">
             <input type="checkbox" className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-            Remember me
+            {t('login.form.rememberMe')}
           </label>
           <button type="button" className="text-indigo-600 hover:text-indigo-800" onClick={() => onNavigate('forgot-password')}>
-            Forgot password?
+            {t('login.form.forgotPassword')}
           </button>
         </div>
 
@@ -91,7 +93,7 @@ export function LoginForm({ onNavigate, onLoginSuccess }: LoginFormProps) {
           disabled={loading}
           className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 disabled:opacity-50 transition-all duration-300"
         >
-          {loading ? 'Logging in...' : 'Login'}
+          {loading ? t('common.loading') : t('login.form.login')}
         </button>
       </form>
 
@@ -118,12 +120,12 @@ export function LoginForm({ onNavigate, onLoginSuccess }: LoginFormProps) {
 
       <div className="mt-6 text-center">
         <p className="text-gray-600">
-          Don't have an account?{' '}
+          {t('login.form.dontHaveAccount')}{' '}
           <button
             onClick={() => onNavigate('register')}
             className="text-indigo-600 hover:text-indigo-800"
           >
-            Create an account
+            {t('login.form.register')}
           </button>
         </p>
       </div>

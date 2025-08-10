@@ -116,7 +116,7 @@ export function ClientsTestimonialsSection() {
               {/* Testimonial Content */}
               <div className="mb-6 md:mb-8">
                 <p className="text-sm md:text-base lg:text-lg text-white leading-relaxed mb-4 md:mb-6">
-                  "{clientTestimonials[currentIndex].comment}"
+                  "{t(clientTestimonials[currentIndex].commentKey)}"
                 </p>
                 
                 {/* Results */}
@@ -124,7 +124,7 @@ export function ClientsTestimonialsSection() {
                   <svg className="w-3 h-3 md:w-4 md:h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
-                  {clientTestimonials[currentIndex].results}
+                  {t(clientTestimonials[currentIndex].resultsKey)}
                 </div>
               </div>
 
@@ -135,9 +135,9 @@ export function ClientsTestimonialsSection() {
                 </div>
                 
                 <div className="text-center">
-                  <h4 className="text-white font-semibold text-sm md:text-base">{clientTestimonials[currentIndex].name}</h4>
-                  <p className="text-green-200 text-xs md:text-sm">{clientTestimonials[currentIndex].position}</p>
-                  <p className="text-green-300 text-xs md:text-sm font-medium">{clientTestimonials[currentIndex].company}</p>
+                  <h4 className="text-white font-semibold text-sm md:text-base">{t(clientTestimonials[currentIndex].nameKey)}</h4>
+                  <p className="text-green-200 text-xs md:text-sm">{t(clientTestimonials[currentIndex].positionKey)}</p>
+                  <p className="text-green-300 text-xs md:text-sm font-medium">{t(clientTestimonials[currentIndex].companyKey)}</p>
                 </div>
               </div>
             </div>

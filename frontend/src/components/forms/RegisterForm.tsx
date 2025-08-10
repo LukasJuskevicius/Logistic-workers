@@ -1,5 +1,5 @@
-// Modern register form component
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { auth } from '../../api/auth';
 
 interface RegisterFormProps {
@@ -7,6 +7,7 @@ interface RegisterFormProps {
 }
 
 export function RegisterForm({ onNavigate }: RegisterFormProps) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -48,10 +49,10 @@ export function RegisterForm({ onNavigate }: RegisterFormProps) {
       <div className="text-center mb-6">
         <div className="inline-flex items-center px-3 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-xs md:text-sm mb-4">
           <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></div>
-          <span className="font-medium">Create Your Account</span>
+          <span className="font-medium">{t('register.title')}</span>
         </div>
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Join Logistic Workers</h2>
-        <p className="text-gray-600 text-sm md:text-base mt-2">Find reliable drivers or your next job opportunity</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{t('register.title')}</h2>
+        <p className="text-gray-600 text-sm md:text-base mt-2">{t('register.subtitle')}</p>
       </div>
 
       {error && (
@@ -70,7 +71,7 @@ export function RegisterForm({ onNavigate }: RegisterFormProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-              First Name
+              {t('register.form.firstName')}
             </label>
             <input
               type="text"
@@ -84,7 +85,7 @@ export function RegisterForm({ onNavigate }: RegisterFormProps) {
           </div>
           <div>
             <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-              Last Name
+              {t('register.form.lastName')}
             </label>
             <input
               type="text"
@@ -100,7 +101,7 @@ export function RegisterForm({ onNavigate }: RegisterFormProps) {
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-            Email
+            {t('register.form.email')}
           </label>
           <input
             type="email"
@@ -115,7 +116,7 @@ export function RegisterForm({ onNavigate }: RegisterFormProps) {
 
         <div>
           <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-            Password
+            {t('register.form.password')}
           </label>
           <input
             type="password"
@@ -130,7 +131,7 @@ export function RegisterForm({ onNavigate }: RegisterFormProps) {
 
         <div>
           <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-2">
-            I am a
+            {t('register.form.userType')}
           </label>
           <select
             id="type"
@@ -139,8 +140,8 @@ export function RegisterForm({ onNavigate }: RegisterFormProps) {
             onChange={handleChange}
             className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 bg-white/50"
           >
-            <option value="driver">Driver</option>
-            <option value="client">Client (Company)</option>
+            <option value="driver">{t('register.form.driver')}</option>
+            <option value="client">{t('register.form.employer')}</option>
           </select>
         </div>
 
@@ -149,7 +150,7 @@ export function RegisterForm({ onNavigate }: RegisterFormProps) {
           disabled={loading}
           className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3 rounded-xl font-semibold hover:from-emerald-700 hover:to-teal-700 disabled:opacity-50 transition-all duration-300"
         >
-          {loading ? 'Registering...' : 'Create account'}
+          {loading ? t('common.loading') : t('register.form.register')}
         </button>
       </form>
 
@@ -176,12 +177,12 @@ export function RegisterForm({ onNavigate }: RegisterFormProps) {
 
       <div className="mt-6 text-center">
         <p className="text-gray-600">
-          Already have an account?{' '}
+          {t('register.form.alreadyHaveAccount')}{' '}
           <button
             onClick={() => onNavigate('login')}
             className="text-emerald-600 hover:text-emerald-800"
           >
-            Login
+            {t('register.form.signIn')}
           </button>
         </p>
       </div>

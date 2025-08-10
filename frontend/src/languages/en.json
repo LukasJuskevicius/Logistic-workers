@@ -390,22 +390,32 @@
       "subtitle": "Real testimonials from companies that have transformed their operations with our services",
       "items": {
         "1": {
-          "comment": "Logistic Workers helped us find qualified drivers in just 3 weeks. Their screening process is thorough and reliable.",
-          "results": "Reduced hiring time by 60%",
-          "position": "Fleet Manager",
-          "company": "European Logistics Ltd"
+          "name": "Maria Schmidt",
+          "position": "HR Director",
+          "company": "German Logistics GmbH",
+          "comment": "Logistic Workers delivered 15 qualified drivers within 3 weeks. Their screening process is thorough and their drivers are reliable. We've reduced our recruitment time by 60%.",
+          "results": "15 drivers in 3 weeks, 60% faster recruitment"
         },
         "2": {
-          "comment": "Excellent service and support. They understand our specific requirements and always deliver quality candidates.",
-          "results": "Improved driver retention by 40%",
-          "position": "Operations Director",
-          "company": "Transport Solutions"
+          "name": "Jan Kowalski",
+          "position": "Operations Manager",
+          "company": "Polish Transport Solutions",
+          "comment": "The quality of drivers we received exceeded our expectations. Their compliance management ensures we never have issues with authorities. Highly recommended!",
+          "results": "Zero compliance issues, 100% driver satisfaction"
         },
         "3": {
-          "comment": "Professional team that goes above and beyond. They've become our trusted partner for all driver recruitment needs.",
-          "results": "Increased operational efficiency by 35%",
-          "position": "HR Manager",
-          "company": "International Freight Co"
+          "name": "Anna van der Berg",
+          "position": "Fleet Manager",
+          "company": "Dutch Distribution Co",
+          "comment": "We've been working with Logistic Workers for 2 years. Their ongoing support and quick replacement services have been invaluable to our operations.",
+          "results": "2 years partnership, 95% retention rate"
+        },
+        "4": {
+          "name": "Pierre Dubois",
+          "position": "CEO",
+          "company": "French Freight Forwarders",
+          "comment": "Their international network helped us expand into new markets. The drivers are professional and well-trained. Excellent service quality.",
+          "results": "Expanded to 3 new countries, 40% growth"
         }
       }
     }
@@ -441,14 +451,14 @@
       "modernEquipment": {
         "title": "Modern Equipment",
         "description": "Work with the latest vehicles and technology for safety and comfort",
-              "details": ["Modern fleet", "GPS navigation", "Safety equipment", "Comfort features"]
+        "details": ["Modern fleet", "GPS navigation", "Safety equipment", "Comfort features"]
+      },
+      "careerGrowth": {
+        "title": "Career Growth",
+        "description": "Opportunities for advancement and specialized training programs",
+        "details": ["Training programs", "Career advancement", "Skill development", "Certifications"]
+      }
     },
-    "careerGrowth": {
-      "title": "Career Growth",
-      "description": "Opportunities for advancement and specialized training programs",
-      "details": ["Training programs", "Career advancement", "Skill development", "Certifications"]
-    }
-  },
     "positions": {
       "badge": "Available Positions",
       "title": "Latest Opportunities",
@@ -593,7 +603,9 @@
     "hero": {
       "supportBadge": "24/7 Support Available",
       "title": "Get In Touch",
-      "subtitle": "Ready to start your journey? Contact our team for personalized assistance and expert guidance."
+      "subtitle": "Ready to start your journey? Contact our team for personalized assistance and expert guidance.",
+      "sendMessage": "Send Message",
+      "backToHome": "Back to Home"
     },
     "form": {
       "send": "Send Message",
@@ -606,27 +618,68 @@
       "inquiryType": "Inquiry Type",
       "message": "Message",
       "messagePlaceholder": "Tell us about your needs, requirements, or questions...",
-      "sending": "Sending Message..."
+      "sending": "Sending Message...",
+      "successMessage": "Message sent successfully! We will get back to you within 24 hours.",
+      "errorMessage": "Failed to send message. Please try again.",
+      "inquiryTypes": {
+        "general": "General Inquiry",
+        "driver": "Looking for Drivers", 
+        "job": "Looking for a Job",
+        "partnership": "Partnership Opportunity",
+        "support": "Technical Support"
+      }
     },
     "info": {
-      "title": "Contact Information",
-      "subtitle": "Multiple Ways to Connect",
-      "description": "Choose the method that works best for you. We're here to help 24/7.",
-      "businessInfo": "Business Information",
-      "availabilityTitle": "When We're Available",
-      "availabilityDescription": "Our team is ready to assist you during these hours.",
+      "badge": "Contact Information",
+      "title": "Multiple Ways to Connect",
+      "subtitle": "Choose the method that works best for you. We're here to help 24/7."
+    },
+    "methods": {
+      "email": {
+        "title": "Email Us",
+        "description": "Get a response within 24 hours",
+        "action": "Send Email"
+      },
+      "phone": {
+        "title": "Call Us", 
+        "description": "Speak with our team directly",
+        "action": "Call Now"
+      },
+      "location": {
+        "title": "Visit Us",
+        "description": "Our office in Vilnius", 
+        "action": "Get Directions"
+      }
+    },
+    "hours": {
+      "badge": "Business Information",
+      "title": "When We're Available",
+      "subtitle": "Our team is ready to assist you during these hours.",
       "businessHours": "Business Hours",
-      "additionalInfo": "Additional Information",
+      "mondayFriday": "Monday - Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "weekdayHours": "9:00 AM - 6:00 PM",
+      "saturdayHours": "10:00 AM - 4:00 PM",
+      "sundayHours": "Closed"
+    },
+    "additional": {
+      "title": "Additional Information",
       "responseTime": "We respond to all inquiries within 24 hours, even on weekends.",
-      "confidentiality": "All communications are confidential and secure.",
-      "coverage": "We serve clients across 8 European countries.",
-      "immediateAssistance": "Need Immediate Assistance?",
-      "urgentMatters": "For urgent matters, call us directly or send an email for fastest response.",
+      "confidential": "All communications are confidential and secure.",
+      "countries": "We serve clients across 8 European countries."
+    },
+    "urgent": {
+      "title": "Need Immediate Assistance?",
+      "subtitle": "For urgent matters, call us directly or send an email for fastest response.",
       "callNow": "Call Now",
       "sendEmail": "Send Email"
     },
-    "success": "Message sent successfully! We will get back to you within 24 hours.",
-    "error": "Failed to send message. Please try again."
+    "stats": {
+      "responseTime": "Response Time",
+      "satisfaction": "Satisfaction Rate",
+      "countries": "European Countries"
+    }
   },
   "register": {
     "title": "Register",

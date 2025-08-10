@@ -29,39 +29,39 @@ export const clientServices = [
 export const clientTestimonials = [
   {
     id: 1,
-    name: "Maria Schmidt",
-    position: "HR Director",
-    company: "German Logistics GmbH",
+    nameKey: "clients.testimonials.items.1.name",
+    positionKey: "clients.testimonials.items.1.position",
+    companyKey: "clients.testimonials.items.1.company",
     rating: 5,
-    comment: "Logistic Workers delivered 15 qualified drivers within 3 weeks. Their screening process is thorough and their drivers are reliable. We've reduced our recruitment time by 60%.",
-    results: "15 drivers in 3 weeks, 60% faster recruitment"
+    commentKey: "clients.testimonials.items.1.comment",
+    resultsKey: "clients.testimonials.items.1.results"
   },
   {
     id: 2,
-    name: "Jan Kowalski",
-    position: "Operations Manager",
-    company: "Polish Transport Solutions",
+    nameKey: "clients.testimonials.items.2.name",
+    positionKey: "clients.testimonials.items.2.position",
+    companyKey: "clients.testimonials.items.2.company",
     rating: 5,
-    comment: "The quality of drivers we received exceeded our expectations. Their compliance management ensures we never have issues with authorities. Highly recommended!",
-    results: "Zero compliance issues, 100% driver satisfaction"
+    commentKey: "clients.testimonials.items.2.comment",
+    resultsKey: "clients.testimonials.items.2.results"
   },
   {
     id: 3,
-    name: "Anna van der Berg",
-    position: "Fleet Manager",
-    company: "Dutch Distribution Co",
+    nameKey: "clients.testimonials.items.3.name",
+    positionKey: "clients.testimonials.items.3.position",
+    companyKey: "clients.testimonials.items.3.company",
     rating: 5,
-    comment: "We've been working with Logistic Workers for 2 years. Their ongoing support and quick replacement services have been invaluable to our operations.",
-    results: "2 years partnership, 95% retention rate"
+    commentKey: "clients.testimonials.items.3.comment",
+    resultsKey: "clients.testimonials.items.3.results"
   },
   {
     id: 4,
-    name: "Pierre Dubois",
-    position: "CEO",
-    company: "French Freight Forwarders",
+    nameKey: "clients.testimonials.items.4.name",
+    positionKey: "clients.testimonials.items.4.position",
+    companyKey: "clients.testimonials.items.4.company",
     rating: 5,
-    comment: "Their international network helped us expand into new markets. The drivers are professional and well-trained. Excellent service quality.",
-    results: "Expanded to 3 new countries, 40% growth"
+    commentKey: "clients.testimonials.items.4.comment",
+    resultsKey: "clients.testimonials.items.4.results"
   }
 ];
 

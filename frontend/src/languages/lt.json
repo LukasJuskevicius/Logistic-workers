@@ -411,22 +411,32 @@
       "subtitle": "Tikri atsiliepimai iš įmonių, kurios transformavo savo veiklą su mūsų paslaugomis",
       "items": {
         "1": {
-          "comment": "Logistic Workers padėjo mums rasti kvalifikuotus vairuotojus per tik 3 savaites. Jų tikrinimo procesas yra išsamus ir patikimas.",
-          "results": "Sumažino įdarbinimo laiką 60%",
-          "position": "Flotės vadovas",
-          "company": "European Logistics Ltd"
+          "name": "Maria Schmidt",
+          "position": "HR direktorė",
+          "company": "German Logistics GmbH",
+          "comment": "Logistic Workers pristatė 15 kvalifikuotų vairuotojų per 3 savaites. Jų atrankos procesas yra išsamus ir jų vairuotojai patikimi. Sumažinome įdarbinimo laiką 60%.",
+          "results": "15 vairuotojų per 3 savaites, 60% greitesnis įdarbinimas"
         },
         "2": {
-          "comment": "Puiki paslauga ir palaikymas. Jie supranta mūsų specifinius reikalavimus ir visada pateikia kokybiškus kandidatus.",
-          "results": "Pagerino vairuotojų išlaikymą 40%",
-          "position": "Veiklos direktorius",
-          "company": "Transport Solutions"
+          "name": "Jan Kowalski",
+          "position": "Operacijų vadovas",
+          "company": "Polish Transport Solutions",
+          "comment": "Vairuotojų, kuriuos gavome, kokybė viršijo mūsų lūkesčius. Jų atitikties valdymas užtikrina, kad niekada neturime problemų su valdžios institucijomis. Labai rekomenduoju!",
+          "results": "Nėra atitikties problemų, 100% vairuotojų pasitenkinimas"
         },
         "3": {
-          "comment": "Profesionali komanda, kuri eina toliau nei reikalaujama. Jie tapo mūsų patikimu partneriu visiems vairuotojų įdarbinimo poreikiams.",
-          "results": "Padidino veiklos efektyvumą 35%",
-          "position": "HR vadovas",
-          "company": "International Freight Co"
+          "name": "Anna van der Berg",
+          "position": "Flotės vadovė",
+          "company": "Dutch Distribution Co",
+          "comment": "Dirbame su Logistic Workers 2 metus. Jų nuolatinis palaikymas ir greitos pakeitimo paslaugos buvo neįkainojamos mūsų veiklai.",
+          "results": "2 metų partnerystė, 95% išlaikymo lygis"
+        },
+        "4": {
+          "name": "Pierre Dubois",
+          "position": "Generalinis direktorius",
+          "company": "French Freight Forwarders",
+          "comment": "Jų tarptautinis tinklas padėjo mums plėstis į naujas rinkas. Vairuotojai yra profesionalūs ir gerai apmokyti. Puiki paslaugų kokybė.",
+          "results": "Plėtra į 3 naujas šalis, 40% augimas"
         }
       }
     }
@@ -615,7 +625,9 @@
     "hero": {
       "supportBadge": "24/7 palaikymas prieinamas",
       "title": "Susisiekite su mumis",
-      "subtitle": "Pasiruošę pradėti savo kelionę? Susisiekite su mūsų komanda dėl asmeninio pagalbos ir ekspertų patarimo."
+      "subtitle": "Pasiruošę pradėti savo kelionę? Susisiekite su mūsų komanda dėl asmeninio pagalbos ir ekspertų patarimo.",
+      "sendMessage": "Siųsti žinutę",
+      "backToHome": "Grįžti namo"
     },
     "_comment_form": "Contact Form",
     "form": {
@@ -629,28 +641,69 @@
       "inquiryType": "Užklausos tipas",
       "message": "Žinutė",
       "messagePlaceholder": "Papasakokite mums apie savo poreikius, reikalavimus ar klausimus...",
-      "sending": "Siunčiama žinutė..."
+      "sending": "Siunčiama žinutė...",
+      "successMessage": "Žinutė išsiųsta sėkmingai! Susisieksime su jumis per 24 valandas.",
+      "errorMessage": "Nepavyko išsiųsti žinutės. Bandykite dar kartą.",
+      "inquiryTypes": {
+        "general": "Bendra užklausa",
+        "driver": "Ieškau vairuotojų", 
+        "job": "Ieškau darbo",
+        "partnership": "Partnerystės galimybė",
+        "support": "Techninis palaikymas"
+      }
     },
     "_comment_info": "Contact Info Section",
     "info": {
-      "title": "Kontaktinė informacija",
-      "subtitle": "Keletas būdų susisiekti",
-      "description": "Pasirinkite jums tinkamiausią būdą. Mes čia padėsime 24/7.",
-      "businessInfo": "Verslo informacija",
-      "availabilityTitle": "Kada esame prieinami",
-      "availabilityDescription": "Mūsų komanda pasiruošusi jums padėti šiomis valandomis.",
+      "badge": "Kontaktinė informacija",
+      "title": "Keletas būdų susisiekti",
+      "subtitle": "Pasirinkite jums tinkamiausią būdą. Mes čia padėsime 24/7."
+    },
+    "methods": {
+      "email": {
+        "title": "Rašykite mums",
+        "description": "Gaukite atsakymą per 24 valandas",
+        "action": "Siųsti el. laišką"
+      },
+      "phone": {
+        "title": "Skambinkite mums", 
+        "description": "Kalbėkite su mūsų komanda tiesiogiai",
+        "action": "Skambinti dabar"
+      },
+      "location": {
+        "title": "Aplankykite mus",
+        "description": "Mūsų biuras Vilniuje", 
+        "action": "Gauti kryptis"
+      }
+    },
+    "hours": {
+      "badge": "Verslo informacija",
+      "title": "Kada esame prieinami",
+      "subtitle": "Mūsų komanda pasiruošusi jums padėti šiomis valandomis.",
       "businessHours": "Darbo valandos",
-      "additionalInfo": "Papildoma informacija",
+      "mondayFriday": "Pirmadienis - Penktadienis",
+      "saturday": "Šeštadienis",
+      "sunday": "Sekmadienis",
+      "weekdayHours": "9:00 - 18:00",
+      "saturdayHours": "10:00 - 16:00",
+      "sundayHours": "Uždaryta"
+    },
+    "additional": {
+      "title": "Papildoma informacija",
       "responseTime": "Atsakome į visas užklausas per 24 valandas, net savaitgaliais.",
-      "confidentiality": "Visa komunikacija yra konfidenciali ir saugi.",
-      "coverage": "Aptarnaujame klientus 8 Europos šalyse.",
-      "immediateAssistance": "Reikia skubios pagalbos?",
-      "urgentMatters": "Skubiais atvejais skambinkite mums tiesiogiai arba siųskite el. laišką greičiausiam atsakymui.",
+      "confidential": "Visa komunikacija yra konfidenciali ir saugi.",
+      "countries": "Aptarnaujame klientus 8 Europos šalyse."
+    },
+    "urgent": {
+      "title": "Reikia skubios pagalbos?",
+      "subtitle": "Skubiais atvejais skambinkite mums tiesiogiai arba siųskite el. laišką greičiausiam atsakymui.",
       "callNow": "Skambinti dabar",
       "sendEmail": "Siųsti el. laišką"
     },
-    "success": "Žinutė išsiųsta sėkmingai! Susisieksime su jumis per 24 valandas.",
-    "error": "Nepavyko išsiųsti žinutės. Bandykite dar kartą."
+    "stats": {
+      "responseTime": "Atsako laikas",
+      "satisfaction": "Pasitenkinimo lygis",
+      "countries": "Europos šalys"
+    }
   },
 
   "_comment_register_page": "===== REGISTER PAGE =====",

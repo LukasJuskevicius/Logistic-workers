@@ -427,22 +427,32 @@
       "subtitle": "Prawdziwe opinie od firm, które przekształciły swoje operacje dzięki naszym usługom",
       "items": {
         "1": {
-          "comment": "Logistic Workers pomogli nam znaleźć wykwalifikowanych kierowców w zaledwie 3 tygodnie. Ich proces weryfikacji jest dokładny i niezawodny.",
-          "results": "Skrócenie czasu zatrudnienia o 60%",
-          "position": "Menedżer floty",
-          "company": "European Logistics Ltd"
+          "name": "Maria Schmidt",
+          "position": "Dyrektor HR",
+          "company": "German Logistics GmbH",
+          "comment": "Logistic Workers dostarczyli 15 wykwalifikowanych kierowców w ciągu 3 tygodni. Ich proces selekcji jest dokładny, a ich kierowcy są niezawodni. Skróciliśmy czas rekrutacji o 60%.",
+          "results": "15 kierowców w 3 tygodnie, 60% szybsza rekrutacja"
         },
         "2": {
-          "comment": "Doskonała usługa i wsparcie. Rozumieją nasze konkretne wymagania i zawsze dostarczają wysokiej jakości kandydatów.",
-          "results": "Poprawa retencji kierowców o 40%",
-          "position": "Dyrektor operacyjny",
-          "company": "Transport Solutions"
+          "name": "Jan Kowalski",
+          "position": "Menedżer operacyjny",
+          "company": "Polish Transport Solutions",
+          "comment": "Jakość kierowców, których otrzymaliśmy, przewyższyła nasze oczekiwania. Ich zarządzanie zgodnością zapewnia, że nigdy nie mamy problemów z władzami. Gorąco polecam!",
+          "results": "Zero problemów ze zgodnością, 100% zadowolenia kierowców"
         },
         "3": {
-          "comment": "Profesjonalny zespół, który idzie dalej niż wymagane. Stali się naszym zaufanym partnerem dla wszystkich potrzeb rekrutacji kierowców.",
-          "results": "Zwiększenie efektywności operacyjnej o 35%",
-          "position": "Menedżer HR",
-          "company": "International Freight Co"
+          "name": "Anna van der Berg",
+          "position": "Menedżer floty",
+          "company": "Dutch Distribution Co",
+          "comment": "Współpracujemy z Logistic Workers od 2 lat. Ich ciągłe wsparcie i szybkie usługi zastępcze były nieocenione dla naszych operacji.",
+          "results": "2 lata partnerstwa, 95% współczynnik retencji"
+        },
+        "4": {
+          "name": "Pierre Dubois",
+          "position": "Dyrektor generalny",
+          "company": "French Freight Forwarders",
+          "comment": "Ich międzynarodowa sieć pomogła nam rozszerzyć działalność na nowe rynki. Kierowcy są profesjonalni i dobrze wyszkoleni. Doskonała jakość usług.",
+          "results": "Ekspansja na 3 nowe kraje, 40% wzrost"
         }
       }
     }
@@ -630,7 +640,9 @@
     "hero": {
       "supportBadge": "Wsparcie 24/7 dostępne",
       "title": "Skontaktuj się z nami",
-      "subtitle": "Gotowy do rozpoczęcia swojej podróży? Skontaktuj się z naszym zespołem w celu spersonalizowanej pomocy i eksperckiego wsparcia."
+      "subtitle": "Gotowy do rozpoczęcia swojej podróży? Skontaktuj się z naszym zespołem w celu spersonalizowanej pomocy i eksperckiego wsparcia.",
+      "sendMessage": "Wyślij wiadomość",
+      "backToHome": "Powrót do strony głównej"
     },
     "form": {
       "send": "Wyślij wiadomość",
@@ -643,27 +655,43 @@
       "inquiryType": "Typ zapytania",
       "message": "Wiadomość",
       "messagePlaceholder": "Opowiedz nam o swoich potrzebach, wymaganiach lub pytaniach...",
-      "sending": "Wysyłanie wiadomości..."
+      "sending": "Wysyłanie wiadomości...",
+      "successMessage": "Wiadomość wysłana pomyślnie! Odpowiemy w ciągu 24 godzin.",
+      "errorMessage": "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
+      "inquiryTypes": {
+        "general": "Ogólne zapytanie",
+        "driver": "Szukam kierowców",
+        "job": "Szukam pracy",
+        "partnership": "Możliwość partnerstwa",
+        "support": "Wsparcie techniczne"
+      }
     },
     "info": {
-      "title": "Informacje kontaktowe",
-      "subtitle": "Wiele sposobów na kontakt",
-      "description": "Wybierz metodę, która najlepiej Ci odpowiada. Jesteśmy tutaj, aby pomóc 24/7.",
-      "businessInfo": "Informacje biznesowe",
-      "availabilityTitle": "Kiedy jesteśmy dostępni",
-      "availabilityDescription": "Nasz zespół jest gotowy, aby Ci pomóc w tych godzinach.",
-      "businessHours": "Godziny pracy",
-      "additionalInfo": "Dodatkowe informacje",
-      "responseTime": "Odpowiadamy na wszystkie zapytania w ciągu 24 godzin, nawet w weekendy.",
-      "confidentiality": "Wszystkie komunikaty są poufne i bezpieczne.",
-      "coverage": "Obsługujemy klientów w 8 krajach europejskich.",
-      "immediateAssistance": "Potrzebujesz natychmiastowej pomocy?",
-      "urgentMatters": "W pilnych sprawach zadzwoń do nas bezpośrednio lub wyślij e-mail, aby uzyskać najszybszą odpowiedź.",
-      "callNow": "Zadzwoń teraz",
-      "sendEmail": "Wyślij e-mail"
+      "badge": "Informacje kontaktowe",
+      "title": "Wiele sposobów na kontakt",
+      "subtitle": "Wybierz metodę, która najlepiej Ci odpowiada. Jesteśmy tutaj, aby pomóc 24/7."
     },
-    "success": "Wiadomość wysłana pomyślnie! Odpowiemy w ciągu 24 godzin.",
-    "error": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+    "methods": {
+      "email": { "title": "Napisz do nas", "description": "Otrzymaj odpowiedź w ciągu 24 godzin", "action": "Wyślij e-mail" },
+      "phone": { "title": "Zadzwoń do nas", "description": "Rozmawiaj bezpośrednio z naszym zespołem", "action": "Zadzwoń teraz" },
+      "location": { "title": "Odwiedź nas", "description": "Nasze biuro w Wilnie", "action": "Uzyskaj wskazówki" }
+    },
+    "hours": {
+      "badge": "Informacje biznesowe", "title": "Kiedy jesteśmy dostępni", "subtitle": "Nasz zespół jest gotowy, aby Ci pomóc w tych godzinach.",
+      "businessHours": "Godziny pracy", "mondayFriday": "Poniedziałek - Piątek", "saturday": "Sobota", "sunday": "Niedziela",
+      "weekdayHours": "9:00 - 18:00", "saturdayHours": "10:00 - 16:00", "sundayHours": "Zamknięte"
+    },
+    "additional": {
+      "title": "Dodatkowe informacje", "responseTime": "Odpowiadamy na wszystkie zapytania w ciągu 24 godzin, nawet w weekendy.",
+      "confidential": "Wszystkie komunikaty są poufne i bezpieczne.", "countries": "Obsługujemy klientów w 8 krajach europejskich."
+    },
+    "urgent": {
+      "title": "Potrzebujesz natychmiastowej pomocy?", "subtitle": "W pilnych sprawach zadzwoń do nas bezpośrednio lub wyślij e-mail, aby uzyskać najszybszą odpowiedź.",
+      "callNow": "Zadzwoń teraz", "sendEmail": "Wyślij e-mail"
+    },
+    "stats": {
+      "responseTime": "Czas odpowiedzi", "satisfaction": "Wskaźnik zadowolenia", "countries": "Kraje europejskie"
+    }
   },
   "register": {
     "title": "Rejestracja",

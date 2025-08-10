@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { contactMethods, businessHours } from '../data/contact';
 
@@ -32,6 +33,7 @@ const getIcon = (iconName: string) => {
 };
 
 export function ContactInfoSection({ onNavigate }: ContactInfoSectionProps) {
+  const { t } = useTranslation();
   return (
     <BackgroundPattern
       pattern="circles"
@@ -70,15 +72,15 @@ export function ContactInfoSection({ onNavigate }: ContactInfoSectionProps) {
             <div>
               <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-indigo-100 text-indigo-700 rounded-full text-xs md:text-sm mb-4 md:mb-6">
                 <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-indigo-500 rounded-full mr-1.5 md:mr-2"></div>
-                <span className="font-medium">Contact Information</span>
+                <span className="font-medium">{t('contact.info.badge')}</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-indigo-800 to-purple-900 bg-clip-text text-transparent">
-                Multiple Ways to Connect
+                {t('contact.info.title')}
               </h2>
 
               <p className="text-sm md:text-base text-gray-600 mb-8">
-                Choose the method that works best for you. We're here to help 24/7.
+                {t('contact.info.subtitle')}
               </p>
             </div>
 
@@ -93,16 +95,16 @@ export function ContactInfoSection({ onNavigate }: ContactInfoSectionProps) {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
-                        {method.title}
+                        {t(method.titleKey)}
                       </h3>
                       <p className="text-sm md:text-base text-gray-600 mb-3">
-                        {method.description}
+                        {t(method.descriptionKey)}
                       </p>
                       <p className="text-base md:text-lg font-medium text-gray-900 mb-4">
                         {method.contact}
                       </p>
                       <button className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-sm font-medium rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105">
-                        {method.action}
+                        {t(method.actionKey)}
                         <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -119,27 +121,27 @@ export function ContactInfoSection({ onNavigate }: ContactInfoSectionProps) {
             <div>
               <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-purple-100 text-purple-700 rounded-full text-xs md:text-sm mb-4 md:mb-6">
                 <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-purple-500 rounded-full mr-1.5 md:mr-2"></div>
-                <span className="font-medium">Business Information</span>
+                <span className="font-medium">{t('contact.hours.badge')}</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-purple-800 to-indigo-900 bg-clip-text text-transparent">
-                When We're Available
+                {t('contact.hours.title')}
               </h2>
 
               <p className="text-sm md:text-base text-gray-600 mb-8">
-                Our team is ready to assist you during these hours.
+                {t('contact.hours.subtitle')}
               </p>
             </div>
 
             {/* Business Hours */}
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-lg border border-gray-100">
-              <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-4">Business Hours</h3>
+              <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-4">{t('contact.hours.businessHours')}</h3>
               <div className="space-y-3">
                 {businessHours.map((schedule, index) => (
                   <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
-                    <span className="text-sm md:text-base text-gray-700 font-medium">{schedule.day}</span>
+                    <span className="text-sm md:text-base text-gray-700 font-medium">{t(schedule.dayKey)}</span>
                     <span className={`text-sm md:text-base font-medium ${schedule.status === 'closed' ? 'text-gray-400' : 'text-gray-900'}`}>
-                      {schedule.hours}
+                      {t(schedule.hoursKey)}
                     </span>
                   </div>
                 ))}
@@ -148,42 +150,42 @@ export function ContactInfoSection({ onNavigate }: ContactInfoSectionProps) {
 
             {/* Additional Information */}
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-lg border border-gray-100">
-              <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-4">Additional Information</h3>
+              <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-4">{t('contact.additional.title')}</h3>
               <div className="space-y-4 text-sm md:text-base text-gray-600">
                 <div className="flex items-start space-x-3">
                   <svg className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <p>We respond to all inquiries within 24 hours, even on weekends.</p>
+                  <p>{t('contact.additional.responseTime')}</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <svg className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
-                  <p>All communications are confidential and secure.</p>
+                  <p>{t('contact.additional.confidential')}</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <svg className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <p>We serve clients across 8 European countries.</p>
+                  <p>{t('contact.additional.countries')}</p>
                 </div>
               </div>
             </div>
 
             {/* Quick Actions */}
             <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-6 md:p-8 text-white">
-              <h3 className="text-lg md:text-xl font-semibold mb-3">Need Immediate Assistance?</h3>
+              <h3 className="text-lg md:text-xl font-semibold mb-3">{t('contact.urgent.title')}</h3>
               <p className="text-purple-100 mb-4 text-sm md:text-base">
-                For urgent matters, call us directly or send an email for fastest response.
+                {t('contact.urgent.subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <button className="bg-white text-purple-600 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300">
-                  Call Now
+                  {t('contact.urgent.callNow')}
                 </button>
                 <button className="bg-transparent border border-white text-white px-4 py-2 rounded-lg font-medium hover:bg-white hover:text-purple-600 transition-colors duration-300">
-                  Send Email
+                  {t('contact.urgent.sendEmail')}
                 </button>
               </div>
             </div>

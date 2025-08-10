@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { contactStats } from '../data/contact';
 
@@ -6,6 +7,7 @@ interface ContactHeroSectionProps {
 }
 
 export function ContactHeroSection({ onNavigate }: ContactHeroSectionProps) {
+  const { t } = useTranslation();
   return (
     <BackgroundPattern
       pattern="waves"
@@ -52,15 +54,15 @@ export function ContactHeroSection({ onNavigate }: ContactHeroSectionProps) {
         <div className="mb-8 md:mb-12">
           <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-purple-400 rounded-full mr-1.5 md:mr-2 animate-pulse"></div>
-            <span className="text-white font-medium">24/7 Support Available</span>
+            <span className="text-white font-medium">{t('contact.hero.supportBadge')}</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 bg-gradient-to-r from-white via-purple-100 to-indigo-100 bg-clip-text text-transparent">
-            Get In Touch
+            {t('contact.hero.title')}
           </h1>
 
           <p className="text-lg sm:text-xl md:text-2xl text-purple-100 max-w-3xl mx-auto px-2 mb-8 md:mb-12">
-            Ready to start your journey? Contact our team for personalized assistance and expert guidance.
+            {t('contact.hero.subtitle')}
           </p>
 
           {/* Quick Stats */}
@@ -68,7 +70,7 @@ export function ContactHeroSection({ onNavigate }: ContactHeroSectionProps) {
             {contactStats.map((stat, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 md:p-8">
                 <div className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-purple-200 text-sm md:text-base">{stat.label}</div>
+                <div className="text-purple-200 text-sm md:text-base">{t(stat.labelKey)}</div>
               </div>
             ))}
           </div>
@@ -84,7 +86,7 @@ export function ContactHeroSection({ onNavigate }: ContactHeroSectionProps) {
               <svg className="w-5 h-5 md:w-6 md:h-6 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
-              Send Message
+              {t('contact.hero.sendMessage')}
             </div>
           </button>
 
@@ -96,7 +98,7 @@ export function ContactHeroSection({ onNavigate }: ContactHeroSectionProps) {
               <svg className="w-5 h-5 md:w-6 md:h-6 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
-              Back to Home
+              {t('contact.hero.backToHome')}
             </div>
           </button>
         </div>

@@ -427,22 +427,32 @@
       "subtitle": "Testimoniale reale de la companii care și-au transformat operațiunile cu serviciile noastre",
       "items": {
         "1": {
-          "comment": "Logistic Workers ne-a ajutat să găsim șoferi calificați în doar 3 săptămâni. Procesul lor de verificare este temeinic și de încredere.",
-          "results": "Reducerea timpului de angajare cu 60%",
-          "position": "Manager de flotă",
-          "company": "European Logistics Ltd"
+          "name": "Maria Schmidt",
+          "position": "Director HR",
+          "company": "German Logistics GmbH",
+          "comment": "Logistic Workers au livrat 15 șoferi calificați în 3 săptămâni. Procesul lor de selecție este temeinic și șoferii lor sunt de încredere. Am redus timpul de recrutare cu 60%.",
+          "results": "15 șoferi în 3 săptămâni, recrutare cu 60% mai rapidă"
         },
         "2": {
-          "comment": "Serviciu excelent și suport. Înțeleg cerințele noastre specifice și întotdeauna oferă candidați de calitate.",
-          "results": "Îmbunătățirea retenției șoferilor cu 40%",
-          "position": "Director operațional",
-          "company": "Transport Solutions"
+          "name": "Jan Kowalski",
+          "position": "Manager operațional",
+          "company": "Polish Transport Solutions",
+          "comment": "Calitatea șoferilor pe care i-am primit a depășit așteptările noastre. Managementul lor de conformitate asigură că nu avem niciodată probleme cu autoritățile. Foarte recomandat!",
+          "results": "Zero probleme de conformitate, 100% satisfacția șoferilor"
         },
         "3": {
-          "comment": "Echipă profesională care merge dincolo de ceea ce se cere. Au devenit partenerul nostru de încredere pentru toate nevoile de recrutare a șoferilor.",
-          "results": "Creșterea eficienței operaționale cu 35%",
-          "position": "Manager HR",
-          "company": "International Freight Co"
+          "name": "Anna van der Berg",
+          "position": "Manager de flotă",
+          "company": "Dutch Distribution Co",
+          "comment": "Lucrăm cu Logistic Workers de 2 ani. Suportul lor continuu și serviciile rapide de înlocuire au fost neprețuite pentru operațiunile noastre.",
+          "results": "2 ani de parteneriat, rata de retenție de 95%"
+        },
+        "4": {
+          "name": "Pierre Dubois",
+          "position": "CEO",
+          "company": "French Freight Forwarders",
+          "comment": "Rețeaua lor internațională ne-a ajutat să ne extindem pe piețe noi. Șoferii sunt profesioniști și bine instruiți. Calitate excelentă a serviciilor.",
+          "results": "Extins în 3 țări noi, creștere de 40%"
         }
       }
     }
@@ -623,7 +633,9 @@
     "hero": {
       "supportBadge": "Suport 24/7 disponibil",
       "title": "Ia legătura cu noi",
-      "subtitle": "Gata să începi călătoria ta? Ia legătura cu echipa noastră pentru asistență personalizată și ghidare expertă."
+      "subtitle": "Gata să începi călătoria ta? Ia legătura cu echipa noastră pentru asistență personalizată și ghidare expertă.",
+      "sendMessage": "Trimite mesajul",
+      "backToHome": "Înapoi acasă"
     },
     "form": {
       "send": "Trimite mesajul",
@@ -636,27 +648,43 @@
       "inquiryType": "Tipul de întrebare",
       "message": "Mesajul",
       "messagePlaceholder": "Spune-ne despre nevoile, cerințele sau întrebările tale...",
-      "sending": "Se trimite mesajul..."
+      "sending": "Se trimite mesajul...",
+      "successMessage": "Mesajul a fost trimis cu succes! Vom răspunde în 24 de ore.",
+      "errorMessage": "Nu s-a putut trimite mesajul. Te rugăm să încerci din nou.",
+      "inquiryTypes": {
+        "general": "Întrebare generală",
+        "driver": "Caut șoferi",
+        "job": "Caut de lucru",
+        "partnership": "Oportunitate de parteneriat",
+        "support": "Suport tehnic"
+      }
     },
     "info": {
-      "title": "Informații de contact",
-      "subtitle": "Mai multe moduri de a ne contacta",
-      "description": "Alege metoda care ți se potrivește cel mai bine. Suntem aici să te ajutăm 24/7.",
-      "businessInfo": "Informații despre afacere",
-      "availabilityTitle": "Când suntem disponibili",
-      "availabilityDescription": "Echipa noastră este gata să te ajute în aceste ore.",
-      "businessHours": "Orele de lucru",
-      "additionalInfo": "Informații suplimentare",
-      "responseTime": "Răspundem la toate întrebările în 24 de ore, chiar și în weekend.",
-      "confidentiality": "Toate comunicările sunt confidențiale și sigure.",
-      "coverage": "Servim clienți în 8 țări europene.",
-      "immediateAssistance": "Ai nevoie de asistență imediată?",
-      "urgentMatters": "Pentru probleme urgente, sună-ne direct sau trimite un email pentru cel mai rapid răspuns.",
-      "callNow": "Sună acum",
-      "sendEmail": "Trimite email"
+      "badge": "Informații de contact",
+      "title": "Mai multe moduri de a ne contacta",
+      "subtitle": "Alege metoda care ți se potrivește cel mai bine. Suntem aici să te ajutăm 24/7."
     },
-    "success": "Mesajul a fost trimis cu succes! Vom răspunde în 24 de ore.",
-    "error": "Nu s-a putut trimite mesajul. Te rugăm să încerci din nou."
+    "methods": {
+      "email": { "title": "Scrie-ne", "description": "Primește un răspuns în 24 de ore", "action": "Trimite email" },
+      "phone": { "title": "Sună-ne", "description": "Vorbește direct cu echipa noastră", "action": "Sună acum" },
+      "location": { "title": "Vizitează-ne", "description": "Biroul nostru din Vilnius", "action": "Obține direcții" }
+    },
+    "hours": {
+      "badge": "Informații despre afacere", "title": "Când suntem disponibili", "subtitle": "Echipa noastră este gata să te ajute în aceste ore.",
+      "businessHours": "Orele de lucru", "mondayFriday": "Luni - Vineri", "saturday": "Sâmbătă", "sunday": "Duminică",
+      "weekdayHours": "9:00 - 18:00", "saturdayHours": "10:00 - 16:00", "sundayHours": "Închis"
+    },
+    "additional": {
+      "title": "Informații suplimentare", "responseTime": "Răspundem la toate întrebările în 24 de ore, chiar și în weekend.",
+      "confidential": "Toate comunicările sunt confidențiale și sigure.", "countries": "Servim clienți în 8 țări europene."
+    },
+    "urgent": {
+      "title": "Ai nevoie de asistență imediată?", "subtitle": "Pentru probleme urgente, sună-ne direct sau trimite un email pentru cel mai rapid răspuns.",
+      "callNow": "Sună acum", "sendEmail": "Trimite email"
+    },
+    "stats": {
+      "responseTime": "Timpul de răspuns", "satisfaction": "Rata de mulțumire", "countries": "Țări europene"
+    }
   },
   "register": {
     "title": "Înregistrare",

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { contact } from '../../../api/contact';
 import { inquiryTypes } from '../data/contact';
@@ -8,6 +9,7 @@ interface ContactFormSectionProps {
 }
 
 export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,10 +31,10 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
     const result = await contact.submit(formData);
     
     if (result.success) {
-      setSuccess('Message sent successfully! We will get back to you within 24 hours.');
+      setSuccess(t('contact.form.successMessage'));
       setFormData({ name: '', email: '', phone: '', company: '', inquiryType: 'general', message: '' });
     } else {
-      setError(result.error || 'Failed to send message. Please try again.');
+      setError(result.error || t('contact.form.errorMessage'));
     }
     
     setLoading(false);
@@ -81,15 +83,15 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
           <div className="mb-8">
             <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-purple-100 text-purple-700 rounded-full text-xs md:text-sm mb-4 md:mb-6">
               <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-purple-500 rounded-full mr-1.5 md:mr-2"></div>
-              <span className="font-medium">Send Message</span>
+              <span className="font-medium">{t('contact.form.send')}</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-purple-800 to-indigo-900 bg-clip-text text-transparent">
-              Let's Start a Conversation
+              {t('contact.form.title')}
             </h2>
 
             <p className="text-sm md:text-base text-gray-600">
-              Tell us about your needs and we'll get back to you within 24 hours.
+              {t('contact.form.description')}
             </p>
           </div>
           
@@ -115,7 +117,7 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
+                  {t('contact.form.name')}
                 </label>
                 <input
                   type="text"
@@ -129,7 +131,7 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
+                  {t('contact.form.email')}
                 </label>
                 <input
                   type="email"
@@ -146,7 +148,7 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number
+                  {t('contact.form.phone')}
                 </label>
                 <input
                   type="tel"
@@ -159,7 +161,7 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
               </div>
               <div>
                 <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                  Company Name
+                  {t('contact.form.company')}
                 </label>
                 <input
                   type="text"
@@ -174,7 +176,7 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
 
             <div>
               <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-700 mb-2">
-                Inquiry Type *
+                {t('contact.form.inquiryType')}
               </label>
               <select
                 id="inquiryType"
@@ -186,7 +188,7 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
               >
                 {inquiryTypes.map((type) => (
                   <option key={type.value} value={type.value}>
-                    {type.label}
+                    {t(type.labelKey)}
                   </option>
                 ))}
               </select>
@@ -194,7 +196,7 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
 
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Message *
+                {t('contact.form.message')}
               </label>
               <textarea
                 id="message"
@@ -203,7 +205,7 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
                 onChange={handleChange}
                 rows={5}
                 className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm resize-none"
-                placeholder="Tell us about your needs, requirements, or questions..."
+                placeholder={t('contact.form.messagePlaceholder')}
                 required
               ></textarea>
             </div>
@@ -219,14 +221,14 @@ export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Sending Message...
+                  {t('contact.form.sending')}
                 </>
               ) : (
                 <>
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
-                  Send Message
+                  {t('contact.form.send')}
                 </>
               )}
             </button>

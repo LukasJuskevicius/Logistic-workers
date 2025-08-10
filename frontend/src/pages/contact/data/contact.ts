@@ -2,44 +2,44 @@
 export const contactMethods = [
   {
     icon: "email",
-    title: "Email Us",
-    description: "Get a response within 24 hours",
+    titleKey: "contact.methods.email.title",
+    descriptionKey: "contact.methods.email.description",
     contact: "info@logisticworkers.com",
-    action: "Send Email"
+    actionKey: "contact.methods.email.action"
   },
   {
     icon: "phone",
-    title: "Call Us",
-    description: "Speak with our team directly",
+    titleKey: "contact.methods.phone.title",
+    descriptionKey: "contact.methods.phone.description",
     contact: "+370 600 00000",
-    action: "Call Now"
+    actionKey: "contact.methods.phone.action"
   },
   {
     icon: "location",
-    title: "Visit Us",
-    description: "Our office in Vilnius",
+    titleKey: "contact.methods.location.title",
+    descriptionKey: "contact.methods.location.description",
     contact: "Vilnius, Lithuania",
-    action: "Get Directions"
+    actionKey: "contact.methods.location.action"
   }
 ];
 
 export const businessHours = [
-  { day: "Monday - Friday", hours: "9:00 AM - 6:00 PM", status: "open" },
-  { day: "Saturday", hours: "10:00 AM - 4:00 PM", status: "open" },
-  { day: "Sunday", hours: "Closed", status: "closed" }
+  { dayKey: "contact.hours.mondayFriday", hoursKey: "contact.hours.weekdayHours", status: "open" },
+  { dayKey: "contact.hours.saturday", hoursKey: "contact.hours.saturdayHours", status: "open" },
+  { dayKey: "contact.hours.sunday", hoursKey: "contact.hours.sundayHours", status: "closed" }
 ];
 
 export const inquiryTypes = [
-  { value: "general", label: "General Inquiry" },
-  { value: "driver", label: "Looking for Drivers" },
-  { value: "job", label: "Looking for a Job" },
-  { value: "partnership", label: "Partnership Opportunity" },
-  { value: "support", label: "Technical Support" }
+  { value: "general", labelKey: "contact.form.inquiryTypes.general" },
+  { value: "driver", labelKey: "contact.form.inquiryTypes.driver" },
+  { value: "job", labelKey: "contact.form.inquiryTypes.job" },
+  { value: "partnership", labelKey: "contact.form.inquiryTypes.partnership" },
+  { value: "support", labelKey: "contact.form.inquiryTypes.support" }
 ];
 
 export const contactStats = [
-  { number: "24h", label: "Response Time", icon: "clock" },
-  { number: "98%", label: "Satisfaction Rate", icon: "star" },
-  { number: "8", label: "European Countries", icon: "globe" }
+  { number: "24h", labelKey: "contact.stats.responseTime", icon: "clock" },
+  { number: "98%", labelKey: "contact.stats.satisfaction", icon: "star" },
+  { number: "8", labelKey: "contact.stats.countries", icon: "globe" }
 ];
 
