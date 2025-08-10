@@ -1,5 +1,9 @@
 // Simple API calls for authentication
-const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = import.meta.env.VITE_API_URL;
+
+if (!BASE_URL) {
+  throw new Error('VITE_API_URL environment variable is not set!');
+}
 
 export const auth = {
   login: async (email: string, password: string) => {
