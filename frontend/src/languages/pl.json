@@ -1,22 +1,752 @@
 {
-    "navigation": {
-      "home": "Strona główna",
-      "vacancies": "Oferty pracy",
-      "forClients": "Dla pracodawców",
-      "forDrivers": "Dla kierowców",
-      "contact": "Kontakt"
+  "navigation": {
+    "home": "Strona główna",
+    "vacancies": "Oferty pracy",
+    "forClients": "Dla pracodawców",
+    "forDrivers": "Dla kierowców",
+    "contact": "Kontakt"
+  },
+  "auth": {
+    "register": "Zarejestruj się",
+    "login": "Zaloguj się",
+    "signOut": "Wyloguj się",
+    "hello": "Cześć"
+  },
+  "footer": {
+    "aboutUs": "O nas",
+    "companyName": "Logistic Workers",
+    "companyDescription": "Łączymy wykwalifikowanych kierowców z firmami transportowymi w całej Europie.",
+    "navigation": "Nawigacja",
+    "quickLinks": "Szybkie linki",
+    "home": "Strona główna",
+    "vacancies": "Oferty pracy",
+    "contact": "Kontakt",
+    "contactInfo": "Kontakt",
+    "email": "info@logisticworkers.com",
+    "phone": "+370 600 00000",
+    "copyright": "Wszystkie prawa zastrzeżone.",
+    "madeWithLove": "Stworzone z ❤️ dla kierowców"
+  },
+  "home": {
+    "hero": {
+      "mainTitle": "Napędzamy Twój biznes do przodu",
+      "subtitle": "Łączymy profesjonalnych kierowców z wiodącymi firmami logistycznymi w całej Europie",
+      "findOpportunityButton": "Znajdź swoją następną szansę",
+      "getStartedButton": "Rozpocznij już dziś",
+      "stats": {
+        "activeDrivers": "Aktywni kierowcy",
+        "partnerCompanies": "Firmy partnerskie",
+        "successfulPlacements": "Udane zatrudnienia"
+      }
     },
-    "auth": {
-      "register": "Zarejestruj się",
-      "login": "Zaloguj się",
-      "signOut": "Wyloguj się",
-      "hello": "Cześć"
+    "whyChooseUs": {
+      "badge": "Dlaczego wybrać nas",
+      "title": "Partner, na którego możesz polegać",
+      "subtitle": "Łączymy ekspertyzę, wydajność i osobistą troskę, aby dostarczyć wyjątkowe rezultaty zarówno dla kierowców, jak i firm.",
+      "features": {
+        "vettedProfessionals": {
+          "title": "Sprawdzeni profesjonaliści",
+          "description": "Dokładnie sprawdzamy każdego kierowcę, aby zapewnić jakość i niezawodność."
+        },
+        "fastEfficient": {
+          "title": "Szybko i efektywnie",
+          "description": "Szybko wypełniamy Twoje wakaty, aby Twój biznes mógł się rozwijać."
+        },
+        "personalSupport": {
+          "title": "Osobiste wsparcie",
+          "description": "Dedykowane wsparcie zarówno dla naszych klientów, jak i kierowców."
+        }
+      }
     },
-    "home": {
-      "welcomeTitle": "Witamy w Logistic Workers",
-      "welcomeSubtitle": "Wiodąca platforma łącząca doświadczonych kierowców z firmami transportowymi w całej Europie.",
-      "imDriver": "Jestem kierowcą",
-      "imEmployer": "Jestem pracodawcą",
-      "viewVacancies": "Zobacz oferty"
+    "latestOpportunities": {
+      "title": "Najnowsze możliwości dla kierowców",
+      "subtitle": "Odkryj ekscytujące możliwości kariery z wiodącymi firmami logistycznymi w całej Europie.",
+      "features": {
+        "newPositions": "Nowe stanowiska dodawane codziennie",
+        "competitiveSalaries": "Konkurencyjne wynagrodzenia",
+        "professionalGrowth": "Rozwój zawodowy"
+      },
+      "categories": {
+        "international": "Międzynarodowe",
+        "local": "Lokalne",
+        "specialized": "Specjalistyczne"
+      },
+      "viewAllButton": "Zobacz wszystkie wakaty",
+      "jobs": {
+        "ceCategoryDriver": "Kierowca kategorii CE",
+        "localDeliveryDriver": "Lokalny kierowca dostawy",
+        "warehouseToStoreDriver": "Kierowca magazyn-sklep",
+        "refrigeratedTransportDriver": "Kierowca transportu chłodniczego",
+        "expressDeliveryDriver": "Kierowca dostawy ekspresowej",
+        "heavyGoodsVehicleDriver": "Kierowca ciężkiego transportu towarowego"
+      },
+      "locations": {
+        "internationalRoutes": "Trasy międzynarodowe",
+        "lithuania": "Litwa",
+        "poland": "Polska",
+        "netherlands": "Holandia",
+        "germany": "Niemcy",
+        "belgium": "Belgia",
+        "spain": "Hiszpania",
+        "uk": "Wielka Brytania",
+        "romania": "Rumunia"
+      },
+      "descriptions": {
+        "ceCategoryDriver": "Jazda na długie dystanse w całej Europie z konkurencyjnymi stawkami i doskonałymi korzyściami.",
+        "localDeliveryDriver": "Lokalne trasy dostawy z regularnymi godzinami i przyjaznym dla rodziny harmonogramem.",
+        "warehouseToStoreDriver": "Jazda dystrybucyjna z nowoczesnymi pojazdami i kompleksowym szkoleniem.",
+        "refrigeratedTransportDriver": "Specjalistyczna logistyka łańcucha chłodniczego z pojazdami kontrolowanymi termicznie.",
+        "expressDeliveryDriver": "Szybka dostawa z premium stawkami i elastycznym harmonogramem.",
+        "heavyGoodsVehicleDriver": "Eksploatacja dużych pojazdów z kompleksowymi korzyściami i szkoleniem."
+      }
+    },
+    "testimonials": {
+      "title": "Co mówią nasi kierowcy",
+      "subtitle": "Prawdziwe opinie od naszych zadowolonych kierowców",
+      "viewMoreButton": "Zobacz więcej",
+      "trustIndicators": {
+        "fiveStarReviews": "5-gwiazdkowe opinie od kierowców",
+        "verifiedDrivers": "Zweryfikowani kierowcy w całej Europie",
+        "europeWide": "Pokrycie w całej Europie"
+      },
+      "roles": {
+        "professionalDriver": "Profesjonalny kierowca",
+        "businessOwner": "Właściciel firmy",
+        "internationalDriver": "Kierowca międzynarodowy",
+        "fleetManager": "Menedżer floty",
+        "longHaulDriver": "Kierowca długodystansowy",
+        "hrManager": "Menedżer HR"
+      },
+      "experience": {
+        "fivePlusYears": "5+ lat doświadczenia",
+        "eightPlusYears": "8+ lat doświadczenia",
+        "tenPlusYears": "10+ lat doświadczenia"
+      },
+      "companies": {
+        "logisticsInc": "Logistics Inc.",
+        "transportSolutions": "Transport Solutions Ltd",
+        "europeanLogistics": "European Logistics"
+      }
+    },
+    "callToAction": {
+      "title": "Gotowy do rozpoczęcia?",
+      "subtitle": "Odpowiemy w ciągu 24 godzin",
+      "getStartedButton": "Rozpocznij teraz",
+      "learnMoreButton": "Dowiedz się więcej",
+      "buttons": {
+        "lookingForDrivers": "Szukasz kierowców?",
+        "lookingForJob": "Szukasz pracy?"
+      }
     }
+  },
+  "vacancies": {
+    "title": "Wakaty",
+    "subtitle": "Znajdź idealną pracę w logistyce",
+    "hero": {
+      "filterBadge": "Filtruj i szukaj",
+      "title": "Znajdź swoją idealną pozycję",
+      "subtitle": "Przeglądaj nasze najnowsze oferty pracy i znajdź okazję, która pasuje do Twoich umiejętności i preferencji"
+    },
+    "search": {
+      "placeholder": "Szukaj ofert pracy według tytułu, opisu lub lokalizacji..."
+    },
+    "filters": {
+      "location": "Lokalizacja",
+      "experience": "Doświadczenie",
+      "salary": "Wynagrodzenie",
+      "type": "Typ",
+      "applyFilters": "Zastosuj filtry",
+      "clearFilters": "Wyczyść filtry",
+      "allCategories": "Wszystkie kategorie",
+      "allLocations": "Wszystkie lokalizacje"
+    },
+    "categories": {
+      "international": "Trasy międzynarodowe",
+      "local": "Pozycje lokalne",
+      "specialized": "Transport specjalistyczny",
+      "express": "Dostawa ekspresowa",
+      "heavy": "Ciężkie ładunki"
+    },
+    "results": {
+      "showing": "Pokazano",
+      "of": "z",
+      "vacancies": "wakatów"
+    },
+    "noResults": {
+      "title": "Nie znaleziono wakatów",
+      "description": "Spróbuj dostosować kryteria wyszukiwania lub sprawdź później w poszukiwaniu nowych możliwości.",
+      "clearFilters": "Wyczyść filtry"
+    },
+    "sortBy": "Sortuj według",
+    "loadMore": "Załaduj więcej",
+    "applyNow": "Aplikuj teraz",
+    "viewDetails": "Zobacz szczegóły",
+    "backToHome": "Powrót do strony głównej",
+    "heroSection": {
+      "liveBadge": "Aktywne oferty",
+      "title": "Dostępne wakaty",
+      "subtitle": "Znajdź swoją następną szansę w branży logistycznej w całej Europie",
+      "stats": {
+        "activePositions": "Aktywne pozycje",
+        "europeanCountries": "Kraje europejskie",
+        "responseTime": "Czas odpowiedzi"
+      }
+    },
+    "locations": {
+      "internationalRoutes": "Trasy międzynarodowe",
+      "lithuania": "Litwa",
+      "poland": "Polska",
+      "netherlands": "Holandia",
+      "germany": "Niemcy",
+      "belgium": "Belgia",
+      "europe-wide": "Cała Europa",
+      "latvia": "Łotwa",
+      "estonia": "Estonia"
+    },
+    "jobs": {
+      "ceCategoryDriver": "Kierowca kategorii CE",
+      "localDeliveryDriver": "Lokalny kierowca dostawy",
+      "warehouseToStoreDriver": "Kierowca magazyn-sklep",
+      "refrigeratedTransportDriver": "Kierowca transportu chłodniczego",
+      "expressDeliveryDriver": "Kierowca dostawy ekspresowej",
+      "heavyGoodsVehicleDriver": "Kierowca ciężkiego transportu towarowego",
+      "internationalFreightDriver": "Kierowca transportu międzynarodowego",
+      "localDistributionDriver": "Kierowca dystrybucji lokalnej",
+      "specializedEquipmentDriver": "Kierowca sprzętu specjalistycznego"
+    },
+    "descriptions": {
+      "ceCategoryDriver": "Jazda na długie dystanse w całej Europie z konkurencyjnymi stawkami i doskonałymi korzyściami.",
+      "localDeliveryDriver": "Lokalne trasy dostawy z regularnymi godzinami i przyjaznym dla rodziny harmonogramem.",
+      "warehouseToStoreDriver": "Jazda dystrybucyjna z nowoczesnymi pojazdami i kompleksowym szkoleniem.",
+      "refrigeratedTransportDriver": "Specjalistyczna logistyka łańcucha chłodniczego z pojazdami kontrolowanymi termicznie.",
+      "expressDeliveryDriver": "Szybka dostawa z premium stawkami i elastycznym harmonogramem.",
+      "heavyGoodsVehicleDriver": "Eksploatacja dużych pojazdów z kompleksowymi korzyściami i szkoleniem.",
+      "internationalFreightDriver": "Transport międzynarodowy z doskonałym wynagrodzeniem i nowoczesną flotą. Podróże po Europie.",
+      "localDistributionDriver": "Lokalna dystrybucja z regularnymi godzinami i doskonałymi warunkami pracy. Harmonogram przyjazny rodzinie.",
+      "specializedEquipmentDriver": "Obsługa sprzętu specjalistycznego z kompleksowym szkoleniem i doskonałym pakietem korzyści."
+    }
+  },
+  "drivers": {
+    "title": "Dla kierowców",
+    "subtitle": "Odkryj swoją ścieżkę do sukcesu",
+    "hero": {
+      "trustedBadge": "Zaufało nam 2000+ kierowców",
+      "title": "Znajdź swoją następną szansę",
+      "subtitle": "Dołącz do tysięcy kierowców w całej Europie. Czekają na Ciebie konkurencyjne wynagrodzenia, doskonałe świadczenia i nowoczesny sprzęt.",
+      "applyNow": "Aplikuj teraz"
+    },
+    "opportunities": {
+      "title": "Możliwości",
+      "international": "Trasy międzynarodowe",
+      "local": "Trasy lokalne",
+      "flexible": "Elastyczne harmonogramy",
+      "competitive": "Konkurencyjne wynagrodzenia"
+    },
+    "process": {
+      "title": "Jak to działa",
+      "register": "Zarejestruj się",
+      "profile": "Utwórz profil",
+      "match": "Otrzymuj pasujące oferty",
+      "start": "Zacznij pracować"
+    },
+    "benefits": {
+      "title": "Korzyści",
+      "competitive": "Konkurencyjne wynagrodzenia",
+      "modern": "Nowoczesny sprzęt",
+      "support": "Wsparcie 24/7",
+      "growth": "Rozwój kariery"
+    },
+    "requirements": {
+      "title": "Wymagania",
+      "license": "Ważne prawo jazdy",
+      "experience": "Doświadczenie w prowadzeniu",
+      "clean": "Czysta karta kierowcy",
+      "language": "Umiejętności językowe"
+    }
+  },
+  "benefits": {
+    "healthInsurance": "Ubezpieczenie zdrowotne",
+    "paidLeave": "Płatny urlop",
+    "performanceBonus": "Premia za wyniki",
+    "modernFleet": "Nowoczesna flota",
+    "flexibleHours": "Elastyczne godziny",
+    "companyVehicle": "Samochód służbowy",
+    "familyTime": "Czas dla rodziny",
+    "premiumPay": "Wynagrodzenie premium",
+    "specializedTraining": "Specjalistyczne szkolenie",
+    "modernEquipment": "Nowoczesny sprzęt",
+    "comprehensiveTraining": "Kompleksowe szkolenie",
+    "careerDevelopment": "Rozwój kariery",
+    "competitiveSalary": "Konkurencyjne wynagrodzenie",
+    "internationalTravel": "Podróże międzynarodowe",
+    "comprehensiveInsurance": "Kompleksowe ubezpieczenie"
+  },
+  "requirements": {
+    "ceLicense": "Prawo jazdy CE",
+    "medicalCertificate": "Zaświadczenie lekarskie",
+    "cleanRecord": "Czysty rejestr",
+    "englishB1": "Angielski B1",
+    "bcLicense": "Prawo jazdy B/C",
+    "localLanguage": "Język lokalny",
+    "coldChainExperience": "Doświadczenie w chłodniczym łańcuchu dostaw",
+    "cceLicense": "Prawo jazdy C/CE",
+    "germanB1": "Niemiecki B1",
+    "heavyVehicleExperience": "Doświadczenie w prowadzeniu ciężkich pojazdów",
+    "frenchDutchB1": "Francuski/Niderlandzki B1",
+    "internationalExperience": "Doświadczenie międzynarodowe",
+    "englishB2": "Angielski B2"
+  },
+  "clients": {
+    "title": "Dla pracodawców",
+    "subtitle": "Znajdź wykwalifikowanych kierowców dla swojego biznesu",
+    "hero": {
+      "badge": "Ufają nam 500+ firm",
+      "title": "Znajdź niezawodnych kierowców",
+      "subtitle": "Połącz się z wykwalifikowanymi, wcześniej zweryfikowanymi kierowcami w całej Europie. Oszczędzaj czas i pieniądze dzięki naszym kompleksowym rozwiązaniom rekrutacyjnym.",
+      "ctaGetStarted": "Rozpocznij dziś",
+      "backToHome": "Powrót do strony głównej"
+    },
+    "stats": {
+      "building": "Obsługiwane firmy",
+      "users": "Zatrudnieni kierowcy",
+      "star": "Satysfakcja klientów",
+      "clock": "Czas odpowiedzi"
+    },
+    "services": {
+      "badge": "Nasze usługi",
+      "title": "Kompleksowe rozwiązania",
+      "subtitle": "Oferujemy kompleksowe usługi rekrutacji i zarządzania kierowcami, aby zaspokoić wszystkie Twoje potrzeby logistyczne",
+      "items": {
+        "1": {
+          "title": "Rekrutacja kierowców",
+          "description": "Kompleksowy proces wyszukiwania i weryfikacji kierowców w całej Europie",
+          "features": [
+            "Kierowcy kategorii CE",
+            "Trasy lokalne i międzynarodowe",
+            "Weryfikacja przeszłości",
+            "Walidacja prawa jazdy"
+          ],
+          "timeFrame": "2-4 tygodnie"
+        },
+        "2": {
+          "title": "Zarządzanie zgodnością",
+          "description": "Upewnij się, że wszyscy kierowcy spełniają regulacje UE i standardy firmy",
+          "features": [
+            "Weryfikacja prawa jazdy UE",
+            "Zaświadczenia lekarskie",
+            "Zapisy szkoleniowe",
+            "Standardy bezpieczeństwa"
+          ],
+          "timeFrame": "Ciągłe"
+        },
+        "3": {
+          "title": "Ciągłe wsparcie",
+          "description": "Ciągłe wsparcie i usługi zastępcze",
+          "features": [
+            "Wsparcie 24/7",
+            "Zastępstwo kierowców",
+            "Monitorowanie wydajności",
+            "Regularne aktualizacje"
+          ],
+          "timeFrame": "Zawsze dostępne"
+        }
+      }
+    },
+    "process": {
+      "badge": "Prosty proces",
+      "title": "Jak to działa",
+      "subtitle": "Nasz uproszczony proces sprawia, że znalezienie wykwalifikowanych kierowców jest proste i efektywne",
+      "items": {
+        "1": {
+          "title": "Prześlij wymagania",
+          "description": "Opowiedz nam o swoich konkretnych potrzebach, trasach i wymaganiach",
+          "duration": "1-2 dni"
+        },
+        "2": {
+          "title": "My wyszukujemy kandydatów",
+          "description": "Nasz zespół znajduje i weryfikuje wykwalifikowanych kierowców dla Twoich potrzeb",
+          "duration": "2-3 tygodnie"
+        },
+        "3": {
+          "title": "Ty wybierasz i zatrudniasz",
+          "description": "Przejrzyj kandydatów i wybierz najlepiej pasującego do Twojego zespołu",
+          "duration": "1 tydzień"
+        }
+      },
+      "bottomCta": {
+        "text": "Gotowy do rozpoczęcia? Skontaktuj się z nami dziś, a rozpoczniemy proces natychmiast.",
+        "button": "Rozpocznij wyszukiwanie"
+      }
+    },
+    "requirements": {
+      "badge": "Czego potrzebujemy",
+      "title": "Wymagania i proces",
+      "subtitle": "Aby zapewnić Ci najlepszą usługę, potrzebujemy od Twojej firmy pewnych informacji",
+      "categories": [
+        {
+          "title": "Informacje o firmie",
+          "items": [
+            "Dokumenty rejestracyjne firmy",
+            "Licencja transportowa",
+            "Zaświadczenia ubezpieczeniowe",
+            "System zarządzania bezpieczeństwem"
+          ]
+        },
+        {
+          "title": "Wymagania dotyczące pracy",
+          "items": [
+            "Szczegółowy opis pracy",
+            "Specyfikacje trasy",
+            "Wymagania dotyczące pojazdu",
+            "Wymagany poziom doświadczenia"
+          ]
+        },
+        {
+          "title": "Warunki umowy",
+          "items": [
+            "Czas trwania zatrudnienia",
+            "Zakres wynagrodzenia",
+            "Pakiet świadczeń",
+            "Warunki pracy"
+          ]
+        }
+      ],
+      "cta": {
+        "title": "Gotowy do rozpoczęcia?",
+        "description": "Nie martw się, jeśli nie masz wszystkich dokumentów gotowych. Możemy pomóc Ci zebrać niezbędne informacje i poprowadzić Cię przez proces.",
+        "pills": {
+          "quickResponse": "Szybki czas odpowiedzi",
+          "expertGuidance": "Eksperckie prowadzenie",
+          "freeConsultation": "Bezpłatna konsultacja"
+        }
+      }
+    },
+    "testimonials": {
+      "badge": "Historie sukcesu",
+      "title": "Co mówią nasi klienci",
+      "subtitle": "Prawdziwe opinie od firm, które przekształciły swoje operacje dzięki naszym usługom",
+      "items": {
+        "1": {
+          "comment": "Logistic Workers pomogli nam znaleźć wykwalifikowanych kierowców w zaledwie 3 tygodnie. Ich proces weryfikacji jest dokładny i niezawodny.",
+          "results": "Skrócenie czasu zatrudnienia o 60%",
+          "position": "Menedżer floty",
+          "company": "European Logistics Ltd"
+        },
+        "2": {
+          "comment": "Doskonała usługa i wsparcie. Rozumieją nasze konkretne wymagania i zawsze dostarczają wysokiej jakości kandydatów.",
+          "results": "Poprawa retencji kierowców o 40%",
+          "position": "Dyrektor operacyjny",
+          "company": "Transport Solutions"
+        },
+        "3": {
+          "comment": "Profesjonalny zespół, który idzie dalej niż wymagane. Stali się naszym zaufanym partnerem dla wszystkich potrzeb rekrutacji kierowców.",
+          "results": "Zwiększenie efektywności operacyjnej o 35%",
+          "position": "Menedżer HR",
+          "company": "International Freight Co"
+        }
+      }
+    }
+  },
+  "drivers": {
+    "hero": {
+      "badge": "Zaufało 2000+ kierowców",
+      "title": "Znajdź swoją następną szansę",
+      "subtitle": "Dołącz do tysięcy kierowców w całej Europie. Konkurencyjne wynagrodzenia, doskonałe świadczenia i nowoczesny sprzęt czekają na Ciebie.",
+      "applyNow": "Złóż wniosek teraz",
+      "backToHome": "Powrót do strony głównej",
+      "stats": {
+        "driversPlaced": "Zatrudnieni kierowcy",
+        "europeanCountries": "Kraje europejskie",
+        "driverSatisfaction": "Zadowolenie kierowców",
+        "responseTime": "Czas odpowiedzi"
+      }
+    },
+    "benefits": {
+      "badge": "Korzyści dla kierowców",
+      "title": "Co otrzymujesz",
+      "subtitle": "Kompleksowe świadczenia i doskonałe warunki pracy dla wszystkich naszych kierowców",
+      "competitiveSalaries": {
+        "title": "Konkurencyjne wynagrodzenia",
+        "description": "Zarabiaj €1,800 - €4,000 miesięcznie w zależności od doświadczenia i stanowiska",
+        "details": ["Powyżej stawek rynkowych", "Premie za wyniki", "Płatność za nadgodziny", "Płatność za urlopy"]
+      },
+      "excellentBenefits": {
+        "title": "Doskonałe świadczenia",
+        "description": "Kompleksowy pakiet świadczeń obejmujący ubezpieczenie zdrowotne i płatne urlopy",
+        "details": ["Ubezpieczenie zdrowotne", "Płatne urlopy", "Urlopy chorobowe", "Plan emerytalny"]
+      },
+      "modernEquipment": {
+        "title": "Nowoczesny sprzęt",
+        "description": "Pracuj z najnowszymi pojazdami i technologią dla bezpieczeństwa i komfortu",
+        "details": ["Nowoczesna flota", "Nawigacja GPS", "Sprzęt bezpieczeństwa", "Funkcje komfortu"]
+      },
+      "careerGrowth": {
+        "title": "Rozwój kariery",
+        "description": "Możliwości awansu i specjalistyczne programy szkoleniowe",
+        "details": ["Programy szkoleniowe", "Awans w karierze", "Rozwój umiejętności", "Certyfikaty"]
+      }
+    },
+    "positions": {
+      "badge": "Dostępne stanowiska",
+      "title": "Najnowsze możliwości",
+      "subtitle": "Przeglądaj nasze najnowsze oferty pracy i znajdź idealne stanowisko dla swoich umiejętności",
+      "allCategories": "Wszystkie kategorie",
+      "allLocations": "Wszystkie lokalizacje",
+      "showing": "Pokazano",
+      "of": "z",
+      "positions": "stanowisk",
+      "benefits": "Korzyści:",
+      "requirements": "Wymagania:",
+      "more": "więcej",
+      "applyNow": "Złóż wniosek teraz",
+      "noResults": "Nie znaleziono stanowisk",
+      "salary": "Wynagrodzenie",
+      "fullTime": "Pełny etat",
+      "experience": "Doświadczenie",
+      "years": "lata",
+      "plus": "+",
+      "avg": "śr.",
+      "categories": {
+        "international": "Trasy międzynarodowe",
+        "local": "Stanowiska lokalne",
+        "specialized": "Transport specjalistyczny",
+        "express": "Dostawa ekspresowa"
+      },
+      "locations": {
+        "lithuania": "Litwa",
+        "netherlands": "Holandia",
+        "germany": "Niemcy",
+        "belgium": "Belgia",
+        "europe-wide": "W całej Europie",
+        "poland": "Polska"
+      },
+      "jobs": {
+        "ceCategoryDriver": "Kierowca kategorii CE",
+        "localDeliveryDriver": "Kierowca dostawy lokalnej",
+        "refrigeratedTransportDriver": "Kierowca transportu chłodniczego",
+        "expressDeliveryDriver": "Kierowca dostawy ekspresowej",
+        "heavyGoodsVehicleDriver": "Kierowca pojazdu ciężkiego transportu towarowego",
+        "internationalFreightDriver": "Kierowca międzynarodowego transportu towarowego"
+      },
+      "descriptions": {
+        "ceCategoryDriver": "Długodystansowe prowadzenie w całej Europie z konkurencyjnymi stawkami i doskonałymi świadczeniami.",
+        "localDeliveryDriver": "Lokalne trasy dostawy z regularnymi godzinami pracy i przyjaznym dla rodziny harmonogramem.",
+        "refrigeratedTransportDriver": "Specjalistyczna logistyka łańcucha chłodniczego z pojazdami kontrolowanymi termicznie.",
+        "expressDeliveryDriver": "Szybka dostawa z premium stawkami i elastycznym harmonogramem.",
+        "heavyGoodsVehicleDriver": "Eksploatacja dużych pojazdów z kompleksowymi świadczeniami i szkoleniem.",
+        "internationalFreightDriver": "Transgraniczny transport towarowy z doskonałym wynagrodzeniem i nowoczesną flotą."
+      }
+    },
+    "positionsMeta": {
+      "noResults": "Nie znaleziono stanowisk",
+      "salary": "Wynagrodzenie",
+      "experience": "Doświadczenie",
+      "avg": "śr."
+    },
+    "requirements": {
+      "badge": "Czego potrzebujemy",
+      "title": "Wymagania i proces",
+      "subtitle": "Aby pomóc Ci znaleźć najlepsze możliwości, potrzebujemy od Ciebie pewnych informacji",
+      "personalDocuments": "Dokumenty osobiste",
+      "professionalExperience": "Doświadczenie zawodowe",
+      "languageSkills": "Umiejętności językowe",
+      "readyToApply": "Gotowy do złożenia wniosku?",
+      "dontWorry": "Nie martw się, jeśli nie masz wszystkich dokumentów gotowych. Możemy pomóc Ci zebrać niezbędne informacje i poprowadzić przez proces.",
+      "quickApplication": "Szybkie złożenie wniosku",
+      "expertGuidance": "Eksperckie prowadzenie",
+      "freeSupport": "Bezpłatne wsparcie",
+      "items": {
+        "validDrivingLicense": "Ważne prawo jazdy",
+        "medicalCertificate": "Zaświadczenie lekarskie",
+        "passportOrIdCard": "Paszport lub dowód osobisty",
+        "cleanCriminalRecord": "Czysty rejestr karny",
+        "relevantDrivingExperience": "Odpowiednie doświadczenie w prowadzeniu",
+        "trainingCertificates": "Certyfikaty szkoleniowe",
+        "employmentHistory": "Historia zatrudnienia",
+        "referenceLetters": "Listy referencyjne",
+        "basicEnglish": "Podstawowy angielski (poziom B1)",
+        "localLanguage": "Język lokalny (jeśli wymagane)",
+        "communicationSkills": "Umiejętności komunikacyjne",
+        "documentationReading": "Czytanie dokumentacji"
+      }
+    },
+    "process": {
+      "badge": "Prosty proces",
+      "title": "Jak to działa",
+      "subtitle": "Nasz uproszczony proces składania wniosków sprawia, że znalezienie następnej pracy jest proste i efektywne",
+      "submitApplication": {
+        "title": "Złóż wniosek",
+        "description": "Wypełnij nasz formularz wniosku swoim doświadczeniem i preferencjami",
+        "duration": "10 minut"
+      },
+      "weReviewAndMatch": {
+        "title": "Przeglądamy i dopasowujemy",
+        "description": "Nasz zespół przegląda Twój profil i dopasowuje do odpowiednich stanowisk",
+        "duration": "1-2 dni"
+      },
+      "interviewAndSelection": {
+        "title": "Rozmowa kwalifikacyjna i selekcja",
+        "description": "Rozmowa kwalifikacyjna z firmami i wybierz najlepszą możliwość dla siebie",
+        "duration": "1 tydzień"
+      },
+      "readyToStart": "Gotowy do rozpoczęcia swojej podróży? Złóż wniosek teraz, a my rozpoczniemy proces natychmiast.",
+      "startApplication": "Rozpocznij wniosek"
+    },
+    "testimonials": {
+      "badge": "Historie sukcesu",
+      "title": "Co mówią nasi kierowcy",
+      "subtitle": "Prawdziwe opinie od kierowców, którzy znaleźli wspaniałe możliwości z naszą pomocą",
+      "items": {
+        "1": {
+          "comment": "Praca z Logistic Workers była wspaniała. Znaleźli mi świetne stanowisko z doskonałym wynagrodzeniem i świadczeniami. Zespół wsparcia jest zawsze dostępny, gdy potrzebuję pomocy.",
+          "results": "Wynagrodzenie €3,200/mies, 4 tygodnie płatnych urlopów, ubezpieczenie zdrowotne",
+          "position": "Kierowca kategorii CE",
+          "company": "European Logistics Ltd"
+        },
+        "2": {
+          "comment": "Chciałem zostać blisko rodziny, mając dobrą pracę. Logistic Workers znaleźli mi idealne lokalne stanowisko z elastycznym harmonogramem i wspaniałymi świadczeniami.",
+          "results": "Wynagrodzenie €2,100/mies, przyjazny dla rodziny harmonogram, samochód firmowy",
+          "position": "Kierowca dostawy lokalnej",
+          "company": "Polish Distribution Co"
+        },
+        "3": {
+          "comment": "Prowadzę międzynarodowe przewozy od 3 lat. Wynagrodzenie jest doskonałe, sprzęt nowoczesny i widzę różne kraje. Bardzo polecam!",
+          "results": "Wynagrodzenie €3,800/mies, nowoczesna flota, międzynarodowe podróże",
+          "position": "Kierowca międzynarodowego transportu towarowego",
+          "company": "German Express"
+        },
+        "4": {
+          "comment": "Specjalistyczne szkolenie, które otrzymałem, było doskonałe. Pracuję z nowoczesnymi pojazdami kontrolowanymi termicznie i zarabiam premium stawki. Wspaniała możliwość kariery.",
+          "results": "Wynagrodzenie €3,500/mies, specjalistyczne szkolenie, nowoczesny sprzęt",
+          "position": "Kierowca transportu chłodniczego",
+          "company": "Dutch Cold Chain"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Skontaktuj się z nami",
+    "hero": {
+      "supportBadge": "Wsparcie 24/7 dostępne",
+      "title": "Skontaktuj się z nami",
+      "subtitle": "Gotowy do rozpoczęcia swojej podróży? Skontaktuj się z naszym zespołem w celu spersonalizowanej pomocy i eksperckiego wsparcia."
+    },
+    "form": {
+      "send": "Wyślij wiadomość",
+      "title": "Rozpocznijmy rozmowę",
+      "description": "Opowiedz nam o swoich potrzebach, a odpowiemy w ciągu 24 godzin.",
+      "name": "Imię i nazwisko",
+      "email": "Adres e-mail",
+      "phone": "Numer telefonu",
+      "company": "Nazwa firmy",
+      "inquiryType": "Typ zapytania",
+      "message": "Wiadomość",
+      "messagePlaceholder": "Opowiedz nam o swoich potrzebach, wymaganiach lub pytaniach...",
+      "sending": "Wysyłanie wiadomości..."
+    },
+    "info": {
+      "title": "Informacje kontaktowe",
+      "subtitle": "Wiele sposobów na kontakt",
+      "description": "Wybierz metodę, która najlepiej Ci odpowiada. Jesteśmy tutaj, aby pomóc 24/7.",
+      "businessInfo": "Informacje biznesowe",
+      "availabilityTitle": "Kiedy jesteśmy dostępni",
+      "availabilityDescription": "Nasz zespół jest gotowy, aby Ci pomóc w tych godzinach.",
+      "businessHours": "Godziny pracy",
+      "additionalInfo": "Dodatkowe informacje",
+      "responseTime": "Odpowiadamy na wszystkie zapytania w ciągu 24 godzin, nawet w weekendy.",
+      "confidentiality": "Wszystkie komunikaty są poufne i bezpieczne.",
+      "coverage": "Obsługujemy klientów w 8 krajach europejskich.",
+      "immediateAssistance": "Potrzebujesz natychmiastowej pomocy?",
+      "urgentMatters": "W pilnych sprawach zadzwoń do nas bezpośrednio lub wyślij e-mail, aby uzyskać najszybszą odpowiedź.",
+      "callNow": "Zadzwoń teraz",
+      "sendEmail": "Wyślij e-mail"
+    },
+    "success": "Wiadomość wysłana pomyślnie! Odpowiemy w ciągu 24 godzin.",
+    "error": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+  },
+  "register": {
+    "title": "Rejestracja",
+    "subtitle": "Utwórz swoje konto",
+    "form": {
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "password": "Hasło",
+      "confirmPassword": "Potwierdź hasło",
+      "userType": "Typ użytkownika",
+      "driver": "Kierowca",
+      "employer": "Pracodawca",
+      "register": "Zarejestruj się",
+      "alreadyHaveAccount": "Masz już konto?",
+      "signIn": "Zaloguj się"
+    },
+    "validation": {
+      "required": "To pole jest wymagane",
+      "invalidEmail": "Nieprawidłowy format e-mail",
+      "passwordMismatch": "Hasła nie pasują",
+      "passwordLength": "Hasło musi mieć co najmniej 6 znaków"
+    }
+  },
+  "login": {
+    "title": "Logowanie",
+    "subtitle": "Zaloguj się do swojego konta",
+    "form": {
+      "email": "E-mail",
+      "password": "Hasło",
+      "rememberMe": "Zapamiętaj mnie",
+      "forgotPassword": "Zapomniałeś hasła?",
+      "login": "Zaloguj się",
+      "dontHaveAccount": "Nie masz konta?",
+      "register": "Zarejestruj się"
+    }
+  },
+  "common": {
+    "loading": "Ładowanie...",
+    "error": "Wystąpił błąd",
+    "success": "Sukces",
+    "cancel": "Anuluj",
+    "save": "Zapisz",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "back": "Wstecz",
+    "next": "Dalej",
+    "previous": "Poprzedni",
+    "close": "Zamknij",
+    "search": "Szukaj",
+    "filter": "Filtruj",
+    "sort": "Sortuj",
+    "view": "Zobacz",
+    "download": "Pobierz",
+    "upload": "Prześlij",
+    "select": "Wybierz",
+    "all": "Wszystkie",
+    "none": "Brak",
+    "yes": "Tak",
+    "no": "Nie",
+    "optional": "Opcjonalne",
+    "required": "Wymagane",
+    "characters": "znaków",
+    "remaining": "pozostało",
+    "of": "z"
+  },
+  "errors": {
+    "general": "Wystąpił nieoczekiwany błąd",
+    "network": "Błąd sieci. Sprawdź połączenie internetowe",
+    "unauthorized": "Nie masz uprawnień do wykonania tej akcji",
+    "notFound": "Strona nie została znaleziona",
+    "serverError": "Błąd serwera. Spróbuj ponownie później",
+    "validation": "Sprawdź wprowadzone dane",
+    "timeout": "Przekroczono limit czasu żądania"
+  },
+  "success": {
+    "profileUpdated": "Profil został pomyślnie zaktualizowany",
+    "passwordChanged": "Hasło zostało pomyślnie zmienione",
+    "emailSent": "E-mail został pomyślnie wysłany",
+    "applicationSubmitted": "Aplikacja została pomyślnie złożona",
+    "accountCreated": "Konto zostało pomyślnie utworzone",
+    "loggedIn": "Pomyślnie zalogowano",
+    "loggedOut": "Pomyślnie wylogowano"
   }
+}

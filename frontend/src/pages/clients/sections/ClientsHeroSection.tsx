@@ -1,4 +1,5 @@
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
+import { useTranslation } from 'react-i18next';
 import { clientStats } from '../data/clients';
 
 interface ClientsHeroSectionProps {
@@ -6,6 +7,7 @@ interface ClientsHeroSectionProps {
 }
 
 export function ClientsHeroSection({ onNavigate }: ClientsHeroSectionProps) {
+  const { t } = useTranslation();
   return (
     <BackgroundPattern 
       pattern="waves" 
@@ -52,23 +54,21 @@ export function ClientsHeroSection({ onNavigate }: ClientsHeroSectionProps) {
         <div className="mb-8 md:mb-12">
           <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full mr-1.5 md:mr-2 animate-pulse"></div>
-            <span className="text-white font-medium">Trusted by 500+ Companies</span>
+            <span className="text-white font-medium">{t('clients.hero.badge')}</span>
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 bg-gradient-to-r from-white via-green-100 to-emerald-100 bg-clip-text text-transparent">
-            Find Reliable Drivers
+            {t('clients.hero.title')}
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl text-green-100 max-w-3xl mx-auto px-2 mb-8 md:mb-12">
-            Connect with qualified, pre-screened drivers across Europe. Save time and money with our comprehensive recruitment solutions.
-          </p>
+          <p className="text-lg sm:text-xl md:text-2xl text-green-100 max-w-3xl mx-auto px-2 mb-8 md:mb-12">{t('clients.hero.subtitle')}</p>
 
           {/* Stats section */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto mb-8 md:mb-12">
             {clientStats.map((stat, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6">
                 <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.number}</div>
-                <div className="text-green-200 text-xs md:text-sm">{stat.label}</div>
+                <div className="text-green-200 text-xs md:text-sm">{t(stat.label)}</div>
               </div>
             ))}
           </div>
@@ -84,7 +84,7 @@ export function ClientsHeroSection({ onNavigate }: ClientsHeroSectionProps) {
               <svg className="w-5 h-5 md:w-6 md:h-6 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
-              Get Started Today
+              {t('clients.hero.ctaGetStarted')}
             </div>
           </button>
           
@@ -96,7 +96,7 @@ export function ClientsHeroSection({ onNavigate }: ClientsHeroSectionProps) {
               <svg className="w-5 h-5 md:w-6 md:h-6 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
-              Back to Home
+              {t('clients.hero.backToHome')}
             </div>
           </button>
         </div>

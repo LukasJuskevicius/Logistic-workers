@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { VacancyCard } from '../../../components/sections/VacancyCard';
 import { vacanciesData, vacancyCategories, vacancyLocations } from '../data/vacancies';
@@ -8,25 +9,30 @@ interface VacanciesListSectionProps {
 }
 
 export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedLocation, setSelectedLocation] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Filter vacancies based on selected filters
-  const filteredVacancies = vacanciesData.filter(vacancy => {
-    const matchesCategory = selectedCategory === 'all' || 
-      (selectedCategory === 'international' && vacancy.location.includes('International')) ||
-      (selectedCategory === 'local' && !vacancy.location.includes('International')) ||
-      (selectedCategory === 'specialized' && vacancy.title.includes('Specialized')) ||
-      (selectedCategory === 'express' && vacancy.title.includes('Express')) ||
-      (selectedCategory === 'heavy' && vacancy.title.includes('Heavy'));
-    
-    const matchesLocation = selectedLocation === 'all' || 
-      vacancy.location.toLowerCase().includes(selectedLocation);
-    
-    const matchesSearch = vacancy.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      vacancy.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      vacancy.location.toLowerCase().includes(searchTerm.toLowerCase());
+  // Filter vacancies based on selected filters (supports key-based and text-based data)
+  const filteredVacancies = vacanciesData.filter((vacancy: any) => {
+    const vacancyCategory: string | undefined = vacancy.category;
+    const matchesCategory = selectedCategory === 'all' || vacancyCategory === selectedCategory;
+
+    const vacancyLocationId: string | undefined = vacancy.locationId;
+    const matchesLocation = selectedLocation === 'all'
+      ? true
+      : (vacancyLocationId ? vacancyLocationId === selectedLocation : (vacancy.location || '').toLowerCase().includes(selectedLocation));
+
+    const titleText = 'titleKey' in vacancy ? t(vacancy.titleKey).toLowerCase() : (vacancy.title || '').toLowerCase();
+    const descriptionText = 'descriptionKey' in vacancy ? t(vacancy.descriptionKey).toLowerCase() : (vacancy.description || '').toLowerCase();
+    const locationText = 'locationKey' in vacancy ? t(vacancy.locationKey).toLowerCase() : (vacancy.location || '').toLowerCase();
+
+    const search = searchTerm.toLowerCase();
+    const matchesSearch =
+      titleText.includes(search) ||
+      descriptionText.includes(search) ||
+      locationText.includes(search);
 
     return matchesCategory && matchesLocation && matchesSearch;
   });
@@ -67,15 +73,15 @@ export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) 
         <div className="text-center mb-8 md:mb-16">
           <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/80 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-blue-500 rounded-full mr-1.5 md:mr-2"></div>
-            <span className="text-blue-700 font-medium">Filter & Search</span>
+            <span className="text-blue-700 font-medium">{t('vacancies.hero.filterBadge')}</span>
           </div>
           
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">
-            Find Your Perfect Position
+            {t('vacancies.hero.title')}
           </h2>
           
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
-            Browse through our latest vacancies and find the opportunity that matches your skills and preferences
+            {t('vacancies.hero.subtitle')}
           </p>
         </div>
 
@@ -86,7 +92,7 @@ export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) 
             <div className="relative">
               <input
                 type="text"
-                placeholder="Search vacancies by title, description, or location..."
+                placeholder={t('vacancies.search.placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full px-4 md:px-6 py-3 md:py-4 pl-12 md:pl-14 bg-white border border-gray-200 rounded-xl md:rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-sm md:text-base"
@@ -107,7 +113,7 @@ export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) 
                   : 'bg-white text-gray-600 hover:bg-blue-50 border border-gray-200'
               }`}
             >
-              All Categories ({vacanciesData.length})
+              {t('vacancies.filters.allCategories')} ({vacanciesData.length})
             </button>
             {vacancyCategories.map((category) => (
               <button
@@ -119,7 +125,7 @@ export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) 
                     : 'bg-white text-gray-600 hover:bg-blue-50 border border-gray-200'
                 }`}
               >
-                {category.name} ({category.count})
+                {t(`vacancies.categories.${category.id}`)} ({category.count})
               </button>
             ))}
           </div>
@@ -134,7 +140,7 @@ export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) 
                   : 'bg-white text-gray-600 hover:bg-green-50 border border-gray-200'
               }`}
             >
-              All Locations
+              {t('vacancies.filters.allLocations')}
             </button>
             {vacancyLocations.slice(0, 6).map((location) => (
               <button
@@ -146,7 +152,7 @@ export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) 
                     : 'bg-white text-gray-600 hover:bg-green-50 border border-gray-200'
                 }`}
               >
-                {location.name}
+                {t(`vacancies.locations.${location.id}`)}
               </button>
             ))}
           </div>
@@ -155,7 +161,7 @@ export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) 
         {/* Results Count */}
         <div className="text-center mb-6 md:mb-8">
           <p className="text-sm md:text-base text-gray-600">
-            Showing <span className="font-semibold text-blue-600">{filteredVacancies.length}</span> of <span className="font-semibold">{vacanciesData.length}</span> vacancies
+            {t('vacancies.results.showing')} <span className="font-semibold text-blue-600">{filteredVacancies.length}</span> {t('vacancies.results.of')} <span className="font-semibold">{vacanciesData.length}</span> {t('vacancies.results.vacancies')}
           </p>
         </div>
 
@@ -171,8 +177,8 @@ export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) 
                 <svg className="w-16 h-16 md:w-20 md:h-20 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">No vacancies found</h3>
-                <p className="text-gray-600 mb-4">Try adjusting your search criteria or check back later for new opportunities.</p>
+                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">{t('vacancies.noResults.title')}</h3>
+                <p className="text-gray-600 mb-4">{t('vacancies.noResults.description')}</p>
                 <button
                   onClick={() => {
                     setSearchTerm('');
@@ -181,7 +187,7 @@ export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) 
                   }}
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300"
                 >
-                  Clear Filters
+                  {t('vacancies.noResults.clearFilters')}
                 </button>
               </div>
             </div>

@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { clientTestimonials } from '../data/clients';
 
 export function ClientsTestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t } = useTranslation();
 
   // Auto-advance carousel
   useEffect(() => {
@@ -70,16 +72,14 @@ export function ClientsTestimonialsSection() {
         <div className="text-center mb-8 md:mb-16">
           <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full mr-1.5 md:mr-2 animate-pulse"></div>
-            <span className="text-white font-medium">Success Stories</span>
+            <span className="text-white font-medium">{t('clients.testimonials.badge')}</span>
           </div>
           
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 bg-gradient-to-r from-white via-green-100 to-emerald-100 bg-clip-text text-transparent">
-            What Our Clients Say
+            {t('clients.testimonials.title')}
           </h2>
           
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-green-100 max-w-3xl mx-auto px-2">
-            Real testimonials from companies that have transformed their operations with our services
-          </p>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-green-100 max-w-3xl mx-auto px-2">{t('clients.testimonials.subtitle')}</p>
         </div>
 
         {/* Testimonials Carousel */}
@@ -135,15 +135,9 @@ export function ClientsTestimonialsSection() {
                 </div>
                 
                 <div className="text-center">
-                  <h4 className="text-white font-semibold text-sm md:text-base">
-                    {clientTestimonials[currentIndex].name}
-                  </h4>
-                  <p className="text-green-200 text-xs md:text-sm">
-                    {clientTestimonials[currentIndex].position}
-                  </p>
-                  <p className="text-green-300 text-xs md:text-sm font-medium">
-                    {clientTestimonials[currentIndex].company}
-                  </p>
+                  <h4 className="text-white font-semibold text-sm md:text-base">{clientTestimonials[currentIndex].name}</h4>
+                  <p className="text-green-200 text-xs md:text-sm">{clientTestimonials[currentIndex].position}</p>
+                  <p className="text-green-300 text-xs md:text-sm font-medium">{clientTestimonials[currentIndex].company}</p>
                 </div>
               </div>
             </div>

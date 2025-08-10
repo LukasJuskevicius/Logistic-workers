@@ -1,10 +1,12 @@
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
+import { useTranslation } from 'react-i18next';
 
 interface VacanciesHeroSectionProps {
   onNavigate: (page: string) => void;
 }
 
 export function VacanciesHeroSection({ onNavigate }: VacanciesHeroSectionProps) {
+  const { t } = useTranslation();
   return (
     <BackgroundPattern 
       pattern="waves" 
@@ -51,30 +53,28 @@ export function VacanciesHeroSection({ onNavigate }: VacanciesHeroSectionProps) 
         <div className="mb-8 md:mb-12">
           <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full mr-1.5 md:mr-2 animate-pulse"></div>
-            <span className="text-white font-medium">Live Opportunities</span>
+            <span className="text-white font-medium">{t('vacancies.heroSection.liveBadge')}</span>
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 bg-gradient-to-r from-white via-blue-100 to-indigo-100 bg-clip-text text-transparent">
-            Available Vacancies
+            {t('vacancies.heroSection.title')}
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto px-2 mb-8 md:mb-12">
-            Find your next opportunity in the logistics industry across Europe
-          </p>
+          <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto px-2 mb-8 md:mb-12">{t('vacancies.heroSection.subtitle')}</p>
 
           {/* Stats section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 md:p-8">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">50+</div>
-              <div className="text-blue-200 text-sm md:text-base">Active Positions</div>
+              <div className="text-blue-200 text-sm md:text-base">{t('vacancies.heroSection.stats.activePositions')}</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 md:p-8">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">8</div>
-              <div className="text-blue-200 text-sm md:text-base">European Countries</div>
+              <div className="text-blue-200 text-sm md:text-base">{t('vacancies.heroSection.stats.europeanCountries')}</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 md:p-8">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">24h</div>
-              <div className="text-blue-200 text-sm md:text-base">Response Time</div>
+              <div className="text-blue-200 text-sm md:text-base">{t('vacancies.heroSection.stats.responseTime')}</div>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@ export function VacanciesHeroSection({ onNavigate }: VacanciesHeroSectionProps) 
               <svg className="w-5 h-5 md:w-6 md:h-6 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6" />
               </svg>
-              Apply Now
+              {t('vacancies.applyNow')}
             </div>
           </button>
           
@@ -101,7 +101,7 @@ export function VacanciesHeroSection({ onNavigate }: VacanciesHeroSectionProps) 
               <svg className="w-5 h-5 md:w-6 md:h-6 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
-              Back to Home
+              {t('vacancies.backToHome')}
             </div>
           </button>
         </div>

@@ -1,4 +1,5 @@
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   // Reuse page navigation in footer CTA
@@ -6,11 +7,13 @@ interface Props {
 }
 
 export function CallToActionSection({ onNavigate }: Props) {
+  const { t } = useTranslation();
+
   return (
     <BackgroundPattern 
       pattern="waves" 
-      opacity={0.05}
-      className="relative py-16 md:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 overflow-hidden"
+      opacity={0.1}
+      className="relative py-16 md:py-24 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 overflow-hidden"
     >
       {/* Floating decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -52,15 +55,15 @@ export function CallToActionSection({ onNavigate }: Props) {
         <div className="mb-8 md:mb-12">
           <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full mr-1.5 md:mr-2 animate-pulse"></div>
-            <span className="text-white font-medium">Get Started Today</span>
+            <span className="text-white font-medium">{t('home.hero.getStartedButton')}</span>
           </div>
           
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 bg-gradient-to-r from-white via-blue-100 to-indigo-100 bg-clip-text text-transparent">
-            Ready to Get Started?
+            {t('home.callToAction.title')}
           </h2>
           
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 max-w-2xl mx-auto px-2">
-            Join thousands of drivers and companies already working with Logistic Workers
+            {t('home.callToAction.subtitle')}
           </p>
         </div>
 
@@ -74,7 +77,7 @@ export function CallToActionSection({ onNavigate }: Props) {
               <svg className="w-5 h-5 md:w-6 md:h-6 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
               </svg>
-              I'M LOOKING FOR DRIVERS
+              {t('home.callToAction.buttons.lookingForDrivers')}
             </div>
           </button>
           
@@ -86,13 +89,13 @@ export function CallToActionSection({ onNavigate }: Props) {
               <svg className="w-5 h-5 md:w-6 md:h-6 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6" />
               </svg>
-              I'M LOOKING FOR A JOB
+              {t('home.callToAction.buttons.lookingForJob')}
             </div>
           </button>
         </div>
 
         {/* Bottom decorative wave */}
-        <div className="mt-8 md:mt-12 relative">
+        <div className="mt-8 md:mb-12 relative">
           <svg viewBox="0 0 1200 60" fill="none" className="w-full h-auto">
             <path d="M0 60 L0 30 Q300 0 600 30 T1200 30 L1200 60 Z" fill="url(#cta-gradient)" />
             <defs>

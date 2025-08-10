@@ -1,22 +1,749 @@
 {
-    "navigation": {
-      "home": "Pradžia",
-      "vacancies": "Darbo vietos",
-      "forClients": "Klientams",
-      "forDrivers": "Vairuotojams",
-      "contact": "Kontaktai"
+  "_comment_header": "===== HEADER NAVIGATION =====",
+  "navigation": {
+    "home": "Pradžia",
+    "vacancies": "Darbo vietos",
+    "forClients": "Klientams",
+    "forDrivers": "Vairuotojams",
+    "contact": "Kontaktai"
+  },
+  "benefits": {
+    "healthInsurance": "Sveikatos draudimas",
+    "paidLeave": "Apmokamos atostogos",
+    "performanceBonus": "Veiklos premija",
+    "modernFleet": "Moderni flotė",
+    "flexibleHours": "Lankstūs darbo laikai",
+    "companyVehicle": "Įmonės automobilis",
+    "familyTime": "Šeimos laikas",
+    "premiumPay": "Premijinis atlygis",
+    "specializedTraining": "Specializuotas mokymas",
+    "modernEquipment": "Moderni įranga",
+    "comprehensiveTraining": "Išsamus mokymas",
+    "careerDevelopment": "Karjeros plėtra",
+    "competitiveSalary": "Konkurencingas atlyginimas",
+    "internationalTravel": "Tarptautinės kelionės",
+    "comprehensiveInsurance": "Išsamus draudimas"
+  },
+  "requirements": {
+    "ceLicense": "CE kategorijos pažymėjimas",
+    "medicalCertificate": "Medicinos pažymėjimas",
+    "cleanRecord": "Švarus įrašas",
+    "englishB1": "Anglų kalba B1",
+    "bcLicense": "B/C kategorijos pažymėjimas",
+    "localLanguage": "Vietinė kalba",
+    "coldChainExperience": "Šaldytuvinio transporto patirtis",
+    "cceLicense": "C/CE kategorijos pažymėjimas",
+    "germanB1": "Vokiečių kalba B1",
+    "heavyVehicleExperience": "Sunkiosios transporto priemonės patirtis",
+    "frenchDutchB1": "Prancūzų/olandų kalba B1",
+    "internationalExperience": "Tarptautinė patirtis",
+    "englishB2": "Anglų kalba B2"
+  },
+
+  "_comment_auth": "===== AUTHENTICATION =====",
+  "auth": {
+    "register": "Registruotis",
+    "login": "Prisijungti",
+    "signOut": "Atsijungti",
+    "hello": "Sveiki"
+  },
+
+  "_comment_footer": "===== FOOTER SECTION =====",
+  "footer": {
+    "aboutUs": "Apie mus",
+    "companyName": "Logistic Workers",
+    "companyDescription": "Jungiame kvalifikuotus vairuotojus su transporto įmonėmis visoje Europoje.",
+    "navigation": "Navigacija",
+    "quickLinks": "Greitos nuorodos",
+    "home": "Pradžia",
+    "vacancies": "Darbo vietos",
+    "contact": "Kontaktai",
+    "contactInfo": "Kontaktai",
+    "email": "info@logisticworkers.com",
+    "phone": "+370 600 00000",
+    "copyright": "Visos teisės saugomos.",
+    "madeWithLove": "Sukurta su ❤️ vairuotojams"
+  },
+
+  "_comment_home_page": "===== HOME PAGE =====",
+  "home": {
+    "_comment_hero": "Hero Section",
+    "hero": {
+      "mainTitle": "Vairuojame jūsų verslą į priekį",
+      "subtitle": "Jungiame profesionalius vairuotojus su pagrindinėmis logistikos įmonėmis visoje Europoje",
+      "findOpportunityButton": "Raskite savo kitą galimybę",
+      "getStartedButton": "Pradėkite šiandien",
+      "stats": {
+        "activeDrivers": "Aktyvūs vairuotojai",
+        "partnerCompanies": "Partnerių įmonės",
+        "successfulPlacements": "Sėkmingi įdarbinimai"
+      }
     },
-    "auth": {
-      "register": "Registruotis",
-      "login": "Prisijungti",
-      "signOut": "Atsijungti",
-      "hello": "Sveiki"
+
+    "_comment_why_choose_us": "Why Choose Us Section",
+    "whyChooseUs": {
+      "badge": "Kodėl rinktis mus",
+      "title": "Partneris, kuriuo galite pasitikėti",
+      "subtitle": "Mes sujungiame ekspertizę, efektyvumą ir asmeninę rūpestį, kad pateiktume išskirtinius rezultatus tiek vairuotojams, tiek įmonėms.",
+      "features": {
+        "vettedProfessionals": {
+          "title": "Patikrinti profesionalai",
+          "description": "Mes kruopščiai tikriname kiekvieną vairuotoją, kad užtikrintume kokybę ir patikimumą."
+        },
+        "fastEfficient": {
+          "title": "Greitai ir efektyviai",
+          "description": "Greitai užpildome jūsų darbo vietas, kad jūsų verslas judėtų toliau."
+        },
+        "personalSupport": {
+          "title": "Asmeninis palaikymas",
+          "description": "Skirtas palaikymas tiek mūsų klientams, tiek vairuotojams."
+        }
+      }
     },
-    "home": {
-      "welcomeTitle": "Sveiki atvykę į Logistic Workers",
-      "welcomeSubtitle": "Geriausia platforma, jungianti kvalifikuotus vairuotojus su transporto įmonėmis visoje Europoje.",
-      "imDriver": "Aš esu vairuotojas",
-      "imEmployer": "Aš esu darbdavys",
-      "viewVacancies": "Peržiūrėti darbo vietas"
+
+    "_comment_latest_opportunities": "Latest Driving Opportunities Section",
+    "latestOpportunities": {
+      "title": "Naujausios vairuotojo galimybės",
+      "subtitle": "Atraskite jaudinančias karjeros galimybes su pagrindinėmis logistikos įmonėmis visoje Europoje.",
+      "features": {
+        "newPositions": "Naujos pozicijos pridedamos kasdien",
+        "competitiveSalaries": "Konkurencingi atlyginimai",
+        "professionalGrowth": "Profesinis augimas"
+      },
+      "categories": {
+        "international": "Tarptautinis",
+        "local": "Vietinis",
+        "specialized": "Specializuotas"
+      },
+      "viewAllButton": "Peržiūrėti visas darbo vietas",
+      "jobs": {
+        "ceCategoryDriver": "CE kategorijos vairuotojas",
+        "localDeliveryDriver": "Vietinis pristatymo vairuotojas",
+        "warehouseToStoreDriver": "Sandėlio į parduotuvę vairuotojas",
+        "refrigeratedTransportDriver": "Šaldytuvinio transporto vairuotojas",
+        "expressDeliveryDriver": "Ekspresinio pristatymo vairuotojas",
+        "heavyGoodsVehicleDriver": "Sunkiosios prekės transporto vairuotojas"
+      },
+      "locations": {
+        "internationalRoutes": "Tarptautinės trasos",
+        "lithuania": "Lietuva",
+        "poland": "Lenkija",
+        "netherlands": "Nyderlandai",
+        "germany": "Vokietija",
+        "belgium": "Belgija",
+        "spain": "Ispanija",
+        "uk": "Jungtinė Karalystė",
+        "romania": "Rumunija"
+      },
+      "descriptions": {
+        "ceCategoryDriver": "Ilgo nuotolio vairavimas visoje Europoje su konkurencingomis kainomis ir puikiomis išmokomis.",
+        "localDeliveryDriver": "Vietiniai pristatymo maršrutai su reguliariais darbo laikais ir šeimai draugišku grafiku.",
+        "warehouseToStoreDriver": "Paskirstymo vairavimas su moderniais automobiliais ir išsamiais mokymais.",
+        "refrigeratedTransportDriver": "Specializuota šaldytuvinė logistika su temperatūros kontroliuojamais automobiliais.",
+        "expressDeliveryDriver": "Greitas pristatymas su aukščiausios kokybės kainomis ir lankiu grafiku.",
+        "heavyGoodsVehicleDriver": "Didelių automobilių eksploatacija su išsamiais išmokomis ir mokymais."
+      }
+    },
+
+    "_comment_testimonials": "What Our Drivers Say Section",
+    "testimonials": {
+      "title": "Ką sako mūsų vairuotojai",
+      "subtitle": "Tikri atsiliepimai nuo mūsų patenkintų vairuotojų",
+      "viewMoreButton": "Peržiūrėti daugiau",
+      "trustIndicators": {
+        "fiveStarReviews": "5 žvaigždžių atsiliepimai nuo vairuotojų",
+        "verifiedDrivers": "Patikrinti vairuotojai visoje Europoje",
+        "europeWide": "Europos mastu"
+      },
+      "roles": {
+        "professionalDriver": "Profesionalus vairuotojas",
+        "businessOwner": "Verslo savininkas",
+        "internationalDriver": "Tarptautinis vairuotojas",
+        "fleetManager": "Autoparko vadovas",
+        "longHaulDriver": "Ilgo nuotolio vairuotojas",
+        "hrManager": "HR vadovas"
+      },
+      "experience": {
+        "fivePlusYears": "5+ metų patirtis",
+        "eightPlusYears": "8+ metų patirtis",
+        "tenPlusYears": "10+ metų patirtis"
+      },
+      "companies": {
+        "logisticsInc": "Logistics Inc.",
+        "transportSolutions": "Transport Solutions Ltd",
+        "europeanLogistics": "European Logistics"
+      }
+    },
+
+    "_comment_call_to_action": "Call to Action Section",
+    "callToAction": {
+      "title": "Pasiruošę pradėti?",
+      "subtitle": "Jungiamės su jumis per 24 valandas",
+      "getStartedButton": "Pradėti dabar",
+      "learnMoreButton": "Sužinoti daugiau",
+      "buttons": {
+        "lookingForDrivers": "Ieškote vairuotojų?",
+        "lookingForJob": "Ieškote darbo?"
+      }
     }
-  } 
+  },
+
+  "_comment_vacancies_page": "===== VACANCIES PAGE =====",
+  "vacancies": {
+    "title": "Darbo vietos",
+    "subtitle": "Raskite savo idealų darbą logistikos srityje",
+    "hero": {
+      "filterBadge": "Filtruoti ir ieškoti",
+      "title": "Raskite savo idealią poziciją",
+      "subtitle": "Naršykite mūsų naujausias darbo vietas ir raskite galimybę, kuri atitinka jūsų įgūdžius ir pageidavimus"
+    },
+    "search": {
+      "placeholder": "Ieškoti darbo vietų pagal pavadinimą, aprašymą ar vietą..."
+    },
+    "filters": {
+      "location": "Vieta",
+      "experience": "Patirtis",
+      "salary": "Atlyginimas",
+      "type": "Tipas",
+      "applyFilters": "Taikyti filtrus",
+      "clearFilters": "Išvalyti filtrus",
+      "allCategories": "Visos kategorijos",
+      "allLocations": "Visos vietos"
+    },
+    "categories": {
+      "international": "Tarptautiniai maršrutai",
+      "local": "Vietinės pozicijos",
+      "specialized": "Specializuotas transportas",
+      "express": "Ekspresinis pristatymas",
+      "heavy": "Sunkūs kroviniai"
+    },
+    "results": {
+      "showing": "Rodoma",
+      "of": "iš",
+      "vacancies": "darbo vietų"
+    },
+    "noResults": {
+      "title": "Nerasta darbo vietų",
+      "description": "Pabandykite pakeisti paieškos kriterijus arba patikrinkite vėliau dėl naujų galimybių.",
+      "clearFilters": "Išvalyti filtrus"
+    },
+    "sortBy": "Rūšiuoti pagal",
+    "loadMore": "Užkrauti daugiau",
+    "applyNow": "Kreiptis dabar",
+    "viewDetails": "Peržiūrėti detales",
+    "backToHome": "Atgal į pradžią",
+    "heroSection": {
+      "liveBadge": "Aktyvios galimybės",
+      "title": "Galimos darbo vietos",
+      "subtitle": "Raskite savo kitą galimybę logistikos sektoriuje visoje Europoje",
+      "stats": {
+        "activePositions": "Aktyvios pozicijos",
+        "europeanCountries": "Europos šalys",
+        "responseTime": "Atsako laikas"
+      }
+    },
+    "locations": {
+      "internationalRoutes": "Tarptautinės trasos",
+      "lithuania": "Lietuva",
+      "poland": "Lenkija",
+      "netherlands": "Nyderlandai",
+      "germany": "Vokietija",
+      "belgium": "Belgija",
+      "europe-wide": "Visa Europa",
+      "latvia": "Latvija",
+      "estonia": "Estija"
+    },
+    "jobs": {
+      "ceCategoryDriver": "CE kategorijos vairuotojas",
+      "localDeliveryDriver": "Vietinis pristatymo vairuotojas",
+      "warehouseToStoreDriver": "Sandėlio į parduotuvę vairuotojas",
+      "refrigeratedTransportDriver": "Šaldytuvinio transporto vairuotojas",
+      "expressDeliveryDriver": "Ekspresinio pristatymo vairuotojas",
+      "heavyGoodsVehicleDriver": "Sunkiasvorių transporto priemonių vairuotojas",
+      "internationalFreightDriver": "Tarptautinio krovinių vežimo vairuotojas",
+      "localDistributionDriver": "Vietinio paskirstymo vairuotojas",
+      "specializedEquipmentDriver": "Specializuotos įrangos vairuotojas"
+    },
+    "descriptions": {
+      "ceCategoryDriver": "Ilgo nuotolio vairavimas visoje Europoje su konkurencingomis kainomis ir puikiomis išmokomis.",
+      "localDeliveryDriver": "Vietiniai pristatymo maršrutai su reguliariais darbo laikais ir šeimai draugišku grafiku.",
+      "warehouseToStoreDriver": "Paskirstymo vairavimas su moderniais automobiliais ir išsamiais mokymais.",
+      "refrigeratedTransportDriver": "Specializuota šaldytuvinė logistika su temperatūros kontroliuojamais automobiliais.",
+      "expressDeliveryDriver": "Greitas pristatymas su aukščiausios kokybės kainomis ir lanksčiu grafiku.",
+      "heavyGoodsVehicleDriver": "Didelių transporto priemonių vairavimas su išsamiais privalumais ir mokymais.",
+      "internationalFreightDriver": "Tarptautinis krovinių gabenimas su puikiu atlygiu ir moderniu automobilių parku. Kelionės po Europą.",
+      "localDistributionDriver": "Vietinis paskirstymas su reguliariu darbo laiku ir puikiomis darbo sąlygomis. Draugiškas šeimai grafikas.",
+      "specializedEquipmentDriver": "Specializuotos įrangos valdymas su išsamiais mokymais ir puikiu privalumų paketu."
+    }
+  },
+
+  
+
+  "_comment_clients_page": "===== FOR CLIENTS PAGE =====",
+  "clients": {
+    "title": "Klientams",
+    "subtitle": "Raskite kvalifikuotus vairuotojus savo verslui",
+    "hero": {
+      "badge": "Pasitikėjo 500+ įmonių",
+      "title": "Raskite patikimus vairuotojus",
+      "subtitle": "Susisiekite su kvalifikuotais, iš anksto patikrintais vairuotojais visoje Europoje. Sutaupykite laiko ir pinigų su mūsų išsamiais įdarbinimo sprendimais.",
+      "ctaGetStarted": "Pradėkite šiandien",
+      "backToHome": "Atgal į pradžią"
+    },
+    "stats": {
+      "building": "Aptarnaujamos įmonės",
+      "users": "Įdarbinti vairuotojai",
+      "star": "Klientų pasitenkinimas",
+      "clock": "Atsakymo laikas"
+    },
+    "services": {
+      "badge": "Mūsų paslaugos",
+      "title": "Išsamūs sprendimai",
+      "subtitle": "Teikiame išsamias vairuotojų atrankos ir valdymo paslaugas, kad atitiktume visus jūsų logistikos poreikius",
+      "items": {
+        "1": {
+          "title": "Vairuotojų atranka",
+          "description": "Išsamus vairuotojų paieškos ir tikrinimo procesas visoje Europoje",
+          "features": [
+            "CE kategorijos vairuotojai",
+            "Vietinės ir tarptautinės trasos",
+            "Ankstesnės veiklos tikrinimas",
+            "Vairuotojo pažymos patvirtinimas"
+          ],
+          "timeFrame": "2-4 savaitės"
+        },
+        "2": {
+          "title": "Atitikties valdymas",
+          "description": "Užtikrinkite, kad visi vairuotojai atitiktų ES reglamentus ir įmonės standartus",
+          "features": [
+            "ES vairuotojo pažymos patvirtinimas",
+            "Medicinos pažymos",
+            "Mokymo įrašai",
+            "Saugumo standartai"
+          ],
+          "timeFrame": "Nuolat"
+        },
+        "3": {
+          "title": "Nuolatinis palaikymas",
+          "description": "Nuolatinis palaikymas ir pakeitimo paslaugos",
+          "features": [
+            "24/7 palaikymas",
+            "Vairuotojų pakeitimas",
+            "Veiklos stebėjimas",
+            "Reguliarūs atnaujinimai"
+          ],
+          "timeFrame": "Visada prieinama"
+        }
+      }
+    },
+    "process": {
+      "badge": "Paprastas procesas",
+      "title": "Kaip tai veikia",
+      "subtitle": "Mūsų optimizuotas procesas padaro kvalifikuotų vairuotojų paiešką paprasta ir efektyvia",
+      "items": {
+        "1": {
+          "title": "Pateikite reikalavimus",
+          "description": "Papasakokite mums apie savo specifinius poreikius, trasas ir reikalavimus",
+          "duration": "1-2 dienos"
+        },
+        "2": {
+          "title": "Mes ieškome kandidatų",
+          "description": "Mūsų komanda randa ir tikrina kvalifikuotus vairuotojus jūsų poreikiams",
+          "duration": "2-3 savaitės"
+        },
+        "3": {
+          "title": "Jūs renkatės ir samdote",
+          "description": "Peržiūrėkite kandidatus ir pasirinkite geriausiai tinkantį jūsų komandai",
+          "duration": "1 savaitė"
+        }
+      },
+      "bottomCta": {
+        "text": "Pasiruošę pradėti? Susisiekite su mumis šiandien ir mes pradėsime procesą iškart.",
+        "button": "Pradėkite paiešką"
+      }
+    },
+    "requirements": {
+      "badge": "Ko mums reikia",
+      "title": "Reikalavimai ir procesas",
+      "subtitle": "Kad pateiktume jums geriausią paslaugą, mums reikia šiek tiek informacijos apie jūsų įmonę",
+      "categories": [
+        {
+          "title": "Įmonės informacija",
+          "items": [
+            "Įmonės registracijos dokumentai",
+            "Transporto licencija",
+            "Draudimo pažymos",
+            "Saugumo valdymo sistema"
+          ]
+        },
+        {
+          "title": "Darbo reikalavimai",
+          "items": [
+            "Išsamus darbo aprašymas",
+            "Trasos specifikacijos",
+            "Transporto priemonės reikalavimai",
+            "Reikalingas patiries lygis"
+          ]
+        },
+        {
+          "title": "Sutarties sąlygos",
+          "items": [
+            "Įdarbinimo trukmė",
+            "Atlyginimo diapazonas",
+            "Išmokų paketas",
+            "Darbo sąlygos"
+          ]
+        }
+      ],
+      "cta": {
+        "title": "Pasiruošę pradėti?",
+        "description": "Nesijaudinkite, jei neturite visų dokumentų paruošta. Mes galime padėti jums surinkti reikalingą informaciją ir vesti per procesą.",
+        "pills": {
+          "quickResponse": "Greitas atsakymo laikas",
+          "expertGuidance": "Ekspertų vadovavimas",
+          "freeConsultation": "Nemokama konsultacija"
+        }
+      }
+    },
+    "testimonials": {
+      "badge": "Sėkmės istorijos",
+      "title": "Ką sako mūsų klientai",
+      "subtitle": "Tikri atsiliepimai iš įmonių, kurios transformavo savo veiklą su mūsų paslaugomis",
+      "items": {
+        "1": {
+          "comment": "Logistic Workers padėjo mums rasti kvalifikuotus vairuotojus per tik 3 savaites. Jų tikrinimo procesas yra išsamus ir patikimas.",
+          "results": "Sumažino įdarbinimo laiką 60%",
+          "position": "Flotės vadovas",
+          "company": "European Logistics Ltd"
+        },
+        "2": {
+          "comment": "Puiki paslauga ir palaikymas. Jie supranta mūsų specifinius reikalavimus ir visada pateikia kokybiškus kandidatus.",
+          "results": "Pagerino vairuotojų išlaikymą 40%",
+          "position": "Veiklos direktorius",
+          "company": "Transport Solutions"
+        },
+        "3": {
+          "comment": "Profesionali komanda, kuri eina toliau nei reikalaujama. Jie tapo mūsų patikimu partneriu visiems vairuotojų įdarbinimo poreikiams.",
+          "results": "Padidino veiklos efektyvumą 35%",
+          "position": "HR vadovas",
+          "company": "International Freight Co"
+        }
+      }
+    }
+  },
+
+  "_comment_drivers_page": "===== DRIVERS PAGE =====",
+  "drivers": {
+    "hero": {
+      "badge": "Palaikoma 2000+ vairuotojų",
+      "title": "Raskite savo kitą galimybę",
+      "subtitle": "Prisijunkite prie tūkstančių vairuotojų visoje Europoje. Konkurencingi atlyginimai, puikios išmokos ir moderni įranga laukia jūsų.",
+      "applyNow": "Pateikti paraišką dabar",
+      "backToHome": "Atgal į namus",
+      "stats": {
+        "driversPlaced": "Įdarbinti vairuotojai",
+        "europeanCountries": "Europos šalys",
+        "driverSatisfaction": "Vairuotojų pasitenkinimas",
+        "responseTime": "Atsakymo laikas"
+      }
+    },
+    "positionsMeta": {
+      "noResults": "Nerasta pozicijų",
+      "salary": "Atlyginimas",
+      "fullTime": "Pilnas laikas",
+      "experience": "Patirtis",
+      "years": "metai",
+      "plus": "+",
+      "avg": "vid."
+    },
+    "benefits": {
+      "badge": "Vairuotojų išmokos",
+      "title": "Ką gaunate",
+      "subtitle": "Išsamios išmokos ir puikios darbo sąlygos visiems mūsų vairuotojams",
+      "competitiveSalaries": {
+        "title": "Konkurencingi atlyginimai",
+        "description": "Uždirbkite €1,800 - €4,000 per mėnesį, priklausomai nuo patirties ir pozicijos",
+        "details": ["Virš rinkos normų", "Veiklos premijos", "Viršvalandžių atlygis", "Atostogų atlygis"]
+      },
+      "excellentBenefits": {
+        "title": "Puikios išmokos",
+        "description": "Išsamus išmokų paketas, įskaitant sveikatos draudimą ir atostogų atlygį",
+        "details": ["Sveikatos draudimas", "Mokamos atostogos", "Ligos atostogos", "Pensijos planas"]
+      },
+      "modernEquipment": {
+        "title": "Moderni įranga",
+        "description": "Dirbkite su naujausiomis transporto priemonėmis ir technologija saugumui ir komfortui",
+              "details": ["Moderni flotė", "GPS navigacija", "Saugumo įranga", "Komforto funkcijos"]
+    },
+    "careerGrowth": {
+      "title": "Karjeros augimas",
+      "description": "Galimybės pažangai ir specializuotiems mokymo programoms",
+      "details": ["Mokymo programos", "Karjeros pažanga", "Įgūdžių plėtra", "Sertifikatai"]
+    }
+  },
+    "positions": {
+      "badge": "Galimos pozicijos",
+      "title": "Naujausios galimybės",
+      "subtitle": "Naršykite mūsų naujausias darbo galimybes ir raskite puikią poziciją savo įgūdžiams",
+      "allCategories": "Visos kategorijos",
+      "allLocations": "Visos vietos",
+      "showing": "Rodoma",
+      "of": "iš",
+      "positions": "pozicijų",
+      "benefits": "Išmokos:",
+      "requirements": "Reikalavimai:",
+      "more": "daugiau",
+      "applyNow": "Pateikti paraišką dabar",
+      "categories": {
+        "international": "Tarptautiniai maršrutai",
+        "local": "Vietinės pozicijos",
+        "specialized": "Specializuotas transportas",
+        "express": "Ekspresinis pristatymas"
+      },
+      "locations": {
+        "lithuania": "Lietuva",
+        "netherlands": "Nyderlandai",
+        "germany": "Vokietija",
+        "belgium": "Belgija",
+        "europe-wide": "Visoje Europoje",
+        "poland": "Lenkija"
+      },
+      "jobs": {
+        "ceCategoryDriver": "CE kategorijos vairuotojas",
+        "localDeliveryDriver": "Vietinio pristatymo vairuotojas",
+        "refrigeratedTransportDriver": "Šaldytuvinio transporto vairuotojas",
+        "expressDeliveryDriver": "Ekspresinio pristatymo vairuotojas",
+        "heavyGoodsVehicleDriver": "Sunkiosios prekių transporto priemonės vairuotojas",
+        "internationalFreightDriver": "Tarptautinių krovinių vairuotojas"
+      },
+      "descriptions": {
+        "ceCategoryDriver": "Ilgo nuotolio vairavimas visoje Europoje su konkurencingomis normomis ir puikiomis išmokomis.",
+        "localDeliveryDriver": "Vietiniai pristatymo maršrutai su reguliariais darbo laikais ir šeimai draugišku grafiku.",
+        "refrigeratedTransportDriver": "Specializuota šaldytuvinė logistika su temperatūros kontroliuojamomis transporto priemonėmis.",
+        "expressDeliveryDriver": "Greitas pristatymas su premijinėmis normomis ir lankstiu grafiku.",
+        "heavyGoodsVehicleDriver": "Didelių transporto priemonių eksploatacija su išsamiais išmokomis ir mokymu.",
+        "internationalFreightDriver": "Kryžminis krovinių transportas su puikiu atlyginimu ir modernia flote."
+      }
+    },
+    "requirements": {
+      "badge": "Ko mums reikia",
+      "title": "Reikalavimai ir procesas",
+      "subtitle": "Kad padėtume jums rasti geriausias galimybes, mums reikia šiek tiek informacijos iš jūsų",
+      "personalDocuments": "Asmeniniai dokumentai",
+      "professionalExperience": "Profesinė patirtis",
+      "languageSkills": "Kalbų įgūdžiai",
+      "readyToApply": "Pasiruošę pateikti paraišką?",
+      "dontWorry": "Nesijaudinkite, jei neturite visų dokumentų paruošta. Mes galime padėti jums surinkti reikalingą informaciją ir vesti per procesą.",
+      "quickApplication": "Greitas paraiškos pateikimas",
+      "expertGuidance": "Ekspertų vadovavimas",
+      "freeSupport": "Nemokamas palaikymas",
+      "items": {
+        "validDrivingLicense": "Galiojantis vairuotojo pažymėjimas",
+        "medicalCertificate": "Medicinos pažymėjimas",
+        "passportOrIdCard": "Pasas arba ID kortelė",
+        "cleanCriminalRecord": "Švarus baudžiamasis įrašas",
+        "relevantDrivingExperience": "Atitinkama vairavimo patirtis",
+        "trainingCertificates": "Mokymo sertifikatai",
+        "employmentHistory": "Darbo istorija",
+        "referenceLetters": "Rekomendacijų laiškai",
+        "basicEnglish": "Pagrindinis anglų kalbos (B1 lygis)",
+        "localLanguage": "Vietinė kalba (jei reikia)",
+        "communicationSkills": "Komunikacijos įgūdžiai",
+        "documentationReading": "Dokumentų skaitymas"
+      }
+    },
+    "process": {
+      "badge": "Paprastas procesas",
+      "title": "Kaip tai veikia",
+      "subtitle": "Mūsų optimizuotas paraiškos procesas padaro kitos darbo paiešką paprastą ir efektyvią",
+      "submitApplication": {
+        "title": "Pateikti paraišką",
+        "description": "Užpildykite mūsų paraiškos formą su savo patirtimi ir pageidavimais",
+        "duration": "10 minučių"
+      },
+      "weReviewAndMatch": {
+        "title": "Mes peržiūrime ir suderiname",
+        "description": "Mūsų komanda peržiūri jūsų profilį ir suderina su tinkamomis pozicijomis",
+        "duration": "1-2 dienos"
+      },
+      "interviewAndSelection": {
+        "title": "Interviu ir atranka",
+        "description": "Interviu su įmonėmis ir pasirinkite geriausią galimybę jums",
+        "duration": "1 savaitė"
+      },
+      "readyToStart": "Pasiruošę pradėti savo kelionę? Pateikite paraišką dabar ir mes pradėsime procesą iškart.",
+      "startApplication": "Pradėti paraišką"
+    },
+    "testimonials": {
+      "badge": "Sėkmės istorijos",
+      "title": "Ką sako mūsų vairuotojai",
+      "subtitle": "Tikri atsiliepimai iš vairuotojų, kurie rado puikias galimybes su mūsų pagalba",
+      "items": {
+        "1": {
+          "comment": "Darbas su Logistic Workers buvo nuostabus. Jie rado man puikią poziciją su puikiu atlyginimu ir išmokomis. Palaikymo komanda visada prieinama, kai man reikia pagalbos.",
+          "results": "€3,200/mėn atlyginimas, 4 savaičių mokamos atostogos, sveikatos draudimas",
+          "position": "CE kategorijos vairuotojas",
+          "company": "European Logistics Ltd"
+        },
+        "2": {
+          "comment": "Norėjau likti šalia šeimos, turėdamas gerą darbą. Logistic Workers rado man puikią vietinę poziciją su lankstiu grafiku ir puikiomis išmokomis.",
+          "results": "€2,100/mėn atlyginimas, šeimai draugiškas grafikas, įmonės automobilis",
+          "position": "Vietinio pristatymo vairuotojas",
+          "company": "Polish Distribution Co"
+        },
+        "3": {
+          "comment": "Vairavau tarptautiniu mastu 3 metus. Atlyginimas puikus, įranga moderni ir matau skirtingas šalis. Labai rekomenduoju!",
+          "results": "€3,800/mėn atlyginimas, moderni flotė, tarptautiniai kelionės",
+          "position": "Tarptautinių krovinių vairuotojas",
+          "company": "German Express"
+        },
+        "4": {
+          "comment": "Specializuotas mokymas, kurį gavau, buvo puikus. Dirbu su moderniomis temperatūros kontroliuojamomis transporto priemonėmis ir uždirbu premijines normas. Puiki karjeros galimybė.",
+          "results": "€3,500/mėn atlyginimas, specializuotas mokymas, moderni įranga",
+          "position": "Šaldytuvinio transporto vairuotojas",
+          "company": "Dutch Cold Chain"
+        }
+      }
+    }
+  },
+
+  "_comment_contact_page": "===== CONTACT PAGE =====",
+  "contact": {
+    "title": "Kontaktai",
+    "subtitle": "Susisiekite su mumis",
+    "_comment_hero": "Hero Section",
+    "hero": {
+      "supportBadge": "24/7 palaikymas prieinamas",
+      "title": "Susisiekite su mumis",
+      "subtitle": "Pasiruošę pradėti savo kelionę? Susisiekite su mūsų komanda dėl asmeninio pagalbos ir ekspertų patarimo."
+    },
+    "_comment_form": "Contact Form",
+    "form": {
+      "send": "Siųsti žinutę",
+      "title": "Pradėkime pokalbį",
+      "description": "Papasakokite mums apie savo poreikius ir mes susisieksime per 24 valandas.",
+      "name": "Vardas",
+      "email": "El. paštas",
+      "phone": "Telefonas",
+      "company": "Įmonė",
+      "inquiryType": "Užklausos tipas",
+      "message": "Žinutė",
+      "messagePlaceholder": "Papasakokite mums apie savo poreikius, reikalavimus ar klausimus...",
+      "sending": "Siunčiama žinutė..."
+    },
+    "_comment_info": "Contact Info Section",
+    "info": {
+      "title": "Kontaktinė informacija",
+      "subtitle": "Keletas būdų susisiekti",
+      "description": "Pasirinkite jums tinkamiausią būdą. Mes čia padėsime 24/7.",
+      "businessInfo": "Verslo informacija",
+      "availabilityTitle": "Kada esame prieinami",
+      "availabilityDescription": "Mūsų komanda pasiruošusi jums padėti šiomis valandomis.",
+      "businessHours": "Darbo valandos",
+      "additionalInfo": "Papildoma informacija",
+      "responseTime": "Atsakome į visas užklausas per 24 valandas, net savaitgaliais.",
+      "confidentiality": "Visa komunikacija yra konfidenciali ir saugi.",
+      "coverage": "Aptarnaujame klientus 8 Europos šalyse.",
+      "immediateAssistance": "Reikia skubios pagalbos?",
+      "urgentMatters": "Skubiais atvejais skambinkite mums tiesiogiai arba siųskite el. laišką greičiausiam atsakymui.",
+      "callNow": "Skambinti dabar",
+      "sendEmail": "Siųsti el. laišką"
+    },
+    "success": "Žinutė išsiųsta sėkmingai! Susisieksime su jumis per 24 valandas.",
+    "error": "Nepavyko išsiųsti žinutės. Bandykite dar kartą."
+  },
+
+  "_comment_register_page": "===== REGISTER PAGE =====",
+  "register": {
+    "title": "Registracija",
+    "subtitle": "Sukurkite savo paskyrą",
+    "form": {
+      "firstName": "Vardas",
+      "lastName": "Pavardė",
+      "email": "El. paštas",
+      "phone": "Telefonas",
+      "password": "Slaptažodis",
+      "confirmPassword": "Patvirtinkite slaptažodį",
+      "userType": "Vartotojo tipas",
+      "driver": "Vairuotojas",
+      "employer": "Darbdavys",
+      "register": "Registruotis",
+      "alreadyHaveAccount": "Jau turite paskyrą?",
+      "signIn": "Prisijungti"
+    },
+    "validation": {
+      "required": "Šis laukas yra privalomas",
+      "invalidEmail": "Neteisingas el. pašto formatas",
+      "passwordMismatch": "Slaptažodžiai nesutampa",
+      "passwordLength": "Slaptažodis turi būti bent 6 simbolių"
+    }
+  },
+
+  "_comment_login_page": "===== LOGIN PAGE =====",
+  "login": {
+    "title": "Prisijungimas",
+    "subtitle": "Prisijunkite prie savo paskyros",
+    "form": {
+      "email": "El. paštas",
+      "password": "Slaptažodis",
+      "rememberMe": "Prisiminti mane",
+      "forgotPassword": "Pamiršote slaptažodį?",
+      "login": "Prisijungti",
+      "dontHaveAccount": "Neturite paskyros?",
+      "register": "Registruotis"
+    }
+  },
+
+  "_comment_common": "===== COMMON UI ELEMENTS =====",
+  "common": {
+    "loading": "Kraunama...",
+    "error": "Įvyko klaida",
+    "success": "Sėkmingai",
+    "cancel": "Atšaukti",
+    "save": "Išsaugoti",
+    "edit": "Redaguoti",
+    "delete": "Ištrinti",
+    "back": "Atgal",
+    "next": "Toliau",
+    "previous": "Ankstesnis",
+    "close": "Uždaryti",
+    "search": "Ieškoti",
+    "filter": "Filtruoti",
+    "sort": "Rūšiuoti",
+    "view": "Peržiūrėti",
+    "download": "Atsisiųsti",
+    "upload": "Įkelti",
+    "select": "Pasirinkti",
+    "all": "Visi",
+    "none": "Nė vienas",
+    "yes": "Taip",
+    "no": "Ne",
+    "optional": "Neprivaloma",
+    "required": "Privaloma",
+    "characters": "simbolių",
+    "remaining": "liko",
+    "of": "iš"
+  },
+
+  "_comment_errors": "===== ERROR MESSAGES =====",
+  "errors": {
+    "general": "Įvyko nenumatyta klaida",
+    "network": "Tinklo klaida. Patikrinkite savo interneto ryšį",
+    "unauthorized": "Neturite teisių atlikti šį veiksmą",
+    "notFound": "Puslapis nerastas",
+    "serverError": "Serverio klaida. Bandykite vėliau",
+    "validation": "Patikrinkite įvestus duomenis",
+    "timeout": "Užklausa užtruko per ilgai"
+  },
+
+  "_comment_success": "===== SUCCESS MESSAGES =====",
+  "success": {
+    "profileUpdated": "Profilis atnaujintas sėkmingai",
+    "passwordChanged": "Slaptažodis pakeistas sėkmingai",
+    "emailSent": "El. laiškas išsiųstas sėkmingai",
+    "applicationSubmitted": "Prašymas pateiktas sėkmingai",
+    "accountCreated": "Paskyra sukurta sėkmingai",
+    "loggedIn": "Prisijungta sėkmingai",
+    "loggedOut": "Atsijungta sėkmingai"
+  }
+}

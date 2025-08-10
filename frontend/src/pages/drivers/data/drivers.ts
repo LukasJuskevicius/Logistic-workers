@@ -2,69 +2,69 @@
 export const driverPositions = [
   {
     id: 1,
-    title: "CE Category Driver",
-    location: "International Routes",
+    titleKey: "drivers.positions.jobs.ceCategoryDriver",
+    locationKey: "drivers.positions.categories.international",
     salary: "€2,500 - €3,500",
     type: "Full-time",
     experience: "3+ years",
-    benefits: ["Health Insurance", "Paid Leave", "Performance Bonus", "Modern Fleet"],
-    requirements: ["CE License", "Medical Certificate", "Clean Record", "English B1"],
-    description: "Long-distance driving across Europe with competitive rates and excellent benefits."
+    benefits: ["benefits.healthInsurance", "benefits.paidLeave", "benefits.performanceBonus", "benefits.modernFleet"],
+    requirements: ["requirements.ceLicense", "requirements.medicalCertificate", "requirements.cleanRecord", "requirements.englishB1"],
+    descriptionKey: "drivers.positions.descriptions.ceCategoryDriver"
   },
   {
     id: 2,
-    title: "Local Delivery Driver",
-    location: "Lithuania",
+    titleKey: "drivers.positions.jobs.localDeliveryDriver",
+    locationKey: "drivers.positions.locations.lithuania",
     salary: "€1,800 - €2,200",
     type: "Full-time",
     experience: "1+ year",
-    benefits: ["Flexible Hours", "Health Insurance", "Company Vehicle", "Family Time"],
-    requirements: ["B/C License", "Medical Certificate", "Clean Record", "Local Language"],
-    description: "Local delivery routes with regular hours and family-friendly schedule."
+    benefits: ["benefits.flexibleHours", "benefits.healthInsurance", "benefits.companyVehicle", "benefits.familyTime"],
+    requirements: ["requirements.bcLicense", "requirements.medicalCertificate", "requirements.cleanRecord", "requirements.localLanguage"],
+    descriptionKey: "drivers.positions.descriptions.localDeliveryDriver"
   },
   {
     id: 3,
-    title: "Refrigerated Transport Driver",
-    location: "Netherlands",
+    titleKey: "drivers.positions.jobs.refrigeratedTransportDriver",
+    locationKey: "drivers.positions.locations.netherlands",
     salary: "€2,800 - €3,800",
     type: "Full-time",
     experience: "3+ years",
-    benefits: ["Premium Pay", "Specialized Training", "Modern Equipment", "Health Insurance"],
-    requirements: ["CE License", "Cold Chain Experience", "Medical Certificate", "English B1"],
-    description: "Specialized cold chain logistics with temperature-controlled vehicles."
+    benefits: ["benefits.premiumPay", "benefits.specializedTraining", "benefits.modernEquipment", "benefits.healthInsurance"],
+    requirements: ["requirements.ceLicense", "requirements.coldChainExperience", "requirements.medicalCertificate", "requirements.englishB1"],
+    descriptionKey: "drivers.positions.descriptions.refrigeratedTransportDriver"
   },
   {
     id: 4,
-    title: "Express Delivery Driver",
-    location: "Germany",
+    titleKey: "drivers.positions.jobs.expressDeliveryDriver",
+    locationKey: "drivers.positions.locations.germany",
     salary: "€2,200 - €3,000",
     type: "Full-time",
     experience: "2+ years",
-    benefits: ["Flexible Schedule", "Performance Bonus", "Health Insurance", "Modern Fleet"],
-    requirements: ["C/CE License", "Medical Certificate", "Clean Record", "German B1"],
-    description: "Fast-paced delivery with premium rates and flexible scheduling."
+    benefits: ["benefits.flexibleHours", "benefits.performanceBonus", "benefits.healthInsurance", "benefits.modernFleet"],
+    requirements: ["requirements.cceLicense", "requirements.medicalCertificate", "requirements.cleanRecord", "requirements.germanB1"],
+    descriptionKey: "drivers.positions.descriptions.expressDeliveryDriver"
   },
   {
     id: 5,
-    title: "Heavy Goods Vehicle Driver",
-    location: "Belgium",
+    titleKey: "drivers.positions.jobs.heavyGoodsVehicleDriver",
+    locationKey: "drivers.positions.locations.belgium",
     salary: "€2,500 - €3,200",
     type: "Full-time",
     experience: "4+ years",
-    benefits: ["Comprehensive Training", "Career Development", "Competitive Salary", "Health Insurance"],
-    requirements: ["CE License", "Heavy Vehicle Experience", "Medical Certificate", "French/Dutch B1"],
-    description: "Large vehicle operation with comprehensive benefits and training."
+    benefits: ["benefits.comprehensiveTraining", "benefits.careerDevelopment", "benefits.competitiveSalary", "benefits.healthInsurance"],
+    requirements: ["requirements.ceLicense", "requirements.heavyVehicleExperience", "requirements.medicalCertificate", "requirements.frenchDutchB1"],
+    descriptionKey: "drivers.positions.descriptions.heavyGoodsVehicleDriver"
   },
   {
     id: 6,
-    title: "International Freight Driver",
-    location: "Europe-wide",
+    titleKey: "drivers.positions.jobs.internationalFreightDriver",
+    locationKey: "drivers.positions.locations.europe-wide",
     salary: "€3,000 - €4,000",
     type: "Full-time",
     experience: "5+ years",
-    benefits: ["International Travel", "Premium Pay", "Modern Fleet", "Comprehensive Insurance"],
-    requirements: ["CE License", "International Experience", "Medical Certificate", "English B2"],
-    description: "Cross-border freight transport with excellent compensation and modern fleet."
+    benefits: ["benefits.internationalTravel", "benefits.premiumPay", "benefits.modernFleet", "benefits.comprehensiveInsurance"],
+    requirements: ["requirements.ceLicense", "requirements.internationalExperience", "requirements.medicalCertificate", "requirements.englishB2"],
+    descriptionKey: "drivers.positions.descriptions.internationalFreightDriver"
   }
 ];
 
@@ -72,141 +72,161 @@ export const driverTestimonials = [
   {
     id: 1,
     name: "Mikhail Petrov",
-    position: "CE Category Driver",
+    positionKey: "drivers.positions.jobs.ceCategoryDriver",
     company: "European Logistics Ltd",
     rating: 5,
-    comment: "Working with Logistic Workers has been amazing. They found me a great position with excellent pay and benefits. The support team is always available when I need help.",
-    results: "€3,200/month salary, 4 weeks paid leave, health insurance"
+    commentKey: "drivers.testimonials.items.1.comment",
+    resultsKey: "drivers.testimonials.items.1.results"
   },
   {
     id: 2,
     name: "Anna Kowalska",
-    position: "Local Delivery Driver",
+    positionKey: "drivers.positions.jobs.localDeliveryDriver",
     company: "Polish Distribution Co",
     rating: 5,
-    comment: "I wanted to stay close to my family while having a good job. Logistic Workers found me the perfect local position with flexible hours and great benefits.",
-    results: "€2,100/month salary, family-friendly schedule, company car"
+    commentKey: "drivers.testimonials.items.2.comment",
+    resultsKey: "drivers.testimonials.items.2.results"
   },
   {
     id: 3,
     name: "Hans Mueller",
-    position: "International Freight Driver",
+    positionKey: "drivers.positions.jobs.internationalFreightDriver",
     company: "German Express",
     rating: 5,
-    comment: "I've been driving internationally for 3 years now. The pay is excellent, the equipment is modern, and I get to see different countries. Highly recommended!",
-    results: "€3,800/month salary, modern fleet, international travel"
+    commentKey: "drivers.testimonials.items.3.comment",
+    resultsKey: "drivers.testimonials.items.3.results"
   },
   {
     id: 4,
     name: "Pierre Dubois",
-    position: "Refrigerated Transport Driver",
+    positionKey: "drivers.positions.jobs.refrigeratedTransportDriver",
     company: "Dutch Cold Chain",
     rating: 5,
-    comment: "The specialized training I received was excellent. I work with modern temperature-controlled vehicles and earn premium rates. Great career opportunity.",
-    results: "€3,500/month salary, specialized training, modern equipment"
+    commentKey: "drivers.testimonials.items.4.comment",
+    resultsKey: "drivers.testimonials.items.4.results"
   }
 ];
 
 export const driverProcess = [
   {
     step: 1,
-    title: "Submit Application",
-    description: "Fill out our application form with your experience and preferences",
-    duration: "10 minutes",
+    titleKey: "drivers.process.submitApplication.title",
+    descriptionKey: "drivers.process.submitApplication.description",
+    durationKey: "drivers.process.submitApplication.duration",
     icon: "document"
   },
   {
     step: 2,
-    title: "We Review & Match",
-    description: "Our team reviews your profile and matches you with suitable positions",
-    duration: "1-2 days",
+    titleKey: "drivers.process.weReviewAndMatch.title",
+    descriptionKey: "drivers.process.weReviewAndMatch.description",
+    durationKey: "drivers.process.weReviewAndMatch.duration",
     icon: "search"
   },
   {
     step: 3,
-    title: "Interview & Selection",
-    description: "Interview with companies and select the best opportunity for you",
-    duration: "1 week",
+    titleKey: "drivers.process.interviewAndSelection.title",
+    descriptionKey: "drivers.process.interviewAndSelection.description",
+    durationKey: "drivers.process.interviewAndSelection.duration",
     icon: "check"
   }
 ];
 
 export const driverRequirements = [
   {
-    category: "Personal Documents",
+    categoryKey: "drivers.requirements.personalDocuments",
     items: [
-      "Valid driving license",
-      "Medical certificate",
-      "Passport or ID card",
-      "Clean criminal record"
+      "drivers.requirements.items.validDrivingLicense",
+      "drivers.requirements.items.medicalCertificate",
+      "drivers.requirements.items.passportOrIdCard",
+      "drivers.requirements.items.cleanCriminalRecord"
     ]
   },
   {
-    category: "Professional Experience",
+    categoryKey: "drivers.requirements.professionalExperience",
     items: [
-      "Relevant driving experience",
-      "Training certificates",
-      "Employment history",
-      "Reference letters"
+      "drivers.requirements.items.relevantDrivingExperience",
+      "drivers.requirements.items.trainingCertificates",
+      "drivers.requirements.items.employmentHistory",
+      "drivers.requirements.items.referenceLetters"
     ]
   },
   {
-    category: "Language Skills",
+    categoryKey: "drivers.requirements.languageSkills",
     items: [
-      "Basic English (B1 level)",
-      "Local language (if required)",
-      "Communication skills",
-      "Documentation reading"
+      "drivers.requirements.items.basicEnglish",
+      "drivers.requirements.items.localLanguage",
+      "drivers.requirements.items.communicationSkills",
+      "drivers.requirements.items.documentationReading"
     ]
   }
 ];
 
 export const driverStats = [
-  { number: "2000+", label: "Drivers Placed", icon: "users" },
-  { number: "8", label: "European Countries", icon: "globe" },
-  { number: "95%", label: "Driver Satisfaction", icon: "star" },
-  { number: "24h", label: "Response Time", icon: "clock" }
+  { number: "2000+", labelKey: "drivers.hero.stats.driversPlaced", icon: "users" },
+  { number: "8", labelKey: "drivers.hero.stats.europeanCountries", icon: "globe" },
+  { number: "95%", labelKey: "drivers.hero.stats.driverSatisfaction", icon: "star" },
+  { number: "24h", labelKey: "drivers.hero.stats.responseTime", icon: "clock" }
 ];
 
 export const driverBenefits = [
   {
-    title: "Competitive Salaries",
-    description: "Earn €1,800 - €4,000 per month depending on experience and position",
+    titleKey: "drivers.benefits.competitiveSalaries.title",
+    descriptionKey: "drivers.benefits.competitiveSalaries.description",
     icon: "money",
-    details: ["Above market rates", "Performance bonuses", "Overtime pay", "Holiday pay"]
+    details: [
+      "drivers.benefits.competitiveSalaries.details.0",
+      "drivers.benefits.competitiveSalaries.details.1",
+      "drivers.benefits.competitiveSalaries.details.2",
+      "drivers.benefits.competitiveSalaries.details.3"
+    ]
   },
   {
-    title: "Excellent Benefits",
-    description: "Comprehensive benefits package including health insurance and paid leave",
+    titleKey: "drivers.benefits.excellentBenefits.title",
+    descriptionKey: "drivers.benefits.excellentBenefits.description",
     icon: "shield-check",
-    details: ["Health insurance", "Paid vacation", "Sick leave", "Pension plan"]
+    details: [
+      "drivers.benefits.excellentBenefits.details.0",
+      "drivers.benefits.excellentBenefits.details.1",
+      "drivers.benefits.excellentBenefits.details.2",
+      "drivers.benefits.excellentBenefits.details.3"
+    ]
   },
   {
-    title: "Modern Equipment",
-    description: "Work with the latest vehicles and technology for safety and comfort",
+    titleKey: "drivers.benefits.modernEquipment.title",
+    descriptionKey: "drivers.benefits.modernEquipment.description",
     icon: "truck",
-    details: ["Modern fleet", "GPS navigation", "Safety equipment", "Comfort features"]
+    details: [
+      "drivers.benefits.modernEquipment.details.0",
+      "drivers.benefits.modernEquipment.details.1",
+      "drivers.benefits.modernEquipment.details.2",
+      "drivers.benefits.modernEquipment.details.3"
+    ]
   },
   {
-    title: "Career Growth",
-    description: "Opportunities for advancement and specialized training programs",
+    titleKey: "drivers.benefits.careerGrowth.title",
+    descriptionKey: "drivers.benefits.careerGrowth.description",
     icon: "trending-up",
-    details: ["Training programs", "Career advancement", "Skill development", "Certifications"]
+    details: [
+      "drivers.benefits.careerGrowth.details.0",
+      "drivers.benefits.careerGrowth.details.1",
+      "drivers.benefits.careerGrowth.details.2",
+      "drivers.benefits.careerGrowth.details.3"
+    ]
   }
 ];
 
 export const driverJobCategories = [
-  { id: 'international', name: 'International Routes', count: 2, avgSalary: '€3,200' },
-  { id: 'local', name: 'Local Positions', count: 2, avgSalary: '€2,000' },
-  { id: 'specialized', name: 'Specialized Transport', count: 1, avgSalary: '€3,500' },
-  { id: 'express', name: 'Express Delivery', count: 1, avgSalary: '€2,600' }
+  { id: 'international', nameKey: 'drivers.positions.categories.international', count: 2, avgSalary: '€3,200' },
+  { id: 'local', nameKey: 'drivers.positions.categories.local', count: 2, avgSalary: '€2,000' },
+  { id: 'specialized', nameKey: 'drivers.positions.categories.specialized', count: 1, avgSalary: '€3,500' },
+  { id: 'express', nameKey: 'drivers.positions.categories.express', count: 1, avgSalary: '€2,600' }
 ];
 
 export const driverLocations = [
-  { id: 'lithuania', name: 'Lithuania', count: 1, avgSalary: '€2,000' },
-  { id: 'netherlands', name: 'Netherlands', count: 1, avgSalary: '€3,300' },
-  { id: 'germany', name: 'Germany', count: 1, avgSalary: '€2,600' },
-  { id: 'belgium', name: 'Belgium', count: 1, avgSalary: '€2,850' },
-  { id: 'europe-wide', name: 'Europe-wide', count: 1, avgSalary: '€3,500' },
-  { id: 'poland', name: 'Poland', count: 1, avgSalary: '€2,250' }
+  { id: 'lithuania', nameKey: 'drivers.positions.locations.lithuania', count: 1, avgSalary: '€2,000' },
+  { id: 'netherlands', nameKey: 'drivers.positions.locations.netherlands', count: 1, avgSalary: '€3,300' },
+  { id: 'germany', nameKey: 'drivers.positions.locations.germany', count: 1, avgSalary: '€2,600' },
+  { id: 'belgium', nameKey: 'drivers.positions.locations.belgium', count: 1, avgSalary: '€2,850' },
+  { id: 'europe-wide', nameKey: 'drivers.positions.locations.europe-wide', count: 1, avgSalary: '€3,500' },
+  { id: 'poland', nameKey: 'drivers.positions.locations.poland', count: 1, avgSalary: '€2,250' }
 ];

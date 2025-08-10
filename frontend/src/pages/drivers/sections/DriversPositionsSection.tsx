@@ -1,230 +1,168 @@
-import { useState } from 'react';
-import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
+import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { driverPositions, driverJobCategories, driverLocations } from '../data/drivers';
 
-interface DriversPositionsSectionProps {
-  onNavigate: (page: string) => void;
-}
+const DriversPositionsSection: React.FC = () => {
+  const { t } = useTranslation();
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedLocation, setSelectedLocation] = useState('all');
 
-export function DriversPositionsSection({ onNavigate }: DriversPositionsSectionProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedLocation, setSelectedLocation] = useState<string>('all');
-
-  // Filter positions based on selected filters
-  const filteredPositions = driverPositions.filter(position => {
-    const matchesCategory = selectedCategory === 'all' || 
-      (selectedCategory === 'international' && position.location.includes('International')) ||
-      (selectedCategory === 'local' && !position.location.includes('International')) ||
-      (selectedCategory === 'specialized' && position.title.includes('Refrigerated')) ||
-      (selectedCategory === 'express' && position.title.includes('Express'));
-    
-    const matchesLocation = selectedLocation === 'all' || 
-      position.location.toLowerCase().includes(selectedLocation);
-
-    return matchesCategory && matchesLocation;
-  });
+  // Filter positions based on selected category and location
+  const filteredPositions = useMemo(() => {
+    return driverPositions.filter(position => {
+      const categoryMatch = selectedCategory === 'all' || 
+        (selectedCategory === 'international' && position.locationKey.includes('international')) ||
+        (selectedCategory === 'local' && position.locationKey.includes('local')) ||
+        (selectedCategory === 'specialized' && position.locationKey.includes('specialized')) ||
+        (selectedCategory === 'express' && position.locationKey.includes('express'));
+      
+      const locationMatch = selectedLocation === 'all' || 
+        position.locationKey.includes(selectedLocation);
+      
+      return categoryMatch && locationMatch;
+    });
+  }, [selectedCategory, selectedLocation]);
 
   return (
-    <BackgroundPattern 
-      pattern="dots" 
-      opacity={0.03}
-      className="relative py-12 md:py-24 bg-gradient-to-br from-white via-orange-50 to-red-50 overflow-hidden"
-    >
-      {/* Floating decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
-        <div className="absolute top-20 left-10 w-24 h-24 opacity-10 animate-pulse">
-          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-            <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" fill="none" />
-            <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="1" fill="none" />
-            <circle cx="50" cy="50" r="15" stroke="currentColor" strokeWidth="1" fill="none" />
-          </svg>
-        </div>
-        
-        <div className="absolute bottom-20 right-10 w-32 h-32 opacity-10 animate-bounce">
-          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-            <path d="M20 80 L50 20 L80 80 Z" fill="currentColor" />
-            <circle cx="50" cy="60" r="8" fill="white" />
-          </svg>
-        </div>
-        
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 opacity-10 animate-spin">
-          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-            <path d="M50 10 L90 50 L50 90 L10 50 Z" fill="currentColor" />
-            <circle cx="50" cy="50" r="20" fill="white" />
-          </svg>
-        </div>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Enhanced header */}
-        <div className="text-center mb-8 md:mb-16">
-          <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/80 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
-            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-orange-500 rounded-full mr-1.5 md:mr-2"></div>
-            <span className="text-orange-700 font-medium">Available Positions</span>
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          {/* Badge */}
+          <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            {t('drivers.positions.badge')}
           </div>
-          
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-orange-800 to-red-900 bg-clip-text text-transparent">
-            Latest Opportunities
+
+          {/* Title */}
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            {t('drivers.positions.title')}
           </h2>
-          
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
-            Browse through our latest job opportunities and find the perfect position for your skills
+
+          {/* Subtitle */}
+          <p className="text-xl text-gray-600 leading-relaxed">
+            {t('drivers.positions.subtitle')}
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-6 md:mb-8">
-          <button
-            onClick={() => setSelectedCategory('all')}
-            className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
-              selectedCategory === 'all'
-                ? 'bg-orange-600 text-white shadow-lg'
-                : 'bg-white text-gray-600 hover:bg-orange-50 border border-gray-200'
-            }`}
-          >
-            All Categories ({driverPositions.length})
-          </button>
-          {driverJobCategories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
-                selectedCategory === category.id
-                  ? 'bg-orange-600 text-white shadow-lg'
-                  : 'bg-white text-gray-600 hover:bg-orange-50 border border-gray-200'
-              }`}
-            >
-              {category.name} ({category.count}) - {category.avgSalary}
-            </button>
-          ))}
-        </div>
+        {/* Filters */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
+            {/* Category Filter */}
+            <div className="flex-1">
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="all">{t('drivers.positions.allCategories')}</option>
+                {driverJobCategories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {t(category.nameKey)} ({category.count} {t('drivers.positions.positions')}, {t('drivers.positionsMeta.avg')} {category.avgSalary})
+                  </option>
+                ))}
+              </select>
+            </div>
 
-        {/* Location Filter */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 md:mb-12">
-          <button
-            onClick={() => setSelectedLocation('all')}
-            className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
-              selectedLocation === 'all'
-                ? 'bg-red-600 text-white shadow-lg'
-                : 'bg-white text-gray-600 hover:bg-red-50 border border-gray-200'
-            }`}
-          >
-            All Locations
-          </button>
-          {driverLocations.slice(0, 6).map((location) => (
-            <button
-              key={location.id}
-              onClick={() => setSelectedLocation(location.id)}
-              className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
-                selectedLocation === location.id
-                  ? 'bg-red-600 text-white shadow-lg'
-                  : 'bg-white text-gray-600 hover:bg-red-50 border border-gray-200'
-              }`}
-            >
-              {location.name} - {location.avgSalary}
-            </button>
-          ))}
+            {/* Location Filter */}
+            <div className="flex-1">
+              <select
+                value={selectedLocation}
+                onChange={(e) => setSelectedLocation(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="all">{t('drivers.positions.allLocations')}</option>
+                {driverLocations.map((location) => (
+                  <option key={location.id} value={location.id}>
+                    {t(location.nameKey)} ({location.count} {t('drivers.positions.positions')}, {t('drivers.positionsMeta.avg')} {location.avgSalary})
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
 
         {/* Results Count */}
-        <div className="text-center mb-6 md:mb-8">
-          <p className="text-sm md:text-base text-gray-600">
-            Showing <span className="font-semibold text-orange-600">{filteredPositions.length}</span> of <span className="font-semibold">{driverPositions.length}</span> positions
+        <div className="max-w-4xl mx-auto mb-8 text-center">
+          <p className="text-gray-600">
+            {t('drivers.positions.showing')} <span className="font-semibold">{filteredPositions.length}</span> {t('drivers.positions.of')} {driverPositions.length} {t('drivers.positions.positions')}
           </p>
         </div>
 
         {/* Positions Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {filteredPositions.map((position) => (
-            <div key={position.id} className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
-              <div className="flex flex-col h-full">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {filteredPositions.map((position) => (
+              <div key={position.id} className="bg-white border border-gray-200 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 {/* Header */}
-                <div className="mb-4 md:mb-6">
-                  <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3">
-                    {position.title}
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {t(position.titleKey)}
                   </h3>
-                  <div className="flex items-center text-sm md:text-base text-gray-600 mb-2">
-                    <svg className="w-4 h-4 md:w-5 md:h-5 mr-2 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    {position.location}
+                  <p className="text-blue-600 font-medium">
+                    {t(position.locationKey)}
+                  </p>
+                </div>
+
+                {/* Details */}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <span className="text-gray-500 text-sm">{t('drivers.positionsMeta.experience')}</span>
+                    <p className="font-semibold text-gray-900">{position.experience}</p>
                   </div>
-                  <div className="text-2xl md:text-3xl font-bold text-orange-600 mb-2">
-                    {position.salary}
-                  </div>
-                  <div className="flex items-center text-sm text-gray-500">
-                    <span className="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs font-medium mr-2">
-                      {position.type}
-                    </span>
-                    <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs font-medium">
-                      {position.experience}
-                    </span>
+                  <div>
+                    <span className="text-gray-500 text-sm">{t('drivers.positionsMeta.salary')}</span>
+                    <p className="font-semibold text-green-600">{position.salary}</p>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 flex-grow">
-                  {position.description}
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {t(position.descriptionKey)}
                 </p>
 
                 {/* Benefits */}
-                <div className="mb-4 md:mb-6">
-                  <h4 className="text-sm md:text-base font-semibold text-gray-900 mb-2 md:mb-3">Benefits:</h4>
-                  <div className="flex flex-wrap gap-1 md:gap-2">
-                    {position.benefits.slice(0, 3).map((benefit, index) => (
-                      <span key={index} className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-medium">
-                        {benefit}
+                <div className="mb-6">
+                  <h4 className="font-semibold text-gray-900 mb-3">{t('drivers.positions.benefits')}</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {position.benefits.map((benefit, index) => (
+                      <span key={index} className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+                        {t(benefit)}
                       </span>
                     ))}
-                    {position.benefits.length > 3 && (
-                      <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs font-medium">
-                        +{position.benefits.length - 3} more
-                      </span>
-                    )}
                   </div>
                 </div>
 
                 {/* Requirements */}
-                <div className="mb-4 md:mb-6">
-                  <h4 className="text-sm md:text-base font-semibold text-gray-900 mb-2 md:mb-3">Requirements:</h4>
-                  <div className="flex flex-wrap gap-1 md:gap-2">
-                    {position.requirements.slice(0, 2).map((requirement, index) => (
-                      <span key={index} className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium">
-                        {requirement}
+                <div className="mb-6">
+                  <h4 className="font-semibold text-gray-900 mb-3">{t('drivers.positions.requirements')}</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {position.requirements.map((requirement, index) => (
+                      <span key={index} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                        {t(requirement)}
                       </span>
                     ))}
-                    {position.requirements.length > 2 && (
-                      <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs font-medium">
-                        +{position.requirements.length - 2} more
-                      </span>
-                    )}
                   </div>
                 </div>
 
-                {/* Apply Button */}
-                <button className="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-3 md:py-4 px-4 md:px-6 rounded-xl md:rounded-2xl font-semibold hover:from-orange-700 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  Apply Now
+                {/* CTA Button */}
+                <button className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
+                  {t('drivers.positions.applyNow')}
                 </button>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* Bottom decorative wave */}
-        <div className="mt-8 md:mt-16 relative hidden md:block">
-          <svg viewBox="0 0 1200 60" fill="none" className="w-full h-auto">
-            <path d="M0 60 L0 30 Q300 0 600 30 T1200 30 L1200 60 Z" fill="url(#positions-gradient)" />
-            <defs>
-              <linearGradient id="positions-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#F97316" stopOpacity="0.1" />
-                <stop offset="50%" stopColor="#DC2626" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#F97316" stopOpacity="0.1" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
+        {/* No Results Message */}
+        {filteredPositions.length === 0 && (
+          <div className="max-w-4xl mx-auto text-center py-12">
+            <p className="text-gray-500 text-lg">
+              {t('drivers.positionsMeta.noResults')}
+            </p>
+          </div>
+        )}
       </div>
-    </BackgroundPattern>
+    </section>
   );
-}
+};
+
+export default DriversPositionsSection;

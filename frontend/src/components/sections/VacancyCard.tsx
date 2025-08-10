@@ -1,12 +1,28 @@
 import { Card } from '../ui/Card';
+import { useTranslation } from 'react-i18next';
 
-// Vacancy data interface
-interface Vacancy {
+// Vacancy data interfaces
+interface VacancyWithKeys {
+  id: number;
+  titleKey: string;
+  locationKey: string;
+  descriptionKey: string;
+}
+
+interface VacancyWithText {
   id: number;
   title: string;
   location: string;
   description: string;
+  salary?: string;
+  type?: string;
+  experience?: string;
+  benefits?: string[];
+  company?: string;
+  posted?: string;
 }
+
+type Vacancy = VacancyWithKeys | VacancyWithText;
 
 // Vacancy card props
 interface VacancyCardProps {
@@ -16,6 +32,8 @@ interface VacancyCardProps {
 
 // Specific vacancy card implementation with aligned buttons
 export function VacancyCard({ vacancy, onNavigate }: VacancyCardProps) {
+  const { t } = useTranslation();
+  
   return (
     <Card className="flex flex-col h-full">
       {/* Card Header */}
@@ -31,21 +49,21 @@ export function VacancyCard({ vacancy, onNavigate }: VacancyCardProps) {
           </div>
         </div>
         <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-          {vacancy.title}
+          {'titleKey' in vacancy ? t(vacancy.titleKey) : vacancy.title}
         </h3>
         <div className="flex items-center text-gray-600 mb-3 md:mb-4">
           <svg className="w-3 h-3 md:w-4 md:h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          <span className="text-sm md:text-base font-medium">{vacancy.location}</span>
+          <span className="text-sm md:text-base font-medium">{'locationKey' in vacancy ? t(vacancy.locationKey) : vacancy.location}</span>
         </div>
       </div>
 
       {/* Card Content - flex-grow to push button to bottom */}
       <div className="flex-grow mb-4 md:mb-6">
         <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-          {vacancy.description}
+          {'descriptionKey' in vacancy ? t(vacancy.descriptionKey) : vacancy.description}
         </p>
       </div>
 
@@ -55,7 +73,7 @@ export function VacancyCard({ vacancy, onNavigate }: VacancyCardProps) {
           onClick={() => onNavigate('vacancies')}
           className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 md:py-3 px-4 md:px-6 rounded-lg md:rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm md:text-base"
         >
-          View Details
+          {t('vacancies.viewDetails')}
           <svg className="w-3 h-3 md:w-4 md:h-4 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>

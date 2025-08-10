@@ -1,22 +1,715 @@
 {
-    "navigation": {
-      "home": "Home",
-      "vacancies": "Vacancies",
-      "forClients": "For Clients",
-      "forDrivers": "For Drivers",
-      "contact": "Contact"
+  "navigation": {
+    "home": "Home",
+    "vacancies": "Vacancies",
+    "forClients": "For Clients",
+    "forDrivers": "For Drivers",
+    "contact": "Contact"
+  },
+  "benefits": {
+    "healthInsurance": "Health Insurance",
+    "paidLeave": "Paid Leave",
+    "performanceBonus": "Performance Bonus",
+    "modernFleet": "Modern Fleet",
+    "flexibleHours": "Flexible Hours",
+    "companyVehicle": "Company Vehicle",
+    "familyTime": "Family Time",
+    "premiumPay": "Premium Pay",
+    "specializedTraining": "Specialized Training",
+    "modernEquipment": "Modern Equipment",
+    "comprehensiveTraining": "Comprehensive Training",
+    "careerDevelopment": "Career Development",
+    "competitiveSalary": "Competitive Salary",
+    "internationalTravel": "International Travel",
+    "comprehensiveInsurance": "Comprehensive Insurance"
+  },
+  "requirements": {
+    "ceLicense": "CE License",
+    "medicalCertificate": "Medical Certificate",
+    "cleanRecord": "Clean Record",
+    "englishB1": "English B1",
+    "bcLicense": "B/C License",
+    "localLanguage": "Local Language",
+    "coldChainExperience": "Cold Chain Experience",
+    "cceLicense": "C/CE License",
+    "germanB1": "German B1",
+    "heavyVehicleExperience": "Heavy Vehicle Experience",
+    "frenchDutchB1": "French/Dutch B1",
+    "internationalExperience": "International Experience",
+    "englishB2": "English B2"
+  },
+  "auth": {
+    "register": "Register",
+    "login": "Login",
+    "signOut": "Sign Out",
+    "hello": "Hello"
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "companyName": "Logistic Workers",
+    "companyDescription": "Connecting skilled drivers with transportation companies across Europe.",
+    "navigation": "Navigation",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "vacancies": "Vacancies",
+    "contact": "Contact",
+    "contactInfo": "Contact",
+    "email": "info@logisticworkers.com",
+    "phone": "+370 600 00000",
+    "copyright": "All rights reserved.",
+    "madeWithLove": "Made with ❤️ for drivers"
+  },
+  "home": {
+    "hero": {
+      "mainTitle": "Driving Your Business Forward",
+      "subtitle": "Connecting professional drivers with leading logistics companies across Europe",
+      "findOpportunityButton": "Find Your Next Opportunity",
+      "getStartedButton": "Get Started Today",
+      "stats": {
+        "activeDrivers": "Active Drivers",
+        "partnerCompanies": "Partner Companies",
+        "successfulPlacements": "Successful Placements"
+      }
     },
-    "auth": {
-      "register": "Register",
-      "login": "Login",
-      "signOut": "Sign Out",
-      "hello": "Hello"
+    "whyChooseUs": {
+      "badge": "Why Choose Us",
+      "title": "The Partner You Can Rely On",
+      "subtitle": "We combine expertise, efficiency, and personal care to deliver exceptional results for both drivers and companies.",
+      "features": {
+        "vettedProfessionals": {
+          "title": "Vetted Professionals",
+          "description": "We thoroughly screen every driver to ensure quality and reliability."
+        },
+        "fastEfficient": {
+          "title": "Fast & Efficient",
+          "description": "Quickly fill your vacancies so your business keeps moving forward."
+        },
+        "personalSupport": {
+          "title": "Personal Support",
+          "description": "Dedicated support for both our clients and drivers."
+        }
+      }
     },
-    "home": {
-      "welcomeTitle": "Welcome to Logistic Workers",
-      "welcomeSubtitle": "The premier platform connecting skilled drivers with transportation companies across Europe.",
-      "imDriver": "I'm a Driver",
-      "imEmployer": "I'm an Employer",
-      "viewVacancies": "View Vacancies"
+    "latestOpportunities": {
+      "title": "Latest Driving Opportunities",
+      "subtitle": "Discover exciting career opportunities with leading logistics companies across Europe.",
+      "features": {
+        "newPositions": "New positions added daily",
+        "competitiveSalaries": "Competitive salaries",
+        "professionalGrowth": "Professional growth"
+      },
+      "categories": {
+        "international": "International",
+        "local": "Local",
+        "specialized": "Specialized"
+      },
+      "viewAllButton": "View All Vacancies",
+      "jobs": {
+        "ceCategoryDriver": "CE Category Driver",
+        "localDeliveryDriver": "Local Delivery Driver",
+        "warehouseToStoreDriver": "Warehouse to Store Driver",
+        "refrigeratedTransportDriver": "Refrigerated Transport Driver",
+        "expressDeliveryDriver": "Express Delivery Driver",
+        "heavyGoodsVehicleDriver": "Heavy Goods Vehicle Driver"
+      },
+      "locations": {
+        "internationalRoutes": "International Routes",
+        "lithuania": "Lithuania",
+        "poland": "Poland",
+        "netherlands": "Netherlands",
+        "germany": "Germany",
+        "belgium": "Belgium",
+        "spain": "Spain",
+        "uk": "UK",
+        "romania": "Romania"
+      },
+      "descriptions": {
+        "ceCategoryDriver": "Long-distance driving across Europe with competitive rates and excellent benefits.",
+        "localDeliveryDriver": "Local delivery routes with regular hours and family-friendly schedule.",
+        "warehouseToStoreDriver": "Distribution driving with modern vehicles and comprehensive training.",
+        "refrigeratedTransportDriver": "Specialized cold chain logistics with temperature-controlled vehicles.",
+        "expressDeliveryDriver": "Fast-paced delivery with premium rates and flexible scheduling.",
+        "heavyGoodsVehicleDriver": "Large vehicle operation with comprehensive benefits and training."
+      }
+    },
+    "testimonials": {
+      "title": "What Our Drivers Say",
+      "subtitle": "Real feedback from our satisfied drivers",
+      "viewMoreButton": "View More",
+      "trustIndicators": {
+        "fiveStarReviews": "5-star reviews from drivers",
+        "verifiedDrivers": "Verified drivers across Europe",
+        "europeWide": "Europe-wide coverage"
+      },
+      "roles": {
+        "professionalDriver": "Professional Driver",
+        "businessOwner": "Business Owner",
+        "internationalDriver": "International Driver",
+        "fleetManager": "Fleet Manager",
+        "longHaulDriver": "Long-haul Driver",
+        "hrManager": "HR Manager"
+      },
+      "experience": {
+        "fivePlusYears": "5+ Years Experience",
+        "eightPlusYears": "8+ Years Experience",
+        "tenPlusYears": "10+ Years Experience"
+      },
+      "companies": {
+        "logisticsInc": "Logistics Inc.",
+        "transportSolutions": "Transport Solutions Ltd",
+        "europeanLogistics": "European Logistics"
+      }
+    },
+    "callToAction": {
+      "title": "Ready to Get Started?",
+      "subtitle": "We'll get back to you within 24 hours",
+      "getStartedButton": "Get Started Now",
+      "learnMoreButton": "Learn More",
+      "buttons": {
+        "lookingForDrivers": "Looking for Drivers?",
+        "lookingForJob": "Looking for a Job?"
+      }
     }
+  },
+  "vacancies": {
+    "title": "Vacancies",
+    "subtitle": "Find your ideal job in logistics",
+    "hero": {
+      "filterBadge": "Filter & Search",
+      "title": "Find Your Perfect Position",
+      "subtitle": "Browse through our latest vacancies and find the opportunity that matches your skills and preferences"
+    },
+    "search": {
+      "placeholder": "Search vacancies by title, description, or location..."
+    },
+    "filters": {
+      "location": "Location",
+      "experience": "Experience",
+      "salary": "Salary",
+      "type": "Type",
+      "applyFilters": "Apply Filters",
+      "clearFilters": "Clear Filters",
+      "allCategories": "All Categories",
+      "allLocations": "All Locations"
+    },
+    "categories": {
+      "international": "International Routes",
+      "local": "Local Positions",
+      "specialized": "Specialized Transport",
+      "express": "Express Delivery",
+      "heavy": "Heavy Goods"
+    },
+    "results": {
+      "showing": "Showing",
+      "of": "of",
+      "vacancies": "vacancies"
+    },
+    "noResults": {
+      "title": "No vacancies found",
+      "description": "Try adjusting your search criteria or check back later for new opportunities.",
+      "clearFilters": "Clear Filters"
+    },
+    "sortBy": "Sort by",
+    "loadMore": "Load More",
+    "applyNow": "Apply Now",
+    "viewDetails": "View Details",
+    "backToHome": "Back to Home",
+    "heroSection": {
+      "liveBadge": "Live Opportunities",
+      "title": "Available Vacancies",
+      "subtitle": "Find your next opportunity in the logistics industry across Europe",
+      "stats": {
+        "activePositions": "Active Positions",
+        "europeanCountries": "European Countries",
+        "responseTime": "Response Time"
+      }
+    },
+    "locations": {
+      "internationalRoutes": "International Routes",
+      "lithuania": "Lithuania",
+      "poland": "Poland",
+      "netherlands": "Netherlands",
+      "germany": "Germany",
+      "belgium": "Belgium",
+      "europe-wide": "Europe-wide",
+      "latvia": "Latvia",
+      "estonia": "Estonia"
+    },
+    "jobs": {
+      "ceCategoryDriver": "CE Category Driver",
+      "localDeliveryDriver": "Local Delivery Driver",
+      "warehouseToStoreDriver": "Warehouse to Store Driver",
+      "refrigeratedTransportDriver": "Refrigerated Transport Driver",
+      "expressDeliveryDriver": "Express Delivery Driver",
+      "heavyGoodsVehicleDriver": "Heavy Goods Vehicle Driver",
+      "internationalFreightDriver": "International Freight Driver",
+      "localDistributionDriver": "Local Distribution Driver",
+      "specializedEquipmentDriver": "Specialized Equipment Driver"
+    },
+    "descriptions": {
+      "ceCategoryDriver": "Long-distance driving across Europe with competitive rates and excellent benefits.",
+      "localDeliveryDriver": "Local delivery routes with regular hours and family-friendly schedule.",
+      "warehouseToStoreDriver": "Distribution driving with modern vehicles and comprehensive training.",
+      "refrigeratedTransportDriver": "Specialized cold chain logistics with temperature-controlled vehicles.",
+      "expressDeliveryDriver": "Fast-paced delivery with premium rates and flexible scheduling.",
+      "heavyGoodsVehicleDriver": "Large vehicle operation with comprehensive benefits and training.",
+      "internationalFreightDriver": "Cross-border freight transport with excellent compensation and modern fleet. Travel across Europe.",
+      "localDistributionDriver": "Local distribution routes with regular hours and excellent working conditions. Family-friendly schedule.",
+      "specializedEquipmentDriver": "Specialized equipment operation with comprehensive training and excellent benefits package."
+    }
+  },
+  
+  "clients": {
+    "title": "For Clients",
+    "subtitle": "Find qualified drivers for your business",
+    "hero": {
+      "badge": "Trusted by 500+ Companies",
+      "title": "Find Reliable Drivers",
+      "subtitle": "Connect with qualified, pre-screened drivers across Europe. Save time and money with our comprehensive recruitment solutions.",
+      "ctaGetStarted": "Get Started Today",
+      "backToHome": "Back to Home"
+    },
+    "stats": {
+      "building": "Companies Served",
+      "users": "Drivers Placed",
+      "star": "Client Satisfaction",
+      "clock": "Response Time"
+    },
+    "services": {
+      "badge": "Our Services",
+      "title": "Comprehensive Solutions",
+      "subtitle": "We provide end-to-end driver recruitment and management services to meet all your logistics needs",
+      "items": {
+        "1": {
+          "title": "Driver Recruitment",
+          "description": "Comprehensive driver sourcing and screening across Europe",
+          "features": [
+            "CE Category Drivers",
+            "Local & International Routes",
+            "Background Verification",
+            "License Validation"
+          ],
+          "timeFrame": "2-4 weeks"
+        },
+        "2": {
+          "title": "Compliance Management",
+          "description": "Ensure all drivers meet EU regulations and company standards",
+          "features": [
+            "EU Driving License Verification",
+            "Medical Certificates",
+            "Training Records",
+            "Safety Standards"
+          ],
+          "timeFrame": "Ongoing"
+        },
+        "3": {
+          "title": "Ongoing Support",
+          "description": "Continuous support and replacement services",
+          "features": [
+            "24/7 Support",
+            "Driver Replacement",
+            "Performance Monitoring",
+            "Regular Updates"
+          ],
+          "timeFrame": "Always Available"
+        }
+      }
+    },
+    "process": {
+      "badge": "Simple Process",
+      "title": "How It Works",
+      "subtitle": "Our streamlined process makes finding qualified drivers simple and efficient",
+      "items": {
+        "1": {
+          "title": "Submit Requirements",
+          "description": "Tell us about your specific needs, routes, and requirements",
+          "duration": "1-2 days"
+        },
+        "2": {
+          "title": "We Source Candidates",
+          "description": "Our team finds and screens qualified drivers for your needs",
+          "duration": "2-3 weeks"
+        },
+        "3": {
+          "title": "You Choose & Hire",
+          "description": "Review candidates and select the best fit for your team",
+          "duration": "1 week"
+        }
+      },
+      "bottomCta": {
+        "text": "Ready to get started? Contact us today and we'll begin the process immediately.",
+        "button": "Start Your Search"
+      }
+    },
+    "requirements": {
+      "badge": "What We Need",
+      "title": "Requirements & Process",
+      "subtitle": "To provide you with the best service, we need some information from your company",
+      "categories": [
+        {
+          "title": "Company Information",
+          "items": [
+            "Company registration documents",
+            "Transport license",
+            "Insurance certificates",
+            "Safety management system"
+          ]
+        },
+        {
+          "title": "Job Requirements",
+          "items": [
+            "Detailed job description",
+            "Route specifications",
+            "Vehicle requirements",
+            "Experience level needed"
+          ]
+        },
+        {
+          "title": "Contract Terms",
+          "items": [
+            "Employment duration",
+            "Salary range",
+            "Benefits package",
+            "Working conditions"
+          ]
+        }
+      ],
+      "cta": {
+        "title": "Ready to Get Started?",
+        "description": "Don't worry if you don't have all documents ready. We can help you gather the necessary information and guide you through the process.",
+        "pills": {
+          "quickResponse": "Quick Response Time",
+          "expertGuidance": "Expert Guidance",
+          "freeConsultation": "Free Consultation"
+        }
+      }
+    },
+    "testimonials": {
+      "badge": "Success Stories",
+      "title": "What Our Clients Say",
+      "subtitle": "Real testimonials from companies that have transformed their operations with our services",
+      "items": {
+        "1": {
+          "comment": "Logistic Workers helped us find qualified drivers in just 3 weeks. Their screening process is thorough and reliable.",
+          "results": "Reduced hiring time by 60%",
+          "position": "Fleet Manager",
+          "company": "European Logistics Ltd"
+        },
+        "2": {
+          "comment": "Excellent service and support. They understand our specific requirements and always deliver quality candidates.",
+          "results": "Improved driver retention by 40%",
+          "position": "Operations Director",
+          "company": "Transport Solutions"
+        },
+        "3": {
+          "comment": "Professional team that goes above and beyond. They've become our trusted partner for all driver recruitment needs.",
+          "results": "Increased operational efficiency by 35%",
+          "position": "HR Manager",
+          "company": "International Freight Co"
+        }
+      }
+    }
+  },
+  "drivers": {
+    "hero": {
+      "badge": "Trusted by 2000+ Drivers",
+      "title": "Find Your Next Opportunity",
+      "subtitle": "Join thousands of drivers across Europe. Competitive salaries, excellent benefits, and modern equipment await you.",
+      "applyNow": "Apply Now",
+      "backToHome": "Back to Home",
+      "stats": {
+        "driversPlaced": "Drivers Placed",
+        "europeanCountries": "European Countries",
+        "driverSatisfaction": "Driver Satisfaction",
+        "responseTime": "Response Time"
+      }
+    },
+    "benefits": {
+      "badge": "Driver Benefits",
+      "title": "What You Get",
+      "subtitle": "Comprehensive benefits and excellent working conditions for all our drivers",
+      "competitiveSalaries": {
+        "title": "Competitive Salaries",
+        "description": "Earn €1,800 - €4,000 per month depending on experience and position",
+        "details": ["Above market rates", "Performance bonuses", "Overtime pay", "Holiday pay"]
+      },
+      "excellentBenefits": {
+        "title": "Excellent Benefits",
+        "description": "Comprehensive benefits package including health insurance and paid leave",
+        "details": ["Health insurance", "Paid vacation", "Sick leave", "Pension plan"]
+      },
+      "modernEquipment": {
+        "title": "Modern Equipment",
+        "description": "Work with the latest vehicles and technology for safety and comfort",
+              "details": ["Modern fleet", "GPS navigation", "Safety equipment", "Comfort features"]
+    },
+    "careerGrowth": {
+      "title": "Career Growth",
+      "description": "Opportunities for advancement and specialized training programs",
+      "details": ["Training programs", "Career advancement", "Skill development", "Certifications"]
+    }
+  },
+    "positions": {
+      "badge": "Available Positions",
+      "title": "Latest Opportunities",
+      "subtitle": "Browse through our latest job opportunities and find the perfect position for your skills",
+      "allCategories": "All Categories",
+      "allLocations": "All Locations",
+      "showing": "Showing",
+      "of": "of",
+      "positions": "positions",
+      "benefits": "Benefits:",
+      "requirements": "Requirements:",
+      "more": "more",
+      "applyNow": "Apply Now",
+      "noResults": "No positions found",
+      "salary": "Salary",
+      "fullTime": "Full-time",
+      "experience": "Experience",
+      "years": "years",
+      "plus": "+",
+      "avg": "avg.",
+      "categories": {
+        "international": "International Routes",
+        "local": "Local Positions",
+        "specialized": "Specialized Transport",
+        "express": "Express Delivery"
+      },
+      "locations": {
+        "lithuania": "Lithuania",
+        "netherlands": "Netherlands",
+        "germany": "Germany",
+        "belgium": "Belgium",
+        "europe-wide": "Europe-wide",
+        "poland": "Poland"
+      },
+      "jobs": {
+        "ceCategoryDriver": "CE Category Driver",
+        "localDeliveryDriver": "Local Delivery Driver",
+        "refrigeratedTransportDriver": "Refrigerated Transport Driver",
+        "expressDeliveryDriver": "Express Delivery Driver",
+        "heavyGoodsVehicleDriver": "Heavy Goods Vehicle Driver",
+        "internationalFreightDriver": "International Freight Driver"
+      },
+      "descriptions": {
+        "ceCategoryDriver": "Long-distance driving across Europe with competitive rates and excellent benefits.",
+        "localDeliveryDriver": "Local delivery routes with regular hours and family-friendly schedule.",
+        "refrigeratedTransportDriver": "Specialized cold chain logistics with temperature-controlled vehicles.",
+        "expressDeliveryDriver": "Fast-paced delivery with premium rates and flexible scheduling.",
+        "heavyGoodsVehicleDriver": "Large vehicle operation with comprehensive benefits and training.",
+        "internationalFreightDriver": "Cross-border freight transport with excellent compensation and modern fleet."
+      }
+    },
+    "positionsMeta": {
+      "noResults": "No positions found",
+      "salary": "Salary",
+      "experience": "Experience",
+      "avg": "avg."
+    },
+    "requirements": {
+      "badge": "What We Need",
+      "title": "Requirements & Process",
+      "subtitle": "To help you find the best opportunities, we need some information from you",
+      "personalDocuments": "Personal Documents",
+      "professionalExperience": "Professional Experience",
+      "languageSkills": "Language Skills",
+      "readyToApply": "Ready to Apply?",
+      "dontWorry": "Don't worry if you don't have all documents ready. We can help you gather the necessary information and guide you through the process.",
+      "quickApplication": "Quick Application",
+      "expertGuidance": "Expert Guidance",
+      "freeSupport": "Free Support",
+      "items": {
+        "validDrivingLicense": "Valid driving license",
+        "medicalCertificate": "Medical certificate",
+        "passportOrIdCard": "Passport or ID card",
+        "cleanCriminalRecord": "Clean criminal record",
+        "relevantDrivingExperience": "Relevant driving experience",
+        "trainingCertificates": "Training certificates",
+        "employmentHistory": "Employment history",
+        "referenceLetters": "Reference letters",
+        "basicEnglish": "Basic English (B1 level)",
+        "localLanguage": "Local language (if required)",
+        "communicationSkills": "Communication skills",
+        "documentationReading": "Documentation reading"
+      }
+    },
+    "process": {
+      "badge": "Simple Process",
+      "title": "How It Works",
+      "subtitle": "Our streamlined application process makes finding your next job simple and efficient",
+      "submitApplication": {
+        "title": "Submit Application",
+        "description": "Fill out our application form with your experience and preferences",
+        "duration": "10 minutes"
+      },
+      "weReviewAndMatch": {
+        "title": "We Review & Match",
+        "description": "Our team reviews your profile and matches you with suitable positions",
+        "duration": "1-2 days"
+      },
+      "interviewAndSelection": {
+        "title": "Interview & Selection",
+        "description": "Interview with companies and select the best opportunity for you",
+        "duration": "1 week"
+      },
+      "readyToStart": "Ready to start your journey? Apply now and we'll begin the process immediately.",
+      "startApplication": "Start Application"
+    },
+    "testimonials": {
+      "badge": "Success Stories",
+      "title": "What Our Drivers Say",
+      "subtitle": "Real testimonials from drivers who have found great opportunities with our help",
+      "items": {
+        "1": {
+          "comment": "Working with Logistic Workers has been amazing. They found me a great position with excellent pay and benefits. The support team is always available when I need help.",
+          "results": "€3,200/month salary, 4 weeks paid leave, health insurance",
+          "position": "CE Category Driver",
+          "company": "European Logistics Ltd"
+        },
+        "2": {
+          "comment": "I wanted to stay close to my family while having a good job. Logistic Workers found me the perfect local position with flexible hours and great benefits.",
+          "results": "€2,100/month salary, family-friendly schedule, company car",
+          "position": "Local Delivery Driver",
+          "company": "Polish Distribution Co"
+        },
+        "3": {
+          "comment": "I've been driving internationally for 3 years now. The pay is excellent, the equipment is modern, and I get to see different countries. Highly recommended!",
+          "results": "€3,800/month salary, modern fleet, international travel",
+          "position": "International Freight Driver",
+          "company": "German Express"
+        },
+        "4": {
+          "comment": "The specialized training I received was excellent. I work with modern temperature-controlled vehicles and earn premium rates. Great career opportunity.",
+          "results": "€3,500/month salary, specialized training, modern equipment",
+          "position": "Refrigerated Transport Driver",
+          "company": "Dutch Cold Chain"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch with us",
+    "hero": {
+      "supportBadge": "24/7 Support Available",
+      "title": "Get In Touch",
+      "subtitle": "Ready to start your journey? Contact our team for personalized assistance and expert guidance."
+    },
+    "form": {
+      "send": "Send Message",
+      "title": "Let's Start a Conversation",
+      "description": "Tell us about your needs and we'll get back to you within 24 hours.",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "company": "Company Name",
+      "inquiryType": "Inquiry Type",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your needs, requirements, or questions...",
+      "sending": "Sending Message..."
+    },
+    "info": {
+      "title": "Contact Information",
+      "subtitle": "Multiple Ways to Connect",
+      "description": "Choose the method that works best for you. We're here to help 24/7.",
+      "businessInfo": "Business Information",
+      "availabilityTitle": "When We're Available",
+      "availabilityDescription": "Our team is ready to assist you during these hours.",
+      "businessHours": "Business Hours",
+      "additionalInfo": "Additional Information",
+      "responseTime": "We respond to all inquiries within 24 hours, even on weekends.",
+      "confidentiality": "All communications are confidential and secure.",
+      "coverage": "We serve clients across 8 European countries.",
+      "immediateAssistance": "Need Immediate Assistance?",
+      "urgentMatters": "For urgent matters, call us directly or send an email for fastest response.",
+      "callNow": "Call Now",
+      "sendEmail": "Send Email"
+    },
+    "success": "Message sent successfully! We will get back to you within 24 hours.",
+    "error": "Failed to send message. Please try again."
+  },
+  "register": {
+    "title": "Register",
+    "subtitle": "Create your account",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "userType": "User Type",
+      "driver": "Driver",
+      "employer": "Employer",
+      "register": "Register",
+      "alreadyHaveAccount": "Already have an account?",
+      "signIn": "Sign In"
+    },
+    "validation": {
+      "required": "This field is required",
+      "invalidEmail": "Invalid email format",
+      "passwordMismatch": "Passwords do not match",
+      "passwordLength": "Password must be at least 6 characters"
+    }
+  },
+  "login": {
+    "title": "Login",
+    "subtitle": "Sign in to your account",
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "login": "Login",
+      "dontHaveAccount": "Don't have an account?",
+      "register": "Register"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "view": "View",
+    "download": "Download",
+    "upload": "Upload",
+    "select": "Select",
+    "all": "All",
+    "none": "None",
+    "yes": "Yes",
+    "no": "No",
+    "optional": "Optional",
+    "required": "Required",
+    "characters": "characters",
+    "remaining": "remaining",
+    "of": "of"
+  },
+  "errors": {
+    "general": "An unexpected error occurred",
+    "network": "Network error. Check your internet connection",
+    "unauthorized": "You don't have permission to perform this action",
+    "notFound": "Page not found",
+    "serverError": "Server error. Please try again later",
+    "validation": "Please check your input data",
+    "timeout": "Request timed out"
+  },
+  "success": {
+    "profileUpdated": "Profile updated successfully",
+    "passwordChanged": "Password changed successfully",
+    "emailSent": "Email sent successfully",
+    "applicationSubmitted": "Application submitted successfully",
+    "accountCreated": "Account created successfully",
+    "loggedIn": "Logged in successfully",
+    "loggedOut": "Logged out successfully"
   }
+}

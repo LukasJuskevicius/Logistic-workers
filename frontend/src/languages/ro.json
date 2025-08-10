@@ -1,22 +1,745 @@
 {
-    "navigation": {
-      "home": "Acasă",
-      "vacancies": "Locuri de muncă",
-      "forClients": "Pentru angajatori",
-      "forDrivers": "Pentru șoferi",
-      "contact": "Contact"
+  "navigation": {
+    "home": "Acasă",
+    "vacancies": "Locuri de muncă",
+    "forClients": "Pentru angajatori",
+    "forDrivers": "Pentru șoferi",
+    "contact": "Contact"
+  },
+  "benefits": {
+    "healthInsurance": "Asigurare de sănătate",
+    "paidLeave": "Concediu plătit",
+    "performanceBonus": "Bonus de performanță",
+    "modernFleet": "Flotă modernă",
+    "flexibleHours": "Program flexibil",
+    "companyVehicle": "Mașină de serviciu",
+    "familyTime": "Timp cu familia",
+    "premiumPay": "Plată premium",
+    "specializedTraining": "Instruire specializată",
+    "modernEquipment": "Echipamente moderne",
+    "comprehensiveTraining": "Instruire completă",
+    "careerDevelopment": "Dezvoltare în carieră",
+    "competitiveSalary": "Salariu competitiv",
+    "internationalTravel": "Călătorii internaționale",
+    "comprehensiveInsurance": "Asigurare completă"
+  },
+  "requirements": {
+    "ceLicense": "Permis CE",
+    "medicalCertificate": "Certificat medical",
+    "cleanRecord": "Cazier curat",
+    "englishB1": "Engleză B1",
+    "bcLicense": "Permis B/C",
+    "localLanguage": "Limba locală",
+    "coldChainExperience": "Experiență în lanț frigorific",
+    "cceLicense": "Permis C/CE",
+    "germanB1": "Germană B1",
+    "heavyVehicleExperience": "Experiență cu vehicule grele",
+    "frenchDutchB1": "Franceză/Olandeză B1",
+    "internationalExperience": "Experiență internațională",
+    "englishB2": "Engleză B2"
+  },
+  "auth": {
+    "register": "Înregistrare",
+    "login": "Autentificare",
+    "signOut": "Deconectare",
+    "hello": "Bună"
+  },
+  "footer": {
+    "aboutUs": "Despre noi",
+    "companyName": "Logistic Workers",
+    "companyDescription": "Conectăm șoferii calificați cu companiile de transport din toată Europa.",
+    "navigation": "Navigare",
+    "quickLinks": "Link-uri rapide",
+    "home": "Acasă",
+    "vacancies": "Locuri de muncă",
+    "contact": "Contact",
+    "contactInfo": "Contact",
+    "email": "info@logisticworkers.com",
+    "phone": "+370 600 00000",
+    "copyright": "Toate drepturile rezervate.",
+    "madeWithLove": "Făcut cu ❤️ pentru șoferi"
+  },
+  "home": {
+    "hero": {
+      "mainTitle": "Conducem afacerea ta înainte",
+      "subtitle": "Conectăm șoferii profesioniști cu companiile logistice de top din toată Europa",
+      "findOpportunityButton": "Găsește-ți următoarea oportunitate",
+      "getStartedButton": "Începe astăzi",
+      "stats": {
+        "activeDrivers": "Șoferi activi",
+        "partnerCompanies": "Companii partenere",
+        "successfulPlacements": "Plasări reușite"
+      }
     },
-    "auth": {
-      "register": "Înregistrare",
-      "login": "Autentificare",
-      "signOut": "Deconectare",
-      "hello": "Bună"
+    "whyChooseUs": {
+      "badge": "De ce să ne alegi pe noi",
+      "title": "Partenerul pe care te poți baza",
+      "subtitle": "Combinăm expertiza, eficiența și grija personală pentru a livra rezultate excepționale atât pentru șoferi, cât și pentru companii.",
+      "features": {
+        "vettedProfessionals": {
+          "title": "Profesioniști verificați",
+          "description": "Verificăm temeinic fiecare șofer pentru a asigura calitatea și fiabilitatea."
+        },
+        "fastEfficient": {
+          "title": "Rapid și eficient",
+          "description": "Completăm rapid locurile tale vacante pentru ca afacerea ta să continue să avanseze."
+        },
+        "personalSupport": {
+          "title": "Suport personal",
+          "description": "Suport dedicat atât pentru clienții noștri, cât și pentru șoferi."
+        }
+      }
     },
-    "home": {
-      "welcomeTitle": "Bun venit la Logistic Workers",
-      "welcomeSubtitle": "Platforma de top care conectează șoferii experimentați cu companiile de transport din toată Europa.",
-      "imDriver": "Sunt șofer",
-      "imEmployer": "Sunt angajator",
-      "viewVacancies": "Vezi locurile de muncă"
+    "latestOpportunities": {
+      "title": "Cele mai noi oportunități pentru șoferi",
+      "subtitle": "Descoperă oportunități de carieră captivante cu companiile logistice de top din toată Europa.",
+      "features": {
+        "newPositions": "Pozitii noi adăugate zilnic",
+        "competitiveSalaries": "Salarii competitive",
+        "professionalGrowth": "Creștere profesională"
+      },
+      "categories": {
+        "international": "Internațional",
+        "local": "Local",
+        "specialized": "Specializat"
+      },
+      "viewAllButton": "Vezi toate locurile vacante",
+      "jobs": {
+        "ceCategoryDriver": "Șofer Categoria CE",
+        "localDeliveryDriver": "Șofer de Livrare Locală",
+        "warehouseToStoreDriver": "Șofer Depozit-Magazin",
+        "refrigeratedTransportDriver": "Șofer Transport Refrigerat",
+        "expressDeliveryDriver": "Șofer Livrare Express",
+        "heavyGoodsVehicleDriver": "Șofer Vehicul Mărfuri Grele"
+      },
+      "locations": {
+        "internationalRoutes": "Rute Internaționale",
+        "lithuania": "Lituania",
+        "poland": "Polonia",
+        "netherlands": "Olanda",
+        "germany": "Germania",
+        "belgium": "Belgia",
+        "spain": "Spania",
+        "uk": "Regatul Unit",
+        "romania": "România"
+      },
+      "descriptions": {
+        "ceCategoryDriver": "Conducere pe distanțe lungi în toată Europa cu tarife competitive și beneficii excelente.",
+        "localDeliveryDriver": "Rute de livrare locală cu program regulat și program prietenos cu familia.",
+        "warehouseToStoreDriver": "Conducere de distribuție cu vehicule moderne și instruire comprehensivă.",
+        "refrigeratedTransportDriver": "Logistică specializată în lanțul frigorific cu vehicule controlate termic.",
+        "expressDeliveryDriver": "Livrare rapidă cu tarife premium și programare flexibilă.",
+        "heavyGoodsVehicleDriver": "Operare vehicule mari cu beneficii comprehensive și instruire."
+      }
+    },
+    "testimonials": {
+      "title": "Ce spun șoferii noștri",
+      "subtitle": "Feedback real de la șoferii noștri mulțumiți",
+      "viewMoreButton": "Vezi mai multe",
+      "trustIndicators": {
+        "fiveStarReviews": "Recenzii cu 5 stele de la șoferi",
+        "verifiedDrivers": "Șoferi verificați în toată Europa",
+        "europeWide": "Acoperire în toată Europa"
+      },
+      "roles": {
+        "professionalDriver": "Șofer Profesional",
+        "businessOwner": "Proprietar de Afacere",
+        "internationalDriver": "Șofer Internațional",
+        "fleetManager": "Manager de Flotă",
+        "longHaulDriver": "Șofer de Lungă Distanță",
+        "hrManager": "Manager HR"
+      },
+      "experience": {
+        "fivePlusYears": "5+ ani experiență",
+        "eightPlusYears": "8+ ani experiență",
+        "tenPlusYears": "10+ ani experiență"
+      },
+      "companies": {
+        "logisticsInc": "Logistics Inc.",
+        "transportSolutions": "Transport Solutions Ltd",
+        "europeanLogistics": "European Logistics"
+      }
+    },
+    "callToAction": {
+      "title": "Gata să începi?",
+      "subtitle": "Vom răspunde în 24 de ore",
+      "getStartedButton": "Începe acum",
+      "learnMoreButton": "Află mai multe",
+      "buttons": {
+        "lookingForDrivers": "Cauți șoferi?",
+        "lookingForJob": "Cauți un loc de muncă?"
+      }
     }
+  },
+  "vacancies": {
+    "title": "Locuri de muncă",
+    "subtitle": "Găsește-ți locul de muncă ideal în logistică",
+    "hero": {
+      "filterBadge": "Filtrează și caută",
+      "title": "Găsește-ți poziția perfectă",
+      "subtitle": "Navighează prin ultimele noastre locuri de muncă și găsește oportunitatea care se potrivește cu abilitățile și preferințele tale"
+    },
+    "search": {
+      "placeholder": "Caută locuri de muncă după titlu, descriere sau locație..."
+    },
+    "filters": {
+      "location": "Locația",
+      "experience": "Experiența",
+      "salary": "Salariul",
+      "type": "Tipul",
+      "applyFilters": "Aplică filtrele",
+      "clearFilters": "Șterge filtrele",
+      "allCategories": "Toate categoriile",
+      "allLocations": "Toate locațiile"
+    },
+    "categories": {
+      "international": "Rute internaționale",
+      "local": "Poziții locale",
+      "specialized": "Transport specializat",
+      "express": "Livrare expres",
+      "heavy": "Mărfuri grele"
+    },
+    "results": {
+      "showing": "Se afișează",
+      "of": "din",
+      "vacancies": "locuri de muncă"
+    },
+    "noResults": {
+      "title": "Nu s-au găsit locuri vacante",
+      "description": "Încearcă să ajustezi criteriile de căutare sau verifică mai târziu pentru oportunități noi.",
+      "clearFilters": "Șterge filtrele"
+    },
+    "sortBy": "Sortează după",
+    "loadMore": "Încarcă mai multe",
+    "applyNow": "Aplică acum",
+    "viewDetails": "Vezi detaliile",
+    "backToHome": "Înapoi la Acasă",
+    "heroSection": {
+      "liveBadge": "Oportunități active",
+      "title": "Locuri disponibile",
+      "subtitle": "Găsește-ți următoarea oportunitate în industria logistică din toată Europa",
+      "stats": {
+        "activePositions": "Posturi active",
+        "europeanCountries": "Țări europene",
+        "responseTime": "Timp de răspuns"
+      }
+    },
+    "locations": {
+      "internationalRoutes": "Rute internaționale",
+      "lithuania": "Lituania",
+      "poland": "Polonia",
+      "netherlands": "Olanda",
+      "germany": "Germania",
+      "belgium": "Belgia",
+      "europe-wide": "În toată Europa",
+      "latvia": "Letonia",
+      "estonia": "Estonia"
+    },
+    "jobs": {
+      "ceCategoryDriver": "Șofer Categoria CE",
+      "localDeliveryDriver": "Șofer de Livrare Locală",
+      "warehouseToStoreDriver": "Șofer Depozit-Magazin",
+      "refrigeratedTransportDriver": "Șofer Transport Refrigerat",
+      "expressDeliveryDriver": "Șofer Livrare Express",
+      "heavyGoodsVehicleDriver": "Șofer Vehicul Mărfuri Grele",
+      "internationalFreightDriver": "Șofer Transport Internațional",
+      "localDistributionDriver": "Șofer Distribuție Locală",
+      "specializedEquipmentDriver": "Șofer Echipamente Specializate"
+    },
+    "descriptions": {
+      "ceCategoryDriver": "Conducere pe distanțe lungi în toată Europa cu tarife competitive și beneficii excelente.",
+      "localDeliveryDriver": "Rute de livrare locală cu program regulat și program prietenos cu familia.",
+      "warehouseToStoreDriver": "Conducere de distribuție cu vehicule moderne și instruire comprehensivă.",
+      "refrigeratedTransportDriver": "Logistică specializată în lanțul frigorific cu vehicule controlate termic.",
+      "expressDeliveryDriver": "Livrare rapidă cu tarife premium și programare flexibilă.",
+      "heavyGoodsVehicleDriver": "Operare vehicule mari cu beneficii comprehensive și instruire.",
+      "internationalFreightDriver": "Transport internațional cu compensații excelente și flotă modernă. Călătorii în toată Europa.",
+      "localDistributionDriver": "Rute locale de distribuție cu program regulat și condiții excelente de lucru. Program prietenos cu familia.",
+      "specializedEquipmentDriver": "Operare echipamente specializate cu instruire completă și pachet excelent de beneficii."
+    }
+  },
+  "drivers": {
+    "title": "Pentru șoferi",
+    "subtitle": "Descoperă-ți calea spre succes",
+    "hero": {
+      "trustedBadge": "De încredere pentru 2000+ șoferi",
+      "title": "Găsește-ți următoarea oportunitate",
+      "subtitle": "Alătură-te miilor de șoferi din toată Europa. Salarii competitive, beneficii excelente și echipamente moderne te așteaptă.",
+      "applyNow": "Aplică acum"
+    },
+    "opportunities": {
+      "title": "Oportunități",
+      "international": "Rute internaționale",
+      "local": "Rute locale",
+      "flexible": "Programe flexibile",
+      "competitive": "Salarii competitive"
+    },
+    "process": {
+      "title": "Cum funcționează",
+      "register": "Înregistrează-te",
+      "profile": "Creează profilul",
+      "match": "Primește oferte potrivite",
+      "start": "Începe să lucrezi"
+    },
+    "benefits": {
+      "title": "Beneficii",
+      "competitive": "Salarii competitive",
+      "modern": "Echipamente moderne",
+      "support": "Suport 24/7",
+      "growth": "Creșterea carierei"
+    },
+    "requirements": {
+      "title": "Cerințe",
+      "license": "Permis de conducere valid",
+      "experience": "Experiență de conducere",
+      "clean": "Certificat de conducere curat",
+      "language": "Abilități lingvistice"
+    }
+  },
+  "clients": {
+    "title": "Pentru angajatori",
+    "subtitle": "Găsește șoferi calificați pentru afacerea ta",
+    "hero": {
+      "badge": "De încredere pentru 500+ companii",
+      "title": "Găsește șoferi de încredere",
+      "subtitle": "Conectează-te cu șoferi calificați, verificați dinainte din toată Europa. Economisește timp și bani cu soluțiile noastre complete de recrutare.",
+      "ctaGetStarted": "Începe astăzi",
+      "backToHome": "Înapoi la început"
+    },
+    "stats": {
+      "building": "Companii servite",
+      "users": "Șoferi plasați",
+      "star": "Satisfacția clienților",
+      "clock": "Timpul de răspuns"
+    },
+    "services": {
+      "badge": "Serviciile noastre",
+      "title": "Soluții complete",
+      "subtitle": "Oferim servicii complete de recrutare și gestionare a șoferilor pentru a-ți satisface toate nevoile logistice",
+      "items": {
+        "1": {
+          "title": "Recrutarea șoferilor",
+          "description": "Proces complet de căutare și verificare a șoferilor în toată Europa",
+          "features": [
+            "Șoferi categoria CE",
+            "Rute locale și internaționale",
+            "Verificarea antecedențelor",
+            "Validarea permisului"
+          ],
+          "timeFrame": "2-4 săptămâni"
+        },
+        "2": {
+          "title": "Gestionarea conformității",
+          "description": "Asigură-te că toți șoferii îndeplinesc reglementările UE și standardele companiei",
+          "features": [
+            "Verificarea permisului de conducere UE",
+            "Certificatele medicale",
+            "Înregistrările de formare",
+            "Standardele de siguranță"
+          ],
+          "timeFrame": "Continuu"
+        },
+        "3": {
+          "title": "Suport continuu",
+          "description": "Suport continuu și servicii de înlocuire",
+          "features": [
+            "Suport 24/7",
+            "Înlocuirea șoferilor",
+            "Monitorizarea performanței",
+            "Actualizări regulate"
+          ],
+          "timeFrame": "Întotdeauna disponibil"
+        }
+      }
+    },
+    "process": {
+      "badge": "Proces simplu",
+      "title": "Cum funcționează",
+      "subtitle": "Procesul nostru simplificat face căutarea șoferilor calificați simplă și eficientă",
+      "items": {
+        "1": {
+          "title": "Trimite cerințele",
+          "description": "Spune-ne despre nevoile tale specifice, rutele și cerințele",
+          "duration": "1-2 zile"
+        },
+        "2": {
+          "title": "Căutăm candidații",
+          "description": "Echipa noastră găsește și verifică șoferi calificați pentru nevoile tale",
+          "duration": "2-3 săptămâni"
+        },
+        "3": {
+          "title": "Tu alegi și angajezi",
+          "description": "Revizuiește candidații și selectează cel mai potrivit pentru echipa ta",
+          "duration": "1 săptămână"
+        }
+      },
+      "bottomCta": {
+        "text": "Gata să începi? Contactează-ne astăzi și vom începe procesul imediat.",
+        "button": "Începe căutarea"
+      }
+    },
+    "requirements": {
+      "badge": "Ce avem nevoie",
+      "title": "Cerințe și proces",
+      "subtitle": "Pentru a-ți oferi cea mai bună serviciu, avem nevoie de câteva informații despre compania ta",
+      "categories": [
+        {
+          "title": "Informații despre companie",
+          "items": [
+            "Documentele de înregistrare a companiei",
+            "Licența de transport",
+            "Certificatele de asigurare",
+            "Sistemul de gestionare a siguranței"
+          ]
+        },
+        {
+          "title": "Cerințele jobului",
+          "items": [
+            "Descrierea detaliată a jobului",
+            "Specificațiile rutei",
+            "Cerințele vehiculului",
+            "Nivelul de experiență necesar"
+          ]
+        },
+        {
+          "title": "Termenii contractului",
+          "items": [
+            "Durata angajării",
+            "Gama de salariu",
+            "Pachetul de beneficii",
+            "Condițiile de lucru"
+          ]
+        }
+      ],
+      "cta": {
+        "title": "Gata să începi?",
+        "description": "Nu-ți face griji dacă nu ai toate documentele gata. Te putem ajuta să aduni informațiile necesare și să te ghidăm prin proces.",
+        "pills": {
+          "quickResponse": "Timp de răspuns rapid",
+          "expertGuidance": "Ghidare expertă",
+          "freeConsultation": "Consultare gratuită"
+        }
+      }
+    },
+    "testimonials": {
+      "badge": "Povești de succes",
+      "title": "Ce spun clienții noștri",
+      "subtitle": "Testimoniale reale de la companii care și-au transformat operațiunile cu serviciile noastre",
+      "items": {
+        "1": {
+          "comment": "Logistic Workers ne-a ajutat să găsim șoferi calificați în doar 3 săptămâni. Procesul lor de verificare este temeinic și de încredere.",
+          "results": "Reducerea timpului de angajare cu 60%",
+          "position": "Manager de flotă",
+          "company": "European Logistics Ltd"
+        },
+        "2": {
+          "comment": "Serviciu excelent și suport. Înțeleg cerințele noastre specifice și întotdeauna oferă candidați de calitate.",
+          "results": "Îmbunătățirea retenției șoferilor cu 40%",
+          "position": "Director operațional",
+          "company": "Transport Solutions"
+        },
+        "3": {
+          "comment": "Echipă profesională care merge dincolo de ceea ce se cere. Au devenit partenerul nostru de încredere pentru toate nevoile de recrutare a șoferilor.",
+          "results": "Creșterea eficienței operaționale cu 35%",
+          "position": "Manager HR",
+          "company": "International Freight Co"
+        }
+      }
+    }
+  },
+  "drivers": {
+    "hero": {
+      "badge": "De încredere pentru 2000+ șoferi",
+      "title": "Găsește-ți următoarea oportunitate",
+      "subtitle": "Alătură-te miilor de șoferi din toată Europa. Salarii competitive, beneficii excelente și echipamente moderne te așteaptă.",
+      "applyNow": "Aplică acum",
+      "backToHome": "Înapoi la acasă",
+      "stats": {
+        "driversPlaced": "Șoferi plasați",
+        "europeanCountries": "Țări europene",
+        "driverSatisfaction": "Satisfacția șoferilor",
+        "responseTime": "Timpul de răspuns"
+      }
+    },
+    "benefits": {
+      "badge": "Beneficiile șoferilor",
+      "title": "Ce primești",
+      "subtitle": "Beneficii complete și condiții excelente de muncă pentru toți șoferii noștri",
+      "competitiveSalaries": {
+        "title": "Salarii competitive",
+        "description": "Câștigă €1,800 - €4,000 pe lună în funcție de experiență și poziție",
+        "details": ["Peste ratele de piață", "Bonusuri de performanță", "Plată pentru ore suplimentare", "Plată pentru concedii"]
+      },
+      "excellentBenefits": {
+        "title": "Beneficii excelente",
+        "description": "Pachet complet de beneficii inclusiv asigurare de sănătate și concedii plătite",
+        "details": ["Asigurare de sănătate", "Concedii plătite", "Concedii medicale", "Plan de pensie"]
+      },
+      "modernEquipment": {
+        "title": "Echipamente moderne",
+        "description": "Lucrează cu cele mai noi vehicule și tehnologie pentru siguranță și confort",
+        "details": ["Flotă modernă", "Navigație GPS", "Echipamente de siguranță", "Caracteristici de confort"]
+      },
+      "careerGrowth": {
+        "title": "Creșterea carierei",
+        "description": "Oportunități de avansare și programe de formare specializată",
+        "details": ["Programe de formare", "Avansarea în carieră", "Dezvoltarea abilităților", "Certificări"]
+      }
+    },
+    "positions": {
+      "badge": "Pozitii disponibile",
+      "title": "Ultimele oportunități",
+      "subtitle": "Navighează prin ultimele oportunități de muncă și găsește poziția perfectă pentru abilitățile tale",
+      "allCategories": "Toate categoriile",
+      "allLocations": "Toate locațiile",
+      "showing": "Se afișează",
+      "of": "din",
+      "positions": "poziții",
+      "benefits": "Beneficii:",
+      "requirements": "Cerințe:",
+      "more": "mai multe",
+      "applyNow": "Aplică acum",
+      "categories": {
+        "international": "Rute internaționale",
+        "local": "Pozitii locale",
+        "specialized": "Transport specializat",
+        "express": "Livrare expres"
+      },
+      "locations": {
+        "lithuania": "Lituania",
+        "netherlands": "Olanda",
+        "germany": "Germania",
+        "belgium": "Belgia",
+        "europe-wide": "În toată Europa",
+        "poland": "Polonia"
+      },
+      "jobs": {
+        "ceCategoryDriver": "Șofer categoria CE",
+        "localDeliveryDriver": "Șofer livrare locală",
+        "refrigeratedTransportDriver": "Șofer transport frigorific",
+        "expressDeliveryDriver": "Șofer livrare expres",
+        "heavyGoodsVehicleDriver": "Șofer vehicul transport mărfuri grele",
+        "internationalFreightDriver": "Șofer transport internațional mărfuri"
+      },
+      "descriptions": {
+        "ceCategoryDriver": "Conducere pe distanțe lungi în toată Europa cu rate competitive și beneficii excelente.",
+        "localDeliveryDriver": "Rute de livrare locală cu program regulat și program prietenos cu familia.",
+        "refrigeratedTransportDriver": "Logistică de lanț frigorific specializată cu vehicule controlate termic.",
+        "expressDeliveryDriver": "Livrare rapidă cu rate premium și programare flexibilă.",
+        "heavyGoodsVehicleDriver": "Operare vehicule mari cu beneficii complete și formare.",
+        "internationalFreightDriver": "Transport mărfuri transfrontalier cu compensație excelentă și flotă modernă."
+      }
+    },
+    "positionsMeta": {
+      "noResults": "Nu s-au găsit poziții",
+      "salary": "Salariul",
+      "experience": "Experiența",
+      "avg": "med."
+    },
+    "requirements": {
+      "badge": "Ce avem nevoie",
+      "title": "Cerințe și proces",
+      "subtitle": "Pentru a te ajuta să găsești cele mai bune oportunități, avem nevoie de câteva informații de la tine",
+      "personalDocuments": "Documente personale",
+      "professionalExperience": "Experiență profesională",
+      "languageSkills": "Abilități lingvistice",
+      "readyToApply": "Gata să aplici?",
+      "dontWorry": "Nu-ți face griji dacă nu ai toate documentele gata. Te putem ajuta să aduni informațiile necesare și să te ghidăm prin proces.",
+      "quickApplication": "Aplicație rapidă",
+      "expertGuidance": "Ghidare expertă",
+      "freeSupport": "Suport gratuit",
+      "items": {
+        "validDrivingLicense": "Permis de conducere valid",
+        "medicalCertificate": "Certificat medical",
+        "passportOrIdCard": "Pașaport sau carte de identitate",
+        "cleanCriminalRecord": "Cazier curat",
+        "relevantDrivingExperience": "Experiență relevantă de conducere",
+        "trainingCertificates": "Certificări de formare",
+        "employmentHistory": "Istoricul angajării",
+        "referenceLetters": "Scrisori de recomandare",
+        "basicEnglish": "Engleză de bază (nivel B1)",
+        "localLanguage": "Limba locală (dacă este necesară)",
+        "communicationSkills": "Abilități de comunicare",
+        "documentationReading": "Citirea documentației"
+      }
+    },
+    "process": {
+      "badge": "Proces simplu",
+      "title": "Cum funcționează",
+      "subtitle": "Procesul nostru simplificat de aplicare face găsirea următoarei tale locuri de muncă simplă și eficientă",
+      "submitApplication": {
+        "title": "Trimite aplicația",
+        "description": "Completează formularul nostru de aplicare cu experiența și preferințele tale",
+        "duration": "10 minute"
+      },
+      "weReviewAndMatch": {
+        "title": "Verificăm și potrivim",
+        "description": "Echipa noastră verifică profilul tău și te potrivește cu pozițiile potrivite",
+        "duration": "1-2 zile"
+      },
+      "interviewAndSelection": {
+        "title": "Interviu și selecție",
+        "description": "Interviu cu companii și selectează cea mai bună oportunitate pentru tine",
+        "duration": "1 săptămână"
+      },
+      "readyToStart": "Gata să începi călătoria ta? Aplică acum și vom începe procesul imediat.",
+      "startApplication": "Începe aplicația"
+    },
+    "testimonials": {
+      "badge": "Povești de succes",
+      "title": "Ce spun șoferii noștri",
+      "subtitle": "Testimoniale reale de la șoferi care au găsit oportunități grozave cu ajutorul nostru",
+      "items": {
+        "1": {
+          "comment": "Să lucrez cu Logistic Workers a fost minunat. Mi-au găsit o poziție grozavă cu salariu excelent și beneficii. Echipa de suport este întotdeauna disponibilă când am nevoie de ajutor.",
+          "results": "Salariu €3,200/lună, 4 săptămâni concedii plătite, asigurare de sănătate",
+          "position": "Șofer categoria CE",
+          "company": "European Logistics Ltd"
+        },
+        "2": {
+          "comment": "Am vrut să rămân aproape de familie având un loc de muncă bun. Logistic Workers mi-au găsit poziția locală perfectă cu program flexibil și beneficii grozave.",
+          "results": "Salariu €2,100/lună, program prietenos cu familia, mașină de companie",
+          "position": "Șofer livrare locală",
+          "company": "Polish Distribution Co"
+        },
+        "3": {
+          "comment": "Conduc internațional de 3 ani. Salariul este excelent, echipamentele sunt moderne și văd țări diferite. Foarte recomandat!",
+          "results": "Salariu €3,800/lună, flotă modernă, călătorii internaționale",
+          "position": "Șofer transport internațional mărfuri",
+          "company": "German Express"
+        },
+        "4": {
+          "comment": "Formarea specializată pe care am primit-o a fost excelentă. Lucrez cu vehicule moderne controlate termic și câștig rate premium. Oportunitate grozavă de carieră.",
+          "results": "Salariu €3,500/lună, formare specializată, echipamente moderne",
+          "position": "Șofer transport frigorific",
+          "company": "Dutch Cold Chain"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Ia legătura cu noi",
+    "hero": {
+      "supportBadge": "Suport 24/7 disponibil",
+      "title": "Ia legătura cu noi",
+      "subtitle": "Gata să începi călătoria ta? Ia legătura cu echipa noastră pentru asistență personalizată și ghidare expertă."
+    },
+    "form": {
+      "send": "Trimite mesajul",
+      "title": "Să începem o conversație",
+      "description": "Spune-ne despre nevoile tale și vom răspunde în 24 de ore.",
+      "name": "Numele complet",
+      "email": "Adresa de email",
+      "phone": "Numărul de telefon",
+      "company": "Numele companiei",
+      "inquiryType": "Tipul de întrebare",
+      "message": "Mesajul",
+      "messagePlaceholder": "Spune-ne despre nevoile, cerințele sau întrebările tale...",
+      "sending": "Se trimite mesajul..."
+    },
+    "info": {
+      "title": "Informații de contact",
+      "subtitle": "Mai multe moduri de a ne contacta",
+      "description": "Alege metoda care ți se potrivește cel mai bine. Suntem aici să te ajutăm 24/7.",
+      "businessInfo": "Informații despre afacere",
+      "availabilityTitle": "Când suntem disponibili",
+      "availabilityDescription": "Echipa noastră este gata să te ajute în aceste ore.",
+      "businessHours": "Orele de lucru",
+      "additionalInfo": "Informații suplimentare",
+      "responseTime": "Răspundem la toate întrebările în 24 de ore, chiar și în weekend.",
+      "confidentiality": "Toate comunicările sunt confidențiale și sigure.",
+      "coverage": "Servim clienți în 8 țări europene.",
+      "immediateAssistance": "Ai nevoie de asistență imediată?",
+      "urgentMatters": "Pentru probleme urgente, sună-ne direct sau trimite un email pentru cel mai rapid răspuns.",
+      "callNow": "Sună acum",
+      "sendEmail": "Trimite email"
+    },
+    "success": "Mesajul a fost trimis cu succes! Vom răspunde în 24 de ore.",
+    "error": "Nu s-a putut trimite mesajul. Te rugăm să încerci din nou."
+  },
+  "register": {
+    "title": "Înregistrare",
+    "subtitle": "Creează-ți contul",
+    "form": {
+      "firstName": "Prenumele",
+      "lastName": "Numele de familie",
+      "email": "Email",
+      "phone": "Telefon",
+      "password": "Parola",
+      "confirmPassword": "Confirmă parola",
+      "userType": "Tipul de utilizator",
+      "driver": "Șofer",
+      "employer": "Angajator",
+      "register": "Înregistrează-te",
+      "alreadyHaveAccount": "Ai deja un cont?",
+      "signIn": "Conectează-te"
+    },
+    "validation": {
+      "required": "Acest câmp este obligatoriu",
+      "invalidEmail": "Format de email invalid",
+      "passwordMismatch": "Parolele nu se potrivesc",
+      "passwordLength": "Parola trebuie să aibă cel puțin 6 caractere"
+    }
+  },
+  "login": {
+    "title": "Autentificare",
+    "subtitle": "Conectează-te la contul tău",
+    "form": {
+      "email": "Email",
+      "password": "Parola",
+      "rememberMe": "Ține-mă minte",
+      "forgotPassword": "Ai uitat parola?",
+      "login": "Conectează-te",
+      "dontHaveAccount": "Nu ai un cont?",
+      "register": "Înregistrează-te"
+    }
+  },
+  "common": {
+    "loading": "Se încarcă...",
+    "error": "A apărut o eroare",
+    "success": "Succes",
+    "cancel": "Anulează",
+    "save": "Salvează",
+    "edit": "Editează",
+    "delete": "Șterge",
+    "back": "Înapoi",
+    "next": "Următorul",
+    "previous": "Anterior",
+    "close": "Închide",
+    "search": "Caută",
+    "filter": "Filtrează",
+    "sort": "Sortează",
+    "view": "Vezi",
+    "download": "Descarcă",
+    "upload": "Încarcă",
+    "select": "Selectează",
+    "all": "Toate",
+    "none": "Niciunul",
+    "yes": "Da",
+    "no": "Nu",
+    "optional": "Opțional",
+    "required": "Obligatoriu",
+    "characters": "caractere",
+    "remaining": "rămase",
+    "of": "din"
+  },
+  "errors": {
+    "general": "A apărut o eroare neașteptată",
+    "network": "Eroare de rețea. Verifică-ți conexiunea la internet",
+    "unauthorized": "Nu ai permisiunea să efectuezi această acțiune",
+    "notFound": "Pagina nu a fost găsită",
+    "serverError": "Eroare de server. Te rugăm să încerci din nou mai târziu",
+    "validation": "Te rugăm să verifici datele introduse",
+    "timeout": "Cererea a expirat"
+  },
+  "success": {
+    "profileUpdated": "Profilul a fost actualizat cu succes",
+    "passwordChanged": "Parola a fost schimbată cu succes",
+    "emailSent": "Email-ul a fost trimis cu succes",
+    "applicationSubmitted": "Aplicația a fost trimisă cu succes",
+    "accountCreated": "Contul a fost creat cu succes",
+    "loggedIn": "Conectat cu succes",
+    "loggedOut": "Deconectat cu succes"
   }
+}

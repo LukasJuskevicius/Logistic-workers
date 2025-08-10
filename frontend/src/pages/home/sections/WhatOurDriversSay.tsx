@@ -1,10 +1,13 @@
+import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { Carousel } from '../../../components/ui/Carousel';
 import { TestimonialCard } from '../../../components/sections/TestimonialCard';
-import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
-import { whatOurDriversSay } from '../data/WhatOurDriversSay';
+import { testimonials } from '../data/testimonials';
+import { useTranslation } from 'react-i18next';
 
 // Enhanced What Our Drivers Say section with improved mobile design
 export function WhatOurDriversSay() {
+  const { t } = useTranslation();
+
   return (
     <BackgroundPattern 
       pattern="dots" 
@@ -30,8 +33,7 @@ export function WhatOurDriversSay() {
         
         <div className="absolute top-1/2 left-1/4 w-16 h-16 opacity-10 animate-spin">
           <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-            <path d="M50 10 L90 50 L50 90 L10 50 Z" fill="currentColor" />
-            <circle cx="50" cy="50" r="20" fill="white" />
+            <path d="M50 10 L90 50 L50 90 L10 50 Z" stroke="currentColor" strokeWidth="2" />
           </svg>
         </div>
       </div>
@@ -42,14 +44,14 @@ export function WhatOurDriversSay() {
           <div className="text-center">
             {/* Main heading - responsive text sizes */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">
-              What Our Drivers Say
+              {t('home.testimonials.title')}
             </h2>
             
             {/* Enhanced subtitle - better mobile spacing */}
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
-              Real testimonials from our satisfied drivers and clients across Europe
+              {t('home.testimonials.subtitle')}
               <span className="block mt-1 md:mt-2 text-xs sm:text-sm text-blue-600 font-medium">
-                Trusted by 500+ drivers • 50+ partner companies • 1000+ successful placements
+                {t('home.hero.stats.activeDrivers')} • {t('home.hero.stats.partnerCompanies')} • {t('home.hero.stats.successfulPlacements')}
               </span>
             </p>
           </div>
@@ -58,7 +60,7 @@ export function WhatOurDriversSay() {
         {/* Enhanced carousel with mobile optimization */}
         <div className="relative">
           <Carousel
-            items={whatOurDriversSay}
+            items={testimonials}
             renderItem={(testimonial) => (
               <TestimonialCard testimonial={testimonial} />
             )}
@@ -71,15 +73,15 @@ export function WhatOurDriversSay() {
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-6 md:mb-8 px-4">
             <div className="flex items-center space-x-1.5 md:space-x-2">
               <div className="w-2 h-2 md:w-3 md:h-3 bg-yellow-400 rounded-full"></div>
-              <span className="text-xs md:text-sm text-gray-600">5-Star Reviews</span>
+              <span className="text-xs md:text-sm text-gray-600">{t('home.testimonials.trustIndicators.fiveStarReviews')}</span>
             </div>
             <div className="flex items-center space-x-1.5 md:space-x-2">
               <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full"></div>
-              <span className="text-xs md:text-sm text-gray-600">Verified Drivers</span>
+              <span className="text-xs md:text-sm text-gray-600">{t('home.testimonials.trustIndicators.verifiedDrivers')}</span>
             </div>
             <div className="flex items-center space-x-1.5 md:space-x-2">
               <div className="w-2 h-2 md:w-3 md:h-3 bg-blue-500 rounded-full"></div>
-              <span className="text-xs md:text-sm text-gray-600">Europe-Wide</span>
+              <span className="text-xs md:text-sm text-gray-600">{t('home.testimonials.trustIndicators.europeWide')}</span>
             </div>
           </div>
           

@@ -1,15 +1,23 @@
 import { Card } from '../ui/Card';
+import { useTranslation } from 'react-i18next';
 
 // Testimonial data interface
 interface Testimonial {
   id: number;
   name: string;
-  role: string;
-  company: string;
+  roleKey: string;
+  companyKey: string;
   avatar: string;
-  quote: string;
+  quote: {
+    en: string;
+    lt: string;
+    ro: string;
+    uk: string;
+    nl: string;
+    pl: string;
+  };
   rating: number;
-  location: string;
+  locationKey: string;
 }
 
 // Testimonial card props
@@ -19,6 +27,9 @@ interface TestimonialCardProps {
 
 // Specific testimonial card implementation with aligned author info and stars
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language as keyof typeof testimonial.quote;
+  
   return (
     <Card className="flex flex-col h-full">
       {/* Quote icon - top section */}
@@ -33,7 +44,7 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
       {/* Quote - flex-grow to push stars and author info to bottom */}
       <div className="flex-grow mb-4">
         <p className="text-sm md:text-base text-gray-600 leading-relaxed italic">
-          "{testimonial.quote}"
+          "{testimonial.quote[currentLanguage] || testimonial.quote.en}"
         </p>
       </div>
 
@@ -53,8 +64,8 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
         </div>
         <div className="text-center">
           <h4 className="font-semibold text-gray-900 text-sm md:text-base">{testimonial.name}</h4>
-          <p className="text-gray-600 text-xs md:text-sm">{testimonial.role}</p>
-          <p className="text-gray-500 text-xs">{testimonial.company} • {testimonial.location}</p>
+          <p className="text-gray-600 text-xs md:text-sm">{t(testimonial.roleKey)}</p>
+          <p className="text-gray-500 text-xs">{t(testimonial.companyKey)} • {t(testimonial.locationKey)}</p>
         </div>
       </div>
     </Card>

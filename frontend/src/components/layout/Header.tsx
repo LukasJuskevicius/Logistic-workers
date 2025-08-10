@@ -31,7 +31,7 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
 
   return (
     // Main header container with white background, shadow, and border
-    <header className="bg-white shadow-sm border-b border-gray-100 relative">
+    <header className="bg-white shadow-sm border-b border-gray-100 fixed top-0 left-0 right-0 z-50">
       {/* Container with max width and responsive padding */}
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
         {/* Flex container for header content - logo, nav, buttons */}

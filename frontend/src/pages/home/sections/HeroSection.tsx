@@ -1,4 +1,5 @@
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
+import { useTranslation } from 'react-i18next';
 
 interface HeroSectionProps {
   onNavigate: (page: string) => void;
@@ -6,6 +7,8 @@ interface HeroSectionProps {
 
 // Enhanced hero section with visual appeal and SVG decorations
 export function HeroSection({ onNavigate }: HeroSectionProps) {
+  const { t } = useTranslation();
+
   return (
     <BackgroundPattern 
       pattern="waves" 
@@ -44,10 +47,10 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           {/* Main heading with enhanced typography */}
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-indigo-200 bg-clip-text text-transparent">
-            Driving Your Business Forward
+              {t('home.hero.mainTitle')}
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-              Connecting professional drivers with leading logistics companies across Europe
+              {t('home.hero.subtitle')}
             </p>
           </div>
 
@@ -58,7 +61,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
               className="group relative px-8 py-4 bg-white text-blue-900 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
             >
               <span className="flex items-center">
-                Find Your Next Opportunity
+                {t('home.hero.findOpportunityButton')}
                 <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -69,7 +72,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
               onClick={() => onNavigate('contact')}
               className="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
             >
-              Get Started Today
+              {t('home.hero.getStartedButton')}
             </button>
           </div>
 
@@ -77,15 +80,15 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-blue-200 mb-2">500+</div>
-              <div className="text-blue-100">Active Drivers</div>
+              <div className="text-blue-100">{t('home.hero.stats.activeDrivers')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-blue-200 mb-2">50+</div>
-              <div className="text-blue-100">Partner Companies</div>
+              <div className="text-blue-100">{t('home.hero.stats.partnerCompanies')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-blue-200 mb-2">1000+</div>
-              <div className="text-blue-100">Successful Placements</div>
+              <div className="text-blue-100">{t('home.hero.stats.successfulPlacements')}</div>
             </div>
           </div>
         </div>

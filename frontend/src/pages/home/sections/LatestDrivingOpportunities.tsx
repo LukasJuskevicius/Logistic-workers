@@ -1,15 +1,17 @@
+import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { Carousel } from '../../../components/ui/Carousel';
 import { VacancyCard } from '../../../components/sections/VacancyCard';
-import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { latestDrivingOpportunities } from '../data/LatestDrivingOpportunities';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   // Pass navigation to carousel buttons
   onNavigate: (page: string) => void;
 }
 
-// Enhanced Latest Driving Opportunities section with improved mobile design
 export function LatestDrivingOpportunities({ onNavigate }: Props) {
+  const { t } = useTranslation();
+
   return (
     <BackgroundPattern 
       pattern="grid" 
@@ -51,15 +53,15 @@ export function LatestDrivingOpportunities({ onNavigate }: Props) {
             
             
             {/* Main heading - responsive text sizes */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">
-              Latest Driving Opportunities
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">
+              {t('home.latestOpportunities.title')}
             </h2>
             
             {/* Enhanced subtitle - better mobile spacing */}
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
-              Discover exciting career opportunities with leading logistics companies across Europe. 
+              {t('home.latestOpportunities.subtitle')}
               <span className="block mt-1 md:mt-2 text-xs sm:text-sm text-blue-600 font-medium">
-                New positions added daily • Competitive salaries • Professional growth
+                {t('home.latestOpportunities.features.newPositions')} • {t('home.latestOpportunities.features.competitiveSalaries')} • {t('home.latestOpportunities.features.professionalGrowth')}
               </span>
             </p>
           </div>
@@ -73,7 +75,7 @@ export function LatestDrivingOpportunities({ onNavigate }: Props) {
               <VacancyCard vacancy={vacancy} onNavigate={onNavigate} />
             )}
             onNavigate={onNavigate}
-            navigationButtonText="View All Vacancies"
+            navigationButtonText={t('home.latestOpportunities.viewAllButton')}
           />
         </div>
 
@@ -83,15 +85,15 @@ export function LatestDrivingOpportunities({ onNavigate }: Props) {
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-6 md:mb-8 px-4">
             <div className="flex items-center space-x-1.5 md:space-x-2">
               <div className="w-2 h-2 md:w-3 md:h-3 bg-blue-500 rounded-full"></div>
-              <span className="text-xs md:text-sm text-gray-600">International</span>
+              <span className="text-xs md:text-sm text-gray-600">{t('home.latestOpportunities.categories.international')}</span>
             </div>
             <div className="flex items-center space-x-1.5 md:space-x-2">
               <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full"></div>
-              <span className="text-xs md:text-sm text-gray-600">Local</span>
+              <span className="text-xs md:text-sm text-gray-600">{t('home.latestOpportunities.categories.local')}</span>
             </div>
             <div className="flex items-center space-x-1.5 md:space-x-2">
               <div className="w-2 h-2 md:w-3 md:h-3 bg-purple-500 rounded-full"></div>
-              <span className="text-xs md:text-sm text-gray-600">Specialized</span>
+              <span className="text-xs md:text-sm text-gray-600">{t('home.latestOpportunities.categories.specialized')}</span>
             </div>
           </div>
           

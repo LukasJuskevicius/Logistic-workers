@@ -1,22 +1,695 @@
 {
-    "navigation": {
-      "home": "Home",
-      "vacancies": "Vacatures",
-      "forClients": "Voor Werkgevers",
-      "forDrivers": "Voor Chauffeurs",
-      "contact": "Contact"
+  "navigation": {
+    "home": "Home",
+    "drivers": "Chauffeurs",
+    "clients": "Klanten",
+    "vacancies": "Vacatures",
+    "contact": "Contact",
+    "login": "Inloggen",
+    "register": "Registreren"
+  },
+  "benefits": {
+    "healthInsurance": "Ziektekostenverzekering",
+    "paidLeave": "Betaald verlof",
+    "performanceBonus": "Prestatiebonus",
+    "modernFleet": "Moderne vloot",
+    "flexibleHours": "Flexibele uren",
+    "companyVehicle": "Bedrijfsauto",
+    "familyTime": "Tijd voor familie",
+    "premiumPay": "Premie loon",
+    "specializedTraining": "Gespecialiseerde training",
+    "modernEquipment": "Moderne apparatuur",
+    "comprehensiveTraining": "Uitgebreide training",
+    "careerDevelopment": "Carrièreontwikkeling",
+    "competitiveSalary": "Concurrerend salaris",
+    "internationalTravel": "Internationale reizen",
+    "comprehensiveInsurance": "Uitgebreide verzekering"
+  },
+  "requirements": {
+    "ceLicense": "CE-rijbewijs",
+    "medicalCertificate": "Medisch certificaat",
+    "cleanRecord": "Schoon strafblad",
+    "englishB1": "Engels B1",
+    "bcLicense": "B/C-rijbewijs",
+    "localLanguage": "Lokale taal",
+    "coldChainExperience": "Ervaring met koelketen",
+    "cceLicense": "C/CE-rijbewijs",
+    "germanB1": "Duits B1",
+    "heavyVehicleExperience": "Ervaring met zware voertuigen",
+    "frenchDutchB1": "Frans/Nederlands B1",
+    "internationalExperience": "Internationale ervaring",
+    "englishB2": "Engels B2"
+  },
+  "header": {
+    "languageSelector": "Taal",
+    "mobileMenu": "Menu",
+    "closeMenu": "Sluit Menu"
+  },
+  "footer": {
+    "aboutUs": "Over ons",
+    "companyName": "Logistic Workers",
+    "companyDescription": "Uw betrouwbare partner voor logistieke diensten in heel Europa. We verbinden gekwalificeerde chauffeurs met bedrijven die hun expertise nodig hebben.",
+    "navigation": "Navigatie",
+    "quickLinks": "Snelle Links",
+    "home": "Home",
+    "vacancies": "Vacatures",
+    "contact": "Contact",
+    "contactInfo": "Contact",
+    "email": "info@logisticworkers.com",
+    "phone": "+370 600 00000",
+    "copyright": "Alle rechten voorbehouden",
+    "madeWithLove": "Gemaakt met ❤️ voor chauffeurs"
+  },
+  "home": {
+    "title": "Logistieke Arbeiders",
+    "subtitle": "Uw betrouwbare partner voor logistieke diensten in heel Europa",
+    "hero": {
+      "title": "Vind Uw Volgende Kans",
+      "subtitle": "Verbind gekwalificeerde chauffeurs met bedrijven die hun expertise nodig hebben. Efficiënt, betrouwbaar, succesvol.",
+      "getStarted": "Aan de slag",
+      "learnMore": "Meer informatie",
+      "trustedBadge": "Vertrouwd door 500+ bedrijven"
     },
-    "auth": {
-      "register": "Registreren",
-      "login": "Inloggen",
-      "signOut": "Uitloggen",
-      "hello": "Hallo"
+    "whyChooseUs": {
+      "title": "Waarom Kiezen voor Ons",
+      "subtitle": "Wij bieden uitzonderlijke service en ondersteuning",
+      "expertise": {
+        "title": "Expertise",
+        "description": "Meer dan 10 jaar ervaring in de logistieke sector"
+      },
+      "reliability": {
+        "title": "Betrouwbaarheid",
+        "description": "99% klanttevredenheid en tijdige levering"
+      },
+      "support": {
+        "title": "24/7 Ondersteuning",
+        "description": "Altijd beschikbaar wanneer u ons nodig heeft"
+      },
+      "coverage": {
+        "title": "Europese Dekking",
+        "description": "Diensten beschikbaar in 8 Europese landen"
+      }
     },
-    "home": {
-      "welcomeTitle": "Welkom bij Logistic Workers",
-      "welcomeSubtitle": "Het toonaangevende platform dat ervaren chauffeurs verbindt met transportbedrijven in heel Europa.",
-      "imDriver": "Ik ben een Chauffeur",
-      "imEmployer": "Ik ben een Werkgever",
-      "viewVacancies": "Vacatures Bekijken"
+    "latestOpportunities": {
+      "title": "Nieuwste Rijmogelijkheden",
+      "subtitle": "Ontdek de beste kansen voor uw carrière",
+      "viewAll": "Bekijk alle",
+      "applyNow": "Nu solliciteren",
+      "location": "Locatie",
+      "salary": "Salaris",
+      "type": "Type",
+      "experience": "Ervaring",
+      "jobs": {
+        "ceCategoryDriver": "CE Categorie Chauffeur",
+        "localDeliveryDriver": "Lokale Bezorgchauffeur",
+        "warehouseToStoreDriver": "Magazijn-naar-Winkel Chauffeur",
+        "refrigeratedTransportDriver": "Gekoeld Transport Chauffeur",
+        "expressDeliveryDriver": "Express Bezorgchauffeur",
+        "heavyGoodsVehicleDriver": "Zwaar Goederenvervoer Chauffeur"
+      },
+      "locations": {
+        "internationalRoutes": "Internationale Routes",
+        "lithuania": "Litouwen",
+        "poland": "Polen",
+        "netherlands": "Nederland",
+        "germany": "Duitsland",
+        "belgium": "België",
+        "spain": "Spanje",
+        "uk": "Verenigd Koninkrijk",
+        "romania": "Roemenië"
+      },
+      "descriptions": {
+        "ceCategoryDriver": "Langafstandsrijden door heel Europa met concurrerende tarieven en uitstekende voordelen.",
+        "localDeliveryDriver": "Lokale bezorgroutes met regelmatige uren en gezinsvriendelijk schema.",
+        "warehouseToStoreDriver": "Distributierijden met moderne voertuigen en uitgebreide training.",
+        "refrigeratedTransportDriver": "Gespecialiseerde koudeketenlogistiek met temperatuurgecontroleerde voertuigen.",
+        "expressDeliveryDriver": "Snelle bezorging met premium tarieven en flexibele planning.",
+        "heavyGoodsVehicleDriver": "Grote voertuigbediening met uitgebreide voordelen en training."
+      }
+    },
+    "testimonials": {
+      "title": "Wat Onze Chauffeurs Zeggen",
+      "subtitle": "Echte verhalen van echte mensen",
+      "viewAll": "Bekijk alle getuigenissen",
+      "roles": {
+        "professionalDriver": "Professionele Chauffeur",
+        "businessOwner": "Zakelijke Eigenaar",
+        "internationalDriver": "Internationale Chauffeur",
+        "fleetManager": "Vlootmanager",
+        "longHaulDriver": "Langafstandschauffeur",
+        "hrManager": "HR Manager"
+      },
+      "experience": {
+        "fivePlusYears": "5+ jaar ervaring",
+        "eightPlusYears": "8+ jaar ervaring",
+        "tenPlusYears": "10+ jaar ervaring"
+      },
+      "companies": {
+        "logisticsInc": "Logistics Inc.",
+        "transportSolutions": "Transport Solutions Ltd",
+        "europeanLogistics": "European Logistics"
+      }
+    },
+    "callToAction": {
+      "title": "Klaar om te Beginnen?",
+      "subtitle": "Sluit u aan bij duizenden tevreden chauffeurs en klanten",
+      "getStarted": "Aan de slag",
+      "contactUs": "Neem contact op"
     }
+  },
+  "vacancies": {
+    "title": "Vacatures",
+    "subtitle": "Vind uw ideale baan in de logistiek",
+    "hero": {
+      "filterBadge": "Filter en zoek",
+      "title": "Vind uw perfecte positie",
+      "subtitle": "Bekijk onze nieuwste vacatures en vind de kans die past bij uw vaardigheden en voorkeuren"
+    },
+    "search": {
+      "placeholder": "Zoek vacatures op titel, beschrijving of locatie..."
+    },
+    "filters": {
+      "location": "Locatie",
+      "experience": "Ervaring",
+      "salary": "Salaris",
+      "type": "Type",
+      "applyFilters": "Filters toepassen",
+      "clearFilters": "Filters wissen",
+      "allCategories": "Alle categorieën",
+      "allLocations": "Alle locaties"
+    },
+    "categories": {
+      "international": "Internationale routes",
+      "local": "Lokale posities",
+      "specialized": "Gespecialiseerd transport",
+      "express": "Express bezorging",
+      "heavy": "Zware goederen"
+    },
+    "results": {
+      "showing": "Toont",
+      "of": "van",
+      "vacancies": "vacatures"
+    },
+    "noResults": {
+      "title": "Geen vacatures gevonden",
+      "description": "Probeer uw zoekcriteria aan te passen of kom later terug voor nieuwe kansen.",
+      "clearFilters": "Filters wissen"
+    },
+    "sortBy": "Sorteren op",
+    "loadMore": "Meer laden",
+    "applyNow": "Nu solliciteren",
+    "viewDetails": "Details bekijken",
+    "backToHome": "Terug naar Home",
+    "heroSection": {
+      "liveBadge": "Actieve kansen",
+      "title": "Beschikbare vacatures",
+      "subtitle": "Vind uw volgende kans in de logistieke sector in heel Europa",
+      "stats": {
+        "activePositions": "Actieve posities",
+        "europeanCountries": "Europese landen",
+        "responseTime": "Responstijd"
+      }
+    },
+    "locations": {
+      "internationalRoutes": "Internationale routes",
+      "lithuania": "Litouwen",
+      "poland": "Polen",
+      "netherlands": "Nederland",
+      "germany": "Duitsland",
+      "belgium": "België",
+      "europe-wide": "Door heel Europa",
+      "latvia": "Letland",
+      "estonia": "Estland"
+    },
+    "jobs": {
+      "ceCategoryDriver": "CE Categorie Chauffeur",
+      "localDeliveryDriver": "Lokale Bezorgchauffeur",
+      "warehouseToStoreDriver": "Magazijn-naar-Winkel Chauffeur",
+      "refrigeratedTransportDriver": "Gekoeld Transport Chauffeur",
+      "expressDeliveryDriver": "Express Bezorgchauffeur",
+      "heavyGoodsVehicleDriver": "Zwaar Goederenvervoer Chauffeur",
+      "internationalFreightDriver": "Internationale Vracht Chauffeur",
+      "localDistributionDriver": "Lokale Distributie Chauffeur",
+      "specializedEquipmentDriver": "Chauffeur Gespecialiseerde Apparatuur"
+    },
+    "descriptions": {
+      "ceCategoryDriver": "Langafstandsrijden door heel Europa met concurrerende tarieven en uitstekende voordelen.",
+      "localDeliveryDriver": "Lokale bezorgroutes met regelmatige uren en gezinsvriendelijk schema.",
+      "warehouseToStoreDriver": "Distributierijden met moderne voertuigen en uitgebreide training.",
+      "refrigeratedTransportDriver": "Gespecialiseerde koudeketenlogistiek met temperatuurgecontroleerde voertuigen.",
+      "expressDeliveryDriver": "Snelle bezorging met premium tarieven en flexibele planning.",
+      "heavyGoodsVehicleDriver": "Grote voertuigbediening met uitgebreide voordelen en training.",
+      "internationalFreightDriver": "Grensoverschrijdend vrachtvervoer met uitstekende vergoeding en modern wagenpark. Reizen door Europa.",
+      "localDistributionDriver": "Lokale distributieroutes met regelmatige uren en uitstekende arbeidsvoorwaarden. Gezinsvriendelijk schema.",
+      "specializedEquipmentDriver": "Bediening van gespecialiseerde apparatuur met uitgebreide training en uitstekend voordelenpakket."
+    }
+  },
+  "clients": {
+    "title": "Voor Klanten",
+    "subtitle": "Vind gekwalificeerde chauffeurs voor uw bedrijf",
+    "hero": {
+      "badge": "Vertrouwd door 500+ bedrijven",
+      "title": "Vind betrouwbare chauffeurs",
+      "subtitle": "Verbind met gekwalificeerde, vooraf gescreende chauffeurs in heel Europa. Bespaar tijd en geld met onze complete wervingsoplossingen.",
+      "ctaGetStarted": "Start vandaag nog",
+      "backToHome": "Terug naar home"
+    },
+    "stats": {
+      "building": "Bediende bedrijven",
+      "users": "Geplaatste chauffeurs",
+      "star": "Klanttevredenheid",
+      "clock": "Reactietijd"
+    },
+    "services": {
+      "badge": "Onze Diensten",
+      "title": "Complete oplossingen",
+      "subtitle": "Wij bieden complete diensten voor chauffeurswerving en -beheer om al uw logistieke behoeften te vervullen",
+      "items": {
+        "1": {
+          "title": "Chauffeurswerving",
+          "description": "Uitgebreid proces voor het vinden en screenen van chauffeurs in heel Europa",
+          "features": [
+            "CE-categorie chauffeurs",
+            "Lokale en internationale routes",
+            "Achtergrondcontrole",
+            "Rijbewijsvalidatie"
+          ],
+          "timeFrame": "2-4 weken"
+        },
+        "2": {
+          "title": "Compliance management",
+          "description": "Zorg ervoor dat alle chauffeurs voldoen aan EU-regelgeving en bedrijfsstandaarden",
+          "features": [
+            "EU-rijbewijsverificatie",
+            "Medische certificaten",
+            "Opleidingsgegevens",
+            "Veiligheidsstandaarden"
+          ],
+          "timeFrame": "Doorlopend"
+        },
+        "3": {
+          "title": "Doorlopende ondersteuning",
+          "description": "Doorlopende ondersteuning en vervangingsdiensten",
+          "features": [
+            "24/7 ondersteuning",
+            "Chauffeursvervanging",
+            "Prestatiemonitoring",
+            "Regelmatige updates"
+          ],
+          "timeFrame": "Altijd beschikbaar"
+        }
+      }
+    },
+    "process": {
+      "badge": "Eenvoudig proces",
+      "title": "Hoe het werkt",
+      "subtitle": "Ons gestroomlijnde proces maakt het vinden van gekwalificeerde chauffeurs eenvoudig en efficiënt",
+      "items": {
+        "1": {
+          "title": "Dien uw vereisten in",
+          "description": "Vertel ons over uw specifieke behoeften, routes en vereisten",
+          "duration": "1-2 dagen"
+        },
+        "2": {
+          "title": "Wij zoeken kandidaten",
+          "description": "Ons team vindt en screent gekwalificeerde chauffeurs voor uw behoeften",
+          "duration": "2-3 weken"
+        },
+        "3": {
+          "title": "U kiest en huurt in",
+          "description": "Bekijk kandidaten en selecteer de beste voor uw team",
+          "duration": "1 week"
+        }
+      },
+      "bottomCta": {
+        "text": "Klaar om te beginnen? Neem vandaag nog contact met ons op en we starten het proces direct.",
+        "button": "Start uw zoektocht"
+      }
+    },
+    "requirements": {
+      "badge": "Wat we nodig hebben",
+      "title": "Vereisten en proces",
+      "subtitle": "Om u de beste service te bieden, hebben we wat informatie over uw bedrijf nodig",
+      "categories": [
+        {
+          "title": "Bedrijfsinformatie",
+          "items": [
+            "Bedrijfsregistratiedocumenten",
+            "Transportlicentie",
+            "Verzekeringscertificaten",
+            "Veiligheidsmanagementsysteem"
+          ]
+        },
+        {
+          "title": "Functievereisten",
+          "items": [
+            "Gedetailleerde functieomschrijving",
+            "Routespecificaties",
+            "Voertuigvereisten",
+            "Vereist ervaringsniveau"
+          ]
+        },
+        {
+          "title": "Contractvoorwaarden",
+          "items": [
+            "Duur van de indienstneming",
+            "Salarisbereik",
+            "Voordelenpakket",
+            "Werkvoorwaarden"
+          ]
+        }
+      ],
+      "cta": {
+        "title": "Klaar om te beginnen?",
+        "description": "Maak u geen zorgen als u niet alle documenten klaar heeft. We kunnen u helpen bij het verzamelen van de benodigde informatie en u door het proces leiden.",
+        "pills": {
+          "quickResponse": "Snelle reactietijd",
+          "expertGuidance": "Deskundige begeleiding",
+          "freeConsultation": "Gratis consultatie"
+        }
+      }
+    },
+    "testimonials": {
+      "badge": "Succesverhalen",
+      "title": "Wat onze klanten zeggen",
+      "subtitle": "Echte testimonials van bedrijven die hun operaties hebben getransformeerd met onze diensten",
+      "items": {
+        "1": {
+          "comment": "Logistic Workers hielp ons gekwalificeerde chauffeurs te vinden in slechts 3 weken. Hun screeningproces is grondig en betrouwbaar.",
+          "results": "Wervingstijd met 60% verminderd",
+          "position": "Vlootmanager",
+          "company": "European Logistics Ltd"
+        },
+        "2": {
+          "comment": "Uitstekende service en ondersteuning. Ze begrijpen onze specifieke vereisten en leveren altijd hoogwaardige kandidaten.",
+          "results": "Chauffeursretentie met 40% verbeterd",
+          "position": "Operationeel directeur",
+          "company": "Transport Solutions"
+        },
+        "3": {
+          "comment": "Professioneel team dat verder gaat dan wat er wordt gevraagd. Ze zijn onze vertrouwde partner geworden voor alle chauffeurswervingsbehoeften.",
+          "results": "Operationele efficiëntie met 35% verhoogd",
+          "position": "HR-manager",
+          "company": "International Freight Co"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Neem contact met ons op",
+    "hero": {
+      "supportBadge": "24/7 Ondersteuning Beschikbaar",
+      "title": "Neem Contact Op",
+      "subtitle": "Klaar om uw reis te beginnen? Neem contact op met ons team voor persoonlijke assistentie en deskundige begeleiding."
+    },
+    "form": {
+      "send": "Bericht Versturen",
+      "title": "Laten We een Gesprek Beginnen",
+      "description": "Vertel ons over uw behoeften en we nemen binnen 24 uur contact met u op.",
+      "name": "Volledige Naam",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer",
+      "company": "Bedrijfsnaam",
+      "inquiryType": "Type Vraag",
+      "message": "Bericht",
+      "messagePlaceholder": "Vertel ons over uw behoeften, vereisten of vragen...",
+      "sending": "Bericht Versturen..."
+    },
+    "info": {
+      "title": "Contactinformatie",
+      "subtitle": "Meerdere Manieren om Contact te Leggen",
+      "description": "Kies de methode die het beste voor u werkt. We zijn 24/7 beschikbaar om te helpen.",
+      "businessInfo": "Bedrijfsinformatie",
+      "availabilityTitle": "Wanneer We Beschikbaar Zijn",
+      "availabilityDescription": "Ons team staat klaar om u te assisteren tijdens deze uren.",
+      "businessHours": "Kantooruren",
+      "additionalInfo": "Aanvullende Informatie",
+      "responseTime": "We reageren op alle vragen binnen 24 uur, ook in het weekend.",
+      "confidentiality": "Alle communicatie is vertrouwelijk en veilig.",
+      "coverage": "We dienen klanten in 8 Europese landen.",
+      "immediateAssistance": "Directe Hulp Nodig?",
+      "urgentMatters": "Voor urgente zaken, bel ons direct of stuur een e-mail voor de snelste reactie.",
+      "callNow": "Nu Bellen",
+      "sendEmail": "E-mail Versturen"
+    },
+    "success": "Bericht succesvol verzonden! We nemen binnen 24 uur contact met u op.",
+    "error": "Bericht verzenden mislukt. Probeer het opnieuw."
+  },
+  "register": {
+    "title": "Registreren",
+    "subtitle": "Maak uw account aan",
+    "form": {
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "email": "E-mail",
+      "phone": "Telefoon",
+      "password": "Wachtwoord",
+      "confirmPassword": "Bevestig Wachtwoord",
+      "userType": "Gebruikerstype",
+      "driver": "Chauffeur",
+      "employer": "Werkgever",
+      "register": "Registreren",
+      "alreadyHaveAccount": "Heeft u al een account?",
+      "signIn": "Inloggen"
+    },
+    "validation": {
+      "required": "Dit veld is verplicht",
+      "invalidEmail": "Ongeldig e-mailformaat",
+      "passwordMismatch": "Wachtwoorden komen niet overeen",
+      "passwordLength": "Wachtwoord moet minimaal 6 tekens bevatten"
+    }
+  },
+  "login": {
+    "title": "Inloggen",
+    "subtitle": "Meld u aan bij uw account",
+    "form": {
+      "email": "E-mail",
+      "password": "Wachtwoord",
+      "rememberMe": "Onthoud mij",
+      "forgotPassword": "Wachtwoord vergeten?",
+      "login": "Inloggen",
+      "dontHaveAccount": "Heeft u geen account?",
+      "register": "Registreren"
+    }
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Er is een fout opgetreden",
+    "success": "Succes",
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "edit": "Bewerken",
+    "delete": "Verwijderen",
+    "back": "Terug",
+    "next": "Volgende",
+    "previous": "Vorige",
+    "close": "Sluiten",
+    "search": "Zoeken",
+    "filter": "Filter",
+    "sort": "Sorteren",
+    "view": "Bekijken",
+    "download": "Downloaden",
+    "upload": "Uploaden",
+    "select": "Selecteren",
+    "all": "Alle",
+    "none": "Geen",
+    "yes": "Ja",
+    "no": "Nee",
+    "optional": "Optioneel",
+    "required": "Verplicht",
+    "characters": "tekens",
+    "remaining": "resterend",
+    "of": "van"
+  },
+
+  "_comment_drivers_page": "===== DRIVERS PAGE =====",
+  "drivers": {
+    "hero": {
+      "badge": "Vertrouwd door 2000+ Chauffeurs",
+      "title": "Vind Uw Volgende Kans",
+      "subtitle": "Sluit u aan bij duizenden chauffeurs in heel Europa. Concurrerende salarissen, uitstekende voordelen en moderne apparatuur wachten op u.",
+      "applyNow": "Nu Solliciteren",
+      "backToHome": "Terug naar Home",
+      "stats": {
+        "driversPlaced": "Geplaatste Chauffeurs",
+        "europeanCountries": "Europese Landen",
+        "driverSatisfaction": "Chauffeurstevredenheid",
+        "responseTime": "Reactietijd"
+      }
+    },
+    "benefits": {
+      "badge": "Chauffeursvoordelen",
+      "title": "Wat U Krijgt",
+      "subtitle": "Uitgebreide voordelen en uitstekende arbeidsomstandigheden voor al onze chauffeurs",
+      "competitiveSalaries": {
+        "title": "Concurrerende Salarissen",
+        "description": "Verdien €1,800 - €4,000 per maand afhankelijk van ervaring en positie",
+        "details": ["Boven markttarieven", "Prestatiebonussen", "Overurenvergoeding", "Vakantiegeld"]
+      },
+      "excellentBenefits": {
+        "title": "Uitstekende Voordelen",
+        "description": "Uitgebreid voordelenpakket inclusief ziektekostenverzekering en betaald verlof",
+        "details": ["Ziektekostenverzekering", "Betaalde vakantie", "Ziekteverlof", "Pensioenplan"]
+      },
+      "modernEquipment": {
+        "title": "Moderne Apparatuur",
+        "description": "Werk met de nieuwste voertuigen en technologie voor veiligheid en comfort",
+        "details": ["Moderne vloot", "GPS-navigatie", "Veiligheidsapparatuur", "Comfortfuncties"]
+      },
+      "careerGrowth": {
+        "title": "Carrièregroei",
+        "description": "Mogelijkheden voor vooruitgang en gespecialiseerde trainingsprogramma's",
+        "details": ["Trainingsprogramma's", "Carrièrevooruitgang", "Vaardigheidsontwikkeling", "Certificeringen"]
+      }
+    },
+    "positions": {
+      "badge": "Beschikbare Posities",
+      "title": "Nieuwste Kansen",
+      "subtitle": "Bekijk onze nieuwste vacatures en vind de perfecte positie voor uw vaardigheden",
+      "allCategories": "Alle Categorieën",
+      "allLocations": "Alle Locaties",
+      "showing": "Toont",
+      "of": "van",
+      "positions": "posities",
+      "benefits": "Voordelen:",
+      "requirements": "Vereisten:",
+      "more": "meer",
+      "applyNow": "Nu Solliciteren",
+      "categories": {
+        "international": "Internationale Routes",
+        "local": "Lokale Posities",
+        "specialized": "Gespecialiseerd Transport",
+        "express": "Express Bezorging"
+      },
+      "locations": {
+        "lithuania": "Litouwen",
+        "netherlands": "Nederland",
+        "germany": "Duitsland",
+        "belgium": "België",
+        "europe-wide": "Europa-breed",
+        "poland": "Polen"
+      },
+      "jobs": {
+        "ceCategoryDriver": "CE Categorie Chauffeur",
+        "localDeliveryDriver": "Lokale Bezorgchauffeur",
+        "refrigeratedTransportDriver": "Gekoeld Transport Chauffeur",
+        "expressDeliveryDriver": "Express Bezorgchauffeur",
+        "heavyGoodsVehicleDriver": "Zwaar Goederenvervoer Chauffeur",
+        "internationalFreightDriver": "Internationaal Vrachtvervoer Chauffeur"
+      },
+      "descriptions": {
+        "ceCategoryDriver": "Langafstandsrijden door heel Europa met concurrerende tarieven en uitstekende voordelen.",
+        "localDeliveryDriver": "Lokale bezorgroutes met regelmatige uren en gezinsvriendelijk schema.",
+        "refrigeratedTransportDriver": "Gespecialiseerde koudeketenlogistiek met temperatuurgecontroleerde voertuigen.",
+        "expressDeliveryDriver": "Snelle bezorging met premium tarieven en flexibele planning.",
+        "heavyGoodsVehicleDriver": "Grote voertuigbediening met uitgebreide voordelen en training.",
+        "internationalFreightDriver": "Grensoverschrijdend vrachtvervoer met uitstekende compensatie en moderne vloot."
+      }
+    },
+    "positionsMeta": {
+      "noResults": "Geen posities gevonden",
+      "salary": "Salaris",
+      "experience": "Ervaring",
+      "avg": "gem."
+    },
+    "requirements": {
+      "badge": "Wat We Nodig Hebben",
+      "title": "Vereisten & Proces",
+      "subtitle": "Om u te helpen de beste kansen te vinden, hebben we wat informatie van u nodig",
+      "personalDocuments": "Persoonlijke Documenten",
+      "professionalExperience": "Professionele Ervaring",
+      "languageSkills": "Taalvaardigheden",
+      "readyToApply": "Klaar om te Solliciteren?",
+      "dontWorry": "Maak u geen zorgen als u niet alle documenten klaar heeft. We kunnen u helpen de benodigde informatie te verzamelen en u door het proces te begeleiden.",
+      "quickApplication": "Snelle Sollicitatie",
+      "expertGuidance": "Expertbegeleiding",
+      "freeSupport": "Gratis Ondersteuning",
+      "items": {
+        "validDrivingLicense": "Geldig rijbewijs",
+        "medicalCertificate": "Medisch certificaat",
+        "passportOrIdCard": "Paspoort of ID-kaart",
+        "cleanCriminalRecord": "Schone strafblad",
+        "relevantDrivingExperience": "Relevante rijervaring",
+        "trainingCertificates": "Trainingscertificaten",
+        "employmentHistory": "Werkgeschiedenis",
+        "referenceLetters": "Referentiebrieven",
+        "basicEnglish": "Basis Engels (B1-niveau)",
+        "localLanguage": "Lokale taal (indien vereist)",
+        "communicationSkills": "Communicatievaardigheden",
+        "documentationReading": "Documentatie lezen"
+      }
+    },
+    "process": {
+      "badge": "Eenvoudig Proces",
+      "title": "Hoe Het Werkt",
+      "subtitle": "Ons gestroomlijnde sollicitatieproces maakt het vinden van uw volgende baan eenvoudig en efficiënt",
+      "submitApplication": {
+        "title": "Sollicitatie Indienen",
+        "description": "Vul ons sollicitatieformulier in met uw ervaring en voorkeuren",
+        "duration": "10 minuten"
+      },
+      "weReviewAndMatch": {
+        "title": "We Beoordelen & Matchen",
+        "description": "Ons team beoordeelt uw profiel en koppelt u aan geschikte posities",
+        "duration": "1-2 dagen"
+      },
+      "interviewAndSelection": {
+        "title": "Interview & Selectie",
+        "description": "Interview met bedrijven en selecteer de beste kans voor u",
+        "duration": "1 week"
+      },
+      "readyToStart": "Klaar om uw reis te beginnen? Solliciteer nu en we beginnen het proces onmiddellijk.",
+      "startApplication": "Sollicitatie Starten"
+    },
+    "testimonials": {
+      "badge": "Succesverhalen",
+      "title": "Wat Onze Chauffeurs Zeggen",
+      "subtitle": "Echte getuigenissen van chauffeurs die geweldige kansen hebben gevonden met onze hulp",
+      "items": {
+        "1": {
+          "comment": "Werken met Logistic Workers is geweldig geweest. Ze vonden me een geweldige positie met uitstekende betaling en voordelen. Het ondersteuningsteam is altijd beschikbaar wanneer ik hulp nodig heb.",
+          "results": "€3,200/maand salaris, 4 weken betaald verlof, ziektekostenverzekering",
+          "position": "CE Categorie Chauffeur",
+          "company": "European Logistics Ltd"
+        },
+        "2": {
+          "comment": "Ik wilde dicht bij mijn gezin blijven terwijl ik een goede baan had. Logistic Workers vond me de perfecte lokale positie met flexibele uren en geweldige voordelen.",
+          "results": "€2,100/maand salaris, gezinsvriendelijk schema, bedrijfsauto",
+          "position": "Lokale Bezorgchauffeur",
+          "company": "Polish Distribution Co"
+        },
+        "3": {
+          "comment": "Ik rijd al 3 jaar internationaal. De betaling is uitstekend, de apparatuur is modern en ik zie verschillende landen. Zeer aanbevolen!",
+          "results": "€3,800/maand salaris, moderne vloot, internationale reizen",
+          "position": "Internationaal Vrachtvervoer Chauffeur",
+          "company": "German Express"
+        },
+        "4": {
+          "comment": "De gespecialiseerde training die ik kreeg was uitstekend. Ik werk met moderne temperatuurgecontroleerde voertuigen en verdien premium tarieven. Geweldige carrièrekans.",
+          "results": "€3,500/maand salaris, gespecialiseerde training, moderne apparatuur",
+          "position": "Gekoeld Transport Chauffeur",
+          "company": "Dutch Cold Chain"
+        }
+      }
+    }
+  },
+  "errors": {
+    "general": "Er is een onverwachte fout opgetreden",
+    "network": "Netwerkfout. Controleer uw internetverbinding",
+    "unauthorized": "U heeft geen toestemming om deze actie uit te voeren",
+    "notFound": "Pagina niet gevonden",
+    "serverError": "Serverfout. Probeer het later opnieuw",
+    "validation": "Controleer uw invoergegevens",
+    "timeout": "Verzoek is verlopen"
+  },
+  "success": {
+    "profileUpdated": "Profiel succesvol bijgewerkt",
+    "passwordChanged": "Wachtwoord succesvol gewijzigd",
+    "emailSent": "E-mail succesvol verzonden",
+    "applicationSubmitted": "Sollicitatie succesvol ingediend",
+    "accountCreated": "Account succesvol aangemaakt",
+    "loggedIn": "Succesvol ingelogd",
+    "loggedOut": "Succesvol uitgelogd"
   }
+}

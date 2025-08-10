@@ -1,186 +1,128 @@
-import { useState, useEffect } from 'react';
-import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { driverTestimonials } from '../data/drivers';
 
-interface DriversTestimonialsSectionProps {
-  onNavigate: (page: string) => void;
-}
-
-export function DriversTestimonialsSection({ onNavigate }: DriversTestimonialsSectionProps) {
+const DriversTestimonialsSection: React.FC = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Auto-advance carousel
+  // Auto-advance testimonials
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % driverTestimonials.length);
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % driverTestimonials.length);
     }, 5000);
-    return () => clearInterval(timer);
+
+    return () => clearInterval(interval);
   }, []);
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % driverTestimonials.length);
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
   };
 
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + driverTestimonials.length) % driverTestimonials.length);
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? driverTestimonials.length - 1 : prevIndex - 1
+    );
   };
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <svg
-        key={i}
-        className={`w-4 h-4 md:w-5 md:h-5 ${i < rating ? 'text-yellow-400' : 'text-gray-300'}`}
-        fill="currentColor"
-        viewBox="0 0 20 20"
-      >
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-      </svg>
-    ));
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % driverTestimonials.length);
   };
 
   return (
-    <BackgroundPattern 
-      pattern="waves" 
-      opacity={0.05}
-      className="relative py-12 md:py-24 bg-gradient-to-br from-orange-900 via-red-900 to-pink-900 overflow-hidden"
-    >
-      {/* Floating decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-28 h-28 opacity-10 animate-pulse">
-          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-            <circle cx="50" cy="50" r="45" stroke="white" strokeWidth="2" fill="none" />
-            <circle cx="50" cy="50" r="30" stroke="white" strokeWidth="1" fill="none" />
-            <circle cx="50" cy="50" r="15" stroke="white" strokeWidth="1" fill="none" />
-          </svg>
-        </div>
-        
-        <div className="absolute bottom-20 right-10 w-32 h-32 opacity-10 animate-bounce">
-          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-            <path d="M20 80 L50 20 L80 80 Z" stroke="white" strokeWidth="2" fill="none" />
-            <circle cx="50" cy="60" r="8" fill="white" />
-          </svg>
-        </div>
-        
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 opacity-10 animate-spin">
-          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-            <path d="M50 10 L90 50 L50 90 L10 50 Z" stroke="white" strokeWidth="2" fill="none" />
-            <circle cx="50" cy="50" r="20" fill="white" />
-          </svg>
-        </div>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Enhanced header */}
-        <div className="text-center mb-8 md:mb-16">
-          <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
-            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-orange-400 rounded-full mr-1.5 md:mr-2 animate-pulse"></div>
-            <span className="text-white font-medium">Success Stories</span>
+    <section className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          {/* Badge */}
+          <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            {t('drivers.testimonials.badge')}
           </div>
-          
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 bg-gradient-to-r from-white via-orange-100 to-red-100 bg-clip-text text-transparent">
-            What Our Drivers Say
+
+          {/* Title */}
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            {t('drivers.testimonials.title')}
           </h2>
-          
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-orange-100 max-w-3xl mx-auto px-2">
-            Real testimonials from drivers who have found great opportunities with our help
+
+          {/* Subtitle */}
+          <p className="text-xl text-gray-600 leading-relaxed">
+            {t('drivers.testimonials.subtitle')}
           </p>
         </div>
 
         {/* Testimonials Carousel */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 shadow-lg"
-          >
-            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 shadow-lg"
-          >
-            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* Testimonial Card */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 lg:p-12 shadow-xl border border-white/20">
-            <div className="text-center">
-              {/* Quote Icon */}
-              <div className="mb-4 md:mb-6">
-                <svg className="w-8 h-8 md:w-12 md:h-12 text-orange-300 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-              </div>
-
-              {/* Testimonial Content */}
-              <div className="mb-6 md:mb-8">
-                <p className="text-sm md:text-base lg:text-lg text-white leading-relaxed mb-4 md:mb-6">
-                  "{driverTestimonials[currentIndex].comment}"
-                </p>
-                
-                {/* Results */}
-                <div className="inline-flex items-center px-4 py-2 bg-orange-500/20 backdrop-blur-sm rounded-full text-xs md:text-sm text-orange-200 font-medium">
-                  <svg className="w-3 h-3 md:w-4 md:h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        <div className="max-w-4xl mx-auto">
+          <div className="relative">
+            {/* Testimonial */}
+            <div className="bg-white rounded-xl p-8 md:p-12 shadow-lg">
+              <div className="text-center">
+                {/* Quote Icon */}
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
-                  {driverTestimonials[currentIndex].results}
                 </div>
-              </div>
 
-              {/* Author Info */}
-              <div className="flex flex-col items-center">
-                <div className="flex items-center justify-center mb-2 md:mb-3">
-                  {renderStars(driverTestimonials[currentIndex].rating)}
-                </div>
-                
-                <div className="text-center">
-                  <h4 className="text-white font-semibold text-sm md:text-base">
+                {/* Comment */}
+                <blockquote className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed italic">
+                  "{t(driverTestimonials[currentIndex].commentKey)}"
+                </blockquote>
+
+                {/* Results */}
+                <p className="text-green-600 font-semibold mb-6">
+                  {t(driverTestimonials[currentIndex].resultsKey)}
+                </p>
+
+                {/* Driver Info */}
+                <div className="border-t border-gray-200 pt-6">
+                  <h4 className="font-semibold text-gray-900 mb-1">
                     {driverTestimonials[currentIndex].name}
                   </h4>
-                  <p className="text-orange-200 text-xs md:text-sm">
-                    {driverTestimonials[currentIndex].position}
+                  <p className="text-blue-600 mb-1">
+                    {t(driverTestimonials[currentIndex].positionKey)}
                   </p>
-                  <p className="text-orange-300 text-xs md:text-sm font-medium">
+                  <p className="text-gray-600 text-sm">
                     {driverTestimonials[currentIndex].company}
                   </p>
                 </div>
               </div>
             </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={goToPrevious}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-blue-600 transition-colors duration-300"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <button
+              onClick={goToNext}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-blue-600 transition-colors duration-300"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center mt-6 md:mt-8 space-x-2">
+          <div className="flex justify-center mt-8">
             {driverTestimonials.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-orange-400' : 'bg-white/30'
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full mx-1 transition-colors duration-300 ${
+                  index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
                 }`}
               />
             ))}
           </div>
         </div>
-
-        {/* Bottom decorative wave */}
-        <div className="mt-8 md:mt-16 relative">
-          <svg viewBox="0 0 1200 80" fill="none" className="w-full h-auto">
-            <path d="M0 80 L0 40 Q300 0 600 40 T1200 40 L1200 80 Z" fill="url(#testimonials-gradient)" />
-            <defs>
-              <linearGradient id="testimonials-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.1" />
-                <stop offset="50%" stopColor="#F97316" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.1" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
       </div>
-    </BackgroundPattern>
+    </section>
   );
-}
+};
+
+export default DriversTestimonialsSection;

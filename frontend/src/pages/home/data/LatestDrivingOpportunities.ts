@@ -2,38 +2,38 @@
 export const latestDrivingOpportunities = [
   {
     id: 1,
-    title: "CE Category Driver",
-    location: "International Routes",
-    description: "Long-distance driving across Europe with competitive rates and excellent benefits."
+    titleKey: "home.latestOpportunities.jobs.ceCategoryDriver",
+    locationKey: "home.latestOpportunities.locations.internationalRoutes",
+    descriptionKey: "home.latestOpportunities.descriptions.ceCategoryDriver"
   },
   {
     id: 2,
-    title: "Local Delivery Driver", 
-    location: "Lithuania",
-    description: "Local delivery routes with regular hours and family-friendly schedule."
+    titleKey: "home.latestOpportunities.jobs.localDeliveryDriver", 
+    locationKey: "home.latestOpportunities.locations.lithuania",
+    descriptionKey: "home.latestOpportunities.descriptions.localDeliveryDriver"
   },
   {
     id: 3,
-    title: "Warehouse to Store Driver",
-    location: "Poland", 
-    description: "Distribution driving with modern vehicles and comprehensive training."
+    titleKey: "home.latestOpportunities.jobs.warehouseToStoreDriver",
+    locationKey: "home.latestOpportunities.locations.poland", 
+    descriptionKey: "home.latestOpportunities.descriptions.warehouseToStoreDriver"
   },
   {
     id: 4,
-    title: "Refrigerated Transport Driver",
-    location: "Netherlands",
-    description: "Specialized cold chain logistics with temperature-controlled vehicles."
+    titleKey: "home.latestOpportunities.jobs.refrigeratedTransportDriver",
+    locationKey: "home.latestOpportunities.locations.netherlands",
+    descriptionKey: "home.latestOpportunities.descriptions.refrigeratedTransportDriver"
   },
   {
     id: 5,
-    title: "Express Delivery Driver",
-    location: "Germany",
-    description: "Fast-paced delivery with premium rates and flexible scheduling."
+    titleKey: "home.latestOpportunities.jobs.expressDeliveryDriver",
+    locationKey: "home.latestOpportunities.locations.germany",
+    descriptionKey: "home.latestOpportunities.descriptions.expressDeliveryDriver"
   },
   {
     id: 6,
-    title: "Heavy Goods Vehicle Driver",
-    location: "Belgium",
-    description: "Large vehicle operation with comprehensive benefits and training."
+    titleKey: "home.latestOpportunities.jobs.heavyGoodsVehicleDriver",
+    locationKey: "home.latestOpportunities.locations.belgium",
+    descriptionKey: "home.latestOpportunities.descriptions.heavyGoodsVehicleDriver"
   }
 ];

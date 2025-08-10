@@ -41,7 +41,7 @@ function AppContent() {
     <div className="min-h-screen bg-white">
       <Header onNavigate={handleNavigate} user={user} onSignOut={handleSignOut} />
       
-      <main>
+      <main className="pt-16">
         <Routes>
           <Route path="/" element={<HomePage onNavigate={handleNavigate} />} />
           <Route path="/login" element={<LoginPage onNavigate={handleNavigate} onLoginSuccess={handleLoginSuccess} />} />

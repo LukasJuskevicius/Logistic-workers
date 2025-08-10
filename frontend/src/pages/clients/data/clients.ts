@@ -2,27 +2,27 @@
 export const clientServices = [
   {
     id: 1,
-    title: "Driver Recruitment",
-    description: "Comprehensive driver sourcing and screening across Europe",
+    title: "clients.services.items.1.title",
+    description: "clients.services.items.1.description",
     icon: "truck",
-    features: ["CE Category Drivers", "Local & International Routes", "Background Verification", "License Validation"],
-    timeFrame: "2-4 weeks"
+    features: ["clients.services.items.1.features.0", "clients.services.items.1.features.1", "clients.services.items.1.features.2", "clients.services.items.1.features.3"],
+    timeFrame: "clients.services.items.1.timeFrame"
   },
   {
     id: 2,
-    title: "Compliance Management",
-    description: "Ensure all drivers meet EU regulations and company standards",
+    title: "clients.services.items.2.title",
+    description: "clients.services.items.2.description",
     icon: "shield",
-    features: ["EU Driving License Verification", "Medical Certificates", "Training Records", "Safety Standards"],
-    timeFrame: "Ongoing"
+    features: ["clients.services.items.2.features.0", "clients.services.items.2.features.1", "clients.services.items.2.features.2", "clients.services.items.2.features.3"],
+    timeFrame: "clients.services.items.2.timeFrame"
   },
   {
     id: 3,
-    title: "Ongoing Support",
-    description: "Continuous support and replacement services",
+    title: "clients.services.items.3.title",
+    description: "clients.services.items.3.description",
     icon: "support",
-    features: ["24/7 Support", "Driver Replacement", "Performance Monitoring", "Regular Updates"],
-    timeFrame: "Always Available"
+    features: ["clients.services.items.3.features.0", "clients.services.items.3.features.1", "clients.services.items.3.features.2", "clients.services.items.3.features.3"],
+    timeFrame: "clients.services.items.3.timeFrame"
   }
 ];
 
@@ -68,62 +68,62 @@ export const clientTestimonials = [
 export const clientProcess = [
   {
     step: 1,
-    title: "Submit Requirements",
-    description: "Tell us about your specific needs, routes, and requirements",
-    duration: "1-2 days",
+    title: "clients.process.items.1.title",
+    description: "clients.process.items.1.description",
+    duration: "clients.process.items.1.duration",
     icon: "document"
   },
   {
     step: 2,
-    title: "We Source Candidates",
-    description: "Our team finds and screens qualified drivers for your needs",
-    duration: "2-3 weeks",
+    title: "clients.process.items.2.title",
+    description: "clients.process.items.2.description",
+    duration: "clients.process.items.2.duration",
     icon: "search"
   },
   {
     step: 3,
-    title: "You Choose & Hire",
-    description: "Review candidates and select the best fit for your team",
-    duration: "1 week",
+    title: "clients.process.items.3.title",
+    description: "clients.process.items.3.description",
+    duration: "clients.process.items.3.duration",
     icon: "check"
   }
 ];
 
 export const clientRequirements = [
   {
-    category: "Company Information",
+    category: "clients.requirements.categories.0.title",
     items: [
-      "Company registration documents",
-      "Transport license",
-      "Insurance certificates",
-      "Safety management system"
+      "clients.requirements.categories.0.items.0",
+      "clients.requirements.categories.0.items.1",
+      "clients.requirements.categories.0.items.2",
+      "clients.requirements.categories.0.items.3"
     ]
   },
   {
-    category: "Job Requirements",
+    category: "clients.requirements.categories.1.title",
     items: [
-      "Detailed job description",
-      "Route specifications",
-      "Vehicle requirements",
-      "Experience level needed"
+      "clients.requirements.categories.1.items.0",
+      "clients.requirements.categories.1.items.1",
+      "clients.requirements.categories.1.items.2",
+      "clients.requirements.categories.1.items.3"
     ]
   },
   {
-    category: "Contract Terms",
+    category: "clients.requirements.categories.2.title",
     items: [
-      "Employment duration",
-      "Salary range",
-      "Benefits package",
-      "Working conditions"
+      "clients.requirements.categories.2.items.0",
+      "clients.requirements.categories.2.items.1",
+      "clients.requirements.categories.2.items.2",
+      "clients.requirements.categories.2.items.3"
     ]
   }
 ];
 
 export const clientStats = [
-  { number: "500+", label: "Companies Served", icon: "building" },
-  { number: "2000+", label: "Drivers Placed", icon: "users" },
-  { number: "98%", label: "Client Satisfaction", icon: "star" },
-  { number: "24h", label: "Response Time", icon: "clock" }
+  { number: "500+", label: "clients.stats.building", icon: "building" },
+  { number: "2000+", label: "clients.stats.users", icon: "users" },
+  { number: "98%", label: "clients.stats.star", icon: "star" },
+  { number: "24h", label: "clients.stats.clock", icon: "clock" }
 ];
 
 export const clientBenefits = [

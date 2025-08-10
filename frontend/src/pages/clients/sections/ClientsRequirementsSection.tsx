@@ -1,7 +1,9 @@
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
+import { useTranslation } from 'react-i18next';
 import { clientRequirements } from '../data/clients';
 
 export function ClientsRequirementsSection() {
+  const { t } = useTranslation();
   return (
     <BackgroundPattern 
       pattern="circles" 
@@ -38,16 +40,14 @@ export function ClientsRequirementsSection() {
         <div className="text-center mb-8 md:mb-16">
           <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/80 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full mr-1.5 md:mr-2"></div>
-            <span className="text-green-700 font-medium">What We Need</span>
+            <span className="text-green-700 font-medium">{t('clients.requirements.badge')}</span>
           </div>
           
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-green-800 to-emerald-900 bg-clip-text text-transparent">
-            Requirements & Process
+            {t('clients.requirements.title')}
           </h2>
           
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
-            To provide you with the best service, we need some information from your company
-          </p>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">{t('clients.requirements.subtitle')}</p>
         </div>
 
         {/* Requirements Grid */}
@@ -75,7 +75,7 @@ export function ClientsRequirementsSection() {
                 </div>
 
                 <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3">
-                  {category.category}
+                  {t(`clients.requirements.categories.${index}.title`)}
                 </h3>
               </div>
 
@@ -86,7 +86,7 @@ export function ClientsRequirementsSection() {
                     <svg className="w-4 h-4 md:w-5 md:h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm md:text-base text-gray-700">{item}</span>
+                    <span className="text-sm md:text-base text-gray-700">{t(`clients.requirements.categories.${index}.items.${itemIndex}`)}</span>
                   </li>
                 ))}
               </ul>
@@ -97,30 +97,26 @@ export function ClientsRequirementsSection() {
         {/* Additional Info */}
         <div className="mt-8 md:mt-16 text-center">
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 md:p-8 border border-green-200">
-            <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4">
-              Ready to Get Started?
-            </h3>
-            <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">
-              Don't worry if you don't have all documents ready. We can help you gather the necessary information and guide you through the process.
-            </p>
+            <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4">{t('clients.requirements.cta.title')}</h3>
+            <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">{t('clients.requirements.cta.description')}</p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
               <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-xs md:text-sm font-medium">
                 <svg className="w-3 h-3 md:w-4 md:h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Quick Response Time
+                {t('clients.requirements.cta.pills.quickResponse')}
               </div>
               <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-xs md:text-sm font-medium">
                 <svg className="w-3 h-3 md:w-4 md:h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
-                Expert Guidance
+                {t('clients.requirements.cta.pills.expertGuidance')}
               </div>
               <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-xs md:text-sm font-medium">
                 <svg className="w-3 h-3 md:w-4 md:h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
-                Free Consultation
+                {t('clients.requirements.cta.pills.freeConsultation')}
               </div>
             </div>
           </div>
