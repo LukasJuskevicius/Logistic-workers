@@ -33,8 +33,10 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001', 
   'http://localhost:3002',
+  'http://localhost:3003',
   'http://localhost:5173',
   'http://localhost:5174',
+  'https://logistic-workers.vercel.app',
   process.env.FRONTEND_URL,
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null
 ].filter(Boolean);
