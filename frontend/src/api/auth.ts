@@ -11,6 +11,7 @@ export const auth = {
       const response = await fetch(`${BASE_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // Important for CORS with cookies
         body: JSON.stringify({ email, password })
       });
       const data = await response.json();
@@ -26,6 +27,7 @@ export const auth = {
       const response = await fetch(`${BASE_URL}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify(userData)
       });
       const data = await response.json();
@@ -39,7 +41,8 @@ export const auth = {
   logout: async () => {
     try {
       const response = await fetch(`${BASE_URL}/auth/logout`, {
-        method: 'POST'
+        method: 'POST',
+        credentials: 'include'
       });
       const data = await response.json();
       return data;
