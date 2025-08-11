@@ -1,38 +1,24 @@
 import express from 'express';
-import { RegisterController } from '../controllers/register.controller.js';
-import { validateRegistrationInput } from '../middleware/auth.validation.js';
+import bcrypt from 'bcrypt';
+import { createUser, findUserByEmail } from '../daos/user.dao.js';
 
 const router = express.Router();
 
-// POST /api/register - User registration
-router.post('/', validateRegistrationInput, async (req, res) => {
+router.post('/register', async (req, res) => {
   try {
-    const { email, password, firstName, lastName, type, ...otherData } = req.body;
-
-    const userData = {
-      email,
-      password,
-      firstName,
-      lastName,
-      type,
-      ...otherData
-    };
-
-    const result = await RegisterController.register(userData, type);
-
-    if (result.success) {
-      return res.status(201).json(result);
-    } else {
-      return res.status(400).json(result);
+    const { email, password, role = 'client' } = req.body;
+    
+    const existing = await findUserByEmail(email);
+    if (existing) {
+      return res.status(400).json({ error: 'Email already exists' });
     }
-
+    
+    const passwordHash = await bcrypt.hash(password, 10);
+    const user = await createUser(email, passwordHash, role);
+    res.json({ message: 'User created', userId: user.user_id });
   } catch (error) {
-    console.error('❌ Register route error:', error);
-    return res.status(500).json({
-      success: false,
-      error: 'Internal server error'
-    });
+    res.status(400).json({ error: 'Registration failed' });
   }
 });
 
-export default router; 
+export default router;
