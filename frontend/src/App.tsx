@@ -15,6 +15,9 @@ import { ClientsPage } from './pages/clients/ClientsPage';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 
+// Import API
+import { auth } from './api/auth';
+
 function AppContent() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
@@ -32,9 +35,16 @@ function AppContent() {
     navigate('/');
   };
 
-  const handleSignOut = () => {
-    setUser(null);
-    navigate('/');
+  const handleSignOut = async () => {
+    try {
+      await auth.logout();
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      // Always clear local state and redirect, even if API call fails
+      setUser(null);
+      navigate('/');
+    }
   };
 
   return (

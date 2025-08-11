@@ -1,10 +1,14 @@
 // Simple API calls for vacancies
-const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = import.meta.env.VITE_API_URL;
+
+if (!BASE_URL) {
+  throw new Error('VITE_API_URL environment variable is not set!');
+}
 
 export const vacancies = {
   getAll: async () => {
     try {
-      const response = await fetch(`${BASE_URL}/vacancies`);
+      const response = await fetch(`${BASE_URL}/api/vacancies`);
       const data = await response.json();
       return data;
     } catch (error) {
@@ -15,7 +19,7 @@ export const vacancies = {
 
   getById: async (id: string) => {
     try {
-      const response = await fetch(`${BASE_URL}/vacancies/${id}`);
+      const response = await fetch(`${BASE_URL}/api/vacancies/${id}`);
       const data = await response.json();
       return data;
     } catch (error) {

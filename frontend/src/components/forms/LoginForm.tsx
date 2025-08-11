@@ -23,7 +23,7 @@ export function LoginForm({ onNavigate, onLoginSuccess }: LoginFormProps) {
     const result = await auth.login(email, password);
     
     if (result.success) {
-      onLoginSuccess(result.data.user);
+      onLoginSuccess(result.user);
       onNavigate('home');
     } else {
       setError(result.error || 'Login failed');
