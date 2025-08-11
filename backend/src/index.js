@@ -1,11 +1,13 @@
 import express from 'express';
 import session from 'express-session';
+import connectPgSimple from 'connect-pg-simple';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import passport from './config/passport.js';
+import { database } from './dbconn/database.js';
 // Auth routes - single responsibility
 import loginRoute from './routes/login.route.js';
 import logoutRoute from './routes/logout.route.js';
@@ -29,6 +31,9 @@ dotenv.config({ path: envPath });
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust proxy for Railway/production deployments
+app.set('trust proxy', true);
+
 app.use(helmet());
 app.use(corsMiddleware);
 app.use(rateLimitMiddleware);
@@ -36,7 +41,16 @@ app.use(morgan('combined'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-app.use(session({
+// Session configuration
+const PgSession = connectPgSimple(session);
+const sessionConfig = {
+  store: process.env.NODE_ENV === 'production' 
+    ? new PgSession({
+        pool: database,
+        tableName: 'user_sessions',
+        createTableIfMissing: true
+      })
+    : undefined, // Use default MemoryStore in development
   secret: process.env.SESSION_SECRET || 'fallback-secret-change-in-production',
   resave: false,
   saveUninitialized: false,
@@ -44,9 +58,11 @@ app.use(session({
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000,
-    sameSite: 'strict'
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax' // 'none' for cross-origin in production
   }
-}));
+};
+
+app.use(session(sessionConfig));
 
 app.use(passport.initialize());
 app.use(passport.session());

@@ -11,8 +11,23 @@ export async function loginUser(req, res) {
       return res.status(400).json({ error: "Email and password are required" });
     }
     
-    // Find user
-    const user = await findUserByEmail(email);
+    // Find user with error handling
+    let user;
+    try {
+      user = await findUserByEmail(email);
+    } catch (dbError) {
+      console.error('Database error during user lookup:', dbError);
+      console.error('Database connection details:', {
+        host: process.env.DB_HOST || 'not set',
+        database: process.env.DB_NAME || 'not set',
+        hasConnectionString: !!process.env.DATABASE_URL || !!process.env.DATABASE_PUBLIC_URL
+      });
+      return res.status(500).json({ 
+        error: "Database connection error",
+        details: process.env.NODE_ENV === 'development' ? dbError.message : undefined
+      });
+    }
+    
     if (!user) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
@@ -30,6 +45,7 @@ export async function loginUser(req, res) {
     // Save session explicitly
     req.session.save((err) => {
       if (err) {
+        console.error('Session save error:', err);
         return res.status(500).json({ error: "Session save failed" });
       }
       
@@ -45,7 +61,11 @@ export async function loginUser(req, res) {
     });
     
   } catch (error) {
-    console.error('Login error:', error.message);
-    res.status(500).json({ error: "Login failed" });
+    console.error('Login error:', error);
+    console.error('Error stack:', error.stack);
+    res.status(500).json({ 
+      error: "Login failed",
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 }
