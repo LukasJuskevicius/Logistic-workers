@@ -11,7 +11,7 @@ type MenuItem = {
   id: string;
   icon: string;
   label: string;
-  action?: () => void;
+  isNavigation?: boolean;
 };
 
 export function ProfileSidebar({ user, activeSection, onSectionChange, onNavigate }: ProfileSidebarProps) {
@@ -26,7 +26,7 @@ export function ProfileSidebar({ user, activeSection, onSectionChange, onNavigat
 
   const roleSpecificItems: Record<string, MenuItem[]> = {
     admin: [
-      { id: 'admin', icon: '👥', label: t('profile.adminDashboard'), action: () => onNavigate('admin') }
+      { id: 'admin', icon: '👥', label: t('profile.adminDashboard'), isNavigation: true }
     ],
     driver: [
       { id: 'schedule', icon: '📅', label: t('profile.mySchedule') },
@@ -82,7 +82,13 @@ export function ProfileSidebar({ user, activeSection, onSectionChange, onNavigat
             {additionalItems.map((item) => (
               <button
                 key={item.id}
-                onClick={item.action || (() => onSectionChange(item.id))}
+                onClick={() => {
+                  if (item.isNavigation) {
+                    onNavigate('admin');
+                  } else {
+                    onSectionChange(item.id);
+                  }
+                }}
                 className="w-full flex items-center space-x-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
               >
                 <span>{item.icon}</span>
