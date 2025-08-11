@@ -1,6 +1,5 @@
 import express from 'express';
 import session from 'express-session';
-import connectPgSimple from 'connect-pg-simple';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
@@ -8,6 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import passport from './config/passport.js';
 import { database } from './dbconn/database.js';
+import { createSessionConfig } from './config/session.js';
 // Auth routes - single responsibility
 import loginRoute from './routes/login.route.js';
 import logoutRoute from './routes/logout.route.js';
@@ -19,6 +19,7 @@ import messageRoute from './routes/message.route.js';
 import adminRoute from './routes/admin.route.js';
 import driverRoute from './routes/driver.route.js';
 import clientRoute from './routes/client.route.js';
+import healthRoute from './routes/health.route.js';
 // Middleware
 import { corsMiddleware } from './middleware/cors.js';
 import { rateLimitMiddleware } from './middleware/rateLimit.js';
@@ -42,32 +43,16 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Session configuration
-const PgSession = connectPgSimple(session);
-const sessionConfig = {
-  store: process.env.NODE_ENV === 'production' 
-    ? new PgSession({
-        pool: database,
-        tableName: 'user_sessions',
-        createTableIfMissing: true
-      })
-    : undefined, // Use default MemoryStore in development
-  secret: process.env.SESSION_SECRET || 'fallback-secret-change-in-production',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { 
-    secure: process.env.NODE_ENV === 'production',
-    httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000,
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax' // 'none' for cross-origin in production
-  }
-};
-
+const sessionConfig = createSessionConfig(database);
 app.use(session(sessionConfig));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Mount routes - organized by function
+// Health check (no auth required)
+app.use(healthRoute);
+
 // Authentication routes
 app.use(loginRoute);
 app.use(logoutRoute);

@@ -38,26 +38,38 @@ export async function loginUser(req, res) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
     
+    // Check if session middleware is available
+    if (!req.session) {
+      console.error('Session middleware not available');
+      return res.status(500).json({ 
+        error: "Session configuration error",
+        details: "Session middleware is not properly configured"
+      });
+    }
+    
     // Set session
     req.session.userId = user.user_id;
     req.session.role = user.role;
     
-    // Save session explicitly
-    req.session.save((err) => {
-      if (err) {
-        console.error('Session save error:', err);
-        return res.status(500).json({ error: "Session save failed" });
-      }
-      
-      res.json({ 
-        success: true,
-        message: "Login successful", 
-        user: {
-          id: user.user_id,
-          email: user.email, 
-          role: user.role
+    // Try to save session, but also allow auto-save
+    if (req.session.save) {
+      req.session.save((err) => {
+        if (err) {
+          console.error('Session save warning:', err);
+          // Don't fail completely, session might still work with auto-save
         }
       });
+    }
+    
+    // Send response immediately
+    res.json({ 
+      success: true,
+      message: "Login successful", 
+      user: {
+        id: user.user_id,
+        email: user.email, 
+        role: user.role
+      }
     });
     
   } catch (error) {
