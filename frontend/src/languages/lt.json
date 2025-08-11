@@ -483,14 +483,14 @@
       "modernEquipment": {
         "title": "Moderni įranga",
         "description": "Dirbkite su naujausiomis transporto priemonėmis ir technologija saugumui ir komfortui",
-              "details": ["Moderni flotė", "GPS navigacija", "Saugumo įranga", "Komforto funkcijos"]
+        "details": ["Moderni flotė", "GPS navigacija", "Saugumo įranga", "Komforto funkcijos"]
+      },
+      "careerGrowth": {
+        "title": "Karjeros augimas",
+        "description": "Galimybės pažangai ir specializuotiems mokymo programoms",
+        "details": ["Mokymo programos", "Karjeros pažanga", "Įgūdžių plėtra", "Sertifikatai"]
+      }
     },
-    "careerGrowth": {
-      "title": "Karjeros augimas",
-      "description": "Galimybės pažangai ir specializuotiems mokymo programoms",
-      "details": ["Mokymo programos", "Karjeros pažanga", "Įgūdžių plėtra", "Sertifikatai"]
-    }
-  },
     "positions": {
       "badge": "Galimos pozicijos",
       "title": "Naujausios galimybės",

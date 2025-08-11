@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { LogisticWorkersLogo } from '../ui/Logo';
+import { ProfileDropdown } from '../profile/ProfileDropdown';
 
 // Define the props interface for the Header component
 interface HeaderProps {
@@ -89,17 +90,7 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
 
             {/* Conditional rendering based on user login status */}
             {user ? (
-              <>
-                <span className="text-xs lg:text-sm text-slate-700">
-                  {t('auth.hello')}, {user.firstName || user.email}
-                </span>
-                <button
-                  onClick={onSignOut}
-                  className="bg-red-600 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-red-700 transition-colors shadow-sm"
-                >
-                  {t('auth.signOut')}
-                </button>
-              </>
+              <ProfileDropdown user={user} onNavigate={onNavigate} onSignOut={onSignOut} />
             ) : (
               <>
                 <button
