@@ -6,25 +6,38 @@ import passport from 'passport';
 export async function loginUser(req, res) {
   try {
     const { email, password } = req.body;
+    const passwordHash = await bcrypt.hash(password, 10);
     const user = await findUserByEmail(email);
     
-    if (!user || !await bcrypt.compare(password, user.password_hash)) {
-      return res.status(401).json({ error: "Invalid credentials" });
+    if (!user) {
+      return res.status(401).json({ error: "Invalid email or password" });
     }
-    
-    req.session.userId = user.user_id;
-    req.session.role = user.role;
-    
-    const profile = await getProfileById(user.user_id);
+    if(passwordHash !== user.password_hash) {
+      return res.status(402).json({ error: "Invalid email or password" });
+    }
+    if(!req.session){
+      return res.status(403).json({ error: "session middleware not available"});
+    }
+    try {
+      req.session.userId = user.user_id;
+      req.session.role = user.role;
+      
+      // 4. Verify session was set
+      if (!req.session.userId || !req.session.role) {
+        throw new Error('Failed to set session data');
+      }
+    } catch (sessionError) {
+      console.error('Session error:', sessionError);
+      return res.status(500).json({ error: "Failed to create session" });
+    }
+
     res.json({ 
+      success: true,
       message: "Login successful", 
       user: {
         id: user.user_id,
         email: user.email, 
-        role: user.role,
-        first_name: profile?.first_name,
-        last_name: profile?.last_name,
-        profile_picture: profile?.profile_picture
+        role: user.role
       }
     });
   } catch (error) {

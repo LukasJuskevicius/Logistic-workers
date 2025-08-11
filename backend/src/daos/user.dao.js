@@ -2,7 +2,7 @@ import { database } from '../dbconn/database.js';
 
 export async function findUserByEmail(email) {
   const result = await database.query(
-    'SELECT * FROM users WHERE email = $1',
+    'SELECT email, user_id, role FROM users WHERE email = ?',
     [email]
   );
   return result.rows[0];
