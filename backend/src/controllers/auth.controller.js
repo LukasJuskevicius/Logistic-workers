@@ -6,13 +6,11 @@ import passport from 'passport';
 export async function loginUser(req, res) {
   try {
     const { email, password } = req.body;
-    const passwordHash = await bcrypt.hash(password, 10);
     const user = await findUserByEmail(email);
-    
     if (!user) {
       return res.status(401).json({ error: "Invalid email or password" });
     }
-    if(passwordHash !== user.password_hash) {
+    if(!(await bcrypt.compare(password, user.password_hash))) {
       return res.status(402).json({ error: "Invalid email or password" });
     }
     if(!req.session){
@@ -30,16 +28,7 @@ export async function loginUser(req, res) {
       console.error('Session error:', sessionError);
       return res.status(500).json({ error: "Failed to create session" });
     }
-
-    res.json({ 
-      success: true,
-      message: "Login successful", 
-      user: {
-        id: user.user_id,
-        email: user.email, 
-        role: user.role
-      }
-    });
+    res.json({ message: "Login successful", username: user.username })
   } catch (error) {
     res.status(500).json({ error: "Login failed" });
   }
