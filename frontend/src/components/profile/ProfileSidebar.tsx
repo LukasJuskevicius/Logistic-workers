@@ -7,17 +7,24 @@ interface ProfileSidebarProps {
   onNavigate: (page: string) => void;
 }
 
+type MenuItem = {
+  id: string;
+  icon: string;
+  label: string;
+  action?: () => void;
+};
+
 export function ProfileSidebar({ user, activeSection, onSectionChange, onNavigate }: ProfileSidebarProps) {
   const { t } = useTranslation();
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { id: 'overview', icon: '📊', label: t('profile.overview') },
     { id: 'settings', icon: '⚙️', label: t('profile.settings') },
     { id: 'messages', icon: '✉️', label: t('profile.messages') },
     { id: 'documents', icon: '📁', label: t('profile.documents') },
   ];
 
-  const roleSpecificItems = {
+  const roleSpecificItems: Record<string, MenuItem[]> = {
     admin: [
       { id: 'admin', icon: '👥', label: t('profile.adminDashboard'), action: () => onNavigate('admin') }
     ],
