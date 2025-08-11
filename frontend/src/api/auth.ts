@@ -8,7 +8,7 @@ if (!BASE_URL) {
 export const auth = {
   login: async (email: string, password: string) => {
     try {
-      const response = await fetch(`${BASE_URL}/api/auth/login`, {
+      const response = await fetch(`${BASE_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', // Important for CORS with cookies
@@ -24,7 +24,7 @@ export const auth = {
 
   register: async (userData: any) => {
     try {
-      const response = await fetch(`${BASE_URL}/api/register`, {
+      const response = await fetch(`${BASE_URL}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -40,7 +40,7 @@ export const auth = {
 
   logout: async () => {
     try {
-      const response = await fetch(`${BASE_URL}/api/auth/logout`, {
+      const response = await fetch(`${BASE_URL}/auth/logout`, {
         method: 'POST',
         credentials: 'include'
       });
@@ -54,7 +54,7 @@ export const auth = {
 
   checkAuth: async () => {
     try {
-      const response = await fetch(`${BASE_URL}/api/auth/check`, {
+      const response = await fetch(`${BASE_URL}/auth/check`, {
         method: 'GET',
         credentials: 'include'
       });

@@ -8,7 +8,7 @@ if (!BASE_URL) {
 export const vacancies = {
   getAll: async () => {
     try {
-      const response = await fetch(`${BASE_URL}/api/vacancies`);
+      const response = await fetch(`${BASE_URL}/vacancies`);
       const data = await response.json();
       return data;
     } catch (error) {
@@ -19,7 +19,7 @@ export const vacancies = {
 
   getById: async (id: string) => {
     try {
-      const response = await fetch(`${BASE_URL}/api/vacancies/${id}`);
+      const response = await fetch(`${BASE_URL}/vacancies/${id}`);
       const data = await response.json();
       return data;
     } catch (error) {
