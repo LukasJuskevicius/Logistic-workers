@@ -1,43 +1,50 @@
 import cors from 'cors';
 
-const allowedOrigins = [
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
+// Production origins from environment
+const productionOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
+  : ['https://logistic-workers.vercel.app'];
+
+// Development origins
+const developmentOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
-  'http://localhost:3002',
-  'http://localhost:5173',
-  'https://logistic-workers.vercel.app',
-  process.env.FRONTEND_URL
-].filter(Boolean);
+  'http://localhost:5173'
+];
 
-console.log('CORS allowed origins:', allowedOrigins);
+const allowedOrigins = isDevelopment 
+  ? [...developmentOrigins, ...productionOrigins]
+  : productionOrigins;
 
 export const corsMiddleware = cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps or Postman)
-    if (!origin) return callback(null, true);
+    // Allow requests with no origin in development only
+    if (!origin && isDevelopment) {
+      return callback(null, true);
+    }
+    
+    if (!origin) {
+      return callback(new Error('Missing origin header'));
+    }
     
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      console.log('CORS blocked origin:', origin);
+      console.error(`CORS blocked origin: ${origin}`);
       callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    'X-Requested-With',
+    'X-CSRF-Token'
+  ],
+  exposedHeaders: ['X-Total-Count'],
+  maxAge: 86400, // 24 hours
   optionsSuccessStatus: 200
 });
-
-
-// enterprice security
-//allowedHeaders: 
-    //'Content-Type',
-    //'X-Requested-With', 
-    //'X-CSRF-Token',
-    //'X-Client-Version',
-    //'X-Request-ID',          // Request tracking
-    //'X-API-Key',             // API authentication
-    //'User-Agent',            // Device identification
-    //'Accept-Language'        // Localization
-  

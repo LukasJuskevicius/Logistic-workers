@@ -1,10 +1,17 @@
 import { database } from '../dbconn/database.js';
 
+// Get complete user profile with role-specific data
 export async function getProfileById(userId) {
+  if (!userId) {
+    throw new Error('User ID is required');
+  }
+  
   const result = await database.query(`
-    SELECT u.*, up.*, 
-           COALESCE(d.first_name, c.contact_first_name, a.first_name) as first_name,
-           COALESCE(d.last_name, c.contact_last_name, a.last_name) as last_name
+    SELECT 
+      u.user_id, u.email, u.role, u.is_verified, u.created_at,
+      up.bio, up.skills, up.location, up.phone, up.linkedin, up.profile_picture,
+      COALESCE(d.first_name, c.contact_first_name, a.first_name) as first_name,
+      COALESCE(d.last_name, c.contact_last_name, a.last_name) as last_name
     FROM users u
     LEFT JOIN user_profiles up ON u.user_id = up.user_id
     LEFT JOIN drivers d ON u.user_id = d.user_id
@@ -16,7 +23,12 @@ export async function getProfileById(userId) {
   return result.rows[0];
 }
 
+// Update or create user profile
 export async function updateUserProfile(userId, updates) {
+  if (!userId) {
+    throw new Error('User ID is required');
+  }
+  
   const { bio, skills, location, phone, linkedin, profile_picture } = updates;
   
   const result = await database.query(`

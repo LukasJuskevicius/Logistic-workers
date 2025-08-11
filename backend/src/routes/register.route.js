@@ -4,7 +4,7 @@ import { createUser, findUserByEmail } from '../daos/user.dao.js';
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
+router.post('/api/register', async (req, res) => {
   try {
     const { email, password, role = 'client' } = req.body;
     

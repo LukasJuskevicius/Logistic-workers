@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.use(requireAuth); // All profile routes need auth
 
-router.get('/profile/:userId?', getProfile);
-router.put('/profile', updateProfile);
-router.post('/profile/avatar', uploadAvatar);
+router.get('/api/profile/:userId?', getProfile);
+router.put('/api/profile', updateProfile);
+router.post('/api/profile/avatar', uploadAvatar);
 
 export default router;

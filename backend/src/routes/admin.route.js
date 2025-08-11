@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.use(requireAuth, requireAdmin);
 
-router.get('/users', getAllUsers);
-router.get('/messages', getAllMessages);
-router.get('/stats', getDashboardStats);
+router.get('/api/admin/users', getAllUsers);
+router.get('/api/admin/messages', getAllMessages);
+router.get('/api/admin/stats', getDashboardStats);
 
 export default router;

@@ -6,11 +6,18 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import passport from './config/passport.js';
-import authRoute from './routes/auth.route.js';
+// Auth routes - single responsibility
+import loginRoute from './routes/login.route.js';
+import logoutRoute from './routes/logout.route.js';
+import oauthRoute from './routes/oauth.route.js';
 import registerRoute from './routes/register.route.js';
+// Feature routes
 import profileRoute from './routes/profile.route.js';
 import messageRoute from './routes/message.route.js';
 import adminRoute from './routes/admin.route.js';
+import driverRoute from './routes/driver.route.js';
+import clientRoute from './routes/client.route.js';
+// Middleware
 import { corsMiddleware } from './middleware/cors.js';
 import { rateLimitMiddleware } from './middleware/rateLimit.js';
 
@@ -30,25 +37,39 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'fallback-secret-change-in-production',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
+  cookie: { 
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000,
+    sameSite: 'strict'
+  }
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Mount routes
-app.use('/api/auth', authRoute);
-app.use('/api', registerRoute);
-app.use('/api', profileRoute);
-app.use('/api', messageRoute);
-app.use('/api/admin', adminRoute);
+// Mount routes - organized by function
+// Authentication routes
+app.use(loginRoute);
+app.use(logoutRoute);
+app.use(oauthRoute);
+app.use(registerRoute);
+
+// User routes
+app.use(profileRoute);
+app.use(messageRoute);
+
+// Role-specific routes
+app.use(driverRoute);
+app.use(clientRoute);
+app.use(adminRoute);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 }); 
 
-export default app; 
+export default app;
