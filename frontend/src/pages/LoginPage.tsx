@@ -1,13 +1,11 @@
-// Modern login page wrapper
+// Login page using React Router loader/action pattern
 import { LoginForm } from '../components/forms/LoginForm';
 import { BackgroundPattern } from '../components/ui/BackgroundPattern';
 
-interface LoginPageProps {
-  onNavigate: (page: string) => void;
-  onLoginSuccess: (user: any) => void;
-}
-
-export function LoginPage({ onNavigate, onLoginSuccess }: LoginPageProps) {
+// No interface needed - props removed when using loaders/actions
+export function LoginPage() {
+  console.log('[LOGIN PAGE] Rendering login page');
+  
   return (
     <BackgroundPattern
       pattern="waves"
@@ -15,7 +13,7 @@ export function LoginPage({ onNavigate, onLoginSuccess }: LoginPageProps) {
       className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
     >
       <div className="w-full max-w-md">
-        <LoginForm onNavigate={onNavigate} onLoginSuccess={onLoginSuccess} />
+        <LoginForm />
       </div>
     </BackgroundPattern>
   );

@@ -1,6 +1,13 @@
-// Simple main app with routing
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+// Main app with React Router loader/action pattern
+import { 
+  createBrowserRouter, 
+  RouterProvider, 
+  Outlet, 
+  useLoaderData,
+  useNavigate,
+  useNavigation 
+} from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 // Import pages
 import { HomePage } from './pages/home/HomePage';
@@ -15,14 +22,36 @@ import { ClientsPage } from './pages/clients/ClientsPage';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 
-// Import API
-import { auth } from './api/auth';
+// Import loaders and actions
+import { authLoader } from './routes/loaders/authLoader';
+import { loginAction } from './routes/actions/loginAction';
 
-function AppContent() {
+// Import API functions
+import { logout } from './api/auth/logout';
+
+// Root layout component
+function RootLayout() {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const navigation = useNavigation();
+  const loaderData = useLoaderData() as { user: any } | null;
+  const [user, setUser] = useState(loaderData?.user || null);
+
+  // Log navigation state for debugging
+  useEffect(() => {
+    console.log('[APP] Navigation state:', navigation.state);
+    console.log('[APP] Current user:', user);
+  }, [navigation.state, user]);
+
+  // Update user when loader data changes
+  useEffect(() => {
+    console.log('[APP] Loader data changed:', loaderData);
+    if (loaderData?.user) {
+      setUser(loaderData.user);
+    }
+  }, [loaderData]);
 
   const handleNavigate = (page: string) => {
+    console.log('[APP] Navigating to:', page);
     if (page === 'home') {
       navigate('/');
     } else {
@@ -30,19 +59,17 @@ function AppContent() {
     }
   };
 
-  const handleLoginSuccess = (userData: any) => {
-    setUser(userData);
-    navigate('/');
-  };
-
   const handleSignOut = async () => {
+    console.log('[APP] Signing out...');
     try {
-      await auth.logout();
+      await logout();
+      console.log('[APP] Logout successful');
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error('[APP] Logout error:', error);
     } finally {
-      // Always clear local state and redirect, even if API call fails
+      // Clear user state
       setUser(null);
+      console.log('[APP] User state cleared, redirecting to home');
       navigate('/');
     }
   };
@@ -52,15 +79,10 @@ function AppContent() {
       <Header onNavigate={handleNavigate} user={user} onSignOut={handleSignOut} />
       
       <main className="pt-16">
-        <Routes>
-          <Route path="/" element={<HomePage onNavigate={handleNavigate} />} />
-          <Route path="/login" element={<LoginPage onNavigate={handleNavigate} onLoginSuccess={handleLoginSuccess} />} />
-          <Route path="/register" element={<RegisterPage onNavigate={handleNavigate} />} />
-          <Route path="/vacancies" element={<VacanciesPage onNavigate={handleNavigate} />} />
-          <Route path="/contact" element={<ContactPage onNavigate={handleNavigate} />} />
-          <Route path="/drivers" element={<DriversPage onNavigate={handleNavigate} />} />
-          <Route path="/clients" element={<ClientsPage onNavigate={handleNavigate} />} />
-        </Routes>
+        {navigation.state === 'loading' && (
+          <div className="fixed top-0 left-0 right-0 h-1 bg-indigo-600 animate-pulse z-50" />
+        )}
+        <Outlet context={{ user, setUser }} />
       </main>
 
       <Footer onNavigate={handleNavigate} />
@@ -68,10 +90,47 @@ function AppContent() {
   );
 }
 
+// Create router with loaders and actions
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    loader: authLoader,
+    children: [
+      {
+        index: true,
+        element: <HomePage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+      },
+      {
+        path: 'login',
+        element: <LoginPage />,
+        action: loginAction
+      },
+      {
+        path: 'register',
+        element: <RegisterPage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+      },
+      {
+        path: 'vacancies',
+        element: <VacanciesPage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+      },
+      {
+        path: 'contact',
+        element: <ContactPage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+      },
+      {
+        path: 'drivers',
+        element: <DriversPage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+      },
+      {
+        path: 'clients',
+        element: <ClientsPage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+      }
+    ]
+  }
+]);
+
 export default function App() {
-  return (
-    <Router>
-      <AppContent />
-    </Router>
-  );
+  console.log('[APP] App component rendered');
+  return <RouterProvider router={router} />;
 }
