@@ -5,20 +5,13 @@ if (!BASE_URL) {
 }
 
 export async function authLoader() {
-  
   try {
     const response = await fetch(`${BASE_URL}/auth/check`, {
-      method: 'GET',
       credentials: 'include'
     });
-    
     const result = await response.json();
-    if (result.authenticated && result.user) {
-      return { user: result.user };
-    }
-    return {user: null};
-
-  } catch (error) {
+    return { user: result.user || null };
+  } catch {
     return { user: null };
   }
 }

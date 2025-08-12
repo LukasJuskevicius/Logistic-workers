@@ -1,20 +1,50 @@
-// Login page using React Router loader/action pattern
-import { LoginForm } from '../components/forms/LoginForm';
-import { BackgroundPattern } from '../components/ui/BackgroundPattern';
+// src/pages/LoginPage.tsx
+import { Form, useActionData, useNavigation } from 'react-router-dom';
 
-// No interface needed - props removed when using loaders/actions
 export function LoginPage() {
-  console.log('[LOGIN PAGE] Rendering login page');
-  
+  const actionData = useActionData();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+
   return (
-    <BackgroundPattern
-      pattern="waves"
-      opacity={0.05}
-      className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
-    >
-      <div className="w-full max-w-md">
-        <LoginForm />
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow">
+        <h1 className="text-2xl font-bold mb-6">Log In</h1>
+        
+        {actionData?.error && (
+          <div className="text-red-500 mb-4">{actionData.error}</div>
+        )}
+
+        <Form method="post" className="space-y-4">
+          <div>
+            <label className="block mb-1">Email</label>
+            <input
+              name="email"
+              type="email"
+              required
+              className="w-full p-2 border rounded"
+            />
+          </div>
+          
+          <div>
+            <label className="block mb-1">Password</label>
+            <input
+              name="password"
+              type="password"
+              required
+              className="w-full p-2 border rounded"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          >
+            {isSubmitting ? 'Logging in...' : 'Log In'}
+          </button>
+        </Form>
       </div>
-    </BackgroundPattern>
+    </div>
   );
 }

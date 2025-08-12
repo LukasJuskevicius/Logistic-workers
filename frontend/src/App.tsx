@@ -1,6 +1,7 @@
 // Main app with React Router loader/action pattern
 import { createBrowserRouter, RouterProvider, Outlet, useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { redirect } from 'react-router-dom';
 
 // Import pages
 import { HomePage } from './pages/home/HomePage';
@@ -58,9 +59,16 @@ const router = createBrowserRouter([
         element: <HomePage />
       },
       {
-        path: 'login',
+        path: '/login',
         element: <LoginPage />,
-        action: loginAction
+        action: loginAction,
+        loader: () => {
+          // If user is already logged in, redirect to home
+          if (sessionStorage.getItem('user')) {
+            return redirect('/');
+          }
+          return null;
+        }
       },
       {
         path: 'register',

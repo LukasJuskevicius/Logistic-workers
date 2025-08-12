@@ -1,4 +1,4 @@
-// Login API module
+// api/auth/login.ts
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 if (!BASE_URL) {
@@ -6,25 +6,11 @@ if (!BASE_URL) {
 }
 
 export async function login(email: string, password: string) {
-  console.log('[LOGIN] Starting login process for:', email);
-  
-  try {
-    console.log('[LOGIN] Sending request to:', `${BASE_URL}/auth/login`);
-    
-    const response = await fetch(`${BASE_URL}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({ email, password })
-    });
-    
-    console.log('[LOGIN] Response status:', response.status);
-    const data = await response.json();
-    console.log('[LOGIN] Response data:', data);
-    
-    return data;
-  } catch (error) {
-    console.error('[LOGIN] Error occurred:', error);
-    return { success: false, error: 'Network error' };
-  }
+  const response = await fetch(`${BASE_URL}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include', // Important for cookies
+    body: JSON.stringify({ email, password })
+  });
+  return response.json();
 }

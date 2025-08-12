@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
-import { contact } from '../../../api/contact';
+import { submitContact } from '../../../api/contact';
 import { inquiryTypes } from '../data/contact';
 
 
@@ -25,7 +25,7 @@ export function ContactFormSection() {
     setError('');
     setSuccess('');
 
-    const result = await contact.submit(formData);
+    const result = await submitContact(formData);
     
     if (result.success) {
       setSuccess(t('contact.form.successMessage'));

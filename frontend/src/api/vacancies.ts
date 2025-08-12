@@ -1,30 +1,29 @@
-// Simple API calls for vacancies
+// api/vacancies.ts
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-if (!BASE_URL) {
-  throw new Error('VITE_API_URL environment variable is not set!');
+// api/vacancies.ts
+export async function getVacancies() {
+  try {
+    const response = await fetch(`${BASE_URL}/vacancies`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching vacancies:', error);
+    throw error; // Let the component handle the error
+  }
 }
 
-export const vacancies = {
-  getAll: async () => {
-    try {
-      const response = await fetch(`${BASE_URL}/vacancies`);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Get vacancies error:', error);
-      return { success: false, error: 'Network error' };
+export async function getVacancy(id: string) {
+  try {
+    const response = await fetch(`${BASE_URL}/vacancies/${id}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  },
-
-  getById: async (id: string) => {
-    try {
-      const response = await fetch(`${BASE_URL}/vacancies/${id}`);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Get vacancy error:', error);
-      return { success: false, error: 'Network error' };
-    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching vacancy:', error);
+    throw error; // Let the component handle the error
   }
-};
+}
