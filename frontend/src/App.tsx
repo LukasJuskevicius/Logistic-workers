@@ -25,6 +25,7 @@ import { Footer } from './components/layout/Footer';
 // Import loaders and actions
 import { authLoader } from './routes/loaders/authLoader';
 import { loginAction } from './routes/actions/loginAction';
+import { registerAction } from './routes/actions/registerAction';
 
 // Import API functions
 import { logout } from './api/auth/logout';
@@ -108,7 +109,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'register',
-        element: <RegisterPage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+        element: <RegisterPage />,
+        action: registerAction
       },
       {
         path: 'vacancies',
