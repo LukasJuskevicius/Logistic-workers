@@ -23,10 +23,11 @@ export function LoginForm() {
     if (actionData?.success && actionData?.user) {
       console.log('[LOGIN FORM] Login successful, updating user state');
       setUser(actionData.user);
-      // Stay on the same page - user can see they're logged in via header
-      console.log('[LOGIN FORM] User is now logged in, header should update');
+      // Redirect to home page after successful login
+      console.log('[LOGIN FORM] Redirecting to home page');
+      navigate('/');
     }
-  }, [actionData, setUser]);
+  }, [actionData, setUser, navigate]);
   
   return (
     <div className="bg-white/80 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100">
