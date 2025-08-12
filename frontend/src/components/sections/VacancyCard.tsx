@@ -1,3 +1,4 @@
+import { redirect } from 'react-router-dom';
 import { Card } from '../ui/Card';
 import { useTranslation } from 'react-i18next';
 
@@ -22,16 +23,10 @@ interface VacancyWithText {
   posted?: string;
 }
 
-type Vacancy = VacancyWithKeys | VacancyWithText;
 
-// Vacancy card props
-interface VacancyCardProps {
-  vacancy: Vacancy;
-  onNavigate: (page: string) => void;
-}
 
 // Specific vacancy card implementation with aligned buttons
-export function VacancyCard({ vacancy, onNavigate }: VacancyCardProps) {
+export function VacancyCard({ vacancy }: { vacancy: VacancyWithKeys | VacancyWithText }) {
   const { t } = useTranslation();
   
   return (
@@ -70,7 +65,7 @@ export function VacancyCard({ vacancy, onNavigate }: VacancyCardProps) {
       {/* Card Footer - always at bottom */}
       <div className="mt-auto">
         <button 
-          onClick={() => onNavigate('vacancies')}
+          onClick={() => redirect('/vacancies')}
           className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 md:py-3 px-4 md:px-6 rounded-lg md:rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm md:text-base"
         >
           {t('vacancies.viewDetails')}

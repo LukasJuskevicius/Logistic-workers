@@ -2,10 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { contactMethods, businessHours } from '../data/contact';
 
-interface ContactInfoSectionProps {
-  onNavigate: (page: string) => void;
-}
-
 const getIcon = (iconName: string) => {
   switch (iconName) {
     case 'email':
@@ -32,7 +28,7 @@ const getIcon = (iconName: string) => {
   }
 };
 
-export function ContactInfoSection({ onNavigate }: ContactInfoSectionProps) {
+export function ContactInfoSection() {
   const { t } = useTranslation();
   return (
     <BackgroundPattern

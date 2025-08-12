@@ -1,12 +1,8 @@
+import { redirect } from 'react-router-dom';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { useTranslation } from 'react-i18next';
-
-interface HeroSectionProps {
-  onNavigate: (page: string) => void;
-}
-
 // Enhanced hero section with visual appeal and SVG decorations
-export function HeroSection({ onNavigate }: HeroSectionProps) {
+export function HeroSection() {
   const { t } = useTranslation();
 
   return (
@@ -57,7 +53,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           {/* Call to action buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <button
-              onClick={() => onNavigate('vacancies')}
+              onClick={() => redirect('/vacancies')}
               className="group relative px-8 py-4 bg-white text-blue-900 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
             >
               <span className="flex items-center">
@@ -69,7 +65,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
             </button>
             
             <button
-              onClick={() => onNavigate('contact')}
+              onClick={() => redirect('/contact')}
               className="px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
             >
               {t('home.hero.getStartedButton')}

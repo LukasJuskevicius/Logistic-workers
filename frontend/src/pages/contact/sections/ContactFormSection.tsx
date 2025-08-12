@@ -4,11 +4,8 @@ import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { contact } from '../../../api/contact';
 import { inquiryTypes } from '../data/contact';
 
-interface ContactFormSectionProps {
-  onNavigate: (page: string) => void;
-}
 
-export function ContactFormSection({ onNavigate }: ContactFormSectionProps) {
+export function ContactFormSection() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',

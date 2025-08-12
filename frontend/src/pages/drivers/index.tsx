@@ -5,11 +5,7 @@ import DriversRequirementsSection from './sections/DriversRequirementsSection';
 import DriversProcessSection from './sections/DriversProcessSection';
 import DriversTestimonialsSection from './sections/DriversTestimonialsSection';
 
-interface DriversPageProps {
-  onNavigate: (page: string) => void;
-}
-
-export function DriversPage({ onNavigate }: DriversPageProps) {
+export function DriversPage() {
   return (
     <div className="min-h-screen">
       <DriversHeroSection />

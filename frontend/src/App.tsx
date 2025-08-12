@@ -1,12 +1,5 @@
 // Main app with React Router loader/action pattern
-import { 
-  createBrowserRouter, 
-  RouterProvider, 
-  Outlet, 
-  useLoaderData,
-  useNavigate,
-  useNavigation 
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet, useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 // Import pages
@@ -34,59 +27,21 @@ import { logout } from './api/auth/logout';
 function RootLayout() {
   const navigate = useNavigate();
   const navigation = useNavigation();
-  const loaderData = useLoaderData() as { user: any } | null;
-  const [user, setUser] = useState(loaderData?.user || null);
+  const { user } = useLoaderData<{ user: any | null }>();
 
-  // Log navigation state for debugging
-  useEffect(() => {
-    console.log('[APP] Navigation state:', navigation.state);
-    console.log('[APP] Current user:', user);
-  }, [navigation.state, user]);
-
-  // Update user when loader data changes
-  useEffect(() => {
-    console.log('[APP] Loader data changed:', loaderData);
-    if (loaderData?.user) {
-      setUser(loaderData.user);
-    }
-  }, [loaderData]);
-
-  const handleNavigate = (page: string) => {
-    console.log('[APP] Navigating to:', page);
-    if (page === 'home') {
-      navigate('/');
-    } else {
-      navigate(`/${page}`);
-    }
-  };
-
-  const handleSignOut = async () => {
-    console.log('[APP] Signing out...');
-    try {
-      await logout();
-      console.log('[APP] Logout successful');
-    } catch (error) {
-      console.error('[APP] Logout error:', error);
-    } finally {
-      // Clear user state
-      setUser(null);
-      console.log('[APP] User state cleared, redirecting to home');
-      navigate('/');
-    }
-  };
 
   return (
     <div className="min-h-screen bg-white">
-      <Header onNavigate={handleNavigate} user={user} onSignOut={handleSignOut} />
+      <Header user={user} />
       
       <main className="pt-16">
         {navigation.state === 'loading' && (
           <div className="fixed top-0 left-0 right-0 h-1 bg-indigo-600 animate-pulse z-50" />
         )}
-        <Outlet context={{ user, setUser }} />
+        <Outlet context={{ user }} />
       </main>
 
-      <Footer onNavigate={handleNavigate} />
+      <Footer />
     </div>
   );
 }
@@ -100,7 +55,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+        element: <HomePage />
       },
       {
         path: 'login',
@@ -114,25 +69,24 @@ const router = createBrowserRouter([
       },
       {
         path: 'vacancies',
-        element: <VacanciesPage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+        element: <VacanciesPage />
       },
       {
         path: 'contact',
-        element: <ContactPage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+        element: <ContactPage />
       },
       {
         path: 'drivers',
-        element: <DriversPage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+        element: <DriversPage />
       },
       {
         path: 'clients',
-        element: <ClientsPage onNavigate={(page: string) => console.log('Navigate to:', page)} />
+        element: <ClientsPage />
       }
     ]
   }
 ]);
 
 export default function App() {
-  console.log('[APP] App component rendered');
   return <RouterProvider router={router} />;
 }

@@ -4,12 +4,8 @@ import { VacancyCard } from '../../../components/sections/VacancyCard';
 import { latestDrivingOpportunities } from '../data/LatestDrivingOpportunities';
 import { useTranslation } from 'react-i18next';
 
-interface Props {
-  // Pass navigation to carousel buttons
-  onNavigate: (page: string) => void;
-}
 
-export function LatestDrivingOpportunities({ onNavigate }: Props) {
+export function LatestDrivingOpportunities() {
   const { t } = useTranslation();
 
   return (
@@ -72,9 +68,8 @@ export function LatestDrivingOpportunities({ onNavigate }: Props) {
           <Carousel
             items={latestDrivingOpportunities}
             renderItem={(vacancy) => (
-              <VacancyCard vacancy={vacancy} onNavigate={onNavigate} />
+              <VacancyCard vacancy={vacancy} />
             )}
-            onNavigate={onNavigate}
             navigationButtonText={t('home.latestOpportunities.viewAllButton')}
           />
         </div>

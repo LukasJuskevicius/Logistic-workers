@@ -4,26 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { LogisticWorkersLogo } from '../ui/Logo';
 import { ProfileDropdown } from '../profile/ProfileDropdown';
+import { Link, redirect } from 'react-router-dom';
 
-// Define the props interface for the Header component
-interface HeaderProps {
-  onNavigate: (page: string) => void;  // Function to handle page navigation
-  user?: any;                          // Optional user object (for logged in users)
-  onSignOut: () => void;               // Function to handle user sign out
-}
-
-export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
-  // State to control mobile menu open/close
+export function Header({ user }: { user?: any }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  // Get translation function and i18n instance for language switching
   const { t, i18n } = useTranslation();
-
-  // Function to handle navigation and close mobile menu
-  const handleNavigate = (page: string) => {
-    onNavigate(page);
-    setIsMenuOpen(false);
-  };
 
   // Function to handle language change
   const handleLanguageChange = (language: string) => {
@@ -43,77 +28,55 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
           {/* Logo Section */}
           <div className="flex items-center">
             {/* Clickable logo button */}
-            <button
-              onClick={() => onNavigate('home')}
-              className="flex items-center hover:opacity-90 transition-opacity"
-            >
-              {/* Custom SVG logo */}
+            <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
               <LogisticWorkersLogo size="medium" />
-            </button>
+            </Link>
           </div>
 
           {/* Desktop Navigation Menu - hidden on mobile */}
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            <button 
-              onClick={() => onNavigate('vacancies')} 
-              className="text-sm text-slate-700 hover:text-indigo-600 font-medium transition-colors"
-            >
+            <Link to="/vacancies" className="text-sm text-slate-700 hover:text-indigo-600 font-medium transition-colors">
               {t('navigation.vacancies')}
-            </button>
-            <button 
-              onClick={() => onNavigate('clients')} 
-              className="text-sm text-slate-700 hover:text-indigo-600 font-medium transition-colors"
-            >
+            </Link>
+            <Link to="/clients" className="text-sm text-slate-700 hover:text-indigo-600 font-medium transition-colors">
               {t('navigation.forClients')}
-            </button>
-            <button 
-              onClick={() => onNavigate('drivers')} 
-              className="text-sm text-slate-700 hover:text-indigo-600 font-medium transition-colors"
-            >
+            </Link>
+            < Link to="/drivers" className="text-sm text-slate-700 hover:text-indigo-600 font-medium transition-colors">
               {t('navigation.forDrivers')}
-            </button>
-            <button 
-              onClick={() => onNavigate('contact')} 
-              className="text-sm text-slate-700 hover:text-indigo-600 font-medium transition-colors"
-            >
+            </Link>
+            <Link to="/contact" className="text-sm text-slate-700 hover:text-indigo-600 font-medium transition-colors">
               {t('navigation.contact')}
-            </button>
+            </Link>
           </nav>
 
           {/* Desktop Auth Buttons and Language Switcher - hidden on mobile */}
           <div className="hidden md:flex items-center space-x-3">
             {/* Language Switcher Component */}
-            <LanguageSwitcher 
-              currentLanguage={i18n.language} 
-              onLanguageChange={handleLanguageChange} 
+            <LanguageSwitcher
+              currentLanguage={i18n.language}
+              onLanguageChange={handleLanguageChange}
             />
 
             {/* Conditional rendering based on user login status */}
             {user ? (
-              <ProfileDropdown user={user} onNavigate={onNavigate} onSignOut={onSignOut} />
+              <ProfileDropdown user={user}/>
             ) : (
               <>
-                <button
-                  onClick={() => onNavigate('register')}
-                  className="bg-white/80 text-slate-700 border border-slate-200 px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-white transition-colors shadow-sm"
-                >
+                <Link to="/register" className="bg-white/80 text-slate-700 border border-slate-200 px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-white transition-colors shadow-sm">
                   {t('auth.register')}
-                </button>
-                <button
-                  onClick={() => onNavigate('login')}
-                  className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:from-indigo-700 hover:to-purple-700 transition-colors shadow-sm"
-                >
+                </Link>
+                <Link to="/login" className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:from-indigo-700 hover:to-purple-700 transition-colors shadow-sm">
                   {t('auth.login')}
-                </button>
+                </Link>
               </>
             )}
           </div>
 
           {/* Mobile menu button - visible only on mobile */}
           <div className="md:hidden flex items-center space-x-2">
-            <LanguageSwitcher 
-              currentLanguage={i18n.language} 
-              onLanguageChange={handleLanguageChange} 
+            <LanguageSwitcher
+              currentLanguage={i18n.language}
+              onLanguageChange={handleLanguageChange}
             />
 
             <button
@@ -135,36 +98,21 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
           <div className="md:hidden absolute top-16 left-0 right-0 bg-white/90 backdrop-blur border-b border-white/30 shadow-xl z-50">
             <div className="px-4 py-6 space-y-4">
               <nav className="space-y-3">
-                <button 
-                  onClick={() => handleNavigate('home')} 
-                  className="block w-full text-left text-sm text-slate-700 hover:text-indigo-600 font-medium py-2 transition-colors"
-                >
+                <Link to="/" className="block w-full text-left text-sm text-slate-700 hover:text-indigo-600 font-medium py-2 transition-colors">
                   {t('navigation.home')}
-                </button>
-                <button 
-                  onClick={() => handleNavigate('vacancies')} 
-                  className="block w-full text-left text-sm text-slate-700 hover:text-indigo-600 font-medium py-2 transition-colors"
-                >
+                </Link>
+                <Link to="/vacancies" className="block w-full text-left text-sm text-slate-700 hover:text-indigo-600 font-medium py-2 transition-colors">
                   {t('navigation.vacancies')}
-                </button>
-                <button 
-                  onClick={() => handleNavigate('clients')} 
-                  className="block w-full text-left text-sm text-slate-700 hover:text-indigo-600 font-medium py-2 transition-colors"
-                >
+                </Link>
+                <Link to="/clients" className="block w-full text-left text-sm text-slate-700 hover:text-indigo-600 font-medium py-2 transition-colors">
                   {t('navigation.forClients')}
-                </button>
-                <button 
-                  onClick={() => handleNavigate('drivers')} 
-                  className="block w-full text-left text-sm text-slate-700 hover:text-indigo-600 font-medium py-2 transition-colors"
-                >
-                  {t('navigation.forDrivers')}
-                </button>
-                <button 
-                  onClick={() => handleNavigate('contact')} 
-                  className="block w-full text-left text-sm text-slate-700 hover:text-indigo-600 font-medium py-2 transition-colors"
-                >
+                </Link>
+                <Link to="/drivers" className="block w-full text-left text-sm text-slate-700 hover:text-indigo-600 font-medium py-2 transition-colors">
+                  {t('navigation.vacancies')}
+                </Link>
+                <Link to="/contact" className="block w-full text-left text-sm text-slate-700 hover:text-indigo-600 font-medium py-2 transition-colors">
                   {t('navigation.contact')}
-                </button>
+                </Link>
               </nav>
 
               {/* Mobile Auth Buttons */}
@@ -174,30 +122,18 @@ export function Header({ onNavigate, user, onSignOut }: HeaderProps) {
                     <div className="text-sm text-slate-700">
                       {t('auth.hello')}, {user.firstName || user.email}
                     </div>
-                    <button
-                      onClick={() => {
-                        onSignOut();
-                        setIsMenuOpen(false);
-                      }}
-                      className="w-full bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700 transition-colors"
-                    >
+                    <Link to="/logout" className="w-full bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700 transition-colors">
                       {t('auth.signOut')}
-                    </button>
+                    </Link>
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    <button
-                      onClick={() => handleNavigate('register')}
-                      className="w-full bg-white/80 text-slate-700 border border-slate-200 px-4 py-2 rounded-lg text-sm hover:bg-white transition-colors"
-                    >
+                    <Link to="/register" className="w-full bg-white/80 text-slate-700 border border-slate-200 px-4 py-2 rounded-lg text-sm hover:bg-white transition-colors">
                       {t('auth.register')}
-                    </button>
-                    <button
-                      onClick={() => handleNavigate('login')}
-                      className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:from-indigo-700 hover:to-purple-700 transition-colors"
-                    >
+                    </Link>
+                    <Link to="/login" className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:from-indigo-700 hover:to-purple-700 transition-colors">
                       {t('auth.login')}
-                    </button>
+                    </Link>
                   </div>
                 )}
               </div>

@@ -1,12 +1,8 @@
+import { redirect } from 'react-router-dom';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { useTranslation } from 'react-i18next';
 
-interface Props {
-  // Reuse page navigation in footer CTA
-  onNavigate: (page: string) => void;
-}
-
-export function CallToActionSection({ onNavigate }: Props) {
+export function CallToActionSection() {
   const { t } = useTranslation();
 
   return (
@@ -70,7 +66,7 @@ export function CallToActionSection({ onNavigate }: Props) {
         {/* Enhanced buttons with artistic elements */}
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
           <button
-            onClick={() => onNavigate('clients')}
+            onClick={() => redirect('/clients')}
             className="group relative bg-white text-blue-600 px-8 md:px-10 py-4 md:py-5 text-lg md:text-xl font-semibold rounded-xl md:rounded-2xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
           >
             <div className="flex items-center justify-center">
@@ -82,7 +78,7 @@ export function CallToActionSection({ onNavigate }: Props) {
           </button>
           
           <button
-            onClick={() => onNavigate('drivers')}
+            onClick={() => redirect('/drivers')}
             className="group relative bg-transparent text-white border-2 border-white px-8 md:px-10 py-4 md:py-5 text-lg md:text-xl font-semibold rounded-xl md:rounded-2xl hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
           >
             <div className="flex items-center justify-center">

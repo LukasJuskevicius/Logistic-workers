@@ -4,19 +4,14 @@ import { LatestDrivingOpportunities } from './sections/LatestDrivingOpportunitie
 import { WhatOurDriversSay } from './sections/WhatOurDriversSay';
 import { CallToActionSection } from './sections/CallToActionSection';
 
-// Homepage orchestrates page sections and passes navigation handler
-interface HomePageProps {
-  onNavigate: (page: string) => void;
-}
-
-export function HomePage({ onNavigate }: HomePageProps) {
+export function HomePage() {
   return (
     <div>
-      <HeroSection onNavigate={onNavigate} />
+      <HeroSection />
       <WhyChooseUsSection />
-      <LatestDrivingOpportunities onNavigate={onNavigate} />
+      <LatestDrivingOpportunities />
       <WhatOurDriversSay />
-      <CallToActionSection onNavigate={onNavigate} />
+      <CallToActionSection />
     </div>
   );
 }

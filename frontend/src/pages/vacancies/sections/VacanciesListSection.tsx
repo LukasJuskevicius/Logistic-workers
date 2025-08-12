@@ -4,11 +4,7 @@ import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { VacancyCard } from '../../../components/sections/VacancyCard';
 import { vacanciesData, vacancyCategories, vacancyLocations } from '../data/vacancies';
 
-interface VacanciesListSectionProps {
-  onNavigate: (page: string) => void;
-}
-
-export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) {
+export function VacanciesListSection() {
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedLocation, setSelectedLocation] = useState<string>('all');
@@ -169,7 +165,7 @@ export function VacanciesListSection({ onNavigate }: VacanciesListSectionProps) 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {filteredVacancies.length > 0 ? (
             filteredVacancies.map((vacancy) => (
-              <VacancyCard key={vacancy.id} vacancy={vacancy} onNavigate={onNavigate} />
+              <VacancyCard key={vacancy.id} vacancy={vacancy} />
             ))
           ) : (
             <div className="col-span-full text-center py-12 md:py-16">

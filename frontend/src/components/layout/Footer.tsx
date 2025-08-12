@@ -1,17 +1,12 @@
+import { redirect } from 'react-router-dom';
 import { BackgroundPattern } from '../ui/BackgroundPattern';
 import { useTranslation } from 'react-i18next';
 
-// Simple footer component
-interface FooterProps {
-  onNavigate: (page: string) => void;
-}
-
-// Function to get current year
 const getCurrentYear = (): number => {
   return new Date().getFullYear();
 };
 
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer() {
   const currentYear = getCurrentYear();
   const { t } = useTranslation();
 
@@ -83,19 +78,19 @@ export function Footer({ onNavigate }: FooterProps) {
             </h3>
             <div className="space-y-2">
               <button 
-                onClick={() => onNavigate('home')}
+                onClick={() => redirect('/')}
                 className="block text-gray-300 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
               >
                 {t('footer.home')}
               </button>
               <button 
-                onClick={() => onNavigate('vacancies')}
+                onClick={() => redirect('/vacancies')}
                 className="block text-gray-300 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
               >
                 {t('footer.vacancies')}
               </button>
               <button 
-                onClick={() => onNavigate('contact')}
+                onClick={() => redirect('/contact')}
                 className="block text-gray-300 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
               >
                 {t('footer.contact')}

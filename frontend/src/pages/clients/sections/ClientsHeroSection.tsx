@@ -1,12 +1,9 @@
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { useTranslation } from 'react-i18next';
 import { clientStats } from '../data/clients';
+import { redirect } from 'react-router-dom';
 
-interface ClientsHeroSectionProps {
-  onNavigate: (page: string) => void;
-}
-
-export function ClientsHeroSection({ onNavigate }: ClientsHeroSectionProps) {
+export function ClientsHeroSection() {
   const { t } = useTranslation();
   return (
     <BackgroundPattern 
@@ -77,7 +74,7 @@ export function ClientsHeroSection({ onNavigate }: ClientsHeroSectionProps) {
         {/* Call to action buttons */}
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
           <button
-            onClick={() => onNavigate('contact')}
+            onClick={() => redirect('/contact')}
             className="group bg-white text-green-600 px-8 md:px-10 py-4 md:py-5 text-lg md:text-xl font-semibold rounded-xl md:rounded-2xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
           >
             <div className="flex items-center justify-center">
@@ -89,7 +86,7 @@ export function ClientsHeroSection({ onNavigate }: ClientsHeroSectionProps) {
           </button>
           
           <button
-            onClick={() => onNavigate('home')}
+            onClick={() => redirect('/')}
             className="group bg-transparent text-white border-2 border-white px-8 md:px-10 py-4 md:py-5 text-lg md:text-xl font-semibold rounded-xl md:rounded-2xl hover:bg-white hover:text-green-600 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
           >
             <div className="flex items-center justify-center">

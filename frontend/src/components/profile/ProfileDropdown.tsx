@@ -1,13 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
-interface ProfileDropdownProps {
-  user: any;
-  onNavigate: (page: string) => void;
-  onSignOut: () => void;
-}
-
-export function ProfileDropdown({ user, onNavigate, onSignOut }: ProfileDropdownProps) {
+import { redirect } from 'react-router-dom';
+import { logout } from '../../api/auth/logout';
+export function ProfileDropdown({ user }: { user: any }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
@@ -23,11 +18,11 @@ export function ProfileDropdown({ user, onNavigate, onSignOut }: ProfileDropdown
   }, []);
 
   const menuItems = [
-    { icon: '👤', label: t('profile.myProfile'), action: () => onNavigate('profile') },
-    { icon: '✉️', label: t('profile.messages'), action: () => onNavigate('messages') },
-    { icon: '⚙️', label: t('profile.settings'), action: () => onNavigate('settings') },
-    ...(user?.role === 'admin' ? [{ icon: '📊', label: t('profile.dashboard'), action: () => onNavigate('admin') }] : []),
-    { icon: '🚪', label: t('auth.signOut'), action: onSignOut, className: 'border-t' }
+    { icon: '👤', label: t('profile.myProfile'), action: () => redirect('/profile') },
+    { icon: '✉️', label: t('profile.messages'), action: () => redirect('/messages') },
+    { icon: '⚙️', label: t('profile.settings'), action: () => redirect('/settings') },
+    ...(user?.role === 'admin' ? [{ icon: '📊', label: t('profile.dashboard'), action: () => redirect('/admin') }] : []),
+    { icon: '🚪', label: t('auth.signOut'), action: () => logout(), className: 'border-t' }
   ];
 
   return (

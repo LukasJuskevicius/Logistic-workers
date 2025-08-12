@@ -8,12 +8,12 @@ import { fileURLToPath } from 'url';
 import passport from './config/passport.js';
 import { database } from './dbconn/database.js';
 import { createSessionConfig } from './config/session.js';
-// Auth routes - single responsibility
-import loginRoute from './routes/login.route.js';
+
+//Routes
 import logoutRoute from './routes/logout.route.js';
 import oauthRoute from './routes/oauth.route.js';
 import registerRoute from './routes/register.route.js';
-// Feature routes
+import { loginUser } from './controllers/login.controller.js';
 import profileRoute from './routes/profile.route.js';
 import messageRoute from './routes/message.route.js';
 import adminRoute from './routes/admin.route.js';
@@ -23,6 +23,7 @@ import healthRoute from './routes/health.route.js';
 // Middleware
 import { corsMiddleware } from './middleware/cors.js';
 import { rateLimitMiddleware } from './middleware/rateLimit.js';
+import { validateLogin, sanitizeBody } from './middleware/validation.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -49,12 +50,16 @@ app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Mount routes - organized by function
 // Health check (no auth required)
 app.use(healthRoute);
 
 // Authentication routes
-app.use(loginRoute);
+const router = express.Router();
+
+// Login route with validation
+router.post('/api/auth/login', sanitizeBody, validateLogin, loginUser);
+
+
 app.use(logoutRoute);
 app.use(oauthRoute);
 app.use(registerRoute);

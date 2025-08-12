@@ -4,14 +4,11 @@ import { ClientsProcessSection } from './sections/ClientsProcessSection';
 import { ClientsTestimonialsSection } from './sections/ClientsTestimonialsSection';
 import { ClientsRequirementsSection } from './sections/ClientsRequirementsSection';
 
-interface ClientsPageProps {
-  onNavigate: (page: string) => void;
-}
 
-export function ClientsPage({ onNavigate }: ClientsPageProps) {
+export function ClientsPage() {
   return (
     <div className="min-h-screen">
-      <ClientsHeroSection onNavigate={onNavigate} />
+      <ClientsHeroSection />
       <ClientsServicesSection />
       <ClientsProcessSection />
       <ClientsTestimonialsSection />

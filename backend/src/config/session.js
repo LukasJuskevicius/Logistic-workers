@@ -34,14 +34,12 @@ export function createSessionConfig(database) {
         tableName: 'session',
         createTableIfMissing: true
       });
-      console.log('✅ PostgreSQL session store configured');
     } catch (err) {
       console.error('⚠️ Failed to setup PostgreSQL session store:', err.message);
-      console.log('📝 Using default MemoryStore');
     }
   } else {
     if (isProduction) {
-      console.log('⚠️ Using MemoryStore in production (set USE_PG_SESSION=true for persistence)');
+        console.error('⚠️ Using MemoryStore in production (set USE_PG_SESSION=true for persistence)');
     }
   }
   
