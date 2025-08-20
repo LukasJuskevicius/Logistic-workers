@@ -1,6 +1,7 @@
 import { useOutletContext } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import DriverProfile from '../components/profile/DriverProfile';
 
 // Temporary inline components until TypeScript recognizes the separate files
 const AdminProfile = ({ user }: { user: any }) => {
@@ -131,69 +132,7 @@ const ClientProfile = ({ user }: { user: any }) => {
   );
 };
 
-const DriverProfile = ({ user }: { user: any }) => {
-  const { t } = useTranslation();
-  return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
-        <div className="flex items-center space-x-4">
-          <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
-            <span className="text-2xl font-bold text-white">
-              {user.first_name?.[0]}{user.last_name?.[0]}
-            </span>
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              {user.first_name} {user.last_name}
-            </h1>
-            <p className="text-gray-600">{user.email}</p>
-            <span className="inline-block px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full mt-2">
-              Professional Driver
-            </span>
-          </div>
-        </div>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Link to="/vacancies" className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <span className="text-2xl">🚛</span>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900">{t('vacancies.title')}</h3>
-              <p className="text-sm text-gray-600">Browse available positions</p>
-            </div>
-          </div>
-        </Link>
-        
-        <Link to="/my-applications" className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <span className="text-2xl">📋</span>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900">{t('profile.myAdvertisements')}</h3>
-              <p className="text-sm text-gray-600">Track your applications</p>
-            </div>
-          </div>
-        </Link>
-        
-        <Link to="/messages" className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <span className="text-2xl">✉️</span>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900">{t('profile.messages')}</h3>
-              <p className="text-sm text-gray-600">Communicate with employers</p>
-            </div>
-          </div>
-        </Link>
-      </div>
-    </div>
-  );
-};
+
 
 interface OutletContext {
   user: any;
@@ -209,6 +148,14 @@ export function ProfilePage() {
     return null;
   }
 
+  // Handle user profile updates
+  const handleUserUpdate = (updatedUser: any) => {
+    // In a real app, you'd update the user context or refetch user data
+    console.log('User updated:', updatedUser);
+    // For now, we'll just log the update
+    // TODO: Implement proper user context update
+  };
+
   // Role-based profile rendering
   const renderProfile = () => {
     switch (user.role) {
@@ -217,7 +164,7 @@ export function ProfilePage() {
       case 'client':
         return <ClientProfile user={user} />;
       case 'driver':
-        return <DriverProfile user={user} />;
+        return <DriverProfile user={user} onUpdate={handleUserUpdate} />;
       default:
         return (
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

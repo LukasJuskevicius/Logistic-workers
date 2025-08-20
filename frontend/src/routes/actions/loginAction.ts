@@ -18,8 +18,8 @@ export async function loginAction({ request }: { request: Request }) {
     const result = await response.json();
     
     if (result.success) {
-      // Redirect to profile on success
-      return redirect('/profile');
+      // Redirect to home page on success
+      return redirect('/');
     }
     
     return result; // Return error if login failed

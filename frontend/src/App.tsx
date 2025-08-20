@@ -69,6 +69,7 @@ const router = createBrowserRouter([
     // runs before any component renders
     // auth loader handles authentication
     loader: authLoader,
+    HydrateFallback: () => <div>Loading...</div>,
     children: [
       {
         index: true,

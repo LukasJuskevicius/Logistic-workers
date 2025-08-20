@@ -47,6 +47,9 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
 
+// Serve static files for document uploads
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
 // Session configuration
 const sessionConfig = createSessionConfig(database);
 app.use(session(sessionConfig));

@@ -58,13 +58,13 @@ router.post('/api/login', async (req, res) => {
         }
       } else if (user.role === 'client') {
         const clientResult = await database.query(
-          'SELECT company_name, first_name, last_name FROM clients WHERE user_id = $1',
+          'SELECT company_name, contact_first_name, contact_last_name FROM clients WHERE user_id = $1',
           [user.user_id]
         );
         if (clientResult.rows.length > 0) {
           profileData.companyName = clientResult.rows[0].company_name;
-          profileData.firstName = clientResult.rows[0].first_name;
-          profileData.lastName = clientResult.rows[0].last_name;
+          profileData.firstName = clientResult.rows[0].contact_first_name;
+          profileData.lastName = clientResult.rows[0].contact_last_name;
         }
       } else if (user.role === 'admin') {
         const adminResult = await database.query(
