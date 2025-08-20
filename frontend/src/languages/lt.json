@@ -47,6 +47,19 @@
     "signOut": "Atsijungti",
     "hello": "Sveiki"
   },
+  "profile": {
+    "myProfile": "Mano profilis",
+    "dashboard": "Valdymo skydas",
+    "messages": "Žinutės",
+    "settings": "Nustatymai",
+    "signOut": "Atsijungti",
+    "myAdvertisements": "Mano skelbimai",
+    "myJobPosts": "Mano darbo skelbimai",
+    "findDrivers": "Rasti vairuotojus",
+    "manageUsers": "Valdyti vartotojus",
+    "analytics": "Analitika",
+    "companyProfile": "Įmonės profilis"
+  },
 
   "_comment_footer": "===== FOOTER SECTION =====",
   "footer": {

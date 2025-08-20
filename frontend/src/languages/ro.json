@@ -42,7 +42,20 @@
     "register": "Înregistrare",
     "login": "Autentificare",
     "signOut": "Deconectare",
-    "hello": "Bună"
+    "hello": "Salut"
+  },
+  "profile": {
+    "myProfile": "Profilul Meu",
+    "dashboard": "Panou de Control",
+    "messages": "Mesaje",
+    "settings": "Setări",
+    "signOut": "Deconectare",
+    "myAdvertisements": "Anunțurile Mele",
+    "myJobPosts": "Postările Mele de Lucru",
+    "findDrivers": "Găsește Șoferi",
+    "manageUsers": "Gestionează Utilizatori",
+    "analytics": "Analiză",
+    "companyProfile": "Profilul Companiei"
   },
   "footer": {
     "aboutUs": "Despre noi",

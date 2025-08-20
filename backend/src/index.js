@@ -1,5 +1,6 @@
 import express from 'express';
 import session from 'express-session';
+import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
@@ -21,6 +22,7 @@ import adminRoute from './routes/admin.route.js';
 import driverRoute from './routes/driver.route.js';
 import clientRoute from './routes/client.route.js';
 import healthRoute from './routes/health.route.js';
+import authRoute from './routes/auth.route.js';
 // Middleware
 import { corsMiddleware } from './middleware/cors.js';
 import { rateLimitMiddleware } from './middleware/rateLimit.js';
@@ -32,7 +34,7 @@ const envPath = path.join(__dirname, '../.env');
 dotenv.config({ path: envPath });
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Trust proxy for Railway/production deployments
 app.set('trust proxy', true);
@@ -43,6 +45,7 @@ app.use(rateLimitMiddleware);
 app.use(morgan('combined'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(cookieParser());
 
 // Session configuration
 const sessionConfig = createSessionConfig(database);
@@ -54,6 +57,7 @@ app.use(passport.session());
 // Health check (no auth required)
 app.use(healthRoute);
 
+app.use(authRoute)
 app.use(loginRoute)
 app.use(logoutRoute);
 app.use(oauthRoute);

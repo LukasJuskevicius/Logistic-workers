@@ -8,10 +8,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load environment variables
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 
-// Railway provides DATABASE_URL, not DATABASE_PUBLIC_URL
 const connectionString = process.env.DATABASE_URL || 
                         process.env.DATABASE_PUBLIC_URL || 
                         process.env.DATABASE_PRIVATE_URL;

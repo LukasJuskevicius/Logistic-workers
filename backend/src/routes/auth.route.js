@@ -1,48 +1,37 @@
-// backend/src/routes/login.route.js
+// auth.route.js
 import express from 'express';
 import { database } from '../dbconn/database.js';
-import { findUserByEmail } from '../daos/user.dao.js';
-import { verifyPassword } from '../utils/auth.js';
-import crypto from 'crypto';
+import { findUserById } from '../daos/user.dao.js';
 
 const router = express.Router();
 
-router.post('/api/login', async (req, res) => {
+router.get('/api/auth', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    // 1. Extract sessionId from cookies
+    //    - Automatically parsed by cookie-parser middleware
+    const sessionId = req.cookies.sessionId;
     
-    // 1. Find user by email using DAO
-    const user = await findUserByEmail(email);
-    if (!user) {
-      return res.status(401).json({ error: 'Invalid credentials' });
-    }
+    // 2. If no session ID, user is not authenticated
+    if (!sessionId) return res.json({ user: null });
 
-    // 2. Verify password
-    const isValidPassword = await verifyPassword(password, user.password_hash);
-    if (!isValidPassword) {
-      return res.status(401).json({ error: 'Invalid credentials' });
-    }
-
-    // 3. Create session using actual SQL (matching your table structure)
-    const sessionToken = crypto.randomUUID();
-    const clientIP = req.ip || req.connection.remoteAddress;
-    const userAgent = req.get('User-Agent') || '';
-    
-    await database.query(
-      'INSERT INTO user_sessions (user_id, session_token, ip_address, user_agent, is_active) VALUES ($1, $2, $3, $4, $5)',
-      [user.user_id, sessionToken, clientIP, userAgent, true]
+    // 3. Find session in database using actual SQL (matching your table structure)
+    const sessionResult = await database.query(
+      'SELECT * FROM user_sessions WHERE session_token = $1 AND is_active = true',
+      [sessionId]
     );
+    
+    // 4. Check if session exists and is active
+    if (sessionResult.rows.length === 0) {
+      return res.json({ user: null });  // Session invalid or inactive
+    }
 
-    // 4. Set httpOnly cookie (adjusted for development)
-    res.cookie('sessionId', sessionToken, {
-      httpOnly: true,
-      secure: false, // Set to false for development (localhost)
-      sameSite: 'lax', // Changed from 'strict' to 'lax' for cross-origin requests
-      maxAge: 24 * 60 * 60 * 1000,
-      path: '/' // Explicitly set path
-    });
-
-    // 5. Get role-specific profile data
+    // 5. Get user data using DAO
+    const user = await findUserById(sessionResult.rows[0].user_id);
+    if (!user) {
+      return res.json({ user: null });
+    }
+    
+    // 6. Get role-specific profile data
     let profileData = {};
     try {
       if (user.role === 'driver') {
@@ -77,10 +66,9 @@ router.post('/api/login', async (req, res) => {
     } catch (profileError) {
       console.warn('Profile data fetch error:', profileError);
     }
-
-    // 6. Return success response with user data (matching frontend expectations)
+    
+    // 7. Return user data with profile info
     res.json({ 
-      success: true,
       user: { 
         id: user.user_id, 
         email: user.email,
@@ -89,7 +77,7 @@ router.post('/api/login', async (req, res) => {
       } 
     });
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('Auth check error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

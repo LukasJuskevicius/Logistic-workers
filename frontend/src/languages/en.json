@@ -44,6 +44,19 @@
     "signOut": "Sign Out",
     "hello": "Hello"
   },
+  "profile": {
+    "myProfile": "My Profile",
+    "dashboard": "Dashboard",
+    "messages": "Messages",
+    "settings": "Settings",
+    "signOut": "Sign Out",
+    "myAdvertisements": "My Advertisements",
+    "myJobPosts": "My Job Posts",
+    "findDrivers": "Find Drivers",
+    "manageUsers": "Manage Users",
+    "analytics": "Analytics",
+    "companyProfile": "Company Profile"
+  },
   "footer": {
     "aboutUs": "About Us",
     "companyName": "Logistic Workers",

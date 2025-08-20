@@ -1,19 +1,34 @@
-// src/routes/actions/loginAction.ts
-import { login } from '../../api/auth/login';
+import { redirect } from 'react-router-dom';
 
 export async function loginAction({ request }: { request: Request }) {
-  const formData = await request.formData();
-  const credentials = Object.fromEntries(formData);
+  const BASE_URL = import.meta.env.VITE_API_URL;
   
   try {
-    const result = await login(credentials.email as string, credentials.password as string);
+    const formData = await request.formData();
+    const email = formData.get('email');
+    const password = formData.get('password');
+    
+    const response = await fetch(`${BASE_URL}/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ email, password })
+    });
+    
+    const result = await response.json();
+    
     if (result.success) {
-      // Store user data in session storage or context
-      sessionStorage.setItem('user', JSON.stringify(result.user));
-      return { success: true, user: result.user };
+      // Redirect to profile on success
+      return redirect('/profile');
     }
-    return { error: result.error || 'Login failed' };
+    
+    return result; // Return error if login failed
+    
   } catch (error) {
-    return { error: 'Network error. Please try again.' };
+    console.error('Login error:', error);
+    return { 
+      error: 'Login failed',
+      status: 500
+    };
   }
 }

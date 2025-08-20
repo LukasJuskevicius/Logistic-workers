@@ -40,9 +40,22 @@
   },
   "auth": {
     "register": "Реєстрація",
-    "login": "Вхід",
+    "login": "Увійти",
     "signOut": "Вийти",
     "hello": "Привіт"
+  },
+  "profile": {
+    "myProfile": "Мій Профіль",
+    "dashboard": "Панель Керування",
+    "messages": "Повідомлення",
+    "settings": "Налаштування",
+    "signOut": "Вийти",
+    "myAdvertisements": "Мої Оголошення",
+    "myJobPosts": "Мої Вакансії",
+    "findDrivers": "Знайти Водіїв",
+    "manageUsers": "Керувати Користувачами",
+    "analytics": "Аналітика",
+    "companyProfile": "Профіль Компанії"
   },
   "footer": {
     "aboutUs": "Про нас",

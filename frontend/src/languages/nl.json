@@ -521,14 +521,31 @@
     "upload": "Uploaden",
     "select": "Selecteren",
     "all": "Alle",
-    "none": "Geen",
-    "yes": "Ja",
     "no": "Nee",
     "optional": "Optioneel",
     "required": "Verplicht",
     "characters": "tekens",
     "remaining": "resterend",
     "of": "van"
+  },
+  "auth": {
+    "register": "Registreren",
+    "login": "Inloggen",
+    "signOut": "Uitloggen",
+    "hello": "Hallo"
+  },
+  "profile": {
+    "myProfile": "Mijn Profiel",
+    "dashboard": "Dashboard",
+    "messages": "Berichten",
+    "settings": "Instellingen",
+    "signOut": "Uitloggen",
+    "myAdvertisements": "Mijn Advertenties",
+    "myJobPosts": "Mijn Vacatures",
+    "findDrivers": "Chauffeurs Zoeken",
+    "manageUsers": "Gebruikers Beheren",
+    "analytics": "Analytics",
+    "companyProfile": "Bedrijfsprofiel"
   },
 
   "_comment_drivers_page": "===== DRIVERS PAGE =====",

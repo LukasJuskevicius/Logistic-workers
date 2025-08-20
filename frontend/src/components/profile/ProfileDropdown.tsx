@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { logout } from '../../api/auth/logout';
 export function ProfileDropdown({ user }: { user: any }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -17,13 +18,47 @@ export function ProfileDropdown({ user }: { user: any }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const menuItems = [
-    { icon: '👤', label: t('profile.myProfile'), action: () => redirect('/profile') },
-    { icon: '✉️', label: t('profile.messages'), action: () => redirect('/messages') },
-    { icon: '⚙️', label: t('profile.settings'), action: () => redirect('/settings') },
-    ...(user?.role === 'admin' ? [{ icon: '📊', label: t('profile.dashboard'), action: () => redirect('/admin') }] : []),
-    { icon: '🚪', label: t('auth.signOut'), action: () => logout(), className: 'border-t' }
-  ];
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
+
+  const getMenuItems = () => {
+    const baseItems = [
+      { icon: '👤', label: t('profile.myProfile'), action: () => navigate('/profile') },
+      { icon: '📊', label: t('profile.dashboard'), action: () => navigate('/dashboard') },
+      { icon: '✉️', label: t('profile.messages'), action: () => navigate('/messages') },
+      { icon: '⚙️', label: t('profile.settings'), action: () => navigate('/settings') }
+    ];
+
+    // Role-specific menu items
+    const roleItems = [];
+    if (user?.role === 'driver') {
+      roleItems.push(
+        { icon: '📋', label: t('profile.myAdvertisements'), action: () => navigate('/my-applications') }
+      );
+    } else if (user?.role === 'client') {
+      roleItems.push(
+        { icon: '📝', label: t('profile.myJobPosts'), action: () => navigate('/my-job-posts') },
+        { icon: '🔍', label: t('profile.findDrivers'), action: () => navigate('/find-drivers') }
+      );
+    } else if (user?.role === 'admin') {
+      roleItems.push(
+        { icon: '👥', label: t('profile.manageUsers'), action: () => navigate('/admin/users') },
+        { icon: '📈', label: t('profile.analytics'), action: () => navigate('/admin/analytics') }
+      );
+    }
+
+    return [
+      ...baseItems,
+      ...roleItems,
+      { icon: '🚪', label: t('profile.signOut'), action: handleLogout, className: 'border-t' }
+    ];
+  };
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -49,8 +84,13 @@ export function ProfileDropdown({ user }: { user: any }) {
           <div className="px-4 py-2 border-b border-gray-100">
             <p className="text-sm font-medium text-gray-900">{user?.first_name} {user?.last_name}</p>
             <p className="text-xs text-gray-500">{user?.email}</p>
+            {user?.role && (
+              <span className="inline-block px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full mt-1">
+                {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+              </span>
+            )}
           </div>
-          {menuItems.map((item, index) => (
+          {getMenuItems().map((item: any, index: number) => (
             <button
               key={index}
               onClick={() => {

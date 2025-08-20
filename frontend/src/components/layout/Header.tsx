@@ -72,12 +72,26 @@ export function Header({ user }: { user?: any }) {
             )}
           </div>
 
-          {/* Mobile menu button - visible only on mobile */}
+          {/* Mobile menu button and profile - visible only on mobile */}
           <div className="md:hidden flex items-center space-x-2">
             <LanguageSwitcher
               currentLanguage={i18n.language}
               onLanguageChange={handleLanguageChange}
             />
+            
+            {/* Show profile icon when authenticated, login/register buttons when not */}
+            {user ? (
+              <ProfileDropdown user={user} />
+            ) : (
+              <div className="flex items-center space-x-2">
+                <Link to="/register" className="bg-white/80 text-slate-700 border border-slate-200 px-2 py-1 rounded-md text-xs hover:bg-white transition-colors">
+                  {t('auth.register')}
+                </Link>
+                <Link to="/login" className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-2 py-1 rounded-md text-xs hover:from-indigo-700 hover:to-purple-700 transition-colors">
+                  {t('auth.login')}
+                </Link>
+              </div>
+            )}
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -115,28 +129,7 @@ export function Header({ user }: { user?: any }) {
                 </Link>
               </nav>
 
-              {/* Mobile Auth Buttons */}
-              <div className="pt-4 border-t border-white/40">
-                {user ? (
-                  <div className="space-y-3">
-                    <div className="text-sm text-slate-700">
-                      {t('auth.hello')}, {user.firstName || user.email}
-                    </div>
-                    <Link to="/logout" className="w-full bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700 transition-colors">
-                      {t('auth.signOut')}
-                    </Link>
-                  </div>
-                ) : (
-                  <div className="space-y-3">
-                    <Link to="/register" className="w-full bg-white/80 text-slate-700 border border-slate-200 px-4 py-2 rounded-lg text-sm hover:bg-white transition-colors">
-                      {t('auth.register')}
-                    </Link>
-                    <Link to="/login" className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:from-indigo-700 hover:to-purple-700 transition-colors">
-                      {t('auth.login')}
-                    </Link>
-                  </div>
-                )}
-              </div>
+              {/* Mobile menu no longer contains auth buttons - they're in the header */}
             </div>
           </div>
         )}

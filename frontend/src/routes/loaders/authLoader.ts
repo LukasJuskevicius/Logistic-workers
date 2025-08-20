@@ -6,10 +6,17 @@ if (!BASE_URL) {
 
 export async function authLoader() {
   try {
-    const response = await fetch(`${BASE_URL}/auth/check`, {
-      credentials: 'include'
+    // 1. Browser make request to /api/auth
+    const response = await fetch(`${BASE_URL}/auth`, {
+
+      // 2. Tells browser to include cookies with this request
+      credentials: 'include',
     });
+    
+    // 3. Parse json response.
     const result = await response.json();
+
+    // 4. Return user data or null
     return { user: result.user || null };
   } catch {
     return { user: null };

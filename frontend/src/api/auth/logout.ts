@@ -9,7 +9,7 @@ export async function logout() {
   
   try {
     
-    const response = await fetch(`${BASE_URL}/auth/logout`, {
+    const response = await fetch(`${BASE_URL}/logout`, {
       method: 'POST',
       credentials: 'include'
     });
@@ -18,6 +18,6 @@ export async function logout() {
     
     return data;
   } catch (error) {
-    return { success: false, error: 'Network error' };
+    return { success: false, error: 'Network error check 123' };
   }
 }
