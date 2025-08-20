@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../api/auth/logout';
+import { refreshAuthState } from '../../lib/utils/auth';
 export function ProfileDropdown({ user }: { user: any }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -18,10 +19,14 @@ export function ProfileDropdown({ user }: { user: any }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleLogout = async () => {
+  const handleLogout = async (e?: React.MouseEvent) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     try {
       await logout();
-      navigate('/');
+      setIsOpen(false);
+      // Force a refresh to ensure auth state is updated
+      await refreshAuthState();
     } catch (error) {
       console.error('Logout failed:', error);
     }
@@ -29,34 +34,109 @@ export function ProfileDropdown({ user }: { user: any }) {
 
   const getMenuItems = () => {
     const baseItems = [
-      { icon: '👤', label: t('profile.myProfile'), action: () => navigate('/profile') },
-      { icon: '📊', label: t('profile.dashboard'), action: () => navigate('/dashboard') },
-      { icon: '✉️', label: t('profile.messages'), action: () => navigate('/messages') },
-      { icon: '⚙️', label: t('profile.settings'), action: () => navigate('/settings') }
+      { 
+        icon: '👤', 
+        label: t('profile.myProfile'), 
+        action: (e: React.MouseEvent) => {
+          e?.preventDefault();
+          navigate('/profile');
+          setIsOpen(false);
+        } 
+      },
+      { 
+        icon: '📊', 
+        label: t('profile.dashboard'), 
+        action: (e: React.MouseEvent) => {
+          e?.preventDefault();
+          navigate('/dashboard');
+          setIsOpen(false);
+        } 
+      },
+      { 
+        icon: '✉️', 
+        label: t('profile.messages'), 
+        action: (e: React.MouseEvent) => {
+          e?.preventDefault();
+          navigate('/messages');
+          setIsOpen(false);
+        } 
+      },
+      { 
+        icon: '⚙️', 
+        label: t('profile.settings'), 
+        action: (e: React.MouseEvent) => {
+          e?.preventDefault();
+          navigate('/settings');
+          setIsOpen(false);
+        } 
+      }
     ];
 
     // Role-specific menu items
     const roleItems = [];
     if (user?.role === 'driver') {
-      roleItems.push(
-        { icon: '📋', label: t('profile.myAdvertisements'), action: () => navigate('/my-applications') }
-      );
+      roleItems.push({
+        icon: '📋', 
+        label: t('profile.myAdvertisements'), 
+        action: (e: React.MouseEvent) => {
+          e?.preventDefault();
+          navigate('/my-applications');
+          setIsOpen(false);
+        }
+      });
     } else if (user?.role === 'client') {
       roleItems.push(
-        { icon: '📝', label: t('profile.myJobPosts'), action: () => navigate('/my-job-posts') },
-        { icon: '🔍', label: t('profile.findDrivers'), action: () => navigate('/find-drivers') }
+        { 
+          icon: '📝', 
+          label: t('profile.myJobPosts'), 
+          action: (e: React.MouseEvent) => {
+            e?.preventDefault();
+            navigate('/my-job-posts');
+            setIsOpen(false);
+          } 
+        },
+        { 
+          icon: '🔍', 
+          label: t('profile.findDrivers'), 
+          action: (e: React.MouseEvent) => {
+            e?.preventDefault();
+            navigate('/find-drivers');
+            setIsOpen(false);
+          } 
+        }
       );
     } else if (user?.role === 'admin') {
       roleItems.push(
-        { icon: '👥', label: t('profile.manageUsers'), action: () => navigate('/admin/users') },
-        { icon: '📈', label: t('profile.analytics'), action: () => navigate('/admin/analytics') }
+        { 
+          icon: '👥', 
+          label: t('profile.manageUsers'), 
+          action: (e: React.MouseEvent) => {
+            e?.preventDefault();
+            navigate('/admin/users');
+            setIsOpen(false);
+          } 
+        },
+        { 
+          icon: '📈', 
+          label: t('profile.analytics'), 
+          action: (e: React.MouseEvent) => {
+            e?.preventDefault();
+            navigate('/admin/analytics');
+            setIsOpen(false);
+          } 
+        }
       );
     }
 
     return [
       ...baseItems,
       ...roleItems,
-      { icon: '🚪', label: t('profile.signOut'), action: handleLogout, className: 'border-t' }
+      { 
+        icon: '🚪', 
+        label: t('profile.signOut'), 
+        action: handleLogout, 
+        className: 'border-t' 
+      }
     ];
   };
 
