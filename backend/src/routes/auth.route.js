@@ -31,36 +31,41 @@ router.get('/api/auth', async (req, res) => {
       return res.json({ user: null });
     }
     
-    // 6. Get role-specific profile data
-    let profileData = {};
+    // 6. Get role-specific profile data (NEW SCHEMA - personal info in users table)
+    let profileData = {
+      firstName: user.first_name,
+      lastName: user.last_name,
+      email: user.email,
+      role: user.role,
+      phone: user.phone,
+      city: user.city,
+      country: user.country
+    };
+
     try {
       if (user.role === 'driver') {
         const driverResult = await database.query(
-          'SELECT first_name, last_name FROM drivers WHERE user_id = $1',
+          'SELECT license_number, license_type, cdl_class, experience_years, is_available, hourly_rate FROM drivers WHERE user_id = $1',
           [user.user_id]
         );
         if (driverResult.rows.length > 0) {
-          profileData.firstName = driverResult.rows[0].first_name;
-          profileData.lastName = driverResult.rows[0].last_name;
+          profileData.driverInfo = driverResult.rows[0];
         }
       } else if (user.role === 'client') {
         const clientResult = await database.query(
-          'SELECT company_name, contact_first_name, contact_last_name FROM clients WHERE user_id = $1',
+          'SELECT company_name, company_registration, industry_type, client_tier FROM clients WHERE user_id = $1',
           [user.user_id]
         );
         if (clientResult.rows.length > 0) {
-          profileData.companyName = clientResult.rows[0].company_name;
-          profileData.firstName = clientResult.rows[0].contact_first_name;
-          profileData.lastName = clientResult.rows[0].contact_last_name;
+          profileData.clientInfo = clientResult.rows[0];
         }
       } else if (user.role === 'admin') {
         const adminResult = await database.query(
-          'SELECT first_name, last_name FROM admins WHERE user_id = $1',
+          'SELECT department, role_level, permissions FROM admins WHERE user_id = $1',
           [user.user_id]
         );
         if (adminResult.rows.length > 0) {
-          profileData.firstName = adminResult.rows[0].first_name;
-          profileData.lastName = adminResult.rows[0].last_name;
+          profileData.adminInfo = adminResult.rows[0];
         }
       }
     } catch (profileError) {

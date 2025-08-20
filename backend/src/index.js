@@ -20,7 +20,7 @@ import profileRoute from './routes/profile.route.js';
 import messageRoute from './routes/message.route.js';
 import adminRoute from './routes/admin.route.js';
 import driverRoute from './routes/driver.route.js';
-import clientRoute from './routes/client.route.js';
+// import clientRoute from './routes/client.route.js'; // Temporarily disabled - fixing schema compatibility
 import healthRoute from './routes/health.route.js';
 import authRoute from './routes/auth.route.js';
 // Middleware
@@ -72,7 +72,7 @@ app.use(messageRoute);
 
 // Role-specific routes
 app.use(driverRoute);
-app.use(clientRoute);
+// app.use(clientRoute); // Temporarily disabled - fixing schema compatibility
 app.use(adminRoute);
 
 app.listen(PORT, () => {
