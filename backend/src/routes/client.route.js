@@ -1,11 +1,11 @@
 import express from 'express';
-import { requireAuth } from '../middleware/auth.js';
+import { requireAuth, requireRole } from '../middleware/auth.js';
 import { database } from '../dbconn/database.js';
 
 const router = express.Router();
 
 // GET /api/clients - Get all clients (admin only)
-router.get('/', authenticateToken, requireRole(['admin']), async (req, res) => {
+router.get('/api/clients', requireAuth, requireRole(['admin']), async (req, res) => {
     try {
         console.log('🏢 Fetching all clients for admin');
         
@@ -54,7 +54,7 @@ router.get('/', authenticateToken, requireRole(['admin']), async (req, res) => {
 });
 
 // GET /api/clients/profile - Get authenticated client's profile
-router.get('/profile', authenticateToken, requireRole(['client']), async (req, res) => {
+router.get('/api/clients/profile-old', requireAuth, requireRole(['client']), async (req, res) => {
     try {
         console.log('🏢 Fetching client profile:', req.userId);
         
@@ -86,7 +86,7 @@ router.get('/profile', authenticateToken, requireRole(['client']), async (req, r
 });
 
 // PATCH /api/clients/profile - Update client profile
-router.patch('/profile', authenticateToken, requireRole(['client']), async (req, res) => {
+router.patch('/api/clients/profile', requireAuth, requireRole(['client']), async (req, res) => {
     try {
         console.log('🏢 Updating client profile:', req.userId);
         
@@ -209,7 +209,7 @@ router.get('/:clientId', requireAuth, async (req, res) => {
 });
 
 // GET /api/clients/stats/overview - Get client statistics (admin only)
-router.get('/stats/overview', authenticateToken, requireRole(['admin']), async (req, res) => {
+router.get('/api/clients/stats/overview', requireAuth, requireRole(['admin']), async (req, res) => {
     try {
         console.log('📊 Fetching client statistics');
         

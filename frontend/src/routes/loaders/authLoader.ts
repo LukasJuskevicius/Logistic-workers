@@ -12,7 +12,7 @@ export async function authLoader() {
       // 2. Tells browser to include cookies with this request
       credentials: 'include',
     });
-    
+
     // 3. Parse json response.
     const result = await response.json();
 

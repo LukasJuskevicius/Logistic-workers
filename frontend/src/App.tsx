@@ -30,6 +30,12 @@ import { authLoader } from './routes/loaders/authLoader';
 import { loginAction } from './routes/actions/loginAction';
 import { registerAction } from './routes/actions/registerAction';
 import { AdminDashboard } from './components/admin/AdminDashboard';
+import AdminDashboardDemo from './components/admin/AdminDashboardDemo';
+import AdminProfile from './components/admin/AdminProfile';
+import AdminSettings from './components/admin/AdminSettings';
+import AdminAnalytics from './components/admin/AdminAnalytics';
+import AdminMessages from './components/admin/AdminMessages';
+import AdminManageUsers from './components/admin/AdminManageUsers';
 
 // Import API functions
 import { logout } from './api/auth/logout';
@@ -109,6 +115,26 @@ const router = createBrowserRouter([
       {
         path: 'clients',
         element: <ClientsPage />
+      },
+      {
+        path: 'admin/dashboard',
+        element: <AdminDashboardDemo />
+      },
+      {
+        path: 'admin/settings',
+        element: <AdminSettings />
+      },
+      {
+        path: 'admin/analytics',
+        element: <AdminAnalytics />
+      },
+      {
+        path: 'admin/messages',
+        element: <AdminMessages />
+      },
+      {
+        path: 'admin/users',
+        element: <AdminManageUsers />
       }
     ]
   }

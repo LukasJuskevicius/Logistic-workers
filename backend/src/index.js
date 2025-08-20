@@ -20,7 +20,7 @@ import profileRoute from './routes/profile.route.js';
 import messageRoute from './routes/message.route.js';
 import adminRoute from './routes/admin.route.js';
 import driverRoute from './routes/driver.route.js';
-// import clientRoute from './routes/client.route.js'; // Temporarily disabled - fixing schema compatibility
+import clientRoute from './routes/client.route.js';
 import healthRoute from './routes/health.route.js';
 import authRoute from './routes/auth.route.js';
 // Middleware
@@ -34,7 +34,7 @@ const envPath = path.join(__dirname, '../.env');
 dotenv.config({ path: envPath });
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Trust proxy for Railway/production deployments
 app.set('trust proxy', true);
@@ -72,7 +72,7 @@ app.use(messageRoute);
 
 // Role-specific routes
 app.use(driverRoute);
-// app.use(clientRoute); // Temporarily disabled - fixing schema compatibility
+app.use(clientRoute);
 app.use(adminRoute);
 
 app.listen(PORT, () => {

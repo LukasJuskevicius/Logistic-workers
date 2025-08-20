@@ -108,8 +108,44 @@ export function ProfileDropdown({ user }: { user: any }) {
     } else if (user?.role === 'admin') {
       roleItems.push(
         { 
+          icon: '👤', 
+          label: 'My Profile', 
+          action: (e: React.MouseEvent) => {
+            e?.preventDefault();
+            navigate('/profile');
+            setIsOpen(false);
+          } 
+        },
+        { 
+          icon: '📊', 
+          label: 'Dashboard', 
+          action: (e: React.MouseEvent) => {
+            e?.preventDefault();
+            navigate('/admin/dashboard');
+            setIsOpen(false);
+          } 
+        },
+        { 
+          icon: '✉️', 
+          label: 'Messages', 
+          action: (e: React.MouseEvent) => {
+            e?.preventDefault();
+            navigate('/admin/messages');
+            setIsOpen(false);
+          } 
+        },
+        { 
+          icon: '⚙️', 
+          label: 'Settings', 
+          action: (e: React.MouseEvent) => {
+            e?.preventDefault();
+            navigate('/admin/settings');
+            setIsOpen(false);
+          } 
+        },
+        { 
           icon: '👥', 
-          label: t('profile.manageUsers'), 
+          label: 'Manage Users', 
           action: (e: React.MouseEvent) => {
             e?.preventDefault();
             navigate('/admin/users');
@@ -118,7 +154,7 @@ export function ProfileDropdown({ user }: { user: any }) {
         },
         { 
           icon: '📈', 
-          label: t('profile.analytics'), 
+          label: 'Analytics', 
           action: (e: React.MouseEvent) => {
             e?.preventDefault();
             navigate('/admin/analytics');
@@ -128,9 +164,11 @@ export function ProfileDropdown({ user }: { user: any }) {
       );
     }
 
+    // For admin users, only show admin-specific items (no base items to avoid duplicates)
+    const menuItems = user?.role === 'admin' ? roleItems : [...baseItems, ...roleItems];
+    
     return [
-      ...baseItems,
-      ...roleItems,
+      ...menuItems,
       { 
         icon: '🚪', 
         label: t('profile.signOut'), 
