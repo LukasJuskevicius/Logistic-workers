@@ -15,12 +15,14 @@ export async function logoutUser(req, res) {
       [sessionId]
     );
     
-    // Clear the cookie
+    // Clear the cookie (environment-aware)
+    const isProduction = process.env.NODE_ENV === 'production';
     res.clearCookie('sessionId', {
       path: '/',
       httpOnly: true,
-      secure: false, // Match login cookie settings
-      sameSite: 'lax'
+      secure: isProduction, // Match login cookie settings
+      sameSite: isProduction ? 'none' : 'lax',
+      domain: isProduction ? undefined : undefined
     });
     
     res.json({ success: true, message: "Logged out successfully" });

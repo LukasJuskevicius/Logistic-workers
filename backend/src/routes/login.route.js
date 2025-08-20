@@ -33,13 +33,15 @@ router.post('/api/login', async (req, res) => {
       [user.user_id, sessionToken, clientIP, userAgent, true]
     );
 
-    // 4. Set httpOnly cookie (adjusted for development)
+    // 4. Set httpOnly cookie (environment-aware)
+    const isProduction = process.env.NODE_ENV === 'production';
     res.cookie('sessionId', sessionToken, {
       httpOnly: true,
-      secure: false, // Set to false for development (localhost)
-      sameSite: 'lax', // Changed from 'strict' to 'lax' for cross-origin requests
+      secure: isProduction, // true in production (HTTPS), false in development
+      sameSite: isProduction ? 'none' : 'lax', // 'none' for cross-origin HTTPS, 'lax' for development
       maxAge: 24 * 60 * 60 * 1000,
-      path: '/' // Explicitly set path
+      path: '/',
+      domain: isProduction ? undefined : undefined // Let browser handle domain
     });
 
     // 5. Get role-specific profile data
