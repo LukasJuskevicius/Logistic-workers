@@ -67,7 +67,7 @@ router.get('/api/clients/profile-old', requireAuth, requireRole(['client']), asy
             WHERE u.user_id = $1
         `;
         
-        const result = await pool.query(query, [req.userId]);
+        const result = await database.query(query, [req.userId]);
         
         if (result.rows.length === 0) {
             return res.status(404).json({ error: 'Client profile not found' });
@@ -190,7 +190,7 @@ router.get('/:clientId', requireAuth, async (req, res) => {
             GROUP BY u.user_id, c.user_id
         `;
         
-        const result = await pool.query(query, [clientId]);
+        const result = await database.query(query, [clientId]);
         
         if (result.rows.length === 0) {
             return res.status(404).json({ error: 'Client not found' });

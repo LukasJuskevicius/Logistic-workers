@@ -1,8 +1,53 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BackgroundPattern } from '../../../components/ui/BackgroundPattern';
 import { VacancyCard } from '../../../components/sections/VacancyCard';
-import { vacanciesData, vacancyCategories, vacancyLocations } from '../data/vacancies';
+import { getVacancies } from '../../../api/vacancies';
+import { vacanciesData as staticVacanciesData, vacancyCategories, vacancyLocations } from '../data/vacancies';
+
+// Shape returned by the backend GET /api/jobs (active_jobs_with_clients view)
+interface ApiJob {
+  job_id: string;
+  title: string;
+  description: string;
+  job_type: string;
+  location: string;
+  salary_min: number | null;
+  salary_max: number | null;
+  currency: string;
+  required_experience_years: number | null;
+  application_deadline: string | null;
+  start_date: string | null;
+  created_at: string;
+  company_name: string;
+  contact_first_name: string;
+  contact_last_name: string;
+  client_email: string;
+}
+
+// Normalise an API job into the shape VacancyCard already supports (VacancyWithText)
+function mapApiJobToVacancy(job: ApiJob, index: number) {
+  const salaryStr =
+    job.salary_min && job.salary_max
+      ? `€${Number(job.salary_min).toLocaleString()} - €${Number(job.salary_max).toLocaleString()}`
+      : job.salary_min
+        ? `From €${Number(job.salary_min).toLocaleString()}`
+        : null;
+
+  return {
+    id: index + 1,
+    title: job.title,
+    location: job.location,
+    description: job.description || '',
+    salary: salaryStr || 'Competitive',
+    type: job.job_type ? job.job_type.replace('_', '-') : 'Full-time',
+    experience: job.required_experience_years
+      ? `${job.required_experience_years}+ years`
+      : undefined,
+    company: job.company_name,
+    posted: job.created_at ? new Date(job.created_at).toISOString().split('T')[0] : undefined,
+  };
+}
 
 export function VacanciesListSection() {
   const { t } = useTranslation();
@@ -10,8 +55,35 @@ export function VacanciesListSection() {
   const [selectedLocation, setSelectedLocation] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Live data state
+  const [vacancies, setVacancies] = useState<any[]>(staticVacanciesData);
+  const [isLoading, setIsLoading] = useState(true);
+  const [usingLiveData, setUsingLiveData] = useState(false);
+
+  // Fetch live data on mount; fall back to static data on failure
+  useEffect(() => {
+    let cancelled = false;
+    async function fetchJobs() {
+      try {
+        setIsLoading(true);
+        const apiJobs: ApiJob[] = await getVacancies();
+        if (!cancelled && apiJobs && apiJobs.length > 0) {
+          setVacancies(apiJobs.map(mapApiJobToVacancy));
+          setUsingLiveData(true);
+        }
+      } catch {
+        // API unreachable — keep static data, no error shown to user
+        console.info('Jobs API unavailable, using static vacancy data.');
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    }
+    fetchJobs();
+    return () => { cancelled = true; };
+  }, []);
+
   // Filter vacancies based on selected filters (supports key-based and text-based data)
-  const filteredVacancies = vacanciesData.filter((vacancy: any) => {
+  const filteredVacancies = vacancies.filter((vacancy: any) => {
     const vacancyCategory: string | undefined = vacancy.category;
     const matchesCategory = selectedCategory === 'all' || vacancyCategory === selectedCategory;
 
@@ -69,7 +141,9 @@ export function VacanciesListSection() {
         <div className="text-center mb-8 md:mb-16">
           <div className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-white/80 backdrop-blur-sm rounded-full text-xs md:text-sm mb-4 md:mb-6">
             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-blue-500 rounded-full mr-1.5 md:mr-2"></div>
-            <span className="text-blue-700 font-medium">{t('vacancies.hero.filterBadge')}</span>
+            <span className="text-blue-700 font-medium">
+              {usingLiveData ? 'Live from Database' : t('vacancies.hero.filterBadge')}
+            </span>
           </div>
           
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">
@@ -99,96 +173,110 @@ export function VacanciesListSection() {
             </div>
           </div>
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-6 md:mb-8">
-            <button
-              onClick={() => setSelectedCategory('all')}
-              className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
-                selectedCategory === 'all'
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white text-gray-600 hover:bg-blue-50 border border-gray-200'
-              }`}
-            >
-              {t('vacancies.filters.allCategories')} ({vacanciesData.length})
-            </button>
-            {vacancyCategories.map((category) => (
+          {/* Category Filter Buttons — only shown when using static data (live data has no category field) */}
+          {!usingLiveData && (
+            <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-6 md:mb-8">
               <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
+                onClick={() => setSelectedCategory('all')}
                 className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
-                  selectedCategory === category.id
+                  selectedCategory === 'all'
                     ? 'bg-blue-600 text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-blue-50 border border-gray-200'
                 }`}
               >
-                {t(`vacancies.categories.${category.id}`)} ({category.count})
+                {t('vacancies.filters.allCategories')} ({vacancies.length})
               </button>
-            ))}
-          </div>
+              {vacancyCategories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
+                    selectedCategory === category.id
+                      ? 'bg-blue-600 text-white shadow-lg'
+                      : 'bg-white text-gray-600 hover:bg-blue-50 border border-gray-200'
+                  }`}
+                >
+                  {t(`vacancies.categories.${category.id}`)} ({category.count})
+                </button>
+              ))}
+            </div>
+          )}
 
-          {/* Location Filter */}
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-            <button
-              onClick={() => setSelectedLocation('all')}
-              className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
-                selectedLocation === 'all'
-                  ? 'bg-green-600 text-white shadow-lg'
-                  : 'bg-white text-gray-600 hover:bg-green-50 border border-gray-200'
-              }`}
-            >
-              {t('vacancies.filters.allLocations')}
-            </button>
-            {vacancyLocations.slice(0, 6).map((location) => (
+          {/* Location Filter — only shown when using static data */}
+          {!usingLiveData && (
+            <div className="flex flex-wrap justify-center gap-2 md:gap-4">
               <button
-                key={location.id}
-                onClick={() => setSelectedLocation(location.id)}
+                onClick={() => setSelectedLocation('all')}
                 className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
-                  selectedLocation === location.id
+                  selectedLocation === 'all'
                     ? 'bg-green-600 text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-green-50 border border-gray-200'
                 }`}
               >
-                {t(`vacancies.locations.${location.id}`)}
+                {t('vacancies.filters.allLocations')}
               </button>
-            ))}
-          </div>
+              {vacancyLocations.slice(0, 6).map((location) => (
+                <button
+                  key={location.id}
+                  onClick={() => setSelectedLocation(location.id)}
+                  className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
+                    selectedLocation === location.id
+                      ? 'bg-green-600 text-white shadow-lg'
+                      : 'bg-white text-gray-600 hover:bg-green-50 border border-gray-200'
+                  }`}
+                >
+                  {t(`vacancies.locations.${location.id}`)}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Results Count */}
         <div className="text-center mb-6 md:mb-8">
           <p className="text-sm md:text-base text-gray-600">
-            {t('vacancies.results.showing')} <span className="font-semibold text-blue-600">{filteredVacancies.length}</span> {t('vacancies.results.of')} <span className="font-semibold">{vacanciesData.length}</span> {t('vacancies.results.vacancies')}
+            {t('vacancies.results.showing')} <span className="font-semibold text-blue-600">{filteredVacancies.length}</span> {t('vacancies.results.of')} <span className="font-semibold">{vacancies.length}</span> {t('vacancies.results.vacancies')}
           </p>
         </div>
 
+        {/* Loading state */}
+        {isLoading && (
+          <div className="text-center py-12">
+            <div className="inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-gray-500 mt-4 text-sm">Loading vacancies...</p>
+          </div>
+        )}
+
         {/* Vacancies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {filteredVacancies.length > 0 ? (
-            filteredVacancies.map((vacancy) => (
-              <VacancyCard key={vacancy.id} vacancy={vacancy} />
-            ))
-          ) : (
-            <div className="col-span-full text-center py-12 md:py-16">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg">
-                <svg className="w-16 h-16 md:w-20 md:h-20 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">{t('vacancies.noResults.title')}</h3>
-                <p className="text-gray-600 mb-4">{t('vacancies.noResults.description')}</p>
-                <button
-                  onClick={() => {
-                    setSearchTerm('');
-                    setSelectedCategory('all');
-                    setSelectedLocation('all');
-                  }}
-                  className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300"
-                >
-                  {t('vacancies.noResults.clearFilters')}
-                </button>
+        {!isLoading && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {filteredVacancies.length > 0 ? (
+              filteredVacancies.map((vacancy) => (
+                <VacancyCard key={vacancy.id} vacancy={vacancy} />
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12 md:py-16">
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg">
+                  <svg className="w-16 h-16 md:w-20 md:h-20 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">{t('vacancies.noResults.title')}</h3>
+                  <p className="text-gray-600 mb-4">{t('vacancies.noResults.description')}</p>
+                  <button
+                    onClick={() => {
+                      setSearchTerm('');
+                      setSelectedCategory('all');
+                      setSelectedLocation('all');
+                    }}
+                    className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                  >
+                    {t('vacancies.noResults.clearFilters')}
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
 
         {/* Bottom decorative wave */}
         <div className="mt-8 md:mt-16 relative hidden md:block">

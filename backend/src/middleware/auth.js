@@ -38,7 +38,12 @@ export async function requireAuth(req, res, next) {
 }
 
 // Role-based access control
+// Accepts both requireRole('admin', 'client') and requireRole(['admin', 'client'])
 export function requireRole(...roles) {
+  // If called with a single array argument, flatten it
+  if (roles.length === 1 && Array.isArray(roles[0])) {
+    roles = roles[0];
+  }
   return async (req, res, next) => {
     try {
       // First ensure user is authenticated
@@ -84,6 +89,9 @@ export function requireRole(...roles) {
     }
   };
 }
+
+// Alias for compatibility with routes that import authenticateToken
+export const authenticateToken = requireAuth;
 
 export const requireAdmin = requireRole('admin');
 export const requireDriver = requireRole('driver');

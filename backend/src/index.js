@@ -23,6 +23,8 @@ import driverRoute from './routes/driver.route.js';
 import clientRoute from './routes/client.route.js';
 import healthRoute from './routes/health.route.js';
 import authRoute from './routes/auth.route.js';
+import jobRoute from './routes/job.route.js';
+import documentRoute from './routes/document.route.js';
 // Middleware
 import { corsMiddleware } from './middleware/cors.js';
 import { rateLimitMiddleware } from './middleware/rateLimit.js';
@@ -74,6 +76,10 @@ app.use(messageRoute);
 app.use(driverRoute);
 app.use(clientRoute);
 app.use(adminRoute);
+
+// Domain feature routes
+app.use('/api/jobs', jobRoute);
+app.use('/api/documents', documentRoute);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
