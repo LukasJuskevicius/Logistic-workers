@@ -24,8 +24,6 @@ const AdminSettings = () => {
     currency: 'EUR'
   });
 
-  const [activeTab, setActiveTab] = useState('general');
-
   const handleSave = () => {
     console.log('Saving settings:', settings);
     // Show success message
