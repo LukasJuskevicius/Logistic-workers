@@ -36,6 +36,7 @@ import AdminSettings from './components/admin/AdminSettings';
 import AdminAnalytics from './components/admin/AdminAnalytics';
 import AdminMessages from './components/admin/AdminMessages';
 import AdminManageUsers from './components/admin/AdminManageUsers';
+import AdminJobsManager from './components/admin/AdminJobsManager';
 
 // Import API functions
 import { logout } from './api/auth/logout';
@@ -135,6 +136,10 @@ const router = createBrowserRouter([
       {
         path: 'admin/users',
         element: <AdminManageUsers />
+      },
+      {
+        path: 'admin/jobs',
+        element: <AdminJobsManager />
       }
     ]
   }

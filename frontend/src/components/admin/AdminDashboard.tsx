@@ -5,6 +5,7 @@ import { AdminOverview } from './sections/AdminOverview';
 import { AdminUsers } from './sections/AdminUsers';
 import { AdminMessages } from './sections/AdminMessages';
 import { AdminReports } from './sections/AdminReports';
+import AdminJobsManager from './AdminJobsManager';
 
 interface AdminDashboardProps {
   user: any;
@@ -23,6 +24,8 @@ export function AdminDashboard({ user, onNavigate }: AdminDashboardProps) {
         return <AdminUsers />;
       case 'messages':
         return <AdminMessages />;
+      case 'jobs':
+        return <AdminJobsManager />;
       case 'reports':
         return <AdminReports />;
       default:

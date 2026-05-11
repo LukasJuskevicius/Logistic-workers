@@ -412,4 +412,42 @@ router.patch('/:jobId', authenticateToken, requireRole(['client']), async (req, 
     }
 });
 
+// DELETE /api/jobs/:jobId - Delete a job (admin or the client who posted it)
+router.delete('/:jobId', authenticateToken, async (req, res) => {
+    try {
+        const { jobId } = req.params;
+        console.log('🗑️ Deleting job:', { jobId, userId: req.userId, role: req.userRole });
+
+        // Admins can delete any job; clients can only delete their own
+        let jobCheck;
+        if (req.userRole === 'admin') {
+            jobCheck = await database.query(
+                'SELECT job_id FROM jobs WHERE job_id = $1',
+                [jobId]
+            );
+        } else {
+            jobCheck = await database.query(
+                'SELECT job_id FROM jobs WHERE job_id = $1 AND client_id = $2',
+                [jobId, req.userId]
+            );
+        }
+
+        if (jobCheck.rows.length === 0) {
+            return res.status(404).json({ error: 'Job not found or access denied' });
+        }
+
+        await database.query('DELETE FROM jobs WHERE job_id = $1', [jobId]);
+
+        console.log('✅ Job deleted successfully:', jobId);
+        res.json({ message: 'Job deleted successfully', job_id: jobId });
+
+    } catch (error) {
+        console.error('❌ Error deleting job:', error);
+        res.status(500).json({
+            error: 'Failed to delete job',
+            details: error.message
+        });
+    }
+});
+
 export default router;

@@ -12,6 +12,7 @@ export function AdminSidebar({ activeSection, onSectionChange, onNavigate }: Adm
   const menuItems = [
     { id: 'overview', icon: '📊', label: t('admin.overview') },
     { id: 'users', icon: '👥', label: t('admin.users') },
+    { id: 'jobs', icon: '💼', label: 'Job Listings' },
     { id: 'messages', icon: '✉️', label: t('admin.messages') },
     { id: 'reports', icon: '📈', label: t('admin.reports') }
   ];

@@ -25,8 +25,19 @@ export async function requireAuth(req, res, next) {
       });
     }
 
-    // 3. Add user_id to request for use in route handlers
+    // 3. Add user_id and role to request for use in route handlers
     req.userId = sessionResult.rows[0].user_id;
+
+    // Also fetch and attach role so routes using only authenticateToken can check it
+    const { database: db } = await import('../dbconn/database.js');
+    const roleResult = await db.query(
+      'SELECT role FROM users WHERE user_id = $1',
+      [req.userId]
+    );
+    if (roleResult.rows.length > 0) {
+      req.userRole = roleResult.rows[0].role;
+    }
+
     next();
   } catch (error) {
     console.error('Auth middleware error:', error);
