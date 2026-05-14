@@ -1,5 +1,17 @@
 import { database } from '../dbconn/database.js';
 
+export async function updateUserVerified(userId, isVerified) {
+  const result = await database.query(
+    'UPDATE users SET is_verified = $1 WHERE user_id = $2 RETURNING *',
+    [isVerified, userId]
+  );
+  return result.rows[0];
+}
+
+export async function deleteUser(userId) {
+  await database.query('DELETE FROM users WHERE user_id = $1', [userId]);
+}
+
 export async function getUsers() {
   const result = await database.query(`
     SELECT u.*, up.profile_picture, up.location,

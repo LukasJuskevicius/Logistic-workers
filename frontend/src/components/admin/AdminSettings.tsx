@@ -1,14 +1,66 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuthCheck } from '../../utils/authCheck';
 
+const LANGUAGES = [
+  { value: 'en', label: 'English' },
+  { value: 'lt', label: 'Lithuanian' },
+  { value: 'pl', label: 'Polish' },
+  { value: 'nl', label: 'Dutch' },
+  { value: 'ro', label: 'Romanian' },
+  { value: 'uk', label: 'Ukrainian' },
+];
+
+const TIMEZONES = ['Europe/Vilnius', 'Europe/Riga', 'Europe/Tallinn', 'Europe/Warsaw', 'UTC'];
+const CURRENCIES = [{ value: 'EUR', label: 'EUR (€)' }, { value: 'USD', label: 'USD ($)' }, { value: 'GBP', label: 'GBP (£)' }];
+
+const NAV_TABS = [
+  { id: 'general',       label: 'General',           icon: '⚙️' },
+  { id: 'users',         label: 'User Management',   icon: '👥' },
+  { id: 'notifications', label: 'Notifications',     icon: '🔔' },
+  { id: 'security',      label: 'Security',          icon: '🔒' },
+  { id: 'integrations',  label: 'Integrations',      icon: '🔗' },
+  { id: 'backup',        label: 'Backup & Recovery', icon: '💾' },
+];
+
+function Toggle({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <label className="relative inline-flex cursor-pointer items-center">
+      <input type="checkbox" className="peer sr-only" checked={checked} onChange={e => onChange(e.target.checked)} />
+      <div className="h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-indigo-600 peer-checked:after:translate-x-full peer-checked:after:border-white" />
+    </label>
+  );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-1.5">{label}</label>
+      {children}
+    </div>
+  );
+}
+
+function Row({ label, description, children }: { label: string; description: string; children: React.ReactNode }) {
+  return (
+    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200">
+      <div>
+        <p className="text-sm font-medium text-gray-900">{label}</p>
+        <p className="text-xs text-gray-500 mt-0.5">{description}</p>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+const INPUT_CLS = 'w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500';
+const SELECT_CLS = `${INPUT_CLS} bg-white`;
+
 const AdminSettings = () => {
-  const { user, isAuthorized } = useAuthCheck('admin');
+  const { isAuthorized } = useAuthCheck('admin');
+  const { i18n } = useTranslation();
   const [activeTab, setActiveTab] = useState('general');
-
-  if (!isAuthorized) {
-    return null; // Will redirect automatically
-  }
-
+  const [saved, setSaved] = useState(false);
   const [settings, setSettings] = useState({
     siteName: 'Logistics Workers Platform',
     siteDescription: 'Professional logistics and transportation services',
@@ -21,627 +73,215 @@ const AdminSettings = () => {
     sessionTimeout: '30',
     defaultLanguage: 'en',
     timezone: 'Europe/Vilnius',
-    currency: 'EUR'
+    currency: 'EUR',
   });
 
-  const handleSave = () => {
-    console.log('Saving settings:', settings);
-    // Show success message
-  };
+  useEffect(() => {
+    const saved = localStorage.getItem('adminSettings');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setSettings(parsed);
+        i18n.changeLanguage(parsed.defaultLanguage);
+      } catch {}
+    }
+  }, []);
+
+  if (!isAuthorized) return null;
+
+  function set<K extends keyof typeof settings>(key: K, value: typeof settings[K]) {
+    setSettings(prev => ({ ...prev, [key]: value }));
+  }
+
+  function handleSave() {
+    localStorage.setItem('adminSettings', JSON.stringify(settings));
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  }
 
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '32px' }}>
-        <h1 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '8px', color: '#1f2937' }}>
-          System Settings
-        </h1>
-        <p style={{ color: '#6b7280' }}>
-          Configure platform settings and system preferences
-        </p>
+    <div className="space-y-4">
+      <div>
+        <h1 className="text-2xl font-bold text-gray-900">System Settings</h1>
+        <p className="text-sm text-gray-500 mt-1">Configure platform settings and preferences</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr', gap: '24px' }}>
-        {/* Settings Navigation */}
-        <div style={{
-          backgroundColor: 'white',
-          border: '1px solid #e5e7eb',
-          borderRadius: '12px',
-          padding: '16px',
-          height: 'fit-content',
-          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
-        }}>
-          <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            {[
-              { id: 'general', label: 'General', icon: '⚙️' },
-              { id: 'users', label: 'User Management', icon: '👥' },
-              { id: 'notifications', label: 'Notifications', icon: '🔔' },
-              { id: 'security', label: 'Security', icon: '🔒' },
-              { id: 'integrations', label: 'Integrations', icon: '🔗' },
-              { id: 'backup', label: 'Backup & Recovery', icon: '💾' }
-            ].map(tab => (
-              <button
-                key={tab.id}
-                style={{
-                  padding: '12px 16px',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  color: activeTab === tab.id ? '#3b82f6' : '#6b7280',
-                  backgroundColor: activeTab === tab.id ? '#eff6ff' : 'transparent',
-                  border: 'none',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  textAlign: 'left',
-                  width: '100%'
-                }}
-                onClick={() => setActiveTab(tab.id)}
-                onMouseEnter={(e) => {
-                  if (activeTab !== tab.id) {
-                    e.currentTarget.style.backgroundColor = '#f9fafb';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (activeTab !== tab.id) {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                  }
-                }}
-              >
-                <span>{tab.icon}</span>
-                {tab.label}
-              </button>
-            ))}
-          </nav>
-        </div>
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        {/* Nav */}
+        <nav className="bg-white rounded-xl border border-gray-200 shadow-sm p-3 space-y-1 h-fit">
+          {NAV_TABS.map(t => (
+            <button key={t.id} onClick={() => setActiveTab(t.id)}
+              className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors text-left ${
+                activeTab === t.id ? 'bg-indigo-50 text-indigo-700' : 'text-gray-600 hover:bg-gray-50'
+              }`}>
+              <span>{t.icon}</span>{t.label}
+            </button>
+          ))}
+        </nav>
 
-        {/* Settings Content */}
-        <div style={{
-          backgroundColor: 'white',
-          border: '1px solid #e5e7eb',
-          borderRadius: '12px',
-          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
-        }}>
-          <div style={{ padding: '24px' }}>
+        {/* Content */}
+        <div className="lg:col-span-3 bg-white rounded-xl border border-gray-200 shadow-sm">
+          <div className="p-6 space-y-5">
+
             {activeTab === 'general' && (
-              <div>
-                <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '24px', color: '#1f2937' }}>
-                  General Settings
-                </h2>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#374151' }}>
-                        Site Name
-                      </label>
-                      <input
-                        style={{
-                          width: '100%',
-                          padding: '12px',
-                          border: '1px solid #d1d5db',
-                          borderRadius: '8px',
-                          fontSize: '14px'
-                        }}
-                        value={settings.siteName}
-                        onChange={(e) => setSettings({...settings, siteName: e.target.value})}
-                      />
-                    </div>
-
-                    <div>
-                      <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#374151' }}>
-                        Default Language
-                      </label>
-                      <select
-                        style={{
-                          width: '100%',
-                          padding: '12px',
-                          border: '1px solid #d1d5db',
-                          borderRadius: '8px',
-                          fontSize: '14px',
-                          backgroundColor: 'white'
-                        }}
-                        value={settings.defaultLanguage}
-                        onChange={(e) => setSettings({...settings, defaultLanguage: e.target.value})}
-                      >
-                        <option value="en">English</option>
-                        <option value="lt">Lithuanian</option>
-                        <option value="lv">Latvian</option>
-                        <option value="et">Estonian</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#374151' }}>
-                      Site Description
-                    </label>
-                    <textarea
-                      style={{
-                        width: '100%',
-                        padding: '12px',
-                        border: '1px solid #d1d5db',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        resize: 'vertical',
-                        minHeight: '80px'
-                      }}
-                      value={settings.siteDescription}
-                      onChange={(e) => setSettings({...settings, siteDescription: e.target.value})}
-                    />
-                  </div>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#374151' }}>
-                        Timezone
-                      </label>
-                      <select
-                        style={{
-                          width: '100%',
-                          padding: '12px',
-                          border: '1px solid #d1d5db',
-                          borderRadius: '8px',
-                          fontSize: '14px',
-                          backgroundColor: 'white'
-                        }}
-                        value={settings.timezone}
-                        onChange={(e) => setSettings({...settings, timezone: e.target.value})}
-                      >
-                        <option value="Europe/Vilnius">Europe/Vilnius</option>
-                        <option value="Europe/Riga">Europe/Riga</option>
-                        <option value="Europe/Tallinn">Europe/Tallinn</option>
-                        <option value="UTC">UTC</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#374151' }}>
-                        Currency
-                      </label>
-                      <select
-                        style={{
-                          width: '100%',
-                          padding: '12px',
-                          border: '1px solid #d1d5db',
-                          borderRadius: '8px',
-                          fontSize: '14px',
-                          backgroundColor: 'white'
-                        }}
-                        value={settings.currency}
-                        onChange={(e) => setSettings({...settings, currency: e.target.value})}
-                      >
-                        <option value="EUR">EUR (€)</option>
-                        <option value="USD">USD ($)</option>
-                        <option value="GBP">GBP (£)</option>
-                      </select>
-                    </div>
-                  </div>
+              <>
+                <h2 className="text-lg font-semibold text-gray-900">General Settings</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Field label="Site Name">
+                    <input className={INPUT_CLS} value={settings.siteName}
+                      onChange={e => set('siteName', e.target.value)} />
+                  </Field>
+                  <Field label="Default Language">
+                    <select className={SELECT_CLS} value={settings.defaultLanguage}
+                      onChange={e => { set('defaultLanguage', e.target.value); i18n.changeLanguage(e.target.value); }}>
+                      {LANGUAGES.map(l => <option key={l.value} value={l.value}>{l.label}</option>)}
+                    </select>
+                  </Field>
                 </div>
-              </div>
+                <Field label="Site Description">
+                  <textarea className={INPUT_CLS} rows={3} value={settings.siteDescription}
+                    onChange={e => set('siteDescription', e.target.value)} />
+                </Field>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Field label="Timezone">
+                    <select className={SELECT_CLS} value={settings.timezone}
+                      onChange={e => set('timezone', e.target.value)}>
+                      {TIMEZONES.map(tz => <option key={tz} value={tz}>{tz}</option>)}
+                    </select>
+                  </Field>
+                  <Field label="Currency">
+                    <select className={SELECT_CLS} value={settings.currency}
+                      onChange={e => set('currency', e.target.value)}>
+                      {CURRENCIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
+                    </select>
+                  </Field>
+                </div>
+              </>
             )}
 
             {activeTab === 'users' && (
-              <div>
-                <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '24px', color: '#1f2937' }}>
-                  User Management Settings
-                </h2>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: '16px',
-                    backgroundColor: '#f9fafb',
-                    borderRadius: '8px',
-                    border: '1px solid #e5e7eb'
-                  }}>
-                    <div>
-                      <h3 style={{ fontSize: '16px', fontWeight: '500', margin: 0, color: '#1f2937' }}>
-                        User Registration
-                      </h3>
-                      <p style={{ fontSize: '14px', color: '#6b7280', margin: '4px 0 0 0' }}>
-                        Allow new users to register on the platform
-                      </p>
-                    </div>
-                    <label style={{ position: 'relative', display: 'inline-block', width: '60px', height: '34px' }}>
-                      <input
-                        type="checkbox"
-                        checked={settings.userRegistration}
-                        onChange={(e) => setSettings({...settings, userRegistration: e.target.checked})}
-                        style={{ opacity: 0, width: 0, height: 0 }}
-                      />
-                      <span style={{
-                        position: 'absolute',
-                        cursor: 'pointer',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        backgroundColor: settings.userRegistration ? '#3b82f6' : '#ccc',
-                        transition: '0.4s',
-                        borderRadius: '34px'
-                      }}>
-                        <span style={{
-                          position: 'absolute',
-                          content: '',
-                          height: '26px',
-                          width: '26px',
-                          left: settings.userRegistration ? '30px' : '4px',
-                          bottom: '4px',
-                          backgroundColor: 'white',
-                          transition: '0.4s',
-                          borderRadius: '50%'
-                        }}></span>
-                      </span>
-                    </label>
-                  </div>
-
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: '16px',
-                    backgroundColor: '#f9fafb',
-                    borderRadius: '8px',
-                    border: '1px solid #e5e7eb'
-                  }}>
-                    <div>
-                      <h3 style={{ fontSize: '16px', fontWeight: '500', margin: 0, color: '#1f2937' }}>
-                        Auto-approve Drivers
-                      </h3>
-                      <p style={{ fontSize: '14px', color: '#6b7280', margin: '4px 0 0 0' }}>
-                        Automatically approve driver registrations
-                      </p>
-                    </div>
-                    <label style={{ position: 'relative', display: 'inline-block', width: '60px', height: '34px' }}>
-                      <input
-                        type="checkbox"
-                        checked={settings.autoApproval}
-                        onChange={(e) => setSettings({...settings, autoApproval: e.target.checked})}
-                        style={{ opacity: 0, width: 0, height: 0 }}
-                      />
-                      <span style={{
-                        position: 'absolute',
-                        cursor: 'pointer',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        backgroundColor: settings.autoApproval ? '#3b82f6' : '#ccc',
-                        transition: '0.4s',
-                        borderRadius: '34px'
-                      }}>
-                        <span style={{
-                          position: 'absolute',
-                          content: '',
-                          height: '26px',
-                          width: '26px',
-                          left: settings.autoApproval ? '30px' : '4px',
-                          bottom: '4px',
-                          backgroundColor: 'white',
-                          transition: '0.4s',
-                          borderRadius: '50%'
-                        }}></span>
-                      </span>
-                    </label>
-                  </div>
-
-                  <div>
-                    <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#374151' }}>
-                      Session Timeout (minutes)
-                    </label>
-                    <input
-                      type="number"
-                      style={{
-                        width: '200px',
-                        padding: '12px',
-                        border: '1px solid #d1d5db',
-                        borderRadius: '8px',
-                        fontSize: '14px'
-                      }}
-                      value={settings.sessionTimeout}
-                      onChange={(e) => setSettings({...settings, sessionTimeout: e.target.value})}
-                    />
-                  </div>
+              <>
+                <h2 className="text-lg font-semibold text-gray-900">User Management Settings</h2>
+                <div className="space-y-3">
+                  <Row label="User Registration" description="Allow new users to register on the platform">
+                    <Toggle checked={settings.userRegistration} onChange={v => set('userRegistration', v)} />
+                  </Row>
+                  <Row label="Auto-approve Drivers" description="Automatically approve driver registrations without manual review">
+                    <Toggle checked={settings.autoApproval} onChange={v => set('autoApproval', v)} />
+                  </Row>
                 </div>
-              </div>
+                <Field label="Session Timeout (minutes)">
+                  <input type="number" className={`${INPUT_CLS} w-40`} value={settings.sessionTimeout}
+                    onChange={e => set('sessionTimeout', e.target.value)} />
+                </Field>
+              </>
             )}
 
             {activeTab === 'notifications' && (
-              <div>
-                <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '24px', color: '#1f2937' }}>
-                  Notification Settings
-                </h2>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  {[
-                    { key: 'emailNotifications', label: 'Email Notifications', desc: 'Send notifications via email' },
-                    { key: 'smsNotifications', label: 'SMS Notifications', desc: 'Send notifications via SMS' }
-                  ].map(item => (
-                    <div key={item.key} style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      padding: '16px',
-                      backgroundColor: '#f9fafb',
-                      borderRadius: '8px',
-                      border: '1px solid #e5e7eb'
-                    }}>
-                      <div>
-                        <h3 style={{ fontSize: '16px', fontWeight: '500', margin: 0, color: '#1f2937' }}>
-                          {item.label}
-                        </h3>
-                        <p style={{ fontSize: '14px', color: '#6b7280', margin: '4px 0 0 0' }}>
-                          {item.desc}
-                        </p>
-                      </div>
-                      <label style={{ position: 'relative', display: 'inline-block', width: '60px', height: '34px' }}>
-                        <input
-                          type="checkbox"
-                          checked={settings[item.key as keyof typeof settings] as boolean}
-                          onChange={(e) => setSettings({...settings, [item.key]: e.target.checked})}
-                          style={{ opacity: 0, width: 0, height: 0 }}
-                        />
-                        <span style={{
-                          position: 'absolute',
-                          cursor: 'pointer',
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
-                          backgroundColor: (settings[item.key as keyof typeof settings] as boolean) ? '#3b82f6' : '#ccc',
-                          transition: '0.4s',
-                          borderRadius: '34px'
-                        }}>
-                          <span style={{
-                            position: 'absolute',
-                            content: '',
-                            height: '26px',
-                            width: '26px',
-                            left: (settings[item.key as keyof typeof settings] as boolean) ? '30px' : '4px',
-                            bottom: '4px',
-                            backgroundColor: 'white',
-                            transition: '0.4s',
-                            borderRadius: '50%'
-                          }}></span>
-                        </span>
-                      </label>
-                    </div>
-                  ))}
+              <>
+                <h2 className="text-lg font-semibold text-gray-900">Notification Settings</h2>
+                <div className="space-y-3">
+                  <Row label="Email Notifications" description="Send notifications via email">
+                    <Toggle checked={settings.emailNotifications} onChange={v => set('emailNotifications', v)} />
+                  </Row>
+                  <Row label="SMS Notifications" description="Send notifications via SMS">
+                    <Toggle checked={settings.smsNotifications} onChange={v => set('smsNotifications', v)} />
+                  </Row>
                 </div>
-              </div>
+              </>
             )}
 
             {activeTab === 'security' && (
-              <div>
-                <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '24px', color: '#1f2937' }}>
-                  Security Settings
-                </h2>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                  <div style={{
-                    backgroundColor: '#fef3c7',
-                    border: '1px solid #f59e0b',
-                    borderRadius: '8px',
-                    padding: '16px'
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                      <span style={{ fontSize: '20px' }}>⚠️</span>
-                      <h3 style={{ fontSize: '16px', fontWeight: '600', margin: 0, color: '#92400e' }}>
-                        Maintenance Mode
-                      </h3>
-                    </div>
-                    <p style={{ fontSize: '14px', color: '#92400e', marginBottom: '12px' }}>
-                      Enable maintenance mode to temporarily disable public access
-                    </p>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <input
-                        type="checkbox"
-                        checked={settings.maintenanceMode}
-                        onChange={(e) => setSettings({...settings, maintenanceMode: e.target.checked})}
-                        style={{ width: '16px', height: '16px' }}
-                      />
-                      <span style={{ fontSize: '14px', fontWeight: '500', color: '#92400e' }}>
-                        Enable Maintenance Mode
-                      </span>
-                    </label>
+              <>
+                <h2 className="text-lg font-semibold text-gray-900">Security Settings</h2>
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span>⚠️</span>
+                    <h3 className="text-sm font-semibold text-amber-800">Maintenance Mode</h3>
                   </div>
-
-                  <div>
-                    <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#374151' }}>
-                      Maximum File Upload Size (MB)
-                    </label>
-                    <input
-                      type="number"
-                      style={{
-                        width: '200px',
-                        padding: '12px',
-                        border: '1px solid #d1d5db',
-                        borderRadius: '8px',
-                        fontSize: '14px'
-                      }}
-                      value={settings.maxFileSize}
-                      onChange={(e) => setSettings({...settings, maxFileSize: e.target.value})}
-                    />
-                  </div>
+                  <p className="text-sm text-amber-700 mb-3">Enable maintenance mode to temporarily disable public access to the platform.</p>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" checked={settings.maintenanceMode}
+                      onChange={e => set('maintenanceMode', e.target.checked)}
+                      className="w-4 h-4 rounded" />
+                    <span className="text-sm font-medium text-amber-800">Enable Maintenance Mode</span>
+                  </label>
                 </div>
-              </div>
+                <Field label="Maximum File Upload Size (MB)">
+                  <input type="number" className={`${INPUT_CLS} w-40`} value={settings.maxFileSize}
+                    onChange={e => set('maxFileSize', e.target.value)} />
+                </Field>
+              </>
             )}
 
             {activeTab === 'integrations' && (
-              <div>
-                <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '24px', color: '#1f2937' }}>
-                  Third-party Integrations
-                </h2>
-                
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px' }}>
+              <>
+                <h2 className="text-lg font-semibold text-gray-900">Third-party Integrations</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { name: 'Google Maps API', status: 'Connected', icon: '🗺️', color: '#10b981' },
-                    { name: 'Payment Gateway', status: 'Not Connected', icon: '💳', color: '#ef4444' },
-                    { name: 'Email Service', status: 'Connected', icon: '📧', color: '#10b981' },
-                    { name: 'SMS Gateway', status: 'Not Connected', icon: '📱', color: '#ef4444' }
-                  ].map(integration => (
-                    <div key={integration.name} style={{
-                      backgroundColor: 'white',
-                      border: '1px solid #e5e7eb',
-                      borderRadius: '8px',
-                      padding: '16px'
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                        <span style={{ fontSize: '24px' }}>{integration.icon}</span>
-                        <h3 style={{ fontSize: '16px', fontWeight: '500', margin: 0, color: '#1f2937' }}>
-                          {integration.name}
-                        </h3>
+                    { name: 'Google Maps API', status: 'Connected', icon: '🗺️', ok: true },
+                    { name: 'Payment Gateway', status: 'Not Connected', icon: '💳', ok: false },
+                    { name: 'Email Service', status: 'Connected', icon: '📧', ok: true },
+                    { name: 'SMS Gateway', status: 'Not Connected', icon: '📱', ok: false },
+                  ].map(i => (
+                    <div key={i.name} className="border border-gray-200 rounded-lg p-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-2xl">{i.icon}</span>
+                        <p className="text-sm font-medium text-gray-900">{i.name}</p>
                       </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{
-                          fontSize: '12px',
-                          padding: '4px 8px',
-                          borderRadius: '12px',
-                          backgroundColor: integration.status === 'Connected' ? '#dcfce7' : '#fee2e2',
-                          color: integration.color,
-                          fontWeight: '500'
-                        }}>
-                          {integration.status}
+                      <div className="flex items-center justify-between">
+                        <span className={`text-xs px-2 py-1 rounded-full font-medium ${i.ok ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                          {i.status}
                         </span>
-                        <button style={{
-                          padding: '6px 12px',
-                          fontSize: '12px',
-                          backgroundColor: '#3b82f6',
-                          color: 'white',
-                          border: 'none',
-                          borderRadius: '6px',
-                          cursor: 'pointer'
-                        }}>
+                        <button className="text-xs px-3 py-1 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                           Configure
                         </button>
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </>
             )}
 
             {activeTab === 'backup' && (
-              <div>
-                <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '24px', color: '#1f2937' }}>
-                  Backup & Recovery
-                </h2>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                  <div style={{
-                    backgroundColor: '#f0f9ff',
-                    border: '1px solid #0ea5e9',
-                    borderRadius: '8px',
-                    padding: '16px'
-                  }}>
-                    <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '8px', color: '#0c4a6e' }}>
-                      💾 Automated Backups
-                    </h3>
-                    <p style={{ fontSize: '14px', color: '#0c4a6e', marginBottom: '12px' }}>
-                      Last backup: Today at 03:00 AM
-                    </p>
-                    <button style={{
-                      padding: '8px 16px',
-                      backgroundColor: '#0ea5e9',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '6px',
-                      fontSize: '14px',
-                      cursor: 'pointer'
-                    }}>
-                      Create Backup Now
-                    </button>
-                  </div>
-
-                  <div>
-                    <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '12px', color: '#1f2937' }}>
-                      Recent Backups
-                    </h3>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                      {[
-                        { date: '2024-01-20 03:00', size: '2.3 GB', status: 'Success' },
-                        { date: '2024-01-19 03:00', size: '2.2 GB', status: 'Success' },
-                        { date: '2024-01-18 03:00', size: '2.1 GB', status: 'Success' }
-                      ].map((backup, index) => (
-                        <div key={index} style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                          padding: '12px',
-                          backgroundColor: '#f9fafb',
-                          borderRadius: '6px',
-                          border: '1px solid #e5e7eb'
-                        }}>
-                          <div>
-                            <p style={{ margin: 0, fontWeight: '500', color: '#1f2937' }}>
-                              {backup.date}
-                            </p>
-                            <p style={{ margin: 0, fontSize: '14px', color: '#6b7280' }}>
-                              Size: {backup.size}
-                            </p>
-                          </div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            <span style={{
-                              fontSize: '12px',
-                              padding: '4px 8px',
-                              borderRadius: '12px',
-                              backgroundColor: '#dcfce7',
-                              color: '#166534',
-                              fontWeight: '500'
-                            }}>
-                              {backup.status}
-                            </span>
-                            <button style={{
-                              padding: '4px 8px',
-                              fontSize: '12px',
-                              backgroundColor: 'white',
-                              color: '#6b7280',
-                              border: '1px solid #d1d5db',
-                              borderRadius: '4px',
-                              cursor: 'pointer'
-                            }}>
-                              Download
-                            </button>
-                          </div>
+              <>
+                <h2 className="text-lg font-semibold text-gray-900">Backup & Recovery</h2>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <h3 className="text-sm font-semibold text-blue-900 mb-1">💾 Automated Backups</h3>
+                  <p className="text-sm text-blue-700 mb-3">Last backup: Today at 03:00 AM</p>
+                  <button className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 font-medium">
+                    Create Backup Now
+                  </button>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Recent Backups</h3>
+                  <div className="space-y-2">
+                    {[
+                      { date: '2024-01-20 03:00', size: '2.3 GB' },
+                      { date: '2024-01-19 03:00', size: '2.2 GB' },
+                      { date: '2024-01-18 03:00', size: '2.1 GB' },
+                    ].map(b => (
+                      <div key={b.date} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">{b.date}</p>
+                          <p className="text-xs text-gray-500">Size: {b.size}</p>
                         </div>
-                      ))}
-                    </div>
+                        <div className="flex items-center gap-3">
+                          <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full font-medium">Success</span>
+                          <button className="text-xs px-3 py-1 border border-gray-300 rounded-lg hover:bg-gray-50">Download</button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
+              </>
             )}
           </div>
 
-          {/* Save Button */}
-          <div style={{
-            borderTop: '1px solid #e5e7eb',
-            padding: '16px 24px',
-            display: 'flex',
-            justifyContent: 'flex-end'
-          }}>
-            <button
-              style={{
-                padding: '12px 24px',
-                backgroundColor: '#3b82f6',
-                color: 'white',
-                border: 'none',
-                borderRadius: '8px',
-                fontSize: '14px',
-                fontWeight: '500',
-                cursor: 'pointer'
-              }}
-              onClick={handleSave}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#2563eb';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#3b82f6';
-              }}
-            >
+          <div className="border-t border-gray-100 px-6 py-4 flex items-center justify-end gap-3">
+            {saved && <span className="text-sm text-green-600 font-medium">✓ Saved</span>}
+            <button onClick={handleSave}
+              className="px-5 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors">
               💾 Save Settings
             </button>
           </div>

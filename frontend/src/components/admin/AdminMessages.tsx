@@ -1,442 +1,226 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { adminApi, AdminMessage } from '../../api/admin';
 
-const AdminMessages = () => {
-  const [selectedConversation, setSelectedConversation] = useState(0);
+type FilterKey = 'all' | 'unread' | 'admin';
+
+interface Thread {
+  partnerEmail: string;
+  messages: AdminMessage[];
+  hasUnread: boolean;
+}
+
+function groupIntoThreads(messages: AdminMessage[], adminEmail: string): Thread[] {
+  const map = new Map<string, AdminMessage[]>();
+  for (const m of messages) {
+    const partner = m.sender_email === adminEmail
+      ? (m.receiver_email ?? 'broadcast')
+      : m.sender_email;
+    if (!map.has(partner)) map.set(partner, []);
+    map.get(partner)!.push(m);
+  }
+  return Array.from(map.entries()).map(([partnerEmail, msgs]) => ({
+    partnerEmail,
+    messages: msgs.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime()),
+    hasUnread: msgs.some(m => !m.is_read && m.sender_email !== adminEmail),
+  }));
+}
+
+export default function AdminMessages() {
+  const [threads, setThreads] = useState<Thread[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [filter, setFilter] = useState<FilterKey>('all');
   const [newMessage, setNewMessage] = useState('');
-  const [filterStatus, setFilterStatus] = useState('all');
+  const [sending, setSending] = useState(false);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
-  // Mock conversations data
-  const conversations = [
-    {
-      id: 1,
-      participant: 'Jonas Petraitis',
-      role: 'Driver',
-      lastMessage: 'When will my advertisement be approved?',
-      timestamp: '10:30 AM',
-      unread: true,
-      priority: 'medium',
-      status: 'open',
-      messages: [
-        { sender: 'Jonas Petraitis', content: 'Hello, I submitted my driver advertisement 3 days ago. When will it be reviewed?', timestamp: '9:15 AM', isAdmin: false },
-        { sender: 'Admin', content: 'Hi Jonas! Thank you for your inquiry. We typically review advertisements within 2-3 business days.', timestamp: '9:45 AM', isAdmin: true },
-        { sender: 'Jonas Petraitis', content: 'When will my advertisement be approved?', timestamp: '10:30 AM', isAdmin: false }
-      ]
-    },
-    {
-      id: 2,
-      participant: 'UAB Logistika',
-      role: 'Client',
-      lastMessage: 'We need urgent delivery services',
-      timestamp: 'Yesterday',
-      unread: false,
-      priority: 'high',
-      status: 'resolved',
-      messages: [
-        { sender: 'UAB Logistika', content: 'We need urgent delivery services for tomorrow. Can you help us find available drivers?', timestamp: 'Yesterday 2:30 PM', isAdmin: false },
-        { sender: 'Admin', content: 'Absolutely! I\'ve forwarded your request to our available drivers. You should receive responses within the hour.', timestamp: 'Yesterday 2:45 PM', isAdmin: true },
-        { sender: 'UAB Logistika', content: 'Perfect, thank you for the quick response!', timestamp: 'Yesterday 3:15 PM', isAdmin: false }
-      ]
-    },
-    {
-      id: 3,
-      participant: 'Petras Kazlauskas',
-      role: 'Driver',
-      lastMessage: 'Payment issue with last job',
-      timestamp: '2 days ago',
-      unread: false,
-      priority: 'high',
-      status: 'pending',
-      messages: [
-        { sender: 'Petras Kazlauskas', content: 'I completed a job last week but haven\'t received payment yet. Can you check the status?', timestamp: '2 days ago 11:00 AM', isAdmin: false },
-        { sender: 'Admin', content: 'Let me check your payment status. Can you provide the job ID?', timestamp: '2 days ago 11:15 AM', isAdmin: true },
-        { sender: 'Petras Kazlauskas', content: 'Payment issue with last job', timestamp: '2 days ago 11:30 AM', isAdmin: false }
-      ]
-    }
-  ];
+  // In a real session the admin's email would come from auth context.
+  // We use a placeholder here; replace with user.email from useOutletContext if needed.
+  const adminEmail = 'admin@platform.com';
 
-  const filteredConversations = conversations.filter(conv => {
-    if (filterStatus === 'all') return true;
-    if (filterStatus === 'unread') return conv.unread;
-    return conv.status === filterStatus;
+  function loadMessages() {
+    adminApi.getMessages()
+      .then(msgs => setThreads(groupIntoThreads(msgs, adminEmail)))
+      .catch(() => setError('Failed to load messages'))
+      .finally(() => setLoading(false));
+  }
+
+  useEffect(loadMessages, []);
+  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [activeIndex, threads]);
+
+  const filteredThreads = threads.filter(t => {
+    if (filter === 'unread') return t.hasUnread;
+    if (filter === 'admin') return t.partnerEmail === 'broadcast';
+    return true;
   });
 
-  const handleSendMessage = () => {
-    if (newMessage.trim()) {
-      console.log('Sending message:', newMessage);
-      setNewMessage('');
-    }
-  };
+  const activeThread = filteredThreads[activeIndex] ?? null;
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high': return '#ef4444';
-      case 'medium': return '#f59e0b';
-      case 'low': return '#10b981';
-      default: return '#6b7280';
+  async function handleSend() {
+    if (!newMessage.trim() || !activeThread) return;
+    setSending(true);
+    try {
+      // Find receiver's user_id from thread messages
+      const receiverMsg = activeThread.messages.find(m => m.sender_email === activeThread.partnerEmail);
+      if (receiverMsg) {
+        await adminApi.sendMessage({
+          receiver_id: receiverMsg.sender_id,
+          subject: `Re: ${activeThread.messages[0]?.subject ?? 'Message'}`,
+          content: newMessage.trim(),
+        });
+        setNewMessage('');
+        loadMessages();
+      }
+    } catch {
+      setError('Failed to send message');
+    } finally {
+      setSending(false);
     }
-  };
+  }
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'open': return '#3b82f6';
-      case 'pending': return '#f59e0b';
-      case 'resolved': return '#10b981';
-      default: return '#6b7280';
-    }
-  };
+  async function markRead(messageId: number) {
+    try { await adminApi.markMessageRead(messageId); }
+    catch { /* non-critical */ }
+  }
 
   return (
-    <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '24px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
-        <h1 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '8px', color: '#1f2937' }}>
-          Messages & Support
-        </h1>
-        <p style={{ color: '#6b7280' }}>
-          Manage user communications and support requests
-        </p>
+    <div className="space-y-4">
+      <div>
+        <h1 className="text-2xl font-bold text-gray-900">Messages & Support</h1>
+        <p className="text-sm text-gray-500 mt-1">Manage user communications and support requests</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '350px 1fr', gap: '24px', height: '700px' }}>
-        {/* Conversations List */}
-        <div style={{
-          backgroundColor: 'white',
-          border: '1px solid #e5e7eb',
-          borderRadius: '12px',
-          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
-          display: 'flex',
-          flexDirection: 'column'
-        }}>
-          {/* Conversations Header */}
-          <div style={{ padding: '20px 24px', borderBottom: '1px solid #e5e7eb' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-              <h2 style={{ fontSize: '18px', fontWeight: '600', margin: 0, color: '#1f2937' }}>
-                Conversations
-              </h2>
-              <span style={{
-                fontSize: '12px',
-                padding: '4px 8px',
-                backgroundColor: '#eff6ff',
-                color: '#3b82f6',
-                borderRadius: '12px',
-                fontWeight: '500'
-              }}>
-                {conversations.filter(c => c.unread).length} unread
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-700 flex justify-between">
+          {error}
+          <button onClick={() => setError(null)} className="font-bold">×</button>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[680px]">
+        {/* Thread list */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm flex flex-col">
+          <div className="px-4 py-3 border-b border-gray-100">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-sm font-semibold text-gray-900">Conversations</h2>
+              <span className="text-xs px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded-full font-medium">
+                {threads.filter(t => t.hasUnread).length} unread
               </span>
             </div>
-            
-            {/* Filter Tabs */}
-            <div style={{ display: 'flex', gap: '4px' }}>
-              {[
-                { key: 'all', label: 'All' },
-                { key: 'unread', label: 'Unread' },
-                { key: 'open', label: 'Open' },
-                { key: 'pending', label: 'Pending' }
-              ].map(filter => (
-                <button
-                  key={filter.key}
-                  style={{
-                    padding: '6px 12px',
-                    fontSize: '12px',
-                    fontWeight: '500',
-                    backgroundColor: filterStatus === filter.key ? '#3b82f6' : '#f3f4f6',
-                    color: filterStatus === filter.key ? 'white' : '#6b7280',
-                    border: 'none',
-                    borderRadius: '6px',
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => setFilterStatus(filter.key)}
-                >
-                  {filter.label}
+            <div className="flex gap-1">
+              {(['all', 'unread', 'admin'] as FilterKey[]).map(f => (
+                <button key={f} onClick={() => { setFilter(f); setActiveIndex(0); }}
+                  className={`flex-1 py-1 text-xs rounded-md font-medium capitalize transition-colors ${
+                    filter === f ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}>
+                  {f}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Conversations List */}
-          <div style={{ flex: 1, overflow: 'auto' }}>
-            {filteredConversations.map((conversation, index) => (
-              <div
-                key={conversation.id}
-                style={{
-                  padding: '16px 24px',
-                  borderBottom: '1px solid #f3f4f6',
-                  cursor: 'pointer',
-                  backgroundColor: selectedConversation === index ? '#f0f9ff' : 'transparent'
-                }}
-                onClick={() => setSelectedConversation(index)}
-                onMouseEnter={(e) => {
-                  if (selectedConversation !== index) {
-                    e.currentTarget.style.backgroundColor = '#f9fafb';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (selectedConversation !== index) {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                  }
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{
-                      width: '40px',
-                      height: '40px',
-                      backgroundColor: conversation.role === 'Driver' ? '#dbeafe' : '#fef3c7',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '16px'
-                    }}>
-                      {conversation.role === 'Driver' ? '🚛' : '🏢'}
-                    </div>
-                    <div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <p style={{ margin: 0, fontWeight: '600', color: '#1f2937', fontSize: '14px' }}>
-                          {conversation.participant}
-                        </p>
-                        {conversation.unread && (
-                          <div style={{
-                            width: '8px',
-                            height: '8px',
-                            backgroundColor: '#3b82f6',
-                            borderRadius: '50%'
-                          }}></div>
-                        )}
-                      </div>
-                      <p style={{ margin: 0, fontSize: '12px', color: '#6b7280' }}>
-                        {conversation.role}
-                      </p>
-                    </div>
+          <div className="flex-1 overflow-y-auto divide-y divide-gray-100">
+            {loading ? (
+              <div className="flex items-center justify-center h-24 text-gray-400 text-sm">Loading…</div>
+            ) : filteredThreads.length === 0 ? (
+              <div className="flex items-center justify-center h-24 text-gray-400 text-sm">No conversations</div>
+            ) : filteredThreads.map((t, i) => (
+              <button key={t.partnerEmail} onClick={() => setActiveIndex(i)}
+                className={`w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors ${activeIndex === i ? 'bg-blue-50' : ''}`}>
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 bg-gray-100 rounded-full flex items-center justify-center text-sm shrink-0">
+                    {t.partnerEmail === 'broadcast' ? '📢' : '💬'}
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
-                    <span style={{ fontSize: '11px', color: '#6b7280' }}>
-                      {conversation.timestamp}
-                    </span>
-                    <div style={{ display: 'flex', gap: '4px' }}>
-                      <span style={{
-                        fontSize: '8px',
-                        padding: '2px 4px',
-                        borderRadius: '4px',
-                        backgroundColor: `${getPriorityColor(conversation.priority)}20`,
-                        color: getPriorityColor(conversation.priority),
-                        fontWeight: '600',
-                        textTransform: 'uppercase'
-                      }}>
-                        {conversation.priority}
-                      </span>
-                      <span style={{
-                        fontSize: '8px',
-                        padding: '2px 4px',
-                        borderRadius: '4px',
-                        backgroundColor: `${getStatusColor(conversation.status)}20`,
-                        color: getStatusColor(conversation.status),
-                        fontWeight: '600',
-                        textTransform: 'uppercase'
-                      }}>
-                        {conversation.status}
-                      </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm font-medium text-gray-900 truncate">{t.partnerEmail}</p>
+                      {t.hasUnread && <div className="w-2 h-2 bg-indigo-500 rounded-full shrink-0 ml-1" />}
                     </div>
+                    <p className="text-xs text-gray-400 truncate mt-0.5">
+                      {t.messages[t.messages.length - 1]?.content ?? ''}
+                    </p>
                   </div>
                 </div>
-                <p style={{
-                  margin: 0,
-                  fontSize: '13px',
-                  color: '#6b7280',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }}>
-                  {conversation.lastMessage}
-                </p>
-              </div>
+              </button>
             ))}
           </div>
         </div>
 
-        {/* Chat Area */}
-        <div style={{
-          backgroundColor: 'white',
-          border: '1px solid #e5e7eb',
-          borderRadius: '12px',
-          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
-          display: 'flex',
-          flexDirection: 'column'
-        }}>
-          {filteredConversations.length > 0 ? (
+        {/* Chat area */}
+        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 shadow-sm flex flex-col">
+          {activeThread ? (
             <>
-              {/* Chat Header */}
-              <div style={{ padding: '20px 24px', borderBottom: '1px solid #e5e7eb' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{
-                      width: '40px',
-                      height: '40px',
-                      backgroundColor: filteredConversations[selectedConversation].role === 'Driver' ? '#dbeafe' : '#fef3c7',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '16px'
-                    }}>
-                      {filteredConversations[selectedConversation].role === 'Driver' ? '🚛' : '🏢'}
-                    </div>
-                    <div>
-                      <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '600', color: '#1f2937' }}>
-                        {filteredConversations[selectedConversation].participant}
-                      </h3>
-                      <p style={{ margin: 0, fontSize: '14px', color: '#6b7280' }}>
-                        {filteredConversations[selectedConversation].role}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div style={{ display: 'flex', gap: '8px' }}>
-                    <button style={{
-                      padding: '6px 12px',
-                      fontSize: '12px',
-                      backgroundColor: '#f3f4f6',
-                      color: '#6b7280',
-                      border: 'none',
-                      borderRadius: '6px',
-                      cursor: 'pointer'
-                    }}>
-                      📋 View Profile
-                    </button>
-                    <button style={{
-                      padding: '6px 12px',
-                      fontSize: '12px',
-                      backgroundColor: '#10b981',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '6px',
-                      cursor: 'pointer'
-                    }}>
-                      ✅ Mark Resolved
-                    </button>
+              {/* Chat header */}
+              <div className="px-5 py-3 border-b border-gray-100 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 bg-indigo-100 rounded-full flex items-center justify-center text-lg">💬</div>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900">{activeThread.partnerEmail}</p>
+                    <p className="text-xs text-gray-400">{activeThread.messages.length} messages</p>
                   </div>
                 </div>
+                <button className="px-3 py-1.5 bg-green-600 text-white text-xs rounded-lg hover:bg-green-700 font-medium">
+                  ✅ Mark Resolved
+                </button>
               </div>
 
               {/* Messages */}
-              <div style={{ flex: 1, padding: '24px', overflow: 'auto', backgroundColor: '#f9fafb' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  {filteredConversations[selectedConversation].messages.map((message, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        display: 'flex',
-                        justifyContent: message.isAdmin ? 'flex-end' : 'flex-start'
-                      }}
-                    >
-                      <div style={{
-                        maxWidth: '70%',
-                        padding: '12px 16px',
-                        borderRadius: '12px',
-                        backgroundColor: message.isAdmin ? '#3b82f6' : 'white',
-                        color: message.isAdmin ? 'white' : '#1f2937',
-                        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
-                      }}>
-                        <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.5' }}>
-                          {message.content}
+              <div className="flex-1 overflow-y-auto p-5 bg-gray-50 space-y-3">
+                {activeThread.messages.map(m => {
+                  const isAdmin = m.sender_email === adminEmail;
+                  if (!m.is_read && !isAdmin) markRead(m.message_id);
+                  return (
+                    <div key={m.message_id} className={`flex ${isAdmin ? 'justify-end' : 'justify-start'}`}>
+                      <div className={`max-w-[70%] px-4 py-3 rounded-2xl shadow-sm ${
+                        isAdmin ? 'bg-indigo-600 text-white' : 'bg-white text-gray-900'
+                      }`}>
+                        {m.subject && (
+                          <p className={`text-xs font-semibold mb-1 ${isAdmin ? 'text-indigo-200' : 'text-gray-500'}`}>
+                            {m.subject}
+                          </p>
+                        )}
+                        <p className="text-sm leading-relaxed">{m.content}</p>
+                        <p className={`text-xs mt-2 ${isAdmin ? 'text-indigo-300' : 'text-gray-400'}`}>
+                          {m.sender_email} · {new Date(m.created_at).toLocaleTimeString()}
                         </p>
-                        <div style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                          marginTop: '8px'
-                        }}>
-                          <span style={{
-                            fontSize: '11px',
-                            opacity: 0.7,
-                            fontWeight: '500'
-                          }}>
-                            {message.sender}
-                          </span>
-                          <span style={{
-                            fontSize: '11px',
-                            opacity: 0.7
-                          }}>
-                            {message.timestamp}
-                          </span>
-                        </div>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
+                <div ref={bottomRef} />
               </div>
 
-              {/* Message Input */}
-              <div style={{ padding: '20px 24px', borderTop: '1px solid #e5e7eb' }}>
-                <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-end' }}>
-                  <div style={{ flex: 1 }}>
-                    <textarea
-                      style={{
-                        width: '100%',
-                        padding: '12px',
-                        border: '1px solid #d1d5db',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        resize: 'none',
-                        minHeight: '80px',
-                        fontFamily: 'inherit'
-                      }}
-                      placeholder="Type your message..."
-                      value={newMessage}
-                      onChange={(e) => setNewMessage(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' && !e.shiftKey) {
-                          e.preventDefault();
-                          handleSendMessage();
-                        }
-                      }}
-                    />
-                  </div>
+              {/* Input */}
+              <div className="px-5 py-4 border-t border-gray-100">
+                <div className="flex gap-3 items-end">
+                  <textarea
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    rows={3}
+                    placeholder="Type your message…"
+                    value={newMessage}
+                    onChange={e => setNewMessage(e.target.value)}
+                    onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
+                  />
                   <button
-                    style={{
-                      padding: '12px 20px',
-                      backgroundColor: newMessage.trim() ? '#3b82f6' : '#d1d5db',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '8px',
-                      fontSize: '14px',
-                      fontWeight: '500',
-                      cursor: newMessage.trim() ? 'pointer' : 'not-allowed',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}
-                    onClick={handleSendMessage}
-                    disabled={!newMessage.trim()}
+                    onClick={handleSend}
+                    disabled={!newMessage.trim() || sending}
+                    className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
                   >
-                    <span>📤</span>
-                    Send
+                    <span>📤</span> Send
                   </button>
                 </div>
               </div>
             </>
           ) : (
-            <div style={{
-              flex: 1,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              color: '#6b7280'
-            }}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>💬</div>
-              <h3 style={{ fontSize: '18px', fontWeight: '500', margin: 0, marginBottom: '8px' }}>
-                No conversations found
-              </h3>
-              <p style={{ fontSize: '14px', margin: 0 }}>
-                Select a conversation to start messaging
-              </p>
+            <div className="flex-1 flex flex-col items-center justify-center text-gray-400">
+              <div className="text-5xl mb-3">💬</div>
+              <p className="text-base font-medium">No conversations found</p>
+              <p className="text-sm mt-1">Select a conversation or change the filter</p>
             </div>
           )}
         </div>
       </div>
     </div>
   );
-};
-
-export default AdminMessages;
+}

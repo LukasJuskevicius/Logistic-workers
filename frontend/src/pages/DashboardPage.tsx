@@ -1,6 +1,5 @@
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { AdminDashboard } from '../components/admin/AdminDashboard';
 
 interface OutletContext {
   user: any;
@@ -11,21 +10,13 @@ export function DashboardPage() {
   const { t } = useTranslation();
 
   // Redirect to login if not authenticated
-  if (!user) {
-    window.location.href = '/login';
-    return null;
-  }
+  if (!user) return <Navigate to="/login" replace />;
 
   // Role-based dashboard rendering
   const renderDashboard = () => {
     switch (user.role) {
       case 'admin':
-        return (
-          <AdminDashboard 
-            user={user} 
-            onNavigate={(page) => window.location.href = `/${page}`} 
-          />
-        );
+        return <Navigate to="/admin/dashboard" replace />;
       case 'client':
         return (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

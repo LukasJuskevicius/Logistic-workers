@@ -1,6 +1,6 @@
 // login.controller.js
 import { findUserByEmail } from '../daos/user.dao.js';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 // Helper validation functions
 const validateEmail = (email) => {

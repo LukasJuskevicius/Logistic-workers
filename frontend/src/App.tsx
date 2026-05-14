@@ -29,14 +29,14 @@ import { Footer } from './components/layout/Footer';
 import { authLoader } from './routes/loaders/authLoader';
 import { loginAction } from './routes/actions/loginAction';
 import { registerAction } from './routes/actions/registerAction';
-import { AdminDashboard } from './components/admin/AdminDashboard';
+import AdminLayout from './components/admin/AdminLayout';
 import AdminDashboardDemo from './components/admin/AdminDashboardDemo';
-import AdminProfile from './components/admin/AdminProfile';
 import AdminSettings from './components/admin/AdminSettings';
 import AdminAnalytics from './components/admin/AdminAnalytics';
 import AdminMessages from './components/admin/AdminMessages';
 import AdminManageUsers from './components/admin/AdminManageUsers';
 import AdminJobsManager from './components/admin/AdminJobsManager';
+import AdminLanguageEditor from './components/admin/AdminLanguageEditor';
 
 // Import API functions
 import { logout } from './api/auth/logout';
@@ -118,28 +118,17 @@ const router = createBrowserRouter([
         element: <ClientsPage />
       },
       {
-        path: 'admin/dashboard',
-        element: <AdminDashboardDemo />
-      },
-      {
-        path: 'admin/settings',
-        element: <AdminSettings />
-      },
-      {
-        path: 'admin/analytics',
-        element: <AdminAnalytics />
-      },
-      {
-        path: 'admin/messages',
-        element: <AdminMessages />
-      },
-      {
-        path: 'admin/users',
-        element: <AdminManageUsers />
-      },
-      {
-        path: 'admin/jobs',
-        element: <AdminJobsManager />
+        path: 'admin',
+        element: <AdminLayout />,
+        children: [
+          { path: 'dashboard', element: <AdminDashboardDemo /> },
+          { path: 'settings',  element: <AdminSettings /> },
+          { path: 'analytics', element: <AdminAnalytics /> },
+          { path: 'messages',  element: <AdminMessages /> },
+          { path: 'users',     element: <AdminManageUsers /> },
+          { path: 'jobs',      element: <AdminJobsManager /> },
+          { path: 'languages', element: <AdminLanguageEditor /> },
+        ]
       }
     ]
   }
